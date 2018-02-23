@@ -1,0 +1,14 @@
+{
+	"name": "disgaeareporter",
+	"dependencies": {
+		"gamebits:memmux": "*",
+		"sjis": "*",
+		":d1data": "*",
+		":d2data": "*"
+	},
+	"targetType": "executable",
+	"subPackages": [
+		"d1data",
+		"d2data"
+	]
+}

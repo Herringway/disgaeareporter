@@ -1,0 +1,1007 @@
+Wristband
+Rock Fist
+Double Slap
+Leather Glove
+Iron Claw
+Power Gauntlet
+Hyper Knuckle
+Lethal Knuckle
+Fake Fist
+Cross Counter
+Swift Knuckle
+Magic Cuff
+Poison Knuckle
+Megaton Punch
+Fist of Fury
+Mach Punch
+Spiked Glove
+Bagh Nakh
+Mystic Hand
+Metal Fist
+Silver Arm
+Demonic Fist
+Karate Chop
+Mistral Fist
+Jupiter's Fist
+Straight Punch
+Mirage
+Kwanca
+Bahamut's Fist
+Golden Arm
+Crisis
+Diabolic Fist
+Platinum Arm
+Galactica
+Terra Smasher
+Punisher
+Zodiac
+Infernal Fist
+God's Hand
+Ultimus
+
+
+
+
+
+
+
+
+Common Sword
+Short Sword
+Swordbreaker
+Bronze Sword
+Long Sword
+Ninja Sword
+Sharp Edge
+Bastard Sword
+Broad Sword
+Magic Sword
+2-Pronged Blade
+Great Sword
+Taser Sword
+Mortuus Blade
+Psychic Sword
+Stabbing Knife
+Evil Thwarter
+Hibernal Sword
+Muramasa
+Light Sabre
+Vajra
+Mistral Sword
+Jupiter's Sword
+Bloodlust
+Masamune
+Bahamut's Fang
+Adamant Sword
+Demon Killer
+Wyrmslayer
+Laevateinn
+Diabolic Sword
+Crusade
+Kusanagi
+Excalibur
+Shichishi-Tou
+Infernal Sword
+Arondight
+Amano-Hahakiri
+Cosmic Blade
+Yoshitsuna
+
+
+
+
+
+
+
+
+Common Spear
+Iron Lance
+Knight's Lance
+Bogus Spear
+Long Spear
+Koshimoto Spear
+Bushido Lance
+Trident
+Paralyzing Spear
+Falcon Lance
+Forgetful Spear
+Black Spear
+Silver Lance
+Kung Fu Spear
+Venomous Spear
+Moonlight
+Skewer
+Mistral Spear
+Jupiter's Spear
+Special Lance
+Vile Brilliance
+Golden Lance
+Bone Lance
+Zephyr
+Bahamut's Horn
+Benkei
+Demonic Spear
+Pallas Athene
+Kiyomasa
+Hero's Spear
+Platinum Lance
+Li Shuwen
+Diabolic Spear
+Walkeure
+Gungnir
+Gae Bolga
+Chaladholg
+Infernal Spear
+Longinus
+Glorious
+
+
+
+
+
+
+
+
+
+
+Common Bow
+Hunter's Bow
+Longbow
+Big Arrow
+Blessed Bow
+Pixie Bow
+Enchanted Arrow
+Warrior's Bow
+Sprite Bow
+Venomous Bow
+Elven Bow
+Spirit Bow
+Master Bow
+Bow of Havoc
+Bow of Justice
+Silver Bow
+Flex Bow
+Plasma Arrow
+Hero's Bow
+Shining Arrow
+Mistral Bow
+Jupiter's Bow
+Golden Bow
+Judgment Arrow
+Remote Bow
+Platinum Bow
+Kuki
+Bow of Virtue
+Arcane Bow
+Yoichi's Bow
+Bahamut's Aim
+Percival
+Prometheus
+Starchaser
+Diabolic Bow
+Ull's Bow
+Fleche Enflammee
+Infernal Bow
+Artemis
+Galaxy
+
+
+
+
+
+
+RQ22 Common
+Model 24
+RQ38 Custom
+Dolphin EX
+RQ-P38
+Nether 35
+KLZ900
+RQ44 Magnum
+Model 48
+Dune Eagle
+Nether 58
+ZK Auto 13
+Ion 8k Ninja
+Model 56
+RQ57 Dragon
+LDT52-R
+Nether 72
+P50-XX
+Ion 9k Samurai
+RQ66 Saint
+GH40WZ
+H30k
+PS-714
+RQ77 Godslayer
+Nether 108
+T-199X
+Karlten
+RQ99 Omega
+Gilgamesh
+Olympus
+Odyssey
+Phillipan
+Fujiyama
+Beowulf
+Tiamat
+Brunhild
+Siegfried
+Fenrir
+Infernal Gun
+Etoile
+
+
+
+
+
+
+
+
+Common Axe
+Villager's Axe
+Battle Axe
+Bronze Axe
+Iron Axe
+Tomahawk
+Warrior's Axe
+Mighty Axe
+Steel Axe
+Stamina Axe
+Axe of Sorcery
+Pixie Axe
+Falcon Axe
+Enchanted Axe
+Silver Axe
+Dwarven Axe
+Bloody Axe
+Adamant Axe
+Demon's Axe
+Dream Axe
+Headhunter
+Hero's Axe
+Mistral Axe
+Jupiter's Axe
+Golden Axe
+Vigaro's Axe
+Axe of Death
+Rune Axe
+Terra Firma
+Hellish Axe
+Bahamut's Talon
+Platinum Axe
+Axe of Slaughter
+Mercurius
+Diabolic Axe
+Empyrean Axe
+Balmung
+Infernal Axe
+Durandal
+Apocalypse
+
+
+
+
+
+
+
+
+Wooden Staff
+Light Staff
+Witch's Staff
+Mage's Staff
+Smiting Rod
+Quality Staff
+Hibernal Staff
+Stamina Staff
+Swordstaff
+Pixie Staff
+Forgetful Staff
+Mortuus Staff
+Staff of Sorcery
+Silver Staff
+Elven Staff
+Blessed Staff
+Sage's Staff
+Staff of Hope
+Enchanted Staff
+Mistral Staff
+Jupiter's Staff
+Staff of Virtue
+Golden Staff
+Prophet's Staff
+Rune Staff
+Rainbow Rod
+Bahamut's Wit
+Holy Staff
+Saint's Staff
+Gambantein
+Diabolic Staff
+Tainted Staff
+Polansky's Staff
+Yggdrasil
+Mjollnir
+Dark Matter
+Kerykeion
+Infernal Staff
+Galactic Staff
+Omniscient Staff
+
+
+
+
+
+
+
+
+Paw Glove
+Scratch Claw
+Crab Pincer
+Shocking Grasp
+Poison Needle
+Bat Parasol
+Cat's Claw
+Lizard Tail
+Porcu-Spine
+Electric Eel
+Cobra Fang
+Spiked Shell
+Wolf Fang
+Tentacles
+Vampire Fang
+Gorilla Foot
+Lionheart
+Bear Claw
+Tiger Fang
+Panda Claw
+Nessie Attack
+Medusa Eye
+Brocken
+Demon's Hand
+Fiendish Claw
+Primal Force
+Goblin's Fury
+Mystic Eye
+Geo Saber
+Destroy
+Lightning Fang
+Dragon Tooth
+Enigma
+Orichalch Claw
+El Dorado
+Dragon Heart
+Belial Force
+Amon Force
+Lucifer Force
+Nyanko Soul
+Nemesis
+Nemesis Mk-II
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Amulet
+Protector
+Bulletproof Vest
+Fancy Lid
+Leather Jacket
+Chain Mail
+Dimensional Cape
+Power Jacket
+Bushido Armor
+Magic Vest
+Muscle Armor
+Steel Armor
+Fur Coat
+Dandy Gown
+Stealth Cape
+Stinky Jacket
+Ghost Cape
+Prophet's Robe
+Silver Tux
+Gritty Vest
+Mistral Armor
+Jupiter's Armor
+Cactus Armor
+Hero Cape
+Gold Tux
+Reaper's Cloak
+Black Armor
+Nine Tail Fur
+Platinum Tux
+Dragon Jacket
+Orichalch Shield
+Bahamut's Scale
+Evil Armor
+Shield of Aegis
+Celestial Armor
+Infernal Cape
+Infernal Shield
+Infernal Armor
+Nirvana
+Astro Suit
+
+
+
+
+
+
+
+
+Quasi-Power Belt
+Power Belt
+Endeavor Belt
+Belt of Will
+Mega-Power Belt
+Monster Belt
+Super Belt
+Steel Belt
+Aura Belt
+Love Belt
+Spirit Belt
+Hero Belt
+Soul Belt
+Training Belt
+Bravery Belt
+Guts Belt
+Shaolin Belt
+Black Belt
+Chakra Belt
+Champion Belt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Slippers
+Cross-Trainers
+Ninja Shoes
+Falcon Shoes
+Angel's Sandals
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Common Orb
+Psyche Orb
+Dark Orb
+Blood Orb
+Star Orb
+Moon Orb
+King Orb
+Holy Orb
+Chaos Orb
+Universal Orb
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Common Glasses
+Magnifying Glass
+Nerd Glasses
+Plastic Nose
+Opera Glasses
+Nightvision
+Crosshair Scope
+Foresight
+Destiny Lens
+Providence
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Muscle Brawn
+Muscle Hustle
+Mustle Spirit
+Mustle Fight
+Mustle Ace
+Mustle Victory
+Mustle Dream
+Mustle World
+Muscle Star
+Galactic Muscle
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Horse Wiener
+Mahogany's Brain
+Hercules' Body
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Imperial Seal
+Dark Rosary
+Devil Ring
+Feather Token
+Sofia's Mirror
+Pravda Necklace
+Royal Ring
+Testament
+Exodus
+Arcadia
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ABC Gum
+Mint Gum
+Candy
+Cotton Candy
+Taiyaki
+Chocolate
+Flan
+Eclair
+Shortcake
+Sundae
+Opened Drink
+Unopened Drink
+Garlic Water
+Yam Starch
+Barbecue Sauce
+Egg Yolk
+Protein Shake
+Bloody Mary
+Sake
+Mushroom Soup
+Dried Worm
+Caterpillar Egg
+Charred Newt
+Rooster Blood
+Snake Kidney
+Bat Soup
+Frog Sweat
+Immortal's Pill
+Soma
+Elixir
+Veggie Burger
+Faerie Dust
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Stealing Hand
+Plunder Hand
+Cha-Ching Hand
+Bandit's Hand
+Awesome Hand
+Dream Hand
+Mr. Gency's Exit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

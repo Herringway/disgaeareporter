@@ -1,0 +1,114 @@
+65	Triple Strike
+66	Tiger Charge
+67	Lion's Roar
+68	King of Beasts
+C9	Blade Rush
+CA	Hurricane Slash
+CB	Wind Cutter
+CC	Winged Slayer
+CD	Nightsever
+12D	Impaler
+12E	Sky Lunge
+12F	Asteroid Drop
+130	Avalanche
+191	Poison Arrow
+192	Dark Flash
+1F5	Tri-burst
+1F6	Rapidfire
+1F7	Proximal Shot
+1F8	Bullet Storm
+259	Boulder Crush
+25A	Skull Splitter
+2BD	Fire
+2BE	Mega Fire
+2BF	Giga Fire
+2C0	Omega Fire
+2C1	Tera Fire
+2C7	Wind
+2C8	Mega Wind
+2C9	Giga Wind
+2CA	Omega Wind
+2CB	Tera Wind
+2D1	Ice
+2D2	Mega Ice
+2D3	Giga Ice
+2D4	Omega Ice
+2D5	Tera Ice
+2DB	Star
+2DC	Mega Star
+2DD	Giga Star
+2DE	Omega Star
+2DF	Tera Star
+321	Heal
+322	Mega Heal
+323	Giga Heal
+324	Omega Heal
+325	Espoir
+32B	Braveheart
+32C	Shield
+32D	Magic Boost
+32E	Magic Wall
+385	Geo Change
+386	Dark Cannon
+3E9	Blazing Knuckle
+3EA	Overlord's Wrath
+3EB	Meteor Impact
+3F3	Prinny Raid
+3F4	Sexy Beam
+3F5	Chaos Impact
+3FD	Power of Love
+3FE	Holy Arrows
+3FF	Divine Ray
+407	Gordon Spark
+408	Gordon Punch
+409	Gordon Blitz
+411	Star Buster
+412	Cosmic Arrow
+413	Terminus Omega
+7E5	Golem Dunk
+853	Spinning Slash
+854	Darkness Slash
+855	Earthshaker
+856	Megaton Crush
+867	Stinger Strike
+868	Beast Rend
+869	Devour
+86A	Beast Ray
+871	Hip Attack
+87B	Rapid Kick
+87C	Fists of Fury
+87D	Mystic Blast
+87E	Delta Kick
+885	Chaos Fire
+886	Chaos Swarm
+887	Chaos Force
+888	Chaos Plasma
+899	Robo Attack
+89A	Robo Crush
+89B	Robo Bazooka
+89C	Arigato Roboto
+8A3	Prinny Barrage
+8A4	Prinny Dance
+8A5	Prinny Bomb
+8A6	Pringer Beam
+8AD	Rocket Punch
+8AE	Final Punch
+8AF	Nuclear Fusion
+8B0	Pringer Beam
+B61	Usagi Drop
+BB9	Dragon Rage
+BBA	Requiem Aeternam
+BC3	Dark Conjuration
+DC1	Flap Dance
+DC2	Quadra Nosedive
+DC3	Death Drop
+DC4	Supernova
+E75	Bloody Talons
+E7F	Bloody Talons
+E80	Ice Breath
+E81	Blue Nova
+E82	Dragonic Freeze
+E93	Bloody Talons
+E94	Fire Breath
+E95	Red Nova
+E96	Dragonic Flare

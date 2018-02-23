@@ -1,0 +1,97 @@
+104	Tutorial
+201	Vyers Castle - Blessed Court
+202	Vyers Castle - Corridor of Love
+203	Vyers Castle - Hall of Caresses
+204	Vyers Castle - Magnificent Gate
+301	Blazing Core - Road of Flames
+302	Blazing Core - Parched Ground
+303	Blazing Core - Blazing Field
+304	Blazing Core - Molten Labyrinth
+401	Dinero Palace - Golden Courtyard
+402	Dinero Palace - Flashy Passage
+403	Dinero Palace - Lavish Hall
+404	Dinero Palace - Gaudy Entrance
+501	Frozen River - Icy Breath
+502	Frozen River - Eternal Winter
+503	Frozen River - White Death
+504	Frozen River - Forsaken Land
+601	Blair Forest - Calamity Woods
+602	Blair Forest - Ritual Site
+603	Blair Forest - Witches' Den
+604	Blair Forest - Writhing Shadow
+605	Blair Forest - Nightdwellers
+606	Blair Forest - Heart of Evil
+701	Stellar Graveyard - Valgipus IV
+702	Stellar Graveyard - Thurvean Sector
+703	Stellar Graveyard - Sphere VIII
+704	Stellar Graveyard - Cross-Point
+705	Stellar Graveyard - Primordial Soup
+706	Stellar Graveyard - ???
+801	Gargantua Deck - Point Alpha-III
+901	Gargantua Interior - Main Corridor 1
+902	Gargantua Interior - Main Corridor 2
+903	Gargantua Interior - Main Corridor 3
+904	Gargantua Interior - Bridge
+1101	Prinny Land - Prinny Land 1
+1102	Prinny Land - Prinny Land 2
+1103	Prinny Land - Prinny Land 3
+1201	Celestia - Field of Virtue
+1202	Celestia - Paradise
+1203	Celestia - Angelic Choir
+1204	Celestia - Coliseum
+1205	Celestia - Divine Prison
+1301	Seraphic Sanctuary - Inner Sanctum
+1302	Seraphic Sanctuary - Hall of Justice
+1303	Seraphic Sanctuary - Sacred Altar
+1304	Seraphic Sanctuary - Sacred Altar(D)
+1401	Salamander's Breath - Scorching Wind
+1402	Salamander's Breath - Column of Fire
+1403	Salamander's Breath - Crimson Plains
+1404	Salamander's Breath - Ember of Dreams
+1405	Salamander's Breath - Raging Earth
+1501	Sea of Gehenna - Fervent Melody
+1502	Sea of Gehenna - Wasteland of Woe
+1503	Sea of Gehenna - Searing Tyranny
+1504	Sea of Gehenna - Inferno
+1505	Sea of Gehenna - River of Lava
+1601	Jotunheim - Endless White
+1602	Jotunheim - Terrible Cold
+1603	Jotunheim - Ice Queen
+1604	Jotunheim - Absolute Zero
+1701	Lunar Snowfield - Frigid Garden
+1702	Lunar Snowfield - Freezing Souls
+1703	Lunar Snowfield - Under the Moon
+1704	Lunar Snowfield - Theatre of Death
+1801	Forest of the Dead - Ghostly Whisper
+1802	Forest of the Dead - Rising Fear
+1803	Forest of the Dead - Crawling Terror
+1804	Forest of the Dead - Hero's Tomb
+1901	Stellar Graveyard II - Embryon
+1902	Stellar Graveyard II - Core Point No. 4
+1903	Stellar Graveyard II - Star Cluster
+1904	Stellar Graveyard II - Sidereal Rift
+2901	Puzzle - 1
+2902	Puzzle - 2
+2903	Puzzle - 3
+2904	Puzzle - 4
+2905	Puzzle - 5
+3001	Cave of Ordeal - Cave of Ordeal 1
+3002	Cave of Ordeal - Cave of Ordeal 2
+3003	Cave of Ordeal - Cave of Ordeal 3
+3101	Extra - 1
+3102	Extra - 2
+3103	Extra - 3
+3104	Extra - 4
+3105	Extra - 5
+21001	Dark Assembly - Exam for Rank 1
+21002	Dark Assembly - Exam for Rank 2
+21003	Dark Assembly - Exam for Rank 3
+21004	Dark Assembly - Exam for Rank 4
+21005	Dark Assembly - Exam for Rank 5
+21006	Dark Assembly - Exam for Rank 6
+21007	Dark Assembly - Exam for Rank 7
+21008	Dark Assembly - Exam for Rank 8
+21009	Dark Assembly - Exam for Rank 9
+21010	Dark Assembly - Exam for Rank 10
+21011	Dark Assembly - Exam for Rank 11
+21012	Dark Assembly - Exam for Rank 12
