@@ -66,6 +66,8 @@ CD	Nightsever
 412	Cosmic Arrow
 413	Terminus Omega
 7E5	Golem Dunk
+849	Zombie Puke
+84A	Zombie Twister
 853	Spinning Slash
 854	Darkness Slash
 855	Earthshaker
