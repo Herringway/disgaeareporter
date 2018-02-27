@@ -203,7 +203,11 @@ struct Character {
 	ubyte senateRank;
 	ubyte[2] unknown10;
 	byte mentor;
-	ubyte[39] unknown11;
+	ubyte[9] unknown11;
+	ubyte numTransmigrations;
+	ubyte[5] unknown12;
+	uint transmigratedLevels;
+	ubyte[20] unknown13;
 
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.algorithm : filter;
@@ -211,6 +215,7 @@ struct Character {
 		import std.range : lockstep;
 		sink.formattedWrite!"%s (Lv%s %s)\n"(name, level, className);
 		sink.formattedWrite!"\tRank: %s, Mana: %s\n"(senateRank, mana);
+		sink.formattedWrite!"\tTransmigrations: %s, Transmigrated Levels: %s\n"(numTransmigrations, transmigratedLevels);
 		sink.formattedWrite!"\tCounter: %s, MV: %s, JM: %s\n"(counter, mv, jm);
 		sink.formattedWrite!"\tResists - Fire: %s%%, Wind: %s%%, Ice: %s%%\n"(fireResist, windResist, iceResist);
 		if (mentor >= 0) {
