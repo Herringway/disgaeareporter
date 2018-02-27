@@ -12,6 +12,9 @@ void printData(Game)(Game* game) {
 
 	bool sortSenatorsByFavour = true;
 	writeln("-Game stats-\n");
+	static if (hasMember!(Game, "playtime")) {
+		writefln!"Time Played: %s"(game.playtime);
+	}
 	static if (hasMember!(Game, "totalHL")) {
 		writefln!"HL: %s"(game.totalHL);
 	}

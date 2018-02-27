@@ -10,7 +10,9 @@ Character[] chars;
 align(1)
 struct PCGame {
 	align(1):
-	ubyte[656] unknown1;
+	ubyte[8] unknown1;
+	Playtime playtime;
+	ubyte[643] unknown_;
 	ulong totalHL;
 	ulong unknown__;
 	ubyte[8] unknown____;
@@ -90,6 +92,30 @@ static assert(PCGame.itemRecords.offsetof == 0x448B0);
 static assert(PCGame.maxDamage.offsetof == 0x44E00);
 static assert(PCGame.extraNPCs.offsetof == 0x45188);
 static assert(PCGame.sizeof == 0x48877);
+
+align(1)
+struct Playtime {
+	align(1):
+	ushort hours_;
+	ubyte minutes_;
+	ubyte seconds_;
+	ubyte milliseconds_;
+	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
+		import std.algorithm : filter;
+		import std.format;
+		sink.formattedWrite!"%s"(duration);
+	}
+	auto duration() const {
+		import core.time : hours, minutes, seconds, msecs;
+		return hours_.hours + minutes_.minutes + seconds_.seconds + milliseconds_.msecs;
+	}
+}
+
+private void playtimeTest() {
+	import std.outbuffer;
+	auto buf = new OutBuffer;
+	Playtime().toString(buf);
+}
 
 align(1)
 struct Item {
