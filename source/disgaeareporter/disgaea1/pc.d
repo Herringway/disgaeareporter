@@ -76,13 +76,6 @@ struct PCGame {
 		import std.algorithm : filter;
 		return _warehouseItems[].filter!(x => x.isValid);
 	}
-
-	//import std.format;
-	//void toString(T, Char)(T sink, FormatSpec!Char fmt) const if (isOutputRange!(T, const(char))) {
-	//	import std.algorithm : filter;
-	//	sink.formattedWrite("%(%s\n)", characters[0..charCount]);
-	//	sink.formattedWrite("Senators: %(%s\n)", senators[].filter!(x => x.attendance > 0));
-	//}
 }
 static assert(PCGame.totalHL.offsetof == 0x290);
 static assert(PCGame.mapClears.offsetof == 0x3A7B8);

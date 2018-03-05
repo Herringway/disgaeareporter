@@ -130,9 +130,4 @@ void printData(Game)(Game* game) {
 			writeln(mixin("game."~unknown.stringof));
 		}
 	}
-	//debug (dumpraw) {
-	//	Testo x;
-	//	x.game = game;
-	//	write("raw.txt", (*x.raw)[]);
-	//}
 }
