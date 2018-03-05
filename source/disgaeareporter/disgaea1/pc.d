@@ -40,7 +40,10 @@ struct PCGame {
 	ubyte sfxVolume;
 	@Unknown ubyte[53] unknown11;
 	BitFlags!Rarity[1008] itemRecords;
-	@Unknown ubyte[352] unknown12;
+	bool friendlyEffectDisabled;
+	bool enemyEffectDisabled;
+	bool japaneseVoices;
+	@Unknown ubyte[349] unknown12;
 	uint maxDamage;
 	uint totalDamage;
 	uint geoCombo;
