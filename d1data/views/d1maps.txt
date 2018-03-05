@@ -78,6 +78,7 @@
 3001	Cave of Ordeal - Cave of Ordeal 1
 3002	Cave of Ordeal - Cave of Ordeal 2
 3003	Cave of Ordeal - Cave of Ordeal 3
+3004	Cave of Ordeal - Cave of Ordeal 4
 3101	Extra - 1
 3102	Extra - 2
 3103	Extra - 3
