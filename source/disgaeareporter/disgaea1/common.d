@@ -2,6 +2,7 @@ module disgaeareporter.disgaea1.common;
 
 import d1data;
 import disgaeareporter.disgaea1;
+import disgaeareporter.common : Unknown;
 
 import memmux : readStruct = read;
 
@@ -130,10 +131,10 @@ static assert(BaseCharacterStats.sizeof == 8);
 enum Defeated {
 	itemGeneral = 1,
 	itemKing = 2,
-	unknown = 4,
+	itemGod = 4,
 	unknown2 = 8,
 	unknown3 = 16,
-	unknown4 = 32,
+	prinnyGod = 32,
 	unknown5 = 64,
 	unknown6 = 128,
 	unknown7 = 256,
@@ -149,7 +150,7 @@ struct MapClearData {
 	ushort kills;
 	ushort mapID;
 	ubyte bonusRank;
-	ubyte unknown;
+	@Unknown ubyte unknown;
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.format;
 		sink.formattedWrite!"%s - Clears: %s, Kills: %s"(mapID.mapName, clears, kills);
@@ -168,12 +169,12 @@ struct Senator {
 	ushort timesKilled;
 	ubyte nameBank;
 	ubyte nameIndex;
-	ubyte unknown;
+	@Unknown ubyte unknown;
 	ushort rarityPreference;
 	ubyte[16] sjisName;
-	ubyte unknown2;
+	@Unknown ubyte unknown2;
 	byte favour;
-	ubyte unknown3;
+	@Unknown ubyte unknown3;
 	string name() const {
 		return sjisDec(sjisName[]);
 	}

@@ -2,6 +2,8 @@ module disgaeareporter.disgaea1.pc;
 
 import disgaeareporter.disgaea1.common;
 
+import disgaeareporter.common : Unknown;
+
 import std.range : isOutputRange;
 import std.typecons : BitFlags;
 
@@ -10,40 +12,40 @@ Character[] chars;
 align(1)
 struct PCGame {
 	align(1):
-	ubyte[8] unknown1;
+	@Unknown ubyte[8] unknown1;
 	Playtime playtime;
-	ubyte[643] unknown_;
+	@Unknown ubyte[643] unknown2;
 	ulong totalHL;
-	ulong unknown__;
-	ubyte[8] unknown____;
+	@Unknown ulong unknown3;
+	@Unknown ubyte[8] unknown4;
 	ulong hpRecovered;
 	ulong spRecovered;
-	ubyte[2304] unknown2;
+	@Unknown ubyte[2304] unknown5;
 	//0x1EC - Shoe Inventory?
 	Character[128] _characters;
 	Senator[512] senators;
 	MapClearData[153] mapClears;
-	ubyte[640] unknown4;
+	@Unknown ubyte[640] unknown6;
 	Item[16] _bagItems;
 	Item[256] _warehouseItems;
-	ubyte[28] unknown5;
+	@Unknown ubyte[28] unknown7;
 	ushort allyKillCount;
-	ubyte[2] unknown6;
+	@Unknown ubyte[2] unknown8;
 	ulong revived;
-	ubyte[8] unknown7;
+	@Unknown ubyte[8] unknown9;
 	ushort charCount;
-	ubyte[70] unknown8;
+	@Unknown ubyte[70] unknown10;
 	ubyte bgmVolume;
 	ubyte voiceVolume;
 	ubyte sfxVolume;
-	ubyte[53] unknown9;
+	@Unknown ubyte[53] unknown11;
 	BitFlags!Rarity[1008] itemRecords;
-	ubyte[352] unknown10;
+	@Unknown ubyte[352] unknown12;
 	uint maxDamage;
 	uint totalDamage;
 	uint geoCombo;
-	uint unknown11;
-	uint unknown12;
+	@Unknown uint unknown13;
+	@Unknown uint unknown14;
 	uint enemiesKilled;
 	//???
 	uint enemiesKilledCopy;
@@ -53,11 +55,11 @@ struct PCGame {
 	uint itemRate;
 	uint itemWorldVisits;
 	uint itemWorldLevels;
-	uint unknown13;
+	@Unknown uint unknown15;
 	BitFlags!Defeated defeated;
-	ubyte[848] unknown14;
+	@Unknown ubyte[848] unknown16;
 	Character[3] extraNPCs;
-	ubyte[8903] unknown15;
+	@Unknown ubyte[8903] unknown17;
 
 	Character[] characters() {
 		return _characters[0..charCount];
@@ -135,11 +137,18 @@ struct Item {
 	ubyte jm;
 	ubyte rank;
 	ubyte range;
-	ubyte[10] unknown;
+	@Unknown ubyte[10] unknown;
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.algorithm : filter;
 		import std.format;
 		sink.formattedWrite!"Lv%s %s (Rarity: %s) - %(%s, %)"(level, nameID.itemName, rarity, innocents[].filter!(x => x.type != 0));
+		debug (unknowns) {
+			sink.formattedWrite!" - Unknown data:"();
+			import std.traits : getSymbolsByUDA;
+			static foreach (i; 0..getSymbolsByUDA!(typeof(this), Unknown).length) {
+				sink.formattedWrite!"(%s)"(getSymbolsByUDA!(typeof(this), Unknown)[i]);
+			}
+		}
 	}
 	bool isValid() const {
 		return nameID != 0;
@@ -162,12 +171,12 @@ struct Character {
 	ulong exp;
 	Item[4] equipment;
 	ubyte[32] sjisName;
-	ubyte unknown1;
+	@Unknown ubyte unknown1;
 	ubyte[33] title;
-	ubyte[2] unknown2;
-	ubyte[32] unknown3;
+	@Unknown ubyte[2] unknown2;
+	@Unknown ubyte[32] unknown3;
 	Resistance[5] resistances;
-	ubyte[110] unknown4;
+	@Unknown ubyte[110] unknown4;
 	uint[96] skillEXP;
 	ushort[96] skills;
 	ubyte[96] skillLevels;
@@ -175,18 +184,18 @@ struct Character {
 	uint currentSP;
 	Stats stats;
 	Stats realStats;
-	ubyte[32] unknown5;
+	@Unknown ubyte[32] unknown5;
 	uint mana;
-	ubyte[24] unknown6;
+	@Unknown ubyte[24] unknown6;
 	ubyte[8] weaponMasteryLevel;
 	ubyte[8] weaponMasteryRate;
 	BaseCharacterStats baseStats;
 	ushort level;
-	ushort unknown7;
+	@Unknown ushort unknown7;
 	ushort class_;
 	ushort class2;
 	ushort skillTree;
-	ubyte[10] unknown8;
+	@Unknown ubyte[10] unknown8;
 	byte baseFireResist;
 	byte baseIceResist;
 	byte baseWindResist;
@@ -199,15 +208,15 @@ struct Character {
 	ubyte mv;
 	ubyte baseCounter;
 	ubyte counter;
-	ubyte[13] unknown9;
+	@Unknown ubyte[13] unknown9;
 	ubyte senateRank;
-	ubyte[2] unknown10;
+	@Unknown ubyte[2] unknown10;
 	byte mentor;
-	ubyte[9] unknown11;
+	@Unknown ubyte[9] unknown11;
 	ubyte numTransmigrations;
-	ubyte[5] unknown12;
+	@Unknown ubyte[5] unknown12;
 	uint transmigratedLevels;
-	ubyte[20] unknown13;
+	@Unknown ubyte[20] unknown13;
 
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.algorithm : filter;
@@ -244,7 +253,13 @@ struct Character {
 				}
 			}
 		}
-		debug(unknowns) formattedWrite!"%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n"(sink, unknown1, unknown2, unknown3, unknown4, unknown5, unknown6, unknown7, unknown8, unknown9, unknown10, unknown11);
+		debug (unknowns) {
+			sink.formattedWrite!"\tUnknown data:\n"();
+			import std.traits : getSymbolsByUDA;
+			static foreach (i; 0..getSymbolsByUDA!(typeof(this), Unknown).length) {
+				sink.formattedWrite!"(%s)"(getSymbolsByUDA!(typeof(this), Unknown)[i]);
+			}
+		}
 	}
 	string name() const {
 		return sjisDec(sjisName[]);
