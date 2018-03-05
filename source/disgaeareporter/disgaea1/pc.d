@@ -153,6 +153,11 @@ struct Item {
 static assert(Item.sizeof == 0x90);
 
 
+private void funco() {
+	import std.outbuffer;
+	auto buf = new OutBuffer;
+	Item().toString(buf);
+}
 
 align(1)
 struct SkillEXP {
