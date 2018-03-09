@@ -66,7 +66,7 @@ void main(string[] args) {
 	auto file = cast(ubyte[])read(filePath);
 	try {
 		const detected = detectGame(file);
-		debug writefln!"Detected %s for %s"(detected.game, detected.platform);
+		debug(printdetected) writefln!"Detected %s for %s"(detected.game, detected.platform);
 		switch (detected.game) {
 			case Games.disgaea1:
 				switch (detected.platform) {
