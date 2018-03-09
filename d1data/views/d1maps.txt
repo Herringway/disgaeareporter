@@ -70,6 +70,13 @@
 1902	Stellar Graveyard II - Core Point No. 4
 1903	Stellar Graveyard II - Star Cluster
 1904	Stellar Graveyard II - Sidereal Rift
+2001	Beauty Castle - Foreboding Seal
+2002	Beauty Castle - Beauty of Evil
+2101	Alternate Netherworld - Alternate World
+2102	Alternate Netherworld - Hall of Sin
+2103	Alternate Netherworld - Hall of Penance
+2104	Alternate Netherworld - Malefic Seal
+2105	Alternate Netherworld - Warrior Maiden
 2901	Puzzle - 1
 2902	Puzzle - 2
 2903	Puzzle - 3
@@ -79,6 +86,15 @@
 3002	Cave of Ordeal - Cave of Ordeal 2
 3003	Cave of Ordeal - Cave of Ordeal 3
 3004	Cave of Ordeal - Cave of Ordeal 4
+3005	Cave of Ordeal - Cave of Ordeal 5
+3006	Cave of Ordeal - Demonhall Mirror (1)
+3007	Cave of Ordeal - Demonhall Mirror (2)
+3008	Cave of Ordeal - Demonhall Mirror (3)
+3009	Cave of Ordeal - Demonhall Mirror (4)
+3010	Cave of Ordeal - Demonhall Mirror (5)
+3011	Cave of Ordeal - Demonhall Mirror (6)
+3012	Cave of Ordeal - Demonhall Mirror (7)
+3013	Cave of Ordeal - Demonhall Mirror (8)
 3101	Extra - 1
 3102	Extra - 2
 3103	Extra - 3
