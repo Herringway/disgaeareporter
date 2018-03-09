@@ -111,6 +111,10 @@ struct BaseItemStats {
 	ushort speed;
 	ushort hit;
 	ushort resistance;
+	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
+		import std.format;
+		sink.formattedWrite!"HP: %s, SP: %s, Attack: %s, Defense: %s, Intelligence: %s, Speed: %s, Hit: %s, Resistance: %s"(hp, sp, attack, defense, intelligence, speed, hit, resistance);
+	}
 }
 static assert(BaseItemStats.sizeof == 16);
 
@@ -125,6 +129,10 @@ struct BaseCharacterStats {
 	ubyte speed;
 	ubyte hit;
 	ubyte resistance;
+	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
+		import std.format;
+		sink.formattedWrite!"HP: %s, SP: %s, Attack: %s, Defense: %s, Intelligence: %s, Speed: %s, Hit: %s, Resistance: %s"(hp, sp, attack, defense, intelligence, speed, hit, resistance);
+	}
 }
 static assert(BaseCharacterStats.sizeof == 8);
 
@@ -324,4 +332,21 @@ unittest {
 	assert(sjisDec(data) == "Laharl");
 }
 
+double itemStatsMultiplier(ulong level) {
+	if (level <= 100) {
+		return 1.0;
+	} else if (level <= 500) {
+		return cast(double)((level + 100) / 2) / 100.0;
+	} else if (level <= 2000) {
+		return cast(double)((level + 1000) / 5) / 100.0;
+	} else {
+		return cast(double)((level + 4000) / 10) / 100.0;
+	}
+}
 
+unittest {
+	assert(itemStatsMultiplier(100) == 1.0);
+	assert(itemStatsMultiplier(500) == 3.0);
+	assert(itemStatsMultiplier(2000) == 6.0);
+	assert(itemStatsMultiplier(10000) == 14.0);
+}

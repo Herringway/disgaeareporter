@@ -231,7 +231,9 @@ struct Character {
 		if (mentor >= 0) {
 			//sink.formattedWrite("\tMentor: %s\n", chars[cast(size_t)mentor].name);
 		}
-		sink.formattedWrite!"\t%s\n"(stats);
+		sink.formattedWrite!"\tBase Stats: %s\n"(baseStats);
+		sink.formattedWrite!"\tStats: %s\n"(stats);
+		sink.formattedWrite!"\tItem Stat Multiplier: %s\n"(level.itemStatsMultiplier);
 		if (weaponMasteryLevel != weaponMasteryLevel.init) {
 			sink.formattedWrite!"\tWeapon mastery:\n"();
 			foreach (i, masteryRate, masteryLevel; lockstep(weaponMasteryRate[], weaponMasteryLevel[])) {
