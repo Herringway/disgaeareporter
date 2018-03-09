@@ -6,6 +6,8 @@ import disgaeareporter.disgaea2;
 import disgaeareporter.dispatcher;
 import disgaeareporter.common;
 
+import siryul;
+
 import std.file;
 import std.getopt;
 import std.stdio;
@@ -15,7 +17,11 @@ void main(string[] args) {
 
 	bool steamDisgaea1;
 	bool steamDisgaea2;
+	bool json;
+	bool yaml;
 	auto helpInformation = getopt(args,
+		"dumpjson|j", "Dumps data as JSON", &json,
+		"dumpyaml|y", "Dumps data as YAML", &yaml,
 		"steamdisgaea1", "Automatically find steam save for Disgaea 1", &steamDisgaea1,
 		"steamdisgaea2", "Automatically find steam save for Disgaea 2", &steamDisgaea2);
 
@@ -53,13 +59,13 @@ void main(string[] args) {
 			case Games.disgaea1:
 				switch (detected.platform) {
 					case Platforms.ps2:
-						printData(loadData!(disgaeareporter.disgaea1.PS2Game)(detected.rawData));
+						dumpData(loadData!(disgaeareporter.disgaea1.PS2Game)(detected.rawData), yaml, json);
 						break;
 					case Platforms.pc:
-						printData(loadData!(disgaeareporter.disgaea1.PCGame)(detected.rawData));
+						dumpData(loadData!(disgaeareporter.disgaea1.PCGame)(detected.rawData), yaml, json);
 						break;
 					case Platforms.psp:
-						printData(loadData!(disgaeareporter.disgaea1.PSPGame)(detected.rawData));
+						dumpData(loadData!(disgaeareporter.disgaea1.PSPGame)(detected.rawData), yaml, json);
 						break;
 					default: writeln("Unsupported"); return;
 				}
@@ -67,13 +73,13 @@ void main(string[] args) {
 			case Games.disgaea2:
 				switch (detected.platform) {
 					case Platforms.ps2:
-						printData(loadData!(disgaeareporter.disgaea2.PS2Game)(detected.rawData));
+						dumpData(loadData!(disgaeareporter.disgaea2.PS2Game)(detected.rawData), yaml, json);
 						break;
 					case Platforms.pc:
-						printData(loadData!(disgaeareporter.disgaea2.PCGame)(detected.rawData));
+						dumpData(loadData!(disgaeareporter.disgaea2.PCGame)(detected.rawData), yaml, json);
 						break;
 					case Platforms.psp:
-						printData(loadData!(disgaeareporter.disgaea2.PSPGame)(detected.rawData));
+						dumpData(loadData!(disgaeareporter.disgaea2.PSPGame)(detected.rawData), yaml, json);
 						break;
 					default: writeln("Unsupported"); return;
 				}
@@ -82,6 +88,16 @@ void main(string[] args) {
 		}
 	} catch (Exception e) {
 		writefln!"Invalid save file: %s"(e.msg);
+	}
+}
+
+void dumpData(T)(const T data, const bool yaml, const bool json) {
+	if (yaml) {
+		writeln(data.toString!YAML);
+	} else if (json) {
+		writeln(data.toString!JSON);
+	} else {
+		printData(data);
 	}
 }
 

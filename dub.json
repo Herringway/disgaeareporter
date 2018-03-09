@@ -4,7 +4,8 @@
 		"gamebits:memmux": "*",
 		"sjis": "*",
 		":d1data": "*",
-		":d2data": "*"
+		":d2data": "*",
+		"siryul": "~>0.4.1",
 	},
 	"targetType": "executable",
 	"subPackages": [
