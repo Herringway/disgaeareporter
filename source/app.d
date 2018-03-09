@@ -35,14 +35,26 @@ void main(string[] args) {
 	string filePath;
 	if (steamDisgaea1) {
 		try {
-			filePath = getLatestSaveFile(buildPath(getSteamDirectory(), d1SteamID, "/remote/"));
+			debug(steam) {
+				writeln("steam dir: ", getSteamDirectory());
+				writeln("steam d1 id: ", d1SteamID);
+				writeln("full path: ", buildPath(getSteamDirectory(), d1SteamID, "remote"));
+				writeln("found save: ", getLatestSaveFile(buildPath(getSteamDirectory(), d1SteamID, "remote")));
+			}
+			filePath = getLatestSaveFile(buildPath(getSteamDirectory(), d1SteamID, "remote"));
 		} catch (Exception e) {
 			writeln(e.msg);
 			return;
 		}
 	} else if (steamDisgaea2) {
 		try {
-			filePath = getLatestSaveFile(buildPath(getSteamDirectory(), d2SteamID, "/remote/"));
+			debug(steam) {
+				writeln("steam dir: ", getSteamDirectory());
+				writeln("steam d2 id: ", d2SteamID);
+				writeln("full path: ", buildPath(getSteamDirectory(), d2SteamID, "remote"));
+				writeln("found save: ", getLatestSaveFile(buildPath(getSteamDirectory(), d2SteamID, "remote")));
+			}
+			filePath = getLatestSaveFile(buildPath(getSteamDirectory(), d2SteamID, "remote"));
 		} catch (Exception e) {
 			writeln(e.msg);
 			return;
