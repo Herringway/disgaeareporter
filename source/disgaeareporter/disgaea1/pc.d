@@ -64,7 +64,7 @@ struct PCGame {
 	Character[3] extraNPCs;
 	@Unknown ubyte[8903] unknown17;
 
-	Character[] characters() {
+	auto characters() const {
 		return _characters[0..charCount];
 	}
 	static string itemRecordName(size_t record) {
