@@ -227,7 +227,7 @@ struct Character {
 		sink.formattedWrite!"\tRank: %s, Mana: %s\n"(senateRank, mana);
 		sink.formattedWrite!"\tTransmigrations: %s, Transmigrated Levels: %s\n"(numTransmigrations, transmigratedLevels);
 		sink.formattedWrite!"\tCounter: %s, MV: %s, JM: %s\n"(counter, mv, jm);
-		sink.formattedWrite!"\tResists - Fire: %s%%, Wind: %s%%, Ice: %s%%\n"(fireResist, windResist, iceResist);
+		sink.formattedWrite!"\tElemental Affinity: Fire - %s%%, Wind - %s%%, Ice - %s%%\n"(fireResist, windResist, iceResist);
 		if (mentor >= 0) {
 			//sink.formattedWrite("\tMentor: %s\n", chars[cast(size_t)mentor].name);
 		}
