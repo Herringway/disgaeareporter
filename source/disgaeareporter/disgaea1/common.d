@@ -135,7 +135,7 @@ enum Defeated {
 	unknown2 = 8,
 	unknown3 = 16,
 	prinnyGod = 32,
-	unknown5 = 64,
+	priere = 64,
 	unknown6 = 128,
 	unknown7 = 256,
 	unknown8 = 512,

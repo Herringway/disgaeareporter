@@ -71,8 +71,8 @@ void printData(Game)(Game* game) {
 		if (game.defeated & Defeated.prinnyGod) {
 			writeln("Defeated Prinny God");
 		}
-		if (game.defeated & Defeated.unknown5) {
-			writeln("Defeated Unknown 5");
+		if (game.defeated & Defeated.priere) {
+			writeln("Defeated Priere");
 		}
 		if (game.defeated & Defeated.unknown6) {
 			writeln("Defeated Unknown 6");
