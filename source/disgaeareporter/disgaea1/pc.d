@@ -168,10 +168,11 @@ static assert(SkillEXP.sizeof == 3);
 
 align(1)
 struct Character {
+	import siryul: SiryulizeAs;
 	align(1):
 	ulong exp;
 	Item[4] equipment;
-	ubyte[32] sjisName;
+	@SiryulizeAs("name") ubyte[32] sjisName;
 	@Unknown ubyte unknown1;
 	ubyte[33] title;
 	@Unknown ubyte[2] unknown2;
@@ -218,6 +219,13 @@ struct Character {
 	@Unknown ubyte[5] unknown12;
 	uint transmigratedLevels;
 	@Unknown ubyte[20] unknown13;
+
+	static auto toSiryulHelper(string field : "sjisName")(ubyte[32] data) {
+		return sjisDec(data[]);
+	}
+	static auto toSiryulHelper(string field : "title")(ubyte[33] data) {
+		return sjisDec(data[]);
+	}
 
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.algorithm : filter;
