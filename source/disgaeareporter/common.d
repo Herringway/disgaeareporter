@@ -6,7 +6,9 @@ import disgaeareporter.disgaea2;
 enum Unknown;
 
 void printData(Game)(Game* game) {
-	import std.algorithm : filter, map, min, sort, sum;
+	import std.algorithm : filter, map, makeIndex, min, sort, sum;
+	import std.array : array;
+	import std.range : indexed, iota;
 	import std.stdio : writefln, writeln;
 	import std.traits : hasMember;
 	import std.typecons : BitFlags;
@@ -101,10 +103,13 @@ void printData(Game)(Game* game) {
 		writefln("-Characters-\n\n%(%s\n%)", game.characters);
 	}
 	static if (hasMember!(Game, "senators")) {
+		auto index = new size_t[](game.senators.length);
 		if (sortSenatorsByFavour) {
-			sort!((x,y) => x.favour > y.favour)(game.senators[]);
+			makeIndex!((x,y) => x.favour > y.favour)(game.senators[], index);
+		} else {
+			index = iota(0,game.senators.length).array;
 		}
-		writefln("-Senators-\n\n%(%s\n%)", game.senators[].filter!(x => x.attendance > 0));
+		writefln("-Senators-\n\n%(%s\n%)", game.senators[].indexed(index).filter!(x => x.attendance > 0));
 		auto average = (cast(double)game.senators[].filter!(x => x.attendance > 0).map!(x => x.favour).sum) / (cast(double)game.senators.length);
 		writefln!"Average favour: %s (%s)\n"((cast(byte)average).favourString, average);
 	}
