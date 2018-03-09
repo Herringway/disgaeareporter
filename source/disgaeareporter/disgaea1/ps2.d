@@ -25,7 +25,7 @@ struct PS2Game {
 	ushort charCount;
 	ubyte[198] unknown7;
 
-	PS2Character[] characters() {
+	auto characters() const {
 		return _characters[0..charCount];
 	}
 

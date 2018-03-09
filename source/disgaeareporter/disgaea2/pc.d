@@ -136,7 +136,7 @@ struct PCGame {
 	ubyte[472576] unknown3;
 	Item[24] _bagItems;
 	Item[512] _warehouseItems;
-	Character[] characters() {
+	auto characters() const {
 		return _characters[];
 	}
 	auto bagItems() const {
