@@ -114,3 +114,7 @@ E93	Bloody Talons
 E94	Fire Breath
 E95	Red Nova
 E96	Dragonic Flare
+EF7	Astral Dance
+EF8	Astral Column
+EF9	Astral Roar
+EFA	Astral Burst
