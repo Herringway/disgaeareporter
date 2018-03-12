@@ -2,6 +2,8 @@ module disgaeareporter.disgaea2.pc;
 
 import disgaeareporter.disgaea2.common;
 
+import disgaeareporter.common : Unknown;
+
 import std.range : isOutputRange;
 import std.traits : isSomeChar;
 
@@ -11,10 +13,17 @@ struct Innocent {
 	uint level;
 	ubyte type;
 	ubyte uniquer;
-	ubyte[2] unknown;
+	@Unknown ubyte[2] unknown;
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.format;
 		sink.formattedWrite!"Lv%s%s %s"(level > 10000 ? level-10000 : level, level > 10000 ? "+" : "", type.innocentName);
+		debug (unknowns) {
+			sink.formattedWrite!" - Unknown data:"();
+			import std.traits : getSymbolsByUDA;
+			static foreach (i; 0..getSymbolsByUDA!(typeof(this), Unknown).length) {
+				sink.formattedWrite!"(%s)"(getSymbolsByUDA!(typeof(this), Unknown)[i]);
+			}
+		}
 	}
 }
 static assert(Innocent.sizeof == 8);
@@ -31,11 +40,11 @@ struct Item {
 	ulong price;
 	Stats stats;
 	Stats baseStats;
-	ubyte[18] unknown;
+	@Unknown ubyte[18] unknown;
 	ubyte rarity;
-	ubyte[29] unknown2;
+	@Unknown ubyte[29] unknown2;
 	char[32] _name;
-	ubyte[168] unknown3;
+	@Unknown ubyte[168] unknown3;
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.algorithm : filter;
 		import std.format;
@@ -43,8 +52,12 @@ struct Item {
 		debug(itemstats) {
 			sink.formattedWrite!"\n\t\t%s"(stats);
 		}
-		debug(unknowns) {
-			sink.formattedWrite!"\n%s\n%s\n%s"(unknown, unknown2, unknown3);
+		debug (unknowns) {
+			sink.formattedWrite!" - Unknown data:"();
+			import std.traits : getSymbolsByUDA;
+			static foreach (i; 0..getSymbolsByUDA!(typeof(this), Unknown).length) {
+				sink.formattedWrite!"(%s)"(getSymbolsByUDA!(typeof(this), Unknown)[i]);
+			}
 		}
 	}
 	bool isValid() const {
@@ -71,7 +84,7 @@ struct Character {
 	Item[4] equipment;
 	char[64] _name;
 	char[64] _className;
-	ubyte[2168] unknown;
+	@Unknown ubyte[2168] unknown;
 
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.algorithm : filter;
@@ -108,7 +121,14 @@ struct Character {
 		//		}
 		//	}
 		//}
-		//debug(unknowns) formattedWrite!"%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n"(sink, unknown1, unknown2, unknown3, unknown4, unknown5, unknown6, unknown7, unknown8, unknown9, unknown10, unknown11);
+
+		debug (unknowns) {
+			sink.formattedWrite!" - Unknown data:"();
+			import std.traits : getSymbolsByUDA;
+			static foreach (i; 0..getSymbolsByUDA!(typeof(this), Unknown).length) {
+				sink.formattedWrite!"(%s)"(getSymbolsByUDA!(typeof(this), Unknown)[i]);
+			}
+		}
 	}
 	auto name() const {
 		return _name.fromStringz;
@@ -129,11 +149,11 @@ private void func() {
 align(1)
 struct PCGame {
 	align(1):
-	ubyte[0x3D0] unknown;
+	@Unknown ubyte[0x3D0] unknown;
 	ulong totalHL;
-	ubyte[2336] unknown2;
+	@Unknown ubyte[2336] unknown2;
 	Character[8] _characters;
-	ubyte[472576] unknown3;
+	@Unknown ubyte[472576] unknown3;
 	Item[24] _bagItems;
 	Item[512] _warehouseItems;
 	auto characters() const {
