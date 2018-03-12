@@ -204,14 +204,15 @@ struct PCGame {
 	@Unknown ubyte[0x3D0] unknown;
 	ulong totalHL;
 	@Unknown ubyte[2336] unknown2;
-	Character[8] _characters;
-	ubyte[460800] unknown3;
+	Character[128] _characters;
 	Senator[64] _senators;
-	ubyte[5632] unknown4;
+	ubyte[5632] unknown3;
 	Item[24] _bagItems;
 	Item[512] _warehouseItems;
+	@Unknown ubyte[60] unknown4;
+	ushort charCount;
 	auto characters() const {
-		return _characters[];
+		return _characters[0..charCount];
 	}
 	auto bagItems() const {
 		import std.algorithm : filter;
@@ -227,8 +228,9 @@ struct PCGame {
 }
 static assert(PCGame.totalHL.offsetof == 0x3D0);
 static assert(PCGame._characters.offsetof == 0xCF8);
-static assert(PCGame._bagItems.offsetof == 0x7BAF8);
 static assert(PCGame._senators.offsetof == 0x78CF8);
+static assert(PCGame._bagItems.offsetof == 0x7BAF8);
+static assert(PCGame.charCount.offsetof == 0xADF34);
 
 
 
