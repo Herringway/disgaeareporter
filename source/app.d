@@ -103,7 +103,7 @@ void main(string[] args) {
 	}
 }
 
-void dumpData(T)(const T data, const bool yaml, const bool json) {
+void dumpData(T)(const T* data, const bool yaml, const bool json) {
 	if (yaml) {
 		writeln(data.toString!YAML);
 	} else if (json) {
