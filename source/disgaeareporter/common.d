@@ -136,3 +136,20 @@ void printData(Game)(Game* game) {
 		}
 	}
 }
+
+string favourString(const byte input) {
+	switch (input) {
+		case -128: .. case -41: return "Loathe";
+		case -40: .. case -27: return "Total opposition";
+		case -26: .. case -17: return "Strongly against";
+		case -16: .. case -12: return "Against";
+		case -11: .. case -6: return "Leaning no";
+		case -5: .. case 3: return "Either way";
+		case 4: .. case 10: return "Leaning yes";
+		case 11: .. case 15: return "In favor of";
+		case 16: .. case 24: return "Strongly for";
+		case 25: .. case 38: return "Total support";
+		case 39: .. case 127: return "Love";
+		default: return "Unknown";
+	}
+}

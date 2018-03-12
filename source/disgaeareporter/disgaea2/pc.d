@@ -2,7 +2,7 @@ module disgaeareporter.disgaea2.pc;
 
 import disgaeareporter.disgaea2.common;
 
-import disgaeareporter.common : Unknown;
+import disgaeareporter.common : favourString, Unknown;
 
 import std.range : isOutputRange;
 import std.traits : isSomeChar;
@@ -145,14 +145,16 @@ private void func() {
 	Character().toString(buf);
 }
 
+align(1)
 struct Senator {
+	align(1):
 	ushort level;
 	ushort classID;
 	uint attendance;
-	enum favour = 0;
-	ubyte[6] data;
+	@Unknown ubyte[6] unknown;
 	char[64] _name;
-	@Unknown ubyte[16] unknown2;
+	byte favour;
+	@Unknown ubyte[17] unknown2;
 	auto name() const {
 		return _name.fromStringz;
 	}
@@ -160,7 +162,7 @@ struct Senator {
 		import std.algorithm : filter;
 		import std.format;
 		sink.formattedWrite!"%s (Level %s %s)\n\t"(name, level, classID.className);
-		sink.formattedWrite!"%s (%s)\n"("favour.favourString", "favour");
+		sink.formattedWrite!"%s (%s)\n"(favour.favourString, favour);
 		//if (timesKilled > 0) {
 		//	sink.formattedWrite!"\tKilled %s time%s\n"(timesKilled, timesKilled > 1 ? "s" : "");
 		//}
