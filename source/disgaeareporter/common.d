@@ -202,3 +202,22 @@ struct Stats {
 	}
 }
 static assert(Stats.sizeof == 32);
+
+
+align(1)
+struct Playtime {
+	align(1):
+	ushort hours_;
+	ubyte minutes_;
+	ubyte seconds_;
+	ubyte milliseconds_;
+	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
+		import std.algorithm : filter;
+		import std.format;
+		sink.formattedWrite!"%s"(duration);
+	}
+	auto duration() const {
+		import core.time : hours, minutes, seconds, msecs;
+		return hours_.hours + minutes_.minutes + seconds_.seconds + milliseconds_.msecs;
+	}
+}

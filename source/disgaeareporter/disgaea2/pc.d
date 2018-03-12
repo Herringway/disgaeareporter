@@ -201,15 +201,17 @@ static assert(Senator.sizeof == 0x60);
 align(1)
 struct PCGame {
 	align(1):
-	@Unknown ubyte[0x3D0] unknown;
+	@Unknown ubyte[8] unknown;
+	Playtime playtime;
+	@Unknown ubyte[963] unknown2;
 	ulong totalHL;
-	@Unknown ubyte[2336] unknown2;
+	@Unknown ubyte[2336] unknown3;
 	Character[128] _characters;
 	Senator[64] _senators;
-	ubyte[5632] unknown3;
+	ubyte[5632] unknown4;
 	Item[24] _bagItems;
 	Item[512] _warehouseItems;
-	@Unknown ubyte[60] unknown4;
+	@Unknown ubyte[60] unknown5;
 	ushort charCount;
 	auto characters() const {
 		return _characters[0..charCount];
