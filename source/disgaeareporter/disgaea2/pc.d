@@ -2,7 +2,7 @@ module disgaeareporter.disgaea2.pc;
 
 import disgaeareporter.disgaea2.common;
 
-import disgaeareporter.common : favourString, Unknown;
+import disgaeareporter.common;
 
 import std.range : isOutputRange;
 import std.traits : isSomeChar;
@@ -48,7 +48,7 @@ struct Item {
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.algorithm : filter;
 		import std.format;
-		sink.formattedWrite!"Lv%s %s (Rarity: %s) - %(%s, %)"("level", name, rarity, innocents[].filter!(x => x.type != 0));
+		sink.formattedWrite!"Lv%s %s (Rarity: %s) - %(%s, %)"("?", name, rarity, innocents[].filter!(x => x.type != 0));
 		debug(itemstats) {
 			sink.formattedWrite!"\n\t\t%s"(stats);
 		}
@@ -84,20 +84,37 @@ struct Character {
 	Item[4] equipment;
 	char[64] _name;
 	char[64] _className;
-	@Unknown ubyte[2168] unknown;
+	@Unknown ubyte[1440] unknown1;
+	Stats stats;
+	@Unknown ubyte[116] unknown2;
+	BaseCharacterStats baseStats;
+	@Unknown ubyte[8] unknown3;
+	ushort level;
+	@Unknown ubyte[16] unknown4;
+	Resistance baseResist;
+	Resistance resist;
+	ubyte baseJM;
+	ubyte jm;
+	ubyte baseMV;
+	ubyte mv;
+	ubyte baseCounter;
+	ubyte counter;
+	@Unknown ubyte[534] unknown5;
 
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.algorithm : filter;
 		import std.format;
 		import std.range : lockstep;
-		sink.formattedWrite!"%s (Lv%s %s)\n"(name, "level", className);
-		sink.formattedWrite!"\tRank: %s, Mana: %s\n"("senateRank", "mana");
-		sink.formattedWrite!"\tCounter: %s, MV: %s, JM: %s\n"("counter", "mv", "jm");
-		sink.formattedWrite!"\tResists - Fire: %s%%, Wind: %s%%, Ice: %s%%\n"("fireResist", "iceResist", "windResist");
+		sink.formattedWrite!"%s (Lv%s %s)\n"(name, level, className);
+		//sink.formattedWrite!"\tMana: %s\n"("mana");
+		//sink.formattedWrite!"\tTransmigrations: %s, Transmigrated Levels: %s\n"(numTransmigrations, transmigratedLevels);
+		sink.formattedWrite!"\tCounter: %s, MV: %s, JM: %s\n"(counter, mv, jm);
+		sink.formattedWrite!"\tElemental Affinity: %s\n"(resist);
 		//if (mentor >= 0) {
 		//	sink.formattedWrite("\tMentor: %s\n", chars[cast(size_t)mentor].name);
 		//}
-		sink.formattedWrite!"\t%s\n"("stats");
+		sink.formattedWrite!"\t%s\n"(stats);
+		sink.formattedWrite!"\tBase Stats: %s\n"(baseStats);
 		//if (weaponMasteryLevel != weaponMasteryLevel.init) {
 		//	sink.formattedWrite!"\tWeapon mastery:\n"();
 		//	foreach (i, masteryRate, masteryLevel; lockstep(weaponMasteryRate[], weaponMasteryLevel[])) {
@@ -138,6 +155,9 @@ struct Character {
 	}
 }
 static assert(Character.sizeof == 0xF00);
+static assert(Character.stats.offsetof == 0xC28);
+static assert(Character.baseStats.offsetof == 0xCBC);
+static assert(Character.baseResist.offsetof == 0xCDE);
 
 private void func() {
 	import std.outbuffer;
@@ -185,7 +205,7 @@ struct PCGame {
 	ulong totalHL;
 	@Unknown ubyte[2336] unknown2;
 	Character[8] _characters;
-	@Unknown ubyte[460800] unknown3;
+	ubyte[460800] unknown3;
 	Senator[64] _senators;
 	ubyte[5632] unknown4;
 	Item[24] _bagItems;

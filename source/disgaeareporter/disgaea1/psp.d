@@ -6,6 +6,8 @@ enum d1key = "DISGAEA120060523";
 import disgaeareporter.disgaea1.common;
 import disgaeareporter.disgaea1.pc : Item;
 
+import disgaeareporter.common;
+
 struct PSPGame {
 	enum charOffset = 0xBB8;
 	enum charSize = 0x6A8;
@@ -24,7 +26,7 @@ struct PSPCharacter {
 	ubyte[33] title;
 	ubyte[2] unknown2;
 	ubyte[32] unknown3;
-	Resistance[5] resistances;
+	StatusResistance[5] statusResistances;
 	ubyte[110] unknown4;
 	uint[96] skillEXP;
 	ushort[96] skills;
@@ -45,12 +47,8 @@ struct PSPCharacter {
 	ushort class2;
 	ushort skillTree;
 	ubyte[10] unknown8;
-	byte baseFireResist;
-	byte baseIceResist;
-	byte baseWindResist;
-	byte fireResist;
-	byte iceResist;
-	byte windResist;
+	Resistance baseResist;
+	Resistance resist;
 	ubyte baseJM;
 	ubyte jm;
 	ubyte baseMV;
@@ -70,7 +68,7 @@ struct PSPCharacter {
 		sink.formattedWrite!"%s (Lv%s %s)\n"(name, level, className);
 		sink.formattedWrite!"\tRank: %s, Mana: %s\n"(senateRank, mana);
 		sink.formattedWrite!"\tCounter: %s, MV: %s, JM: %s\n"(counter, mv, jm);
-		sink.formattedWrite!"\tResists - Fire: %s%%, Wind: %s%%, Ice: %s%%\n"(fireResist, iceResist, windResist);
+		sink.formattedWrite!"\tElemental Affinity: %s\n"(resist);
 		if (mentor >= 0) {
 			sink.formattedWrite("\tMentor: %s\n", chars[cast(size_t)mentor].name);
 		}

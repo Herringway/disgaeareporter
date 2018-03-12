@@ -3,6 +3,8 @@ module disgaeareporter.common;
 import disgaeareporter.disgaea1;
 import disgaeareporter.disgaea2;
 
+import std.range;
+
 enum Unknown;
 
 void printData(Game)(Game* game) {
@@ -153,3 +155,50 @@ string favourString(const byte input) {
 		default: return "Unknown";
 	}
 }
+
+align(1)
+struct BaseCharacterStats {
+	align(1):
+	ubyte hp;
+	ubyte sp;
+	ubyte attack;
+	ubyte defense;
+	ubyte intelligence;
+	ubyte speed;
+	ubyte hit;
+	ubyte resistance;
+	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
+		import std.format;
+		sink.formattedWrite!"HP: %s, SP: %s, Attack: %s, Defense: %s, Intelligence: %s, Speed: %s, Hit: %s, Resistance: %s"(hp, sp, attack, defense, intelligence, speed, hit, resistance);
+	}
+}
+static assert(BaseCharacterStats.sizeof == 8);
+
+align(1)
+struct Resistance {
+	align(1):
+	byte fire;
+	byte wind;
+	byte ice;
+	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
+		import std.format : formattedWrite;
+		sink.formattedWrite!"Fire - %s%%, Wind - %s%%, Ice - %s%%"(fire, wind, ice);
+	}
+}
+align(1)
+struct Stats {
+	align(1):
+	uint hp;
+	uint sp;
+	uint attack;
+	uint defense;
+	uint intelligence;
+	uint speed;
+	uint hit;
+	uint resistance;
+	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
+		import std.format;
+		formattedWrite!"HP: %s, SP: %s, Attack: %s, Defense: %s, Intelligence: %s, Speed: %s, Hit: %s, Resistance: %s"(sink, hp, sp, attack, defense, intelligence, speed, hit, resistance);
+	}
+}
+static assert(Stats.sizeof == 32);

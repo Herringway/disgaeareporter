@@ -59,11 +59,11 @@ static immutable d1SteamID = "405900";
 
 
 align(1)
-struct Resistance {
+struct StatusResistance {
 	align(1):
 	ushort strength;
 }
-static assert(Resistance.sizeof == 2);
+static assert(StatusResistance.sizeof == 2);
 
 align(1)
 struct Innocent {
@@ -82,23 +82,6 @@ void fooi() {
 	auto buf = new OutBuffer;
 	Innocent().toString(buf);
 }
-align(1)
-struct Stats {
-	align(1):
-	uint hp;
-	uint sp;
-	uint attack;
-	uint defense;
-	uint intelligence;
-	uint speed;
-	uint hit;
-	uint resistance;
-	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
-		import std.format;
-		formattedWrite!"HP: %s, SP: %s, Attack: %s, Defense: %s, Intelligence: %s, Speed: %s, Hit: %s, Resistance: %s"(sink, hp, sp, attack, defense, intelligence, speed, hit, resistance);
-	}
-}
-static assert(Stats.sizeof == 32);
 
 align(1)
 struct BaseItemStats {
@@ -117,24 +100,6 @@ struct BaseItemStats {
 	}
 }
 static assert(BaseItemStats.sizeof == 16);
-
-align(1)
-struct BaseCharacterStats {
-	align(1):
-	ubyte hp;
-	ubyte sp;
-	ubyte attack;
-	ubyte defense;
-	ubyte intelligence;
-	ubyte speed;
-	ubyte hit;
-	ubyte resistance;
-	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
-		import std.format;
-		sink.formattedWrite!"HP: %s, SP: %s, Attack: %s, Defense: %s, Intelligence: %s, Speed: %s, Hit: %s, Resistance: %s"(hp, sp, attack, defense, intelligence, speed, hit, resistance);
-	}
-}
-static assert(BaseCharacterStats.sizeof == 8);
 
 enum Defeated {
 	itemGeneral = 1,

@@ -22,24 +22,6 @@ struct BaseItemStats {
 }
 static assert(BaseItemStats.sizeof == 16);
 
-align(1)
-struct Stats {
-	align(1):
-	uint hp;
-	uint sp;
-	uint attack;
-	uint defense;
-	uint intelligence;
-	uint speed;
-	uint hit;
-	uint resistance;
-	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
-		import std.format;
-		formattedWrite!"HP: %s, SP: %s, Attack: %s, Defense: %s, Intelligence: %s, Speed: %s, Hit: %s, Resistance: %s"(sink, hp, sp, attack, defense, intelligence, speed, hit, resistance);
-	}
-}
-static assert(Stats.sizeof == 32);
-
 string skillName(ushort id) {
 	import std.conv : to;
 	if (id in d2skillNames) {

@@ -2,6 +2,8 @@ module disgaeareporter.disgaea1.ps2;
 
 import disgaeareporter.disgaea1.common;
 
+import disgaeareporter.common;
+
 import std.range : isOutputRange;
 
 PS2Character[] ps2Chars;
@@ -98,7 +100,7 @@ struct PS2Character {
 	ubyte[32] title;
 	ubyte[2] unknown2;
 	ubyte[34] unknown3;
-	Resistance[5] resistances;
+	StatusResistance[5] statusResistances;
 	ubyte[112] unknown4;
 	uint[96] skillEXP;
 	ushort[96] skills;
@@ -121,12 +123,8 @@ struct PS2Character {
 	ushort class2;
 	ushort skillTree;
 	ubyte[10] unknown8;
-	byte baseFireResist;
-	byte baseWindResist;
-	byte baseIceResist;
-	byte fireResist;
-	byte windResist;
-	byte iceResist;
+	Resistance baseResist;
+	Resistance resist;
 	ubyte baseJM;
 	ubyte jm;
 	ubyte baseMV;
@@ -143,7 +141,7 @@ struct PS2Character {
 		formattedWrite!"%s (Lv%s %s)\n"(sink, name, level, className);
 		formattedWrite!"\tRank: %s, Mana: %s\n"(sink, senateRank, mana);
 		sink.formattedWrite!"\tCounter: %s, MV: %s, JM: %s\n"(counter, mv, jm);
-		sink.formattedWrite!"\tResists - Fire: %s%%, Wind: %s%%, Ice: %s%%\n"(fireResist, windResist, iceResist);
+		sink.formattedWrite!"\tElemental Affinity: %s\n"(resist);
 		formattedWrite!"\t%s\n"(sink, stats);
 		if (weaponMasteryLevel != weaponMasteryLevel.init) {
 			formattedWrite!"\tWeapon mastery:\n"(sink);

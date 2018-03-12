@@ -2,7 +2,7 @@ module disgaeareporter.disgaea1.pc;
 
 import disgaeareporter.disgaea1.common;
 
-import disgaeareporter.common : Unknown;
+import disgaeareporter.common;
 
 import std.range : isOutputRange;
 import std.typecons : BitFlags;
@@ -177,7 +177,7 @@ struct Character {
 	ubyte[33] title;
 	@Unknown ubyte[2] unknown2;
 	@Unknown ubyte[32] unknown3;
-	Resistance[5] resistances;
+	StatusResistance[5] statusResistances;
 	@Unknown ubyte[110] unknown4;
 	uint[96] skillEXP;
 	ushort[96] skills;
@@ -198,12 +198,8 @@ struct Character {
 	ushort class2;
 	ushort skillTree;
 	@Unknown ubyte[10] unknown8;
-	byte baseFireResist;
-	byte baseIceResist;
-	byte baseWindResist;
-	byte fireResist;
-	byte iceResist;
-	byte windResist;
+	Resistance baseResist;
+	Resistance resist;
 	ubyte baseJM;
 	ubyte jm;
 	ubyte baseMV;
@@ -235,10 +231,7 @@ struct Character {
 		sink.formattedWrite!"\tRank: %s, Mana: %s\n"(senateRank, mana);
 		sink.formattedWrite!"\tTransmigrations: %s, Transmigrated Levels: %s\n"(numTransmigrations, transmigratedLevels);
 		sink.formattedWrite!"\tCounter: %s, MV: %s, JM: %s\n"(counter, mv, jm);
-		sink.formattedWrite!"\tElemental Affinity: Fire - %s%%, Wind - %s%%, Ice - %s%%\n"(fireResist, windResist, iceResist);
-		if (mentor >= 0) {
-			//sink.formattedWrite("\tMentor: %s\n", chars[cast(size_t)mentor].name);
-		}
+		sink.formattedWrite!"\tElemental Affinity: %s\n"(resist);
 		sink.formattedWrite!"\tBase Stats: %s\n"(baseStats);
 		sink.formattedWrite!"\tStats: %s\n"(stats);
 		sink.formattedWrite!"\tItem Stat Multiplier: %s\n"(level.itemStatsMultiplier);
