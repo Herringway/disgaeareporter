@@ -67,8 +67,8 @@ void printData(Game)(Game* game) {
 		if (game.defeated & Defeated.unknown2) {
 			writeln("Defeated Unknown 2");
 		}
-		if (game.defeated & Defeated.unknown3) {
-			writeln("Defeated Unknown 3");
+		if (game.defeated & Defeated.astroCarter) {
+			writeln("Defeated Astro Carter");
 		}
 		if (game.defeated & Defeated.prinnyGod) {
 			writeln("Defeated Prinny God");
@@ -76,8 +76,8 @@ void printData(Game)(Game* game) {
 		if (game.defeated & Defeated.priere) {
 			writeln("Defeated Priere");
 		}
-		if (game.defeated & Defeated.unknown6) {
-			writeln("Defeated Unknown 6");
+		if (game.defeated & Defeated.marjoly) {
+			writeln("Defeated Marjoly");
 		}
 		if (game.defeated & Defeated.unknown7) {
 			writeln("Defeated Unknown 7");
@@ -91,8 +91,8 @@ void printData(Game)(Game* game) {
 		if (game.defeated & Defeated.unknown10) {
 			writeln("Defeated Unknown 10");
 		}
-		if (game.defeated & Defeated.unknown11) {
-			writeln("Defeated Unknown 11");
+		if (game.defeated & Defeated.adellRozalin) {
+			writeln("Defeated Adell & Rozalin");
 		}
 	}
 	writeln();

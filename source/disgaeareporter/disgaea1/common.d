@@ -141,15 +141,15 @@ enum Defeated {
 	itemKing = 2,
 	itemGod = 4,
 	unknown2 = 8,
-	unknown3 = 16,
+	astroCarter = 16,
 	prinnyGod = 32,
 	priere = 64,
-	unknown6 = 128,
+	marjoly = 128,
 	unknown7 = 256,
 	unknown8 = 512,
 	unknown9 = 1024,
 	unknown10 = 2048,
-	unknown11 = 4096
+	adellRozalin = 4096
 }
 align(1)
 struct MapClearData {
