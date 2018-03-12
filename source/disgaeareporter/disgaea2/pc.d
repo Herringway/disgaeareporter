@@ -145,6 +145,36 @@ private void func() {
 	Character().toString(buf);
 }
 
+struct Senator {
+	ushort level;
+	ushort classID;
+	uint attendance;
+	enum favour = 0;
+	ubyte[6] data;
+	char[64] _name;
+	@Unknown ubyte[16] unknown2;
+	auto name() const {
+		return _name.fromStringz;
+	}
+	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
+		import std.algorithm : filter;
+		import std.format;
+		sink.formattedWrite!"%s (Level %s %s)\n\t"(name, level, classID.className);
+		sink.formattedWrite!"%s (%s)\n"("favour.favourString", "favour");
+		//if (timesKilled > 0) {
+		//	sink.formattedWrite!"\tKilled %s time%s\n"(timesKilled, timesKilled > 1 ? "s" : "");
+		//}
+		debug (unknowns) {
+			sink.formattedWrite!"\tUnknown data:"();
+			import std.traits : getSymbolsByUDA;
+			static foreach (i; 0..getSymbolsByUDA!(typeof(this), Unknown).length) {
+				sink.formattedWrite!"(%s)"(getSymbolsByUDA!(typeof(this), Unknown)[i]);
+			}
+		}
+	}
+}
+
+static assert(Senator.sizeof == 0x60);
 
 align(1)
 struct PCGame {
@@ -153,7 +183,9 @@ struct PCGame {
 	ulong totalHL;
 	@Unknown ubyte[2336] unknown2;
 	Character[8] _characters;
-	@Unknown ubyte[472576] unknown3;
+	@Unknown ubyte[460800] unknown3;
+	Senator[64] _senators;
+	ubyte[5632] unknown4;
 	Item[24] _bagItems;
 	Item[512] _warehouseItems;
 	auto characters() const {
@@ -167,10 +199,15 @@ struct PCGame {
 		import std.algorithm : filter;
 		return _warehouseItems[].filter!(x => x.isValid);
 	}
+	auto senators() const {
+		return _senators[];
+	}
 }
 static assert(PCGame.totalHL.offsetof == 0x3D0);
 static assert(PCGame._characters.offsetof == 0xCF8);
 static assert(PCGame._bagItems.offsetof == 0x7BAF8);
+static assert(PCGame._senators.offsetof == 0x78CF8);
+
 
 
 string fromStringz(Char)(Char[] cString) if (isSomeChar!Char){
