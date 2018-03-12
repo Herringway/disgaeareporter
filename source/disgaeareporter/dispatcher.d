@@ -151,8 +151,10 @@ auto loadData(Game)(const ubyte[] data) {
 	Game* game = new Game;
 	data.readStruct!Game(*game);
 	debug(dumpraw) {
-		import std.file : write;
-		write("raw-"~Game.stringof~".dat", data);
+		import std.file : mkdirRecurse, write;
+		import std.traits : moduleName;
+		mkdirRecurse("dumps");
+		write("dumps/raw-"~moduleName!Game~".dat", data);
 	}
 	return game;
 }
