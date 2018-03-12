@@ -77,6 +77,8 @@
 2103	Alternate Netherworld - Hall of Penance
 2104	Alternate Netherworld - Malefic Seal
 2105	Alternate Netherworld - Warrior Maiden
+2201	Baal Castle - Patriarch's Seal
+2202	Baal Castle - Lord of Terror
 2901	Puzzle - 1
 2902	Puzzle - 2
 2903	Puzzle - 3
