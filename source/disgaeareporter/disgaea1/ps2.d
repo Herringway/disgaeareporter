@@ -202,7 +202,6 @@ unittest {
 	import disgaeareporter.common : printData;
 	import disgaeareporter.dispatcher : loadData;
 	auto data = loadData!PS2Game(cast(immutable(ubyte)[])import("d1ps2-raw.dat"));
-	//printData(data);
 
 	assert(data.totalHL == 4172);
 	assert(data.allyKillCount == 3);
@@ -213,8 +212,8 @@ unittest {
 		assert(mana == 5779);
 	}
 	with(data.characters[3]) {
-		assert(iceResist == -50);
-		assert(windResist == 50);
+		assert(resist.ice == -50);
+		assert(resist.wind == 50);
 	}
 	with(data._bagItems[0]) {
 		assert(nameID.itemName == "Flan");

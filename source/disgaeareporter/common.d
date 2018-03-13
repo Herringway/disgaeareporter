@@ -123,10 +123,10 @@ void printData(Game)(Game* game) {
 		foreach (id, record; game.itemRecords) {
 			if (!record) {
 				if (game.itemRecordName(id) != "") {
-					writefln("% 3s. ????????????????????", (id%48)+1);
+					writefln!"% 3s - % 3s. ????????????????????"(id/game.itemRecordAlignment, (id%game.itemRecordAlignment)+1);
 				}
 			} else {
-				writefln!"% 3s. % -20s - % 1s% 1s% 1s"((id%48)+1, game.itemRecordName(id), (record & Rarity.common) ? "★" : "", (record & Rarity.rare) ? "★" : "", (record & Rarity.legendary) ? "★" : "");
+				writefln!"% 3s - % 3s. % -20s - % 1s% 1s% 1s"(id/game.itemRecordAlignment, (id%game.itemRecordAlignment)+1, game.itemRecordName(id), (record & Rarity.common) ? "★" : "", (record & Rarity.rare) ? "★" : "", (record & Rarity.legendary) ? "★" : "");
 			}
 		}
 	}
@@ -220,4 +220,21 @@ struct Playtime {
 		import core.time : hours, minutes, seconds, msecs;
 		return hours_.hours + minutes_.minutes + seconds_.seconds + milliseconds_.msecs;
 	}
+}
+
+enum Rarity : ubyte {
+	common = 1,
+	rare = 2,
+	legendary = 4
+}
+
+enum WeaponTypes {
+	Fist,
+	Sword,
+	Spear,
+	Bow,
+	Gun,
+	Axe,
+	Rod,
+	Monster
 }

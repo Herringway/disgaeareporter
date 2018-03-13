@@ -169,12 +169,6 @@ private void func2() {
 	Senator().toString(buf);
 }
 
-enum Rarity : ubyte {
-	common = 1,
-	rare = 2,
-	legendary = 4
-}
-
 void printCharacterData(alias Game)(const ubyte[] data) {
 	import std.algorithm : until;
 	static if (is(Game == PS2Game)) {
@@ -209,19 +203,6 @@ bool shouldPrint(T)(T data) {
 		return data.class_.among(0, 2906, 2918) == 0;
 	}
 }
-
-
-enum WeaponTypes {
-	Fist,
-	Sword,
-	Spear,
-	Bow,
-	Gun,
-	Axe,
-	Rod,
-	Monster
-}
-
 
 string skillName(ushort id) {
 	if (id in d1skillNames) {

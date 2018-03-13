@@ -6,6 +6,7 @@ import disgaeareporter.common;
 
 import std.range : isOutputRange;
 import std.traits : isSomeChar;
+import std.typecons : BitFlags;
 
 align(1)
 struct Innocent {
@@ -84,13 +85,22 @@ struct Character {
 	Item[4] equipment;
 	char[64] _name;
 	char[64] _className;
-	@Unknown ubyte[1440] unknown1;
+	@Unknown ubyte[260] unknown1;
+	uint[96] skillEXP;
+	ushort[96] skills;
+	ubyte[96] skillLevels;
+	@Unknown ubyte[508] unknown2;
 	Stats stats;
-	@Unknown ubyte[116] unknown2;
+	@Unknown ubyte[64] unknown3;
+	uint mana;
+	@Unknown ubyte[24] unknown4;
+	ubyte[8] weaponMasteryLevel;
+	ubyte[8] weaponMasteryRate;
+	@Unknown ubyte[8] unknown5;
 	BaseCharacterStats baseStats;
-	@Unknown ubyte[8] unknown3;
+	@Unknown ubyte[8] unknown6;
 	ushort level;
-	@Unknown ubyte[16] unknown4;
+	@Unknown ubyte[16] unknown7;
 	Resistance baseResist;
 	Resistance resist;
 	ubyte baseJM;
@@ -99,45 +109,42 @@ struct Character {
 	ubyte mv;
 	ubyte baseCounter;
 	ubyte counter;
-	@Unknown ubyte[534] unknown5;
+	@Unknown ubyte[534] unknown8;
 
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.algorithm : filter;
 		import std.format;
 		import std.range : lockstep;
 		sink.formattedWrite!"%s (Lv%s %s)\n"(name, level, className);
-		//sink.formattedWrite!"\tMana: %s\n"("mana");
+		sink.formattedWrite!"\tMana: %s\n"(mana);
 		//sink.formattedWrite!"\tTransmigrations: %s, Transmigrated Levels: %s\n"(numTransmigrations, transmigratedLevels);
 		sink.formattedWrite!"\tCounter: %s, MV: %s, JM: %s\n"(counter, mv, jm);
 		sink.formattedWrite!"\tElemental Affinity: %s\n"(resist);
-		//if (mentor >= 0) {
-		//	sink.formattedWrite("\tMentor: %s\n", chars[cast(size_t)mentor].name);
-		//}
 		sink.formattedWrite!"\t%s\n"(stats);
 		sink.formattedWrite!"\tBase Stats: %s\n"(baseStats);
-		//if (weaponMasteryLevel != weaponMasteryLevel.init) {
-		//	sink.formattedWrite!"\tWeapon mastery:\n"();
-		//	foreach (i, masteryRate, masteryLevel; lockstep(weaponMasteryRate[], weaponMasteryLevel[])) {
-		//		if (masteryLevel > 0) {
-		//			sink.formattedWrite!"\t\tLv%s %s\n"(masteryLevel, cast(WeaponTypes)i);
-		//		}
-		//	}
-		//}
+		if (weaponMasteryLevel != weaponMasteryLevel.init) {
+			sink.formattedWrite!"\tWeapon mastery:\n"();
+			foreach (i, masteryRate, masteryLevel; lockstep(weaponMasteryRate[], weaponMasteryLevel[])) {
+				if (masteryLevel > 0) {
+					sink.formattedWrite!"\t\tLv%s %s\n"(masteryLevel, cast(WeaponTypes)i);
+				}
+			}
+		}
 		auto equips = equipment[].filter!(x => x.isValid);
 		if (!equips.empty) {
 			sink.formattedWrite!"\tEquipment:\n"();
 			sink.formattedWrite!"%(\t\t%s\n%)\n"(equips);
 		}
-		//if (skills[0] != 0) {
-		//	sink.formattedWrite!"\tAbilities:\n"();
-		//	foreach (i, skill, skillLevel, skillEXP; lockstep(skills[], skillLevels[], skillEXP[])) {
-		//		if ((skill > 0) && (skillLevel != 255)) {
-		//			sink.formattedWrite!"\t\tLv%s %s (%s EXP)\n"(skillLevel, skill.skillName, skillEXP);
-		//		} else if (skillLevel == 255) {
-		//			sink.formattedWrite!"\t\tLearning %s (%s EXP)\n"(skill.skillName, skillEXP);
-		//		}
-		//	}
-		//}
+		if (skills[0] != 0) {
+			sink.formattedWrite!"\tAbilities:\n"();
+			foreach (i, skill, skillLevel, skillEXP; lockstep(skills[], skillLevels[], skillEXP[])) {
+				if ((skill > 0) && (skillLevel != 255)) {
+					sink.formattedWrite!"\t\tLv%s %s (%s EXP)\n"(skillLevel, skill.skillName, skillEXP);
+				} else if (skillLevel == 255) {
+					sink.formattedWrite!"\t\tLearning %s (%s EXP)\n"(skill.skillName, skillEXP);
+				}
+			}
+		}
 
 		debug (unknowns) {
 			sink.formattedWrite!" - Unknown data:"();
@@ -155,6 +162,7 @@ struct Character {
 	}
 }
 static assert(Character.sizeof == 0xF00);
+static assert(Character.skills.offsetof == 0x90C);
 static assert(Character.stats.offsetof == 0xC28);
 static assert(Character.baseStats.offsetof == 0xCBC);
 static assert(Character.baseResist.offsetof == 0xCDE);
@@ -213,6 +221,8 @@ struct PCGame {
 	Item[512] _warehouseItems;
 	@Unknown ubyte[60] unknown5;
 	ushort charCount;
+	@Unknown ubyte[526] unknown6;
+	BitFlags!Rarity[1680] itemRecords;
 	auto characters() const {
 		return _characters[0..charCount];
 	}
@@ -227,6 +237,11 @@ struct PCGame {
 	auto senators() const {
 		return _senators[];
 	}
+	static string itemRecordName(size_t record) {
+		import d2data : d2itemRecords;
+		return d2itemRecords[record];
+	}
+	enum itemRecordAlignment = 80;
 }
 static assert(PCGame.totalHL.offsetof == 0x3D0);
 static assert(PCGame._characters.offsetof == 0xCF8);

@@ -71,6 +71,7 @@ struct PCGame {
 		import d1data : d1itemRecords;
 		return d1itemRecords[record];
 	}
+	enum itemRecordAlignment = 48;
 	auto bagItems() const {
 		import std.algorithm : filter;
 		return _bagItems[].filter!(x => x.isValid);
@@ -91,23 +92,6 @@ static assert(PCGame.maxDamage.offsetof == 0x44E00);
 static assert(PCGame.extraNPCs.offsetof == 0x45188);
 static assert(PCGame.sizeof == 0x48877);
 
-align(1)
-struct Playtime {
-	align(1):
-	ushort hours_;
-	ubyte minutes_;
-	ubyte seconds_;
-	ubyte milliseconds_;
-	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
-		import std.algorithm : filter;
-		import std.format;
-		sink.formattedWrite!"%s"(duration);
-	}
-	auto duration() const {
-		import core.time : hours, minutes, seconds, msecs;
-		return hours_.hours + minutes_.minutes + seconds_.seconds + milliseconds_.msecs;
-	}
-}
 
 private void playtimeTest() {
 	import std.outbuffer;
