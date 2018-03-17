@@ -110,9 +110,9 @@ enum Defeated {
 	prinnyGod = 32,
 	priere = 64,
 	marjoly = 128,
-	unknown7 = 256,
-	unknown8 = 512,
-	unknown9 = 1024,
+	baal = 256,
+	uberPrinnyBaal = 512,
+	zetta = 1024,
 	unknown10 = 2048,
 	adellRozalin = 4096
 }

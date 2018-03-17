@@ -81,14 +81,14 @@ void printData(Game)(Game* game) {
 		if (game.defeated & Defeated.marjoly) {
 			writeln("Defeated Marjoly");
 		}
-		if (game.defeated & Defeated.unknown7) {
-			writeln("Defeated Unknown 7");
+		if (game.defeated & Defeated.baal) {
+			writeln("Defeated Baal");
 		}
-		if (game.defeated & Defeated.unknown8) {
-			writeln("Defeated Unknown 8");
+		if (game.defeated & Defeated.uberPrinnyBaal) {
+			writeln("Defeated Uber Prinny Baal");
 		}
-		if (game.defeated & Defeated.unknown9) {
-			writeln("Defeated Unknown 9");
+		if (game.defeated & Defeated.zetta) {
+			writeln("Defeated Zetta");
 		}
 		if (game.defeated & Defeated.unknown10) {
 			writeln("Defeated Unknown 10");
