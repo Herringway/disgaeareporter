@@ -147,6 +147,33 @@ ubyte[] decompress(const ubyte[] input, size_t expected) pure @safe {
 	return output;
 }
 
+//doesn't actually compress, but makes compatible with decompression algorithm
+ubyte[] compress(const ubyte[] input) pure @safe {
+	import std.range : chunks;
+	ubyte[] output;
+	output.reserve(input.length + input.length/127);
+
+	foreach (chunk; input.chunks(127)) {
+		output ~= cast(ubyte)chunk.length ~ chunk;
+	}
+
+	return output;
+}
+
+unittest {
+	import std.array : array;
+	import std.range : repeat;
+	bool identity(const ubyte[] input) {
+		return input == decompress(compress(input), input.length);
+	}
+	assert(identity([]));
+	assert(identity([0]));
+	assert(identity([0xFF]));
+	assert(identity((cast(ubyte)0xFF).repeat(256).array));
+	assert(identity((cast(ubyte)0xFF).repeat(127).array));
+	assert(identity((cast(ubyte)0xFF).repeat(128).array));
+}
+
 auto loadData(Game)(const ubyte[] data) {
 	Game* game = new Game;
 	data.readStruct!Game(*game);
