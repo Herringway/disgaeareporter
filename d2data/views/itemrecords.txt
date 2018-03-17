@@ -1439,6 +1439,15 @@ Brawny Muscle
 
 
 Imperial Seal
+Dark Rosary
+Devil Ring
+Feather Token
+Sophia's Mirror
+Pravda Pendant
+Royal Ring
+Testament
+Exodus
+Arcadia
 
 
 
@@ -1509,17 +1518,43 @@ Imperial Seal
 
 
 
-
-
-
-
-
-
-
-
-
-
+ABC Gum
 Mint Gum
+Hard Candy
+Cotton Candy
+Taiyaki
+Chocolate
+Flan
+Eclair
+Shortcake
+Sundae
+Opened Soda
+Unopened Soda
+Garlic Water
+Yam Starch
+BBQ Sauce
+Egg Yolk
+Protein Shake
+Bloody Mary
+Sake
+Mushroom Soup
+Dried Worm
+Caterpillar Egg
+Charred Newt
+Chicken Blood
+Snake Kidney
+Bat Soup
+Frog Sweat
+Immortal Pill
+Soma
+Elixir
+Veggie Burger
+Fairy Dust
+Pizza
+Ramen
+Mana Potion I
+Mana Potion II
+Mana Potion III
 
 
 
@@ -1563,66 +1598,31 @@ Mint Gum
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Mr. Gency Exit
-
-
-
+Angel Cake
+Gold Bar
+Bomb
+Smelling Salts
+Hard Liquor
+Chloroform
+Stealing Hand
+Plunder Hand
+Cha-Ching
+Bandit's Hand
+Awesome Hand
+Mr. Gency's Exit
 Cell Phone
-
-
-
-
-
-
-
-
-
+Cell Phone
+Cell Phone
+Cell Phone
+Cell Phone
+Cell Phone
+Cell Phone
+Cell Phone
+Cell Phone
+Cell Phone
+Cell Phone
+Cell Phone
+Subpoena
 
 
 
