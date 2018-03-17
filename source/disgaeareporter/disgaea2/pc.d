@@ -218,7 +218,7 @@ struct PCGame {
 	@Unknown ubyte[2336] unknown3;
 	Character[128] _characters;
 	Senator[64] _senators;
-	ubyte[5632] unknown4;
+	@Unknown ubyte[5632] unknown4;
 	Item[24] _bagItems;
 	Item[512] _warehouseItems;
 	@Unknown ubyte[60] unknown5;
