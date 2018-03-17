@@ -68,6 +68,8 @@ CD	Nightsever
 7E5	Golem Dunk
 849	Zombie Puke
 84A	Zombie Twister
+84B	Zombie Gatling
+84C	Zombie Swarm
 853	Spinning Slash
 854	Darkness Slash
 855	Earthshaker
@@ -100,6 +102,12 @@ CD	Nightsever
 B61	Usagi Drop
 BB9	Dragon Rage
 BBA	Requiem Aeternam
+BCD	Crimson Flame
+BCE	Vulcan Blaze
+BD7	Rose Thorns
+BD8	Rose Liberation
+BE1	Zetta Beam
+BE2	Badass Overdrive
 BC3	Dark Conjuration
 DC1	Flap Dance
 DC2	Quadra Nosedive
@@ -114,7 +122,15 @@ E93	Bloody Talons
 E94	Fire Breath
 E95	Red Nova
 E96	Dragonic Flare
+ED9	Fiery Dance
+EDA	Fiery Column
+EDB	Fiery Roar
+EDC	Fiery Burst
 EF7	Astral Dance
 EF8	Astral Column
 EF9	Astral Roar
 EFA	Astral Burst
+F01	Diabolic Dance
+F02	Diabolic Column
+F03	Diabolic Roar
+F04	Diabolic Burst
