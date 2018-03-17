@@ -1,3 +1,6 @@
+101	Battle Basics
+102	Battle Basics (2)
+103	Geo Effect
 104	Tutorial
 201	Vyers Castle - Blessed Court
 202	Vyers Castle - Corridor of Love
@@ -26,12 +29,15 @@
 703	Stellar Graveyard - Sphere VIII
 704	Stellar Graveyard - Cross-Point
 705	Stellar Graveyard - Primordial Soup
-706	Stellar Graveyard - ???
+706	Stellar Graveyard - Primordial Soup (Zetta)
 801	Gargantua Deck - Point Alpha-III
 901	Gargantua Interior - Main Corridor 1
 902	Gargantua Interior - Main Corridor 2
 903	Gargantua Interior - Main Corridor 3
 904	Gargantua Interior - Bridge
+1001	Human World - Central City
+1002	Human World - Neo Eden
+1003	Human World - EDF Headquarters
 1101	Prinny Land - Prinny Land 1
 1102	Prinny Land - Prinny Land 2
 1103	Prinny Land - Prinny Land 3
@@ -79,6 +85,7 @@
 2105	Alternate Netherworld - Warrior Maiden
 2201	Baal Castle - Patriarch's Seal
 2202	Baal Castle - Lord of Terror
+2203	Baal Castle - Baal (Etna Mode)
 2901	Puzzle - 1
 2902	Puzzle - 2
 2903	Puzzle - 3
@@ -102,15 +109,42 @@
 3103	Extra - 3
 3104	Extra - 4
 3105	Extra - 5
-21001	Dark Assembly - Exam for Rank 1
-21002	Dark Assembly - Exam for Rank 2
-21003	Dark Assembly - Exam for Rank 3
-21004	Dark Assembly - Exam for Rank 4
-21005	Dark Assembly - Exam for Rank 5
-21006	Dark Assembly - Exam for Rank 6
-21007	Dark Assembly - Exam for Rank 7
-21008	Dark Assembly - Exam for Rank 8
-21009	Dark Assembly - Exam for Rank 9
-21010	Dark Assembly - Exam for Rank 10
-21011	Dark Assembly - Exam for Rank 11
-21012	Dark Assembly - Exam for Rank 12
+3201	Stellar Graveyard - Valgipus IV (Etna Mode)
+3301	Vyers Castle - Blessed Court (Etna Mode)
+3302	Vyers Castle - Corridor of Love (Etna Mode)
+3303	Vyers Castle - Hall of Caresses (Etna Mode)
+3304	Vyers Castle - Magnificent Gate (Etna Mode)
+3401	Dinero Palace - Golden Courtyard (Etna Mode)
+3402	Dinero Palace - Flashy Passage (Etna Mode)
+3403	Dinero Palace - Lavish Hall (Etna Mode)
+3404	Dinero Palace - Gaudy Entrance (Etna Mode)
+3501	Sea of Gehenna - Fervent Melody (Etna Mode)
+3502	Sea of Gehenna - Wasteland of Woe (Etna Mode)
+3503	Sea of Gehenna - Searing Tyranny (Etna Mode)
+3504	Sea of Gehenna - Inferno (Etna Mode)
+3505	Sea of Gehenna - River of Lava (Etna Mode)
+3601	Jotunheim - Endless White (Etna Mode)
+3602	Jotunheim - Terrible Cold (Etna Mode)
+3603	Jotunheim - Ice Queen (Etna Mode)
+3604	Jotunheim - Absolute Zero (Etna Mode)
+3701	Grand North - Ice Beast Gate (Etna Mode)
+3702	Grand North - Frost Castle (Etna Mode)
+3703	Grand North - Millennium Ice (Etna Mode)
+5101	Dark Castle (1)
+5102	Dark Castle (2)
+5103	Dark Castle (3)
+5104	Dark Castle (4)
+5105	Dark Castle (5)
+5106	Dark Castle (6)
+21001	Dark Assembly - Local Forum
+21002	Dark Assembly - Exam for Rank 1
+21003	Dark Assembly - Exam for Rank 2
+21004	Dark Assembly - Exam for Rank 3
+21005	Dark Assembly - Exam for Rank 4
+21006	Dark Assembly - Exam for Rank 5
+21007	Dark Assembly - Exam for Rank 6
+21008	Dark Assembly - Exam for Rank 7
+21009	Dark Assembly - Exam for Rank 8
+21010	Dark Assembly - Exam for Rank 9
+21011	Dark Assembly - Exam for Rank 10
+21012	Dark Assembly - Exam for Rank 11
