@@ -117,7 +117,7 @@ ubyte[] getRawData(const ubyte[] input, Platforms platform) {
 	assert(0);
 }
 
-ubyte[] decompress(const ubyte[] input, uint expected) pure @safe {
+ubyte[] decompress(const ubyte[] input, size_t expected) pure @safe {
 	ubyte[] output;
 	output.reserve(expected);
 
