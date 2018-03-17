@@ -99,7 +99,7 @@ void printData(Game)(Game* game) {
 	}
 	writeln();
 	static if (hasMember!(Game, "mapClears")) {
-		writefln("-Map Clears-\n\n%(%s\n%)", game.mapClears);
+		writefln("-Map Clears-\n\n%(%s\n%)", game.mapClears[].filter!(x => x.clears > 0));
 	}
 	static if (hasMember!(Game, "characters")) {
 		writefln("-Characters-\n\n%(%s\n%)", game.characters);
