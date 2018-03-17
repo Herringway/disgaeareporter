@@ -41,15 +41,17 @@ struct Item {
 	ulong price;
 	Stats stats;
 	Stats baseStats;
-	@Unknown ubyte[18] unknown;
+	@Unknown ubyte[4] unknown;
+	ubyte level;
+	@Unknown ubyte[13] unknown2;
 	ubyte rarity;
-	@Unknown ubyte[29] unknown2;
+	@Unknown ubyte[29] unknown3;
 	char[32] _name;
-	@Unknown ubyte[168] unknown3;
+	@Unknown ubyte[168] unknown4;
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.algorithm : filter;
 		import std.format;
-		sink.formattedWrite!"Lv%s %s (Rarity: %s) - %(%s, %)"("?", name, rarity, innocents[].filter!(x => x.type != 0));
+		sink.formattedWrite!"Lv%s %s (Rarity: %s) - %(%s, %)"(level, name, rarity, innocents[].filter!(x => x.type != 0));
 		debug(itemstats) {
 			sink.formattedWrite!"\n\t\t%s"(stats);
 		}
