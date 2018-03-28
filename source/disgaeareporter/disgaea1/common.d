@@ -108,7 +108,7 @@ enum Defeated {
 	itemGeneral = 1,
 	itemKing = 2,
 	itemGod = 4,
-	unknown2 = 8,
+	itemGod2 = 8,
 	astroCarter = 16,
 	prinnyGod = 32,
 	priere = 64,
