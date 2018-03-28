@@ -9,7 +9,8 @@ enum Games {
 	disgaea2,
 	disgaea3,
 	disgaea4,
-	disgaea5
+	disgaea5,
+	disgaead2
 }
 
 enum Platforms {
@@ -31,6 +32,12 @@ struct DisgaeaGame {
 
 auto detectGame(ubyte[] input) {
 	auto output = DisgaeaGame();
+	if (input.length == 0x16DC28) {
+		output.platform = Platforms.ps3;
+		output.game = Games.disgaead2;
+		output.rawData = input;
+		return output;
+	}
 	if (input.length >= 0x38) {
 		auto key = input[0x20..0x24];
 
@@ -223,5 +230,10 @@ unittest {
 		auto detected = detectGame(cast(ubyte[])import("d1ds-raw.dat"));
 		assert(detected.game == Games.disgaea1);
 		assert(detected.platform == Platforms.ds);
+	}
+	{
+		auto detected = detectGame(cast(ubyte[]))import("dd2-raw.dat");
+		assert(detected.game == Games.disgaead2);
+		assert(detected.platform == Platforms.ps3);
 	}
 }

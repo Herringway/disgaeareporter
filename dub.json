@@ -5,12 +5,14 @@
 		"sjisish": "~>0.0",
 		":d1data": "*",
 		":d2data": "*",
+		":dd2data": "*",
 		"siryul": "~>0.4.1",
 		"easysettings": "*"
 	},
 	"targetType": "executable",
 	"subPackages": [
 		"d1data",
-		"d2data"
+		"d2data",
+		"dd2data"
 	]
 }

@@ -39,6 +39,7 @@ struct PS2Game {
 		import std.algorithm : filter;
 		return _warehouseItems[].filter!(x => x.isValid);
 	}
+	void postRead() {}
 }
 static assert(PS2Game.totalHL.offsetof == 0x280);
 static assert(PS2Game._characters.offsetof == 0xBA8);
@@ -72,7 +73,7 @@ struct PS2Item {
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.algorithm : filter;
 		import std.format;
-		sink.formattedWrite!"Lv%s %s (Rarity: %s) - %(%s, %)"(level, nameID.itemName, rarity, innocents[].filter!(x => x.type != 0));
+		sink.formattedWrite!"Lv%s %s (Rarity: %s) - %(%s, %)"(level, nameID.itemName, rarity, innocents[].filter!(x => x.isValid));
 	}
 	string name() const {
 		return sjisDec(sjisName[]);

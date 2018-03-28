@@ -75,6 +75,9 @@ struct Innocent {
 		import std.format;
 		formattedWrite!"Lv%s%s %s"(sink, level > 10000 ? level-10000 : level, level > 10000 ? "+" : "", type.innocentName);
 	}
+	bool isValid() const {
+		return type != 0;
+	}
 }
 static assert(Innocent.sizeof == 4);
 void fooi() {
@@ -239,8 +242,10 @@ string innocentName(const ushort id) {
 }
 
 string sjisDec(const ubyte[] data) {
-	import sjis : parseSJIS;
-	auto str = parseSJIS(data);
+	import sjisish : toUTF;
+	import std.algorithm : countUntil;
+	import std.string : representation;
+	auto str = toUTF(data);
 	string output;
 	foreach(dchar chr; str) {
 		if (chr >= '！' && (chr <= '～')) {
@@ -253,7 +258,8 @@ string sjisDec(const ubyte[] data) {
 			output ~= chr;
 		}
 	}
-	return output;
+	auto endIndex = output.representation.countUntil('\0');
+	return output[0..endIndex == -1 ? output.length : endIndex];
 }
 
 unittest {

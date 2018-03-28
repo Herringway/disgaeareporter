@@ -159,6 +159,14 @@ auto handleFile(string path, string outPath, bool yaml, bool json) {
 					default: writeln("Unsupported"); return;
 				}
 				break;
+			case Games.disgaead2:
+				switch(detected.platform) {
+					case Platforms.ps3:
+						dumpData(loadData!(disgaeareporter.disgaead2.PS3Game)(detected.rawData), outFile, yaml, json);
+						break;
+					default: writeln("Unsupported"); return;
+				}
+				break;
 			default: writeln("Unsupported"); return;
 		}
 	} catch (Exception e) {

@@ -9,6 +9,7 @@ struct DSGame {
 	Character[] characters() {
 		return _characters[];
 	}
+	void postRead() {}
 }
 
 static assert(DSGame._characters.offsetof == 0x7A0);

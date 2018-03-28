@@ -5,6 +5,7 @@ import disgaeareporter.disgaea2;
 
 import std.stdio : File;
 import std.range;
+import std.traits : isSomeChar;
 
 enum Unknown;
 
@@ -192,14 +193,14 @@ struct Resistance {
 align(1)
 struct Stats {
 	align(1):
-	uint hp;
-	uint sp;
-	uint attack;
-	uint defense;
-	uint intelligence;
-	uint speed;
-	uint hit;
-	uint resistance;
+	int hp;
+	int sp;
+	int attack;
+	int defense;
+	int intelligence;
+	int speed;
+	int hit;
+	int resistance;
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.format;
 		formattedWrite!"HP: %s, SP: %s, Attack: %s, Defense: %s, Intelligence: %s, Speed: %s, Hit: %s, Resistance: %s"(sink, hp, sp, attack, defense, intelligence, speed, hit, resistance);
@@ -207,6 +208,41 @@ struct Stats {
 }
 static assert(Stats.sizeof == 32);
 
+align(1)
+struct ModernStats(bool isBigEndian) {
+	align(1):
+	long hp;
+	long sp;
+	long attack;
+	long defense;
+	long intelligence;
+	long resistance;
+	long hit;
+	long speed;
+	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
+		import std.format;
+		formattedWrite!"HP: %s, SP: %s, Attack: %s, Defense: %s, Intelligence: %s, Speed: %s, Hit: %s, Resistance: %s"(sink, hp, sp, attack, defense, intelligence, speed, hit, resistance);
+	}
+	void postRead() {
+		version(LittleEndian) {
+			enum flipBytes = isBigEndian;
+		} else {
+			enum flipBytes = !isBigEndian;
+		}
+		static if (flipBytes) {
+			import std.bitmanip : swapEndian;
+			hp = swapEndian(hp);
+			sp = swapEndian(sp);
+			attack = swapEndian(attack);
+			defense = swapEndian(defense);
+			intelligence = swapEndian(intelligence);
+			speed = swapEndian(speed);
+			hit = swapEndian(hit);
+			resistance = swapEndian(resistance);
+		}
+	}
+}
+static assert(ModernStats!true.sizeof == 64);
 
 align(1)
 struct Playtime {
@@ -241,4 +277,36 @@ enum WeaponTypes {
 	Axe,
 	Rod,
 	Monster
+}
+
+
+string fromStringz(Char)(Char[] cString) if (isSomeChar!Char){
+	import std.algorithm : countUntil;
+	import std.string : representation;
+	auto endIndex = cString.representation.countUntil('\0');
+	auto str = cString[0..endIndex == -1 ? cString.length : endIndex];
+	string output;
+	foreach (dchar chr; str) {
+		switch(chr) {
+			case '　': output ~= ' '; break;
+			case '．': output ~= '.'; break;
+			case '，': output ~= ','; break;
+			case '？': output ~= '?'; break;
+			default: output ~= chr; break;
+		}
+	}
+	return output;
+}
+
+unittest {
+	import disgaeareporter.dispatcher : getRawData, loadData, Platforms;
+	auto data = loadData!PCGame(getRawData(cast(immutable(ubyte)[])import("d2pc-SAVE000.DAT"), Platforms.pc));
+	assert(data.totalHL == 368);
+	with(data.characters[0]) {
+		assert(name == "Adell");
+		assert(className == "Demon Hunter");
+	}
+	with (data._bagItems[0]) {
+		assert(name == "Mint Gum");
+	}
 }

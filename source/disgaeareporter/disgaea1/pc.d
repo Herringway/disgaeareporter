@@ -80,6 +80,7 @@ struct PCGame {
 		import std.algorithm : filter;
 		return _warehouseItems[].filter!(x => x.isValid);
 	}
+	void postRead() {}
 }
 static assert(PCGame.totalHL.offsetof == 0x290);
 static assert(PCGame.mapClears.offsetof == 0x3A7B8);
@@ -121,7 +122,7 @@ struct Item {
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.algorithm : filter;
 		import std.format;
-		sink.formattedWrite!"Lv%s %s (Rarity: %s) - %(%s, %)"(level, nameID.itemName, rarity, innocents[].filter!(x => x.type != 0));
+		sink.formattedWrite!"Lv%s %s (Rarity: %s) - %(%s, %)"(level, nameID.itemName, rarity, innocents[].filter!(x => x.isValid));
 		debug (unknowns) {
 			sink.formattedWrite!" - Unknown data:"();
 			import std.traits : getSymbolsByUDA;

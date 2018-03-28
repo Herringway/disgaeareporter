@@ -26,6 +26,9 @@ struct Innocent {
 			}
 		}
 	}
+	bool isValid() const {
+		return type != 0;
+	}
 }
 static assert(Innocent.sizeof == 8);
 private void funcii() {
@@ -51,7 +54,7 @@ struct Item {
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.algorithm : filter;
 		import std.format;
-		sink.formattedWrite!"Lv%s %s (Rarity: %s) - %(%s, %)"(level, name, rarity, innocents[].filter!(x => x.type != 0));
+		sink.formattedWrite!"Lv%s %s (Rarity: %s) - %(%s, %)"(level, name, rarity, innocents[].filter!(x => x.isValid));
 		debug(itemstats) {
 			sink.formattedWrite!"\n\t\t%s"(stats);
 		}
@@ -243,6 +246,7 @@ struct PCGame {
 		import d2data : d2itemRecords;
 		return d2itemRecords[record];
 	}
+	void postRead() {}
 	enum itemRecordAlignment = 80;
 }
 static assert(PCGame.totalHL.offsetof == 0x3D0);
@@ -250,35 +254,3 @@ static assert(PCGame._characters.offsetof == 0xCF8);
 static assert(PCGame._senators.offsetof == 0x78CF8);
 static assert(PCGame._bagItems.offsetof == 0x7BAF8);
 static assert(PCGame.charCount.offsetof == 0xADF34);
-
-
-
-string fromStringz(Char)(Char[] cString) if (isSomeChar!Char){
-	import std.algorithm : countUntil;
-	import std.string : representation;
-	auto endIndex = cString.representation.countUntil('\0');
-	auto str = cString[0..endIndex == -1 ? cString.length : endIndex];
-	string output;
-	foreach (dchar chr; str) {
-		switch(chr) {
-			case '　': output ~= ' '; break;
-			default: output ~= chr; break;
-		}
-	}
-	return output;
-}
-
-unittest {
-	import disgaeareporter.common : printData;
-	import disgaeareporter.dispatcher : getRawData, loadData, Platforms;
-	auto data = loadData!PCGame(getRawData(cast(immutable(ubyte)[])import("d2pc-SAVE000.DAT"), Platforms.pc));
-	assert(data.totalHL == 368);
-	with(data.characters[0]) {
-		assert(name == "Adell");
-		assert(className == "Demon Hunter");
-	}
-	with (data._bagItems[0]) {
-		assert(name == "Mint Gum");
-	}
-	//printData(data);
-}
