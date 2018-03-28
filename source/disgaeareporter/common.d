@@ -300,13 +300,8 @@ string fromStringz(Char)(Char[] cString) if (isSomeChar!Char){
 
 unittest {
 	import disgaeareporter.dispatcher : getRawData, loadData, Platforms;
-	auto data = loadData!PCGame(getRawData(cast(immutable(ubyte)[])import("d2pc-SAVE000.DAT"), Platforms.pc));
-	assert(data.totalHL == 368);
-	with(data.characters[0]) {
-		assert(name == "Adell");
-		assert(className == "Demon Hunter");
-	}
-	with (data._bagItems[0]) {
-		assert(name == "Mint Gum");
-	}
+	import std.conv : hexString;
+
+	auto str = hexString!"41 64 65 6C 6C 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00";
+	assert(str.fromStringz == "Adell");
 }
