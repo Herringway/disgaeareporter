@@ -2,23 +2,38 @@
 66	Tiger Charge
 67	Lion's Roar
 68	King of Beasts
+69	Rising Dragon
+6A	Big Bang
 C9	Blade Rush
 CA	Hurricane Slash
 CB	Wind Cutter
 CC	Winged Slayer
 CD	Nightsever
+CE	Dimension Slash
 12D	Impaler
 12E	Sky Lunge
 12F	Asteroid Drop
 130	Avalanche
+131	Turbulence
+132	Spear Storm
 191	Poison Arrow
 192	Dark Flash
+193	Delta Split
+194	Sturmhimmel
+195	Zielregen
+196	Doppelganger
 1F5	Tri-burst
 1F6	Rapidfire
 1F7	Proximal Shot
 1F8	Bullet Storm
+1F9	Totenkruez
+1FA	Inferno
 259	Boulder Crush
 25A	Skull Splitter
+25B	Colossal Fissure
+25C	Violent Storm
+25D	Graviton Bomb
+25E	Calamity Drive
 2BD	Fire
 2BE	Mega Fire
 2BF	Giga Fire
