@@ -89,14 +89,14 @@ void fooi() {
 align(1)
 struct BaseItemStats {
 	align(1):
-	ushort hp;
-	ushort sp;
-	ushort attack;
-	ushort defense;
-	ushort intelligence;
-	ushort speed;
-	ushort hit;
-	ushort resistance;
+	short hp;
+	short sp;
+	short attack;
+	short defense;
+	short intelligence;
+	short speed;
+	short hit;
+	short resistance;
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.format;
 		sink.formattedWrite!"HP: %s, SP: %s, Attack: %s, Defense: %s, Intelligence: %s, Speed: %s, Hit: %s, Resistance: %s"(hp, sp, attack, defense, intelligence, speed, hit, resistance);
