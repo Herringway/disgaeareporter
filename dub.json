@@ -2,10 +2,11 @@
 	"name": "disgaeareporter",
 	"dependencies": {
 		"gamebits:memmux": "*",
-		"sjis": "*",
+		"sjisish": "~>0.0",
 		":d1data": "*",
 		":d2data": "*",
 		"siryul": "~>0.4.1",
+		"easysettings": "*"
 	},
 	"targetType": "executable",
 	"subPackages": [

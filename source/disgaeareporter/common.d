@@ -3,11 +3,12 @@ module disgaeareporter.common;
 import disgaeareporter.disgaea1;
 import disgaeareporter.disgaea2;
 
+import std.stdio : File;
 import std.range;
 
 enum Unknown;
 
-void printData(Game)(Game* game) {
+void printData(Game)(File output, Game* game) {
 	import std.algorithm : filter, map, makeIndex, min, sort, sum;
 	import std.array : array;
 	import std.range : indexed, iota;
@@ -16,93 +17,93 @@ void printData(Game)(Game* game) {
 	import std.typecons : BitFlags;
 
 	bool sortSenatorsByFavour = true;
-	writeln("-Game stats-\n");
+	output.writeln("-Game stats-\n");
 	static if (hasMember!(Game, "playtime")) {
-		writefln!"Time Played: %s"(game.playtime);
+		output.writefln!"Time Played: %s"(game.playtime);
 	}
 	static if (hasMember!(Game, "totalHL")) {
-		writefln!"HL: %s"(game.totalHL);
+		output.writefln!"HL: %s"(game.totalHL);
 	}
 	static if (hasMember!(Game, "hpRecovered")) {
-		writefln!"Total HP Recovered: %s"(game.hpRecovered);
+		output.writefln!"Total HP Recovered: %s"(game.hpRecovered);
 	}
 	static if (hasMember!(Game, "spRecovered")) {
-		writefln!"Total SP Recovered: %s"(game.spRecovered);
+		output.writefln!"Total SP Recovered: %s"(game.spRecovered);
 	}
 	static if (hasMember!(Game, "revived")) {
-		writefln!"Total Dead Revived: %s"(game.revived);
+		output.writefln!"Total Dead Revived: %s"(game.revived);
 	}
 	static if (hasMember!(Game, "allyKillCount")) {
-		writefln!"Ally Kills: %s"(game.allyKillCount);
+		output.writefln!"Ally Kills: %s"(game.allyKillCount);
 	}
 	static if (hasMember!(Game, "maxDamage")) {
-		writefln!"Max Damage: %s"(game.maxDamage);
+		output.writefln!"Max Damage: %s"(game.maxDamage);
 	}
 	static if (hasMember!(Game, "totalDamage")) {
-		writefln!"Total Damage: %s"(game.totalDamage);
+		output.writefln!"Total Damage: %s"(game.totalDamage);
 	}
 	static if (hasMember!(Game, "geoCombo")) {
-		writefln!"Biggest Geo Combo: %s"(game.geoCombo);
+		output.writefln!"Biggest Geo Combo: %s"(game.geoCombo);
 	}
 	static if (hasMember!(Game, "enemiesKilled")) {
-		writefln!"Enemies Killed: %s"(game.enemiesKilled);
+		output.writefln!"Enemies Killed: %s"(game.enemiesKilled);
 	}
 	static if (hasMember!(Game, "maxLevel")) {
-		writefln!"Highest Level Reached: %s"(game.maxLevel);
+		output.writefln!"Highest Level Reached: %s"(game.maxLevel);
 	}
 	static if (hasMember!(Game, "itemWorldVisits")) {
-		writefln!"Item World Visits: %s"(game.itemWorldVisits);
+		output.writefln!"Item World Visits: %s"(game.itemWorldVisits);
 	}
 	static if (hasMember!(Game, "itemRate")) {
-		writefln!"Item Rate: %s%%"(game.itemRate);
+		output.writefln!"Item Rate: %s%%"(game.itemRate);
 	}
 	static if (hasMember!(Game, "defeated")) {
 		if (game.defeated & Defeated.itemGeneral) {
-			writeln("Defeated Item General");
+			output.writeln("Defeated Item General");
 		}
 		if (game.defeated & Defeated.itemKing) {
-			writeln("Defeated Item King");
+			output.writeln("Defeated Item King");
 		}
 		if (game.defeated & Defeated.itemGod) {
-			writeln("Defeated Item God");
+			output.writeln("Defeated Item God");
 		}
-		if (game.defeated & Defeated.unknown2) {
-			writeln("Defeated Unknown 2");
+		if (game.defeated & Defeated.itemGod2) {
+			output.writeln("Defeated Item God 2");
 		}
 		if (game.defeated & Defeated.astroCarter) {
-			writeln("Defeated Astro Carter");
+			output.writeln("Defeated Astro Carter");
 		}
 		if (game.defeated & Defeated.prinnyGod) {
-			writeln("Defeated Prinny God");
+			output.writeln("Defeated Prinny God");
 		}
 		if (game.defeated & Defeated.priere) {
-			writeln("Defeated Priere");
+			output.writeln("Defeated Priere");
 		}
 		if (game.defeated & Defeated.marjoly) {
-			writeln("Defeated Marjoly");
+			output.writeln("Defeated Marjoly");
 		}
 		if (game.defeated & Defeated.baal) {
-			writeln("Defeated Baal");
+			output.writeln("Defeated Baal");
 		}
 		if (game.defeated & Defeated.uberPrinnyBaal) {
-			writeln("Defeated Uber Prinny Baal");
+			output.writeln("Defeated Uber Prinny Baal");
 		}
 		if (game.defeated & Defeated.zetta) {
-			writeln("Defeated Zetta");
+			output.writeln("Defeated Zetta");
 		}
 		if (game.defeated & Defeated.unknown10) {
-			writeln("Defeated Unknown 10");
+			output.writeln("Defeated Unknown 10");
 		}
 		if (game.defeated & Defeated.adellRozalin) {
-			writeln("Defeated Adell & Rozalin");
+			output.writeln("Defeated Adell & Rozalin");
 		}
 	}
-	writeln();
+	output.writeln();
 	static if (hasMember!(Game, "mapClears")) {
-		writefln("-Map Clears-\n\n%(%s\n%)", game.mapClears[].filter!(x => x.clears > 0));
+		output.writefln("-Map Clears-\n\n%(%s\n%)", game.mapClears[].filter!(x => x.clears > 0));
 	}
 	static if (hasMember!(Game, "characters")) {
-		writefln("-Characters-\n\n%(%s\n%)", game.characters);
+		output.writefln("-Characters-\n\n%(%s\n%)", game.characters);
 	}
 	static if (hasMember!(Game, "senators")) {
 		auto index = new size_t[](game.senators.length);
@@ -111,30 +112,33 @@ void printData(Game)(Game* game) {
 		} else {
 			index = iota(0,game.senators.length).array;
 		}
-		writefln("-Senators-\n\n%(%s\n%)", game.senators[].indexed(index).filter!(x => x.attendance > 0));
+		output.writefln("-Senators-\n\n%(%s\n%)", game.senators[].indexed(index).filter!(x => x.attendance > 0));
 		auto average = (cast(double)game.senators[].filter!(x => x.attendance > 0).map!(x => x.favour).sum) / (cast(double)game.senators.length);
-		writefln!"Average favour: %s (%s)\n"((cast(byte)average).favourString, average);
+		output.writefln!"Average favour: %s (%s)\n"((cast(byte)average).favourString, average);
 	}
-	static if (hasMember!(Game, "bagItems") && hasMember!(Game, "warehouseItems")) {
-		writefln("-Items-\n\nBag:\n%(\t%s\n%)\nWarehouse:\n%(\t%s\n%)", game.bagItems, game.warehouseItems);
+	static if (hasMember!(Game, "bagItems")) {
+		output.writefln("-Items-\n\nBag:\n%(\t%s\n%)", game.bagItems);
+	}
+	static if (hasMember!(Game, "warehouseItems")) {
+		output.writefln("Warehouse:\n%(\t%s\n%)", game.warehouseItems);
 	}
 	static if (hasMember!(Game, "itemRecords")) {
-		writeln("\n-Item Records-\n");
+		output.writeln("\n-Item Records-\n");
 		foreach (id, record; game.itemRecords) {
 			if (!record) {
 				if (game.itemRecordName(id) != "") {
-					writefln!"% 3s - % 3s. ????????????????????"(id/game.itemRecordAlignment, (id%game.itemRecordAlignment)+1);
+					output.writefln!"% 3s - % 3s. ????????????????????"(id/game.itemRecordAlignment, (id%game.itemRecordAlignment)+1);
 				}
 			} else {
-				writefln!"% 3s - % 3s. % -20s - % 1s% 1s% 1s"(id/game.itemRecordAlignment, (id%game.itemRecordAlignment)+1, game.itemRecordName(id), (record & Rarity.common) ? "★" : "", (record & Rarity.rare) ? "★" : "", (record & Rarity.legendary) ? "★" : "");
+				output.writefln!"% 3s - % 3s. % -20s - % 1s% 1s% 1s"(id/game.itemRecordAlignment, (id%game.itemRecordAlignment)+1, game.itemRecordName(id), (record & Rarity.common) ? "★" : "", (record & Rarity.rare) ? "★" : "", (record & Rarity.legendary) ? "★" : "");
 			}
 		}
 	}
 	debug (unknowns) {
-		writeln("\n-Unknown data-\n");
+		output.writeln("\n-Unknown data-\n");
 		import std.traits : getSymbolsByUDA;
 		static foreach (unknown; getSymbolsByUDA!(Game, Unknown)) {
-			writeln(mixin("game."~unknown.stringof));
+			output.writeln(mixin("game."~unknown.stringof));
 		}
 	}
 }

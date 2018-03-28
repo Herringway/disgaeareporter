@@ -176,7 +176,8 @@ unittest {
 
 auto loadData(Game)(const ubyte[] data) {
 	Game* game = new Game;
-	data.readStruct!Game(*game);
+	data.readStruct!Game(game);
+	game.postRead();
 	debug(dumpraw) {
 		import std.file : mkdirRecurse, write;
 		import std.traits : moduleName;

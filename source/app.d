@@ -2,82 +2,145 @@ module disgaeareporter.app;
 
 import disgaeareporter.disgaea1;
 import disgaeareporter.disgaea2;
+import disgaeareporter.disgaead2;
 
 import disgaeareporter.dispatcher;
 import disgaeareporter.common;
 
 import siryul;
+import easysettings;
 
 import std.file;
 import std.getopt;
 import std.stdio;
 
 void main(string[] args) {
-	import std.path : buildPath;
-
 	bool steamDisgaea1;
 	bool steamDisgaea2;
 	bool json;
 	bool yaml;
+	bool genReports;
 	auto helpInformation = getopt(args,
 		"dumpjson|j", "Dumps data as JSON", &json,
 		"dumpyaml|y", "Dumps data as YAML", &yaml,
+		"reports|r", "Automatically generates reports as defined in settings", &genReports,
 		"steamdisgaea1", "Automatically find steam save for Disgaea 1", &steamDisgaea1,
 		"steamdisgaea2", "Automatically find steam save for Disgaea 2", &steamDisgaea2);
 
-	if (args.length < 2 && !steamDisgaea1 && !steamDisgaea2) {
+	if (args.length < 2 && !steamDisgaea1 && !steamDisgaea2 && !genReports) {
 		helpInformation.helpWanted = true;
 	}
 	if (helpInformation.helpWanted) {
 		defaultGetoptPrinter("Gives a nice long report of disgaea saves.", helpInformation.options);
 		return;
 	}
-	string filePath;
-	if (steamDisgaea1) {
-		try {
-			debug(steam) {
-				writeln("steam dir: ", getSteamDirectory());
-				writeln("steam d1 id: ", d1SteamID);
-				writeln("full path: ", buildPath(getSteamDirectory(), d1SteamID, "remote"));
-				writeln("found save: ", getLatestSaveFile(buildPath(getSteamDirectory(), d1SteamID, "remote")));
-			}
-			filePath = getLatestSaveFile(buildPath(getSteamDirectory(), d1SteamID, "remote"));
-		} catch (Exception e) {
-			writeln(e.msg);
-			return;
+	if (!genReports) {
+		string filePath;
+		if (steamDisgaea1) {
+			filePath = getD1SteamPath();
+		} else if (steamDisgaea2) {
+			filePath = getD2SteamPath();
+		} else {
+			filePath = args[1];
 		}
-	} else if (steamDisgaea2) {
-		try {
-			debug(steam) {
-				writeln("steam dir: ", getSteamDirectory());
-				writeln("steam d2 id: ", d2SteamID);
-				writeln("full path: ", buildPath(getSteamDirectory(), d2SteamID, "remote"));
-				writeln("found save: ", getLatestSaveFile(buildPath(getSteamDirectory(), d2SteamID, "remote")));
-			}
-			filePath = getLatestSaveFile(buildPath(getSteamDirectory(), d2SteamID, "remote"));
-		} catch (Exception e) {
-			writeln(e.msg);
-			return;
+		if (filePath.exists) {
+			handleFile(filePath, "", yaml, json);
 		}
 	} else {
-		filePath = args[1];
+		auto settings = loadSettings!DisgaeaReporterFiles("Herringway/disgaeareporter");
+		foreach (file; settings.files) {
+			if (file.steamDisgaea1) {
+				file.savePath = getD1SteamPath();
+			} else if (file.steamDisgaea2) {
+				file.savePath = getD2SteamPath();
+			}
+			if (file.savePath.exists) {
+				handleFile(file.savePath, file.reportPath, false, false);
+			} else {
+				if (file.steamDisgaea1) {
+					writeln("Warning: Steam save for disgaea 1 not found");
+				} else if (file.steamDisgaea2) {
+					writeln("Warning: Steam save for disgaea 2 not found");
+				} else {
+					if (file.savePath == "") {
+						writeln("Warning: No save specified");
+					} else {
+						writefln!"Warning: %s not found"(file.savePath);
+					}
+				}
+			}
+		}
 	}
+}
 
-	auto file = cast(ubyte[])read(filePath);
+struct DisgaeaReporterFile {
+	import siryul : Optional;
+	@Optional bool steamDisgaea1 = false;
+	@Optional bool steamDisgaea2 = false;
+	@Optional string savePath;
+	string reportPath;
+}
+
+struct DisgaeaReporterFiles {
+	DisgaeaReporterFile[] files;
+}
+
+auto getD1SteamPath() nothrow {
+	import std.path : buildPath;
+	import std.exception : assumeWontThrow;
 	try {
-		const detected = detectGame(file);
+		debug(steam) {
+			writeln("steam dir: ", getSteamDirectory());
+			writeln("steam d1 id: ", d1SteamID);
+			writeln("full path: ", buildPath(getSteamDirectory(), d1SteamID, "remote"));
+			writeln("found save: ", getLatestSaveFile(buildPath(getSteamDirectory(), d1SteamID, "remote")));
+		}
+		return getLatestSaveFile(buildPath(getSteamDirectory(), d1SteamID, "remote"));
+	} catch (Exception e) {
+		assumeWontThrow(writeln(e.msg));
+		return "";
+	}
+}
+
+auto getD2SteamPath() nothrow {
+	import std.path : buildPath;
+	import std.exception : assumeWontThrow;
+	try {
+		debug(steam) {
+			writeln("steam dir: ", getSteamDirectory());
+			writeln("steam d2 id: ", d2SteamID);
+			writeln("full path: ", buildPath(getSteamDirectory(), d2SteamID, "remote"));
+			writeln("found save: ", getLatestSaveFile(buildPath(getSteamDirectory(), d2SteamID, "remote")));
+		}
+		return getLatestSaveFile(buildPath(getSteamDirectory(), d2SteamID, "remote"));
+	} catch (Exception e) {
+		assumeWontThrow(writeln(e.msg));
+		return "";
+	}
+}
+
+auto handleFile(string path, string outPath, bool yaml, bool json) {
+	auto data = cast(ubyte[])read(path);
+	File outFile;
+	if (outPath == "") {
+		outFile = stdout;
+	} else {
+		outFile = File(outPath, "w");
+	}
+	try {
+		const detected = detectGame(data);
 		debug(printdetected) writefln!"Detected %s for %s"(detected.game, detected.platform);
 		switch (detected.game) {
 			case Games.disgaea1:
 				switch (detected.platform) {
 					case Platforms.ps2:
-						dumpData(loadData!(disgaeareporter.disgaea1.PS2Game)(detected.rawData), yaml, json);
+						dumpData(loadData!(disgaeareporter.disgaea1.PS2Game)(detected.rawData), outFile, yaml, json);
 						break;
 					case Platforms.pc:
-						dumpData(loadData!(disgaeareporter.disgaea1.PCGame)(detected.rawData), yaml, json);
+						dumpData(loadData!(disgaeareporter.disgaea1.PCGame)(detected.rawData), outFile, yaml, json);
 						break;
 					case Platforms.psp:
-						dumpData(loadData!(disgaeareporter.disgaea1.PSPGame)(detected.rawData), yaml, json);
+						dumpData(loadData!(disgaeareporter.disgaea1.PSPGame)(detected.rawData), outFile, yaml, json);
 						break;
 					default: writeln("Unsupported"); return;
 				}
@@ -85,13 +148,13 @@ void main(string[] args) {
 			case Games.disgaea2:
 				switch (detected.platform) {
 					case Platforms.ps2:
-						dumpData(loadData!(disgaeareporter.disgaea2.PS2Game)(detected.rawData), yaml, json);
+						dumpData(loadData!(disgaeareporter.disgaea2.PS2Game)(detected.rawData), outFile, yaml, json);
 						break;
 					case Platforms.pc:
-						dumpData(loadData!(disgaeareporter.disgaea2.PCGame)(detected.rawData), yaml, json);
+						dumpData(loadData!(disgaeareporter.disgaea2.PCGame)(detected.rawData), outFile, yaml, json);
 						break;
 					case Platforms.psp:
-						dumpData(loadData!(disgaeareporter.disgaea2.PSPGame)(detected.rawData), yaml, json);
+						dumpData(loadData!(disgaeareporter.disgaea2.PSPGame)(detected.rawData), outFile, yaml, json);
 						break;
 					default: writeln("Unsupported"); return;
 				}
@@ -103,13 +166,13 @@ void main(string[] args) {
 	}
 }
 
-void dumpData(T)(const T* data, const bool yaml, const bool json) {
+void dumpData(T)(const T* data, File output, const bool yaml, const bool json) {
 	if (yaml) {
-		writeln(data.toString!YAML);
+		output.writeln(data.toString!YAML);
 	} else if (json) {
-		writeln(data.toString!JSON);
+		output.writeln(data.toString!JSON);
 	} else {
-		printData(data);
+		output.printData(data);
 	}
 }
 
