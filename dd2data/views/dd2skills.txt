@@ -1,0 +1,78 @@
+0065	Triple Strike
+0066	Double Shadow
+0067	Side Out
+00C9	Blade Rush
+00CA	Hurricane Slash
+00CB	Nether Slash
+012D	Impaler Drop
+012E	Blade Bash
+0191	Dark Spica
+0192	Bright Canopus
+0193	Meteor Arrow Kick
+01F5	Tri-Burst
+01F6	Dark Matter Ether
+01F7	Point Blank Blaster
+0259	Boulder Crush
+025A	Helmet Crush
+0321	451 Degrees of Evil
+0322	Gone with the Cotton
+03A3	Create Box
+03A5	Stealing Hand
+03B7	Tower Fall
+03B8	Tower Hamster
+03B9	Tower Dunk
+03BB	Tower Move
+03BC	Tower Lift
+03BD	Tower Throw
+03BE	Tower Break
+044D	Wind
+044E	Mega Wind
+044F	Giga Wind
+0450	Omega Wind
+04B1	Ice
+04B2	Mega Ice
+04B3	Giga Ice
+04B4	Omega Ice
+0515	Star
+0516	Mega Star
+0517	Giga Star
+0518	Omega Star
+05DD	Braveheart
+05DF	Magic Boost
+0579	Heal
+057A	Mega Heal
+057B	Giga Heal
+057C	Omega Heal
+05DB	Espoir
+05DE	Shield
+05E0	Magic Wall
+05E2	Speed Boost
+0641	Enfeeble
+0643	Mind Break
+0709	Move!
+070A	Jump Jump Jump!
+070B	Counter Classes
+076D	Geo Change
+0771	Geo Blast
+271B	Blazing Knuckle
+272F	Prinny Raid
+2743	Love Knuckle!
+2757	Angelic Knuckle
+27E3	Cameo Storm
+2865	Bomb-Bat-Stic
+286F	Final Boss Arises
+2EEB	Slime Stomp
+2F09	Nether Lariat
+2F1D	Cat Setaria
+2F1E	Burning Hairball
+2F27	Prinny Blizzard
+2F45	Petal Cutter V
+2FA9	Dragon Hornet
+768F	Death Co.
+7D0B	Slime Hand
+7D29	Lantern Wish
+7D3D	Cat Umbrella Spin
+7D47	Bomber Dood
+7D65	Moon Spike
+7DB5	Jaws Wave Rider
+7DC9	Sky High Dragoon

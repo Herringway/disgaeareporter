@@ -1,150 +1,150 @@
-101	Battle Basics
-102	Battle Basics (2)
-103	Geo Effect
-104	Tutorial
-201	Vyers Castle - Blessed Court
-202	Vyers Castle - Corridor of Love
-203	Vyers Castle - Hall of Caresses
-204	Vyers Castle - Magnificent Gate
-301	Blazing Core - Road of Flames
-302	Blazing Core - Parched Ground
-303	Blazing Core - Blazing Field
-304	Blazing Core - Molten Labyrinth
-401	Dinero Palace - Golden Courtyard
-402	Dinero Palace - Flashy Passage
-403	Dinero Palace - Lavish Hall
-404	Dinero Palace - Gaudy Entrance
-501	Frozen River - Icy Breath
-502	Frozen River - Eternal Winter
-503	Frozen River - White Death
-504	Frozen River - Forsaken Land
-601	Blair Forest - Calamity Woods
-602	Blair Forest - Ritual Site
-603	Blair Forest - Witches' Den
-604	Blair Forest - Writhing Shadow
-605	Blair Forest - Nightdwellers
-606	Blair Forest - Heart of Evil
-701	Stellar Graveyard - Valgipus IV
-702	Stellar Graveyard - Thurvean Sector
-703	Stellar Graveyard - Sphere VIII
-704	Stellar Graveyard - Cross-Point
-705	Stellar Graveyard - Primordial Soup
-706	Stellar Graveyard - Primordial Soup (Zetta)
-801	Gargantua Deck - Point Alpha-III
-901	Gargantua Interior - Main Corridor 1
-902	Gargantua Interior - Main Corridor 2
-903	Gargantua Interior - Main Corridor 3
-904	Gargantua Interior - Bridge
-1001	Human World - Central City
-1002	Human World - Neo Eden
-1003	Human World - EDF Headquarters
-1101	Prinny Land - Prinny Land 1
-1102	Prinny Land - Prinny Land 2
-1103	Prinny Land - Prinny Land 3
-1201	Celestia - Field of Virtue
-1202	Celestia - Paradise
-1203	Celestia - Angelic Choir
-1204	Celestia - Coliseum
-1205	Celestia - Divine Prison
-1301	Seraphic Sanctuary - Inner Sanctum
-1302	Seraphic Sanctuary - Hall of Justice
-1303	Seraphic Sanctuary - Sacred Altar
-1304	Seraphic Sanctuary - Sacred Altar(D)
-1401	Salamander's Breath - Scorching Wind
-1402	Salamander's Breath - Column of Fire
-1403	Salamander's Breath - Crimson Plains
-1404	Salamander's Breath - Ember of Dreams
-1405	Salamander's Breath - Raging Earth
-1501	Sea of Gehenna - Fervent Melody
-1502	Sea of Gehenna - Wasteland of Woe
-1503	Sea of Gehenna - Searing Tyranny
-1504	Sea of Gehenna - Inferno
-1505	Sea of Gehenna - River of Lava
-1601	Jotunheim - Endless White
-1602	Jotunheim - Terrible Cold
-1603	Jotunheim - Ice Queen
-1604	Jotunheim - Absolute Zero
-1701	Lunar Snowfield - Frigid Garden
-1702	Lunar Snowfield - Freezing Souls
-1703	Lunar Snowfield - Under the Moon
-1704	Lunar Snowfield - Theatre of Death
-1801	Forest of the Dead - Ghostly Whisper
-1802	Forest of the Dead - Rising Fear
-1803	Forest of the Dead - Crawling Terror
-1804	Forest of the Dead - Hero's Tomb
-1901	Stellar Graveyard II - Embryon
-1902	Stellar Graveyard II - Core Point No. 4
-1903	Stellar Graveyard II - Star Cluster
-1904	Stellar Graveyard II - Sidereal Rift
-2001	Beauty Castle - Foreboding Seal
-2002	Beauty Castle - Beauty of Evil
-2101	Alternate Netherworld - Alternate World
-2102	Alternate Netherworld - Hall of Sin
-2103	Alternate Netherworld - Hall of Penance
-2104	Alternate Netherworld - Malefic Seal
-2105	Alternate Netherworld - Warrior Maiden
-2201	Baal Castle - Patriarch's Seal
-2202	Baal Castle - Lord of Terror
-2203	Baal Castle - Baal (Etna Mode)
-2901	Puzzle - 1
-2902	Puzzle - 2
-2903	Puzzle - 3
-2904	Puzzle - 4
-2905	Puzzle - 5
-3001	Cave of Ordeal - Cave of Ordeal 1
-3002	Cave of Ordeal - Cave of Ordeal 2
-3003	Cave of Ordeal - Cave of Ordeal 3
-3004	Cave of Ordeal - Cave of Ordeal 4
-3005	Cave of Ordeal - Cave of Ordeal 5
-3006	Cave of Ordeal - Demonhall Mirror (1)
-3007	Cave of Ordeal - Demonhall Mirror (2)
-3008	Cave of Ordeal - Demonhall Mirror (3)
-3009	Cave of Ordeal - Demonhall Mirror (4)
-3010	Cave of Ordeal - Demonhall Mirror (5)
-3011	Cave of Ordeal - Demonhall Mirror (6)
-3012	Cave of Ordeal - Demonhall Mirror (7)
-3013	Cave of Ordeal - Demonhall Mirror (8)
-3101	Extra - 1
-3102	Extra - 2
-3103	Extra - 3
-3104	Extra - 4
-3105	Extra - 5
-3201	Stellar Graveyard - Valgipus IV (Etna Mode)
-3301	Vyers Castle - Blessed Court (Etna Mode)
-3302	Vyers Castle - Corridor of Love (Etna Mode)
-3303	Vyers Castle - Hall of Caresses (Etna Mode)
-3304	Vyers Castle - Magnificent Gate (Etna Mode)
-3401	Dinero Palace - Golden Courtyard (Etna Mode)
-3402	Dinero Palace - Flashy Passage (Etna Mode)
-3403	Dinero Palace - Lavish Hall (Etna Mode)
-3404	Dinero Palace - Gaudy Entrance (Etna Mode)
-3501	Sea of Gehenna - Fervent Melody (Etna Mode)
-3502	Sea of Gehenna - Wasteland of Woe (Etna Mode)
-3503	Sea of Gehenna - Searing Tyranny (Etna Mode)
-3504	Sea of Gehenna - Inferno (Etna Mode)
-3505	Sea of Gehenna - River of Lava (Etna Mode)
-3601	Jotunheim - Endless White (Etna Mode)
-3602	Jotunheim - Terrible Cold (Etna Mode)
-3603	Jotunheim - Ice Queen (Etna Mode)
-3604	Jotunheim - Absolute Zero (Etna Mode)
-3701	Grand North - Ice Beast Gate (Etna Mode)
-3702	Grand North - Frost Castle (Etna Mode)
-3703	Grand North - Millennium Ice (Etna Mode)
-5101	Dark Castle (1)
-5102	Dark Castle (2)
-5103	Dark Castle (3)
-5104	Dark Castle (4)
-5105	Dark Castle (5)
-5106	Dark Castle (6)
-21001	Dark Assembly - Local Forum
-21002	Dark Assembly - Exam for Rank 1
-21003	Dark Assembly - Exam for Rank 2
-21004	Dark Assembly - Exam for Rank 3
-21005	Dark Assembly - Exam for Rank 4
-21006	Dark Assembly - Exam for Rank 5
-21007	Dark Assembly - Exam for Rank 6
-21008	Dark Assembly - Exam for Rank 7
-21009	Dark Assembly - Exam for Rank 8
-21010	Dark Assembly - Exam for Rank 9
-21011	Dark Assembly - Exam for Rank 10
-21012	Dark Assembly - Exam for Rank 11
+65	Battle Basics
+66	Battle Basics (2)
+67	Geo Effect
+68	Tutorial
+C9	Vyers Castle - Blessed Court
+CA	Vyers Castle - Corridor of Love
+CB	Vyers Castle - Hall of Caresses
+CC	Vyers Castle - Magnificent Gate
+12D	Blazing Core - Road of Flames
+12E	Blazing Core - Parched Ground
+12F	Blazing Core - Blazing Field
+130	Blazing Core - Molten Labyrinth
+191	Dinero Palace - Golden Courtyard
+192	Dinero Palace - Flashy Passage
+193	Dinero Palace - Lavish Hall
+194	Dinero Palace - Gaudy Entrance
+1F5	Frozen River - Icy Breath
+1F6	Frozen River - Eternal Winter
+1F7	Frozen River - White Death
+1F8	Frozen River - Forsaken Land
+259	Blair Forest - Calamity Woods
+25A	Blair Forest - Ritual Site
+25B	Blair Forest - Witches' Den
+25C	Blair Forest - Writhing Shadow
+25D	Blair Forest - Nightdwellers
+25E	Blair Forest - Heart of Evil
+2BD	Stellar Graveyard - Valgipus IV
+2BE	Stellar Graveyard - Thurvean Sector
+2BF	Stellar Graveyard - Sphere VIII
+2C0	Stellar Graveyard - Cross-Point
+2C1	Stellar Graveyard - Primordial Soup
+2C2	Stellar Graveyard - Primordial Soup (Zetta)
+321	Gargantua Deck - Point Alpha-III
+385	Gargantua Interior - Main Corridor 1
+386	Gargantua Interior - Main Corridor 2
+387	Gargantua Interior - Main Corridor 3
+388	Gargantua Interior - Bridge
+3E9	Human World - Central City
+3EA	Human World - Neo Eden
+3EB	Human World - EDF Headquarters
+44D	Prinny Land - Prinny Land 1
+44E	Prinny Land - Prinny Land 2
+44F	Prinny Land - Prinny Land 3
+4B1	Celestia - Field of Virtue
+4B2	Celestia - Paradise
+4B3	Celestia - Angelic Choir
+4B4	Celestia - Coliseum
+4B5	Celestia - Divine Prison
+515	Seraphic Sanctuary - Inner Sanctum
+516	Seraphic Sanctuary - Hall of Justice
+517	Seraphic Sanctuary - Sacred Altar
+518	Seraphic Sanctuary - Sacred Altar(D)
+579	Salamander's Breath - Scorching Wind
+57A	Salamander's Breath - Column of Fire
+57B	Salamander's Breath - Crimson Plains
+57C	Salamander's Breath - Ember of Dreams
+57D	Salamander's Breath - Raging Earth
+5DD	Sea of Gehenna - Fervent Melody
+5DE	Sea of Gehenna - Wasteland of Woe
+5DF	Sea of Gehenna - Searing Tyranny
+5E0	Sea of Gehenna - Inferno
+5E1	Sea of Gehenna - River of Lava
+641	Jotunheim - Endless White
+642	Jotunheim - Terrible Cold
+643	Jotunheim - Ice Queen
+644	Jotunheim - Absolute Zero
+6A5	Lunar Snowfield - Frigid Garden
+6A6	Lunar Snowfield - Freezing Souls
+6A7	Lunar Snowfield - Under the Moon
+6A8	Lunar Snowfield - Theatre of Death
+709	Forest of the Dead - Ghostly Whisper
+70A	Forest of the Dead - Rising Fear
+70B	Forest of the Dead - Crawling Terror
+70C	Forest of the Dead - Hero's Tomb
+76D	Stellar Graveyard II - Embryon
+76E	Stellar Graveyard II - Core Point No. 4
+76F	Stellar Graveyard II - Star Cluster
+770	Stellar Graveyard II - Sidereal Rift
+7D1	Beauty Castle - Foreboding Seal
+7D2	Beauty Castle - Beauty of Evil
+835	Alternate Netherworld - Alternate World
+836	Alternate Netherworld - Hall of Sin
+837	Alternate Netherworld - Hall of Penance
+838	Alternate Netherworld - Malefic Seal
+839	Alternate Netherworld - Warrior Maiden
+899	Baal Castle - Patriarch's Seal
+89A	Baal Castle - Lord of Terror
+89B	Baal Castle - Baal (Etna Mode)
+B55	Puzzle - 1
+B56	Puzzle - 2
+B57	Puzzle - 3
+B58	Puzzle - 4
+B59	Puzzle - 5
+BB9	Cave of Ordeal - Cave of Ordeal 1
+BBA	Cave of Ordeal - Cave of Ordeal 2
+BBB	Cave of Ordeal - Cave of Ordeal 3
+BBC	Cave of Ordeal - Cave of Ordeal 4
+BBD	Cave of Ordeal - Cave of Ordeal 5
+BBE	Cave of Ordeal - Demonhall Mirror (1)
+BBF	Cave of Ordeal - Demonhall Mirror (2)
+BC0	Cave of Ordeal - Demonhall Mirror (3)
+BC1	Cave of Ordeal - Demonhall Mirror (4)
+BC2	Cave of Ordeal - Demonhall Mirror (5)
+BC3	Cave of Ordeal - Demonhall Mirror (6)
+BC4	Cave of Ordeal - Demonhall Mirror (7)
+BC5	Cave of Ordeal - Demonhall Mirror (8)
+C1D	Extra - 1
+C1E	Extra - 2
+C1F	Extra - 3
+C20	Extra - 4
+C21	Extra - 5
+C81	Stellar Graveyard - Valgipus IV (Etna Mode)
+CE5	Vyers Castle - Blessed Court (Etna Mode)
+CE6	Vyers Castle - Corridor of Love (Etna Mode)
+CE7	Vyers Castle - Hall of Caresses (Etna Mode)
+CE8	Vyers Castle - Magnificent Gate (Etna Mode)
+D49	Dinero Palace - Golden Courtyard (Etna Mode)
+D4A	Dinero Palace - Flashy Passage (Etna Mode)
+D4B	Dinero Palace - Lavish Hall (Etna Mode)
+D4C	Dinero Palace - Gaudy Entrance (Etna Mode)
+DAD	Sea of Gehenna - Fervent Melody (Etna Mode)
+DAE	Sea of Gehenna - Wasteland of Woe (Etna Mode)
+DAF	Sea of Gehenna - Searing Tyranny (Etna Mode)
+DB0	Sea of Gehenna - Inferno (Etna Mode)
+DB1	Sea of Gehenna - River of Lava (Etna Mode)
+E11	Jotunheim - Endless White (Etna Mode)
+E12	Jotunheim - Terrible Cold (Etna Mode)
+E13	Jotunheim - Ice Queen (Etna Mode)
+E14	Jotunheim - Absolute Zero (Etna Mode)
+E75	Grand North - Ice Beast Gate (Etna Mode)
+E76	Grand North - Frost Castle (Etna Mode)
+E77	Grand North - Millennium Ice (Etna Mode)
+13ED	Dark Castle (1)
+13EE	Dark Castle (2)
+13EF	Dark Castle (3)
+13F0	Dark Castle (4)
+13F1	Dark Castle (5)
+13F2	Dark Castle (6)
+5209	Dark Assembly - Local Forum
+520A	Dark Assembly - Exam for Rank 1
+520B	Dark Assembly - Exam for Rank 2
+520C	Dark Assembly - Exam for Rank 3
+520D	Dark Assembly - Exam for Rank 4
+520E	Dark Assembly - Exam for Rank 5
+520F	Dark Assembly - Exam for Rank 6
+5210	Dark Assembly - Exam for Rank 7
+5211	Dark Assembly - Exam for Rank 8
+5212	Dark Assembly - Exam for Rank 9
+5213	Dark Assembly - Exam for Rank 10
+5214	Dark Assembly - Exam for Rank 11
