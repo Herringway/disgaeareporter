@@ -180,6 +180,24 @@ struct BaseCharacterStats {
 static assert(BaseCharacterStats.sizeof == 8);
 
 align(1)
+struct BaseCharacterStatsLater {
+	align(1):
+	ubyte hp;
+	ubyte sp;
+	ubyte attack;
+	ubyte defense;
+	ubyte intelligence;
+	ubyte resistance;
+	ubyte hit;
+	ubyte speed;
+	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
+		import std.format;
+		sink.formattedWrite!"HP: %s, SP: %s, Attack: %s, Defense: %s, Intelligence: %s, Speed: %s, Hit: %s, Resistance: %s"(hp, sp, attack, defense, intelligence, speed, hit, resistance);
+	}
+}
+static assert(BaseCharacterStatsLater.sizeof == 8);
+
+align(1)
 struct Resistance {
 	align(1):
 	byte fire;
@@ -243,6 +261,41 @@ struct ModernStats(bool isBigEndian) {
 	}
 }
 static assert(ModernStats!true.sizeof == 64);
+
+align(1)
+struct Aptitudes(bool isBigEndian) {
+	align(1):
+	ushort hp;
+	ushort sp;
+	ushort attack;
+	ushort defense;
+	ushort intelligence;
+	ushort resistance;
+	ushort hit;
+	ushort speed;
+	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
+		import std.format;
+		formattedWrite!"HP: %s%%, SP: %s%%, Attack: %s%%, Defense: %s%%, Intelligence: %s%%, Speed: %s%%, Hit: %s%%, Resistance: %s%%"(sink, hp, sp, attack, defense, intelligence, speed, hit, resistance);
+	}
+	void postRead() {
+		version(LittleEndian) {
+			enum flipBytes = isBigEndian;
+		} else {
+			enum flipBytes = !isBigEndian;
+		}
+		static if (flipBytes) {
+			import std.bitmanip : swapEndian;
+			hp = swapEndian(hp);
+			sp = swapEndian(sp);
+			attack = swapEndian(attack);
+			defense = swapEndian(defense);
+			intelligence = swapEndian(intelligence);
+			speed = swapEndian(speed);
+			hit = swapEndian(hit);
+			resistance = swapEndian(resistance);
+		}
+	}
+}
 
 align(1)
 struct Playtime {

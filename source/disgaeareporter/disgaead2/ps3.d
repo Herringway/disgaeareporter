@@ -99,21 +99,50 @@ struct Character {
 	ulong currentSP;
 	ModernStats!true stats;
 	ModernStats!true realStats;
-	@Unknown ubyte[84] unknown3;
+	@Unknown ubyte[8] unknown3;
+	BaseCharacterStatsLater baseStats;
+	@Unknown ubyte[64] unknown4;
+	uint mana;
 	ushort level;
-	@Unknown ubyte[2322] unknown4;
+	@Unknown ubyte[18] unknown5;
+	Resistance baseResist;
+	Resistance resist;
+	ubyte baseJM;
+	ubyte jm;
+	ubyte baseMV;
+	ubyte mv;
+	ubyte baseCounter;
+	ubyte counter;
+	ubyte baseThrow;
+	ubyte throw_;
+	ubyte baseCrit;
+	ubyte crit;
+	@Unknown ubyte[8] unknown6;
+	ubyte range;
+	@Unknown ubyte[23] unknown7;
+	ulong numKills;
+	ulong numDeaths;
+	ulong maxDamage;
+	ulong totalDamage;
+	@Unknown ubyte[844] unknown8;
+	Aptitudes!true aptitudes;
+	Aptitudes!true aptitudes2;
+	@Unknown ubyte[1348] unknown9;
 
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.algorithm : filter;
 		import std.format;
 		import std.range : lockstep;
 		sink.formattedWrite!"%s (Lv%s %s)\n"(name, level, className);
-		//sink.formattedWrite!"\tMana: %s\n"(mana);
+		sink.formattedWrite!"\tMana: %s\n"(mana);
 		//sink.formattedWrite!"\tTransmigrations: %s, Transmigrated Levels: %s\n"(numTransmigrations, transmigratedLevels);
-		//sink.formattedWrite!"\tCounter: %s, MV: %s, JM: %s\n"(counter, mv, jm);
-		//sink.formattedWrite!"\tElemental Affinity: %s\n"(resist);
+		sink.formattedWrite!"\tCounter: %s, move: %s, jump: %s, throw: %s, range: %s, crit: %s%%\n"(counter, mv, jm, throw_, range, crit);
+		sink.formattedWrite!"\tElemental Affinity: %s\n"(resist);
 		sink.formattedWrite!"\t%s\n"(stats);
-		//sink.formattedWrite!"\tBase Stats: %s\n"(baseStats);
+		sink.formattedWrite!"\tAptitudes: %s\n"(aptitudes);
+		sink.formattedWrite!"\tBase Stats: %s\n"(baseStats);
+		sink.formattedWrite!"\tMax Damage: %s, Total Damage: %s\n"(maxDamage, totalDamage);
+		sink.formattedWrite!"\tEnemy Kill Count: %s, Death Count: %s\n"(numKills, numDeaths);
 		//if (weaponMasteryLevel != weaponMasteryLevel.init) {
 		//	sink.formattedWrite!"\tWeapon mastery:\n"();
 		//	foreach (i, masteryRate, masteryLevel; lockstep(weaponMasteryRate[], weaponMasteryLevel[])) {
@@ -157,6 +186,11 @@ struct Character {
 			import std.bitmanip : swapEndian;
 			exp = swapEndian(exp);
 			level = swapEndian(level);
+			mana = swapEndian(mana);
+			maxDamage = swapEndian(maxDamage);
+			totalDamage = swapEndian(totalDamage);
+			numKills = swapEndian(numKills);
+			numDeaths = swapEndian(numDeaths);
 			foreach (ref skill; skills) {
 				skill = swapEndian(skill);
 			}
@@ -166,6 +200,7 @@ struct Character {
 		}
 		stats.postRead();
 		realStats.postRead();
+		aptitudes.postRead();
 		foreach (ref item; equipment) {
 			item.postRead();
 		}
@@ -176,7 +211,11 @@ static assert(Character._name.offsetof == 0x648);
 static assert(Character.skillEXP.offsetof == 0x764);
 static assert(Character.skills.offsetof == 0xB64);
 static assert(Character.stats.offsetof == 0x1078);
+static assert(Character.baseStats.offsetof == 0x1100);
 static assert(Character.level.offsetof == 0x114C);
+static assert(Character.baseResist.offsetof == 0x1160);
+static assert(Character.maxDamage.offsetof == 0x11A0);
+static assert(Character.aptitudes.offsetof == 0x14FC);
 
 private void func() {
 	import std.outbuffer;
