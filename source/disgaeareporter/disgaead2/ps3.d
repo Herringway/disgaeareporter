@@ -90,14 +90,18 @@ struct Character {
 	Item[4] equipment;
 	char[52] _name;
 	char[52] _className;
-	@Unknown ubyte[2488] unknown;
+	@Unknown ubyte[180] unknown;
+	uint[256] skillEXP;
+	ushort[256] skills;
+	ubyte[256] skillLevels;
+	@Unknown ubyte[516] unknown2;
 	ulong currentHP;
 	ulong currentSP;
 	ModernStats!true stats;
 	ModernStats!true realStats;
-	@Unknown ubyte[84] unknown2;
+	@Unknown ubyte[84] unknown3;
 	ushort level;
-	@Unknown ubyte[2322] unknown3;
+	@Unknown ubyte[2322] unknown4;
 
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.algorithm : filter;
@@ -123,16 +127,16 @@ struct Character {
 			sink.formattedWrite!"\tEquipment:\n"();
 			sink.formattedWrite!"%(\t\t%s\n%)\n"(equips);
 		}
-		//if (skills[0] != 0) {
-		//	sink.formattedWrite!"\tAbilities:\n"();
-		//	foreach (i, skill, skillLevel, skillEXP; lockstep(skills[], skillLevels[], skillEXP[])) {
-		//		if ((skill > 0) && (skillLevel != 255)) {
-		//			sink.formattedWrite!"\t\tLv%s %s (%s EXP)\n"(skillLevel, skill.skillName, skillEXP);
-		//		} else if (skillLevel == 255) {
-		//			sink.formattedWrite!"\t\tLearning %s (%s EXP)\n"(skill.skillName, skillEXP);
-		//		}
-		//	}
-		//}
+		if (skills[0] != 0) {
+			sink.formattedWrite!"\tAbilities:\n"();
+			foreach (i, skill, skillLevel, skillEXP; lockstep(skills[], skillLevels[], skillEXP[])) {
+				if ((skill > 0) && (skillLevel != 255)) {
+					sink.formattedWrite!"\t\tLv%s %s (%s EXP)\n"(skillLevel, skill.skillName, skillEXP);
+				} else if (skillLevel == 255) {
+					sink.formattedWrite!"\t\tLearning %s (%s EXP)\n"(skill.skillName, skillEXP);
+				}
+			}
+		}
 
 		debug (unknowns) {
 			sink.formattedWrite!" - Unknown data:"();
@@ -153,6 +157,12 @@ struct Character {
 			import std.bitmanip : swapEndian;
 			exp = swapEndian(exp);
 			level = swapEndian(level);
+			foreach (ref skill; skills) {
+				skill = swapEndian(skill);
+			}
+			foreach (ref exp; skillEXP) {
+				exp = swapEndian(exp);
+			}
 		}
 		stats.postRead();
 		realStats.postRead();
@@ -163,6 +173,8 @@ struct Character {
 }
 static assert(Character.sizeof == 0x1A60);
 static assert(Character._name.offsetof == 0x648);
+static assert(Character.skillEXP.offsetof == 0x764);
+static assert(Character.skills.offsetof == 0xB64);
 static assert(Character.stats.offsetof == 0x1078);
 static assert(Character.level.offsetof == 0x114C);
 
@@ -210,4 +222,22 @@ static assert(PS3Game.charCount.offsetof == 0x1507EC);
 
 private void x() {
 	PS3Game().postRead();
+}
+
+
+
+unittest {
+	import disgaeareporter.dispatcher : getRawData, loadData, Platforms;
+	auto data = loadData!PS3Game(cast(immutable(ubyte)[])import("dd2ps3-raw.DAT"));
+	assert(data.characters.length == 20);
+
+	with(data.characters[0]) {
+		assert(name == "Laharl");
+		assert(level == 27);
+		assert(skills[0] == 0x00C9);
+	}
+
+	with(data._items[0]) {
+		assert(name == "Bamboo Water Gun");
+	}
 }
