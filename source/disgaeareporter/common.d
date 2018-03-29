@@ -338,6 +338,14 @@ enum WeaponTypes {
 	Monster
 }
 
+struct ZeroString(size_t length) {
+	char[length] raw = 0;
+	alias toString this;
+	auto toString() const {
+		return raw[].fromStringz;
+	}
+}
+
 
 string fromStringz(Char)(Char[] cString) if (isSomeChar!Char){
 	import std.algorithm : countUntil;

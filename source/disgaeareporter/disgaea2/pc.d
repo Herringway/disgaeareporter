@@ -49,7 +49,7 @@ struct Item {
 	@Unknown ubyte[13] unknown2;
 	ubyte rarity;
 	@Unknown ubyte[29] unknown3;
-	char[32] _name;
+	ZeroString!32 name;
 	@Unknown ubyte[168] unknown4;
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.algorithm : filter;
@@ -69,9 +69,6 @@ struct Item {
 	bool isValid() const {
 		return (unknown2 != unknown2.init);
 	}
-	auto name() const {
-		return _name.fromStringz;
-	}
 }
 
 static assert(Item.sizeof == 0x180);
@@ -88,8 +85,8 @@ struct Character {
 	align(1):
 	ulong exp;
 	Item[4] equipment;
-	char[64] _name;
-	char[64] _className;
+	ZeroString!64 name;
+	ZeroString!64 className;
 	@Unknown ubyte[260] unknown1;
 	uint[96] skillEXP;
 	ushort[96] skills;
@@ -159,12 +156,6 @@ struct Character {
 			}
 		}
 	}
-	auto name() const {
-		return _name.fromStringz;
-	}
-	auto className() const {
-		return _className.fromStringz;
-	}
 }
 static assert(Character.sizeof == 0xF00);
 static assert(Character.skills.offsetof == 0x90C);
@@ -185,12 +176,9 @@ struct Senator {
 	ushort classID;
 	uint attendance;
 	@Unknown ubyte[6] unknown;
-	char[64] _name;
+	ZeroString!64 name;
 	byte favour;
 	@Unknown ubyte[17] unknown2;
-	auto name() const {
-		return _name.fromStringz;
-	}
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.algorithm : filter;
 		import std.format;

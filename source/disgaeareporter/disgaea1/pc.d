@@ -7,7 +7,13 @@ import disgaeareporter.common;
 import std.range : isOutputRange;
 import std.typecons : BitFlags;
 
-Character[] chars;
+struct SJISString(size_t length) {
+	ubyte[length] raw;
+	alias toString this;
+	auto toString() const {
+		return sjisDec(raw[]);
+	}
+}
 
 align(1)
 struct PCGame {
@@ -150,9 +156,9 @@ struct Character {
 	align(1):
 	ulong exp;
 	Item[4] equipment;
-	@SiryulizeAs("name") ubyte[32] sjisName;
+	SJISString!32 name;
 	@Unknown ubyte unknown1;
-	ubyte[33] title;
+	SJISString!33 className;
 	@Unknown ubyte[2] unknown2;
 	@Unknown ubyte[32] unknown3;
 	StatusResistance[5] statusResistances;
@@ -193,13 +199,6 @@ struct Character {
 	@Unknown ubyte[5] unknown12;
 	uint transmigratedLevels;
 	@Unknown ubyte[20] unknown13;
-
-	static auto toSiryulHelper(string field : "sjisName")(ubyte[32] data) {
-		return sjisDec(data[]);
-	}
-	static auto toSiryulHelper(string field : "title")(ubyte[33] data) {
-		return sjisDec(data[]);
-	}
 
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.algorithm : filter;
@@ -242,12 +241,6 @@ struct Character {
 				sink.formattedWrite!"(%s)"(getSymbolsByUDA!(typeof(this), Unknown)[i]);
 			}
 		}
-	}
-	string name() const {
-		return sjisDec(sjisName[]);
-	}
-	string className() const {
-		return sjisDec(title[]);
 	}
 }
 
