@@ -315,6 +315,12 @@ struct Playtime {
 	}
 }
 
+private void playtimeTest() {
+	import std.outbuffer;
+	auto buf = new OutBuffer;
+	Playtime().toString(buf);
+}
+
 enum Rarity : ubyte {
 	common = 1,
 	rare = 2,

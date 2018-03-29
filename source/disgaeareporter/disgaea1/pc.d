@@ -93,13 +93,6 @@ static assert(PCGame.maxDamage.offsetof == 0x44E00);
 static assert(PCGame.extraNPCs.offsetof == 0x45188);
 static assert(PCGame.sizeof == 0x48877);
 
-
-private void playtimeTest() {
-	import std.outbuffer;
-	auto buf = new OutBuffer;
-	Playtime().toString(buf);
-}
-
 align(1)
 struct Item {
 	align(1):
