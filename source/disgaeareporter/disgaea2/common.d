@@ -3,6 +3,7 @@ module disgaeareporter.disgaea2.common;
 import disgaeareporter.disgaea2;
 
 import std.file;
+import std.range : isOutputRange;
 
 import d2data;
 
