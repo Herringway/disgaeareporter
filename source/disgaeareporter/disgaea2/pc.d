@@ -237,3 +237,21 @@ static assert(PCGame._characters.offsetof == 0xCF8);
 static assert(PCGame._senators.offsetof == 0x78CF8);
 static assert(PCGame._bagItems.offsetof == 0x7BAF8);
 static assert(PCGame.charCount.offsetof == 0xADF34);
+
+
+//PC
+unittest {
+	import disgaeareporter.dispatcher : getRawData, loadData, Platforms;
+	auto data = loadData!PCGame(getRawData(cast(immutable(ubyte)[])import("d2pc-SAVE000.DAT"), Platforms.pc));
+	assert(data.characters.length == 5);
+
+	with(data.characters[0]) {
+		assert(name == "Adell");
+		assert(level == 1);
+	}
+
+	with(data._bagItems[0]) {
+		assert(name == "Mint Gum");
+		assert(rarity == 185);
+	}
+}
