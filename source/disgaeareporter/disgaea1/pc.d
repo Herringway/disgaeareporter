@@ -184,12 +184,7 @@ struct Character {
 	@Unknown ubyte[10] unknown8;
 	Resistance baseResist;
 	Resistance resist;
-	ubyte baseJM;
-	ubyte jm;
-	ubyte baseMV;
-	ubyte mv;
-	ubyte baseCounter;
-	ubyte counter;
+	MiscStats miscStats;
 	@Unknown ubyte[13] unknown9;
 	ubyte senateRank;
 	@Unknown ubyte[2] unknown10;
@@ -207,7 +202,7 @@ struct Character {
 		sink.formattedWrite!"%s (Lv%s %s)\n"(name, level, className);
 		sink.formattedWrite!"\tRank: %s, Mana: %s\n"(senateRank, mana);
 		sink.formattedWrite!"\tTransmigrations: %s, Transmigrated Levels: %s\n"(numTransmigrations, transmigratedLevels);
-		sink.formattedWrite!"\tCounter: %s, MV: %s, JM: %s\n"(counter, mv, jm);
+		sink.formattedWrite!"\t%s\n"(miscStats);
 		sink.formattedWrite!"\tElemental Affinity: %s\n"(resist);
 		sink.formattedWrite!"\tBase Stats: %s\n"(baseStats);
 		sink.formattedWrite!"\tStats: %s\n"(stats);

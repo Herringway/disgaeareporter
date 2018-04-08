@@ -105,12 +105,7 @@ struct Character {
 	@Unknown ubyte[16] unknown7;
 	Resistance baseResist;
 	Resistance resist;
-	ubyte baseJM;
-	ubyte jm;
-	ubyte baseMV;
-	ubyte mv;
-	ubyte baseCounter;
-	ubyte counter;
+	MiscStats miscStats;
 	@Unknown ubyte[534] unknown8;
 
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
@@ -120,7 +115,7 @@ struct Character {
 		sink.formattedWrite!"%s (Lv%s %s)\n"(name, level, className);
 		sink.formattedWrite!"\tMana: %s\n"(mana);
 		//sink.formattedWrite!"\tTransmigrations: %s, Transmigrated Levels: %s\n"(numTransmigrations, transmigratedLevels);
-		sink.formattedWrite!"\tCounter: %s, MV: %s, JM: %s\n"(counter, mv, jm);
+		sink.formattedWrite!"\t%s\n"(miscStats);
 		sink.formattedWrite!"\tElemental Affinity: %s\n"(resist);
 		sink.formattedWrite!"\t%s\n"(stats);
 		sink.formattedWrite!"\tBase Stats: %s\n"(baseStats);

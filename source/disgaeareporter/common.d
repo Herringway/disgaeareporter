@@ -321,6 +321,22 @@ private void playtimeTest() {
 	Playtime().toString(buf);
 }
 
+align(1)
+struct MiscStats {
+	align(1):
+	ubyte baseJM;
+	ubyte jm;
+	ubyte baseMV;
+	ubyte mv;
+	ubyte baseCounter;
+	ubyte counter;
+
+	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
+		import std.format : formattedWrite;
+		sink.formattedWrite!"Counter: %s, MV: %s, JM: %s"(counter, mv, jm);
+	}
+}
+
 enum Rarity : ubyte {
 	common = 1,
 	rare = 2,
