@@ -5,6 +5,9 @@
 		"sjisish": "~>0.0",
 		":d1data": "*",
 		":d2data": "*",
+		":d3data": "*",
+		":d4data": "*",
+		":d5data": "*",
 		":dd2data": "*",
 		"siryul": "~>0.4.1",
 		"easysettings": "*"
@@ -13,6 +16,9 @@
 	"subPackages": [
 		"d1data",
 		"d2data",
+		"d3data",
+		"d4data",
+		"d5data",
 		"dd2data"
 	]
 }
