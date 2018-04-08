@@ -22,9 +22,9 @@ struct PSPCharacter {
 	align(1):
 	ulong exp;
 	Item[4] equipment;
-	ubyte[32] sjisName;
+	SJISString!32 name;
 	ubyte unknown1;
-	ubyte[33] title;
+	SJISString!33 className;
 	ubyte[2] unknown2;
 	ubyte[32] unknown3;
 	StatusResistance[5] statusResistances;
@@ -97,12 +97,6 @@ struct PSPCharacter {
 			}
 		}
 		debug(unknowns) formattedWrite!"%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n"(sink, unknown1, unknown2, unknown3, unknown4, unknown5, unknown6, unknown7, unknown8, unknown9, unknown10, unknown11);
-	}
-	string name() const {
-		return sjisDec(sjisName[]);
-	}
-	string className() const {
-		return sjisDec(title[]);
 	}
 }
 static assert(PSPCharacter.sizeof == 0x6A8);

@@ -68,21 +68,18 @@ struct PS2Item {
 	ubyte rank;
 	ubyte range;
 	ubyte[12] unknown2;
-	ubyte[32] sjisName;
+	SJISString!32 name;
 	ubyte[14] unknown3;
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.algorithm : filter;
 		import std.format;
 		sink.formattedWrite!"Lv%s %s (Rarity: %s) - %(%s, %)"(level, nameID.itemName, rarity, innocents[].filter!(x => x.isValid));
 	}
-	string name() const {
-		return sjisDec(sjisName[]);
-	}
 	bool isValid() const {
 		return nameID != 0;
 	}
 }
-static assert(PS2Item.sjisName.offsetof == 0x9A);
+static assert(PS2Item.name.offsetof == 0x9A);
 static assert(PS2Item.sizeof == 0xC8);
 
 private void func2() {
@@ -96,9 +93,9 @@ struct PS2Character {
 	align(1):
 	ulong exp;
 	PS2Item[4] equipment;
-	ubyte[32] sjisName;
+	SJISString!32 name;
 	ushort unknown1;
-	ubyte[32] title;
+	SJISString!32 className;
 	ubyte[2] unknown2;
 	ubyte[34] unknown3;
 	StatusResistance[5] statusResistances;
@@ -167,12 +164,6 @@ struct PS2Character {
 			}
 		}
 		debug(unknowns) formattedWrite!"%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n"(sink, unknown1, unknown2, unknown3, unknown4, unknown5, unknown6, unknown7, unknown8, unknown9, unknown10);
-	}
-	string name() const {
-		return sjisDec(sjisName[]);
-	}
-	string className() const {
-		return sjisDec(title[]);
 	}
 }
 static assert(PS2Character.sizeof == 0x7C8);

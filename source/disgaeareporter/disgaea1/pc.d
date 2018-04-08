@@ -7,54 +7,50 @@ import disgaeareporter.common;
 import std.range : isOutputRange;
 import std.typecons : BitFlags;
 
-struct SJISString(size_t length) {
-	ubyte[length] raw;
-	alias toString this;
-	auto toString() const {
-		return sjisDec(raw[]);
-	}
-}
-
 align(1)
 struct PCGame {
 	align(1):
 	@Unknown ubyte[8] unknown1;
 	Playtime playtime;
-	@Unknown ubyte[643] unknown2;
+	SJISString!34 fileName;
+	ushort level;
+	ushort unknown2;
+	ushort chapter;
+	@Unknown ubyte[603] unknown3;
 	ulong totalHL;
-	@Unknown ulong unknown3;
-	@Unknown ubyte[8] unknown4;
+	@Unknown ulong unknown4;
+	@Unknown ubyte[8] unknown5;
 	ulong hpRecovered;
 	ulong spRecovered;
-	@Unknown ubyte[2304] unknown5;
+	@Unknown ubyte[2304] unknown6;
 	//0x1EC - Shoe Inventory?
 	Character[128] _characters;
 	Senator[512] senators;
 	MapClearData[153] mapClears;
-	@Unknown ubyte[640] unknown6;
+	@Unknown ubyte[640] unknown7;
 	Item[16] _bagItems;
 	Item[256] _warehouseItems;
-	@Unknown ubyte[28] unknown7;
+	@Unknown ubyte[28] unknown8;
 	ushort allyKillCount;
-	@Unknown ubyte[2] unknown8;
+	@Unknown ubyte[2] unknown9;
 	ulong revived;
-	@Unknown ubyte[8] unknown9;
+	@Unknown ubyte[8] unknown10;
 	ushort charCount;
-	@Unknown ubyte[70] unknown10;
+	@Unknown ubyte[70] unknown11;
 	ubyte bgmVolume;
 	ubyte voiceVolume;
 	ubyte sfxVolume;
-	@Unknown ubyte[53] unknown11;
+	@Unknown ubyte[53] unknown12;
 	BitFlags!Rarity[1008] itemRecords;
 	bool friendlyEffectDisabled;
 	bool enemyEffectDisabled;
 	bool japaneseVoices;
-	@Unknown ubyte[349] unknown12;
+	@Unknown ubyte[349] unknown13;
 	uint maxDamage;
 	uint totalDamage;
 	uint geoCombo;
-	@Unknown uint unknown13;
 	@Unknown uint unknown14;
+	@Unknown uint unknown15;
 	uint enemiesKilled;
 	//???
 	uint enemiesKilledCopy;
@@ -64,11 +60,11 @@ struct PCGame {
 	uint itemRate;
 	uint itemWorldVisits;
 	uint itemWorldLevels;
-	@Unknown uint unknown15;
+	@Unknown uint unknown16;
 	BitFlags!Defeated defeated;
-	@Unknown ubyte[848] unknown16;
+	@Unknown ubyte[848] unknown17;
 	Character[3] extraNPCs;
-	@Unknown ubyte[8903] unknown17;
+	@Unknown ubyte[8903] unknown18;
 
 	auto characters() const {
 		return _characters[0..charCount];

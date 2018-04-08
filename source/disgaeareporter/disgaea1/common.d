@@ -147,13 +147,10 @@ struct Senator {
 	ubyte nameIndex;
 	@Unknown ubyte unknown;
 	ushort rarityPreference;
-	ubyte[16] sjisName;
+	SJISString!16 name;
 	@Unknown ubyte unknown2;
 	byte favour;
 	@Unknown ubyte unknown3;
-	string name() const {
-		return sjisDec(sjisName[]);
-	}
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.algorithm : filter;
 		import std.format;
@@ -265,6 +262,14 @@ string sjisDec(const ubyte[] data) {
 unittest {
 	auto data = cast(ubyte[])[0x82, 0x6B, 0x82, 0x81, 0x82, 0x88, 0x82, 0x81, 0x82, 0x92, 0x82, 0x8C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00];
 	assert(sjisDec(data) == "Laharl");
+}
+
+struct SJISString(size_t length) {
+	ubyte[length] raw;
+	alias toString this;
+	auto toString() const {
+		return sjisDec(raw[]);
+	}
 }
 
 double itemStatsMultiplier(ulong level) {
