@@ -195,7 +195,7 @@ struct Senator {
 static assert(Senator.sizeof == 0x60);
 
 align(1)
-struct PCGame {
+struct D2PC {
 	align(1):
 	@Unknown ubyte[8] unknown;
 	Playtime playtime;
@@ -232,11 +232,11 @@ struct PCGame {
 	void postRead() {}
 	enum itemRecordAlignment = 80;
 }
-static assert(PCGame.totalHL.offsetof == 0x3D0);
-static assert(PCGame._characters.offsetof == 0xCF8);
-static assert(PCGame._senators.offsetof == 0x78CF8);
-static assert(PCGame._bagItems.offsetof == 0x7BAF8);
-static assert(PCGame.charCount.offsetof == 0xADF34);
+static assert(D2PC.totalHL.offsetof == 0x3D0);
+static assert(D2PC._characters.offsetof == 0xCF8);
+static assert(D2PC._senators.offsetof == 0x78CF8);
+static assert(D2PC._bagItems.offsetof == 0x7BAF8);
+static assert(D2PC.charCount.offsetof == 0xADF34);
 
 
 //PC

@@ -224,7 +224,7 @@ private void func() {
 }
 
 align(1)
-struct PS3Game {
+struct DD2PS3 {
 	align(1):
 	@Unknown ubyte[1440] unknown1;
 	Character[128] _characters;
@@ -255,15 +255,9 @@ struct PS3Game {
 	}
 }
 
-static assert(PS3Game._characters.offsetof == 0x5A0);
-static assert(PS3Game._items.offsetof == 0xDD518);
-static assert(PS3Game.charCount.offsetof == 0x1507EC);
-
-private void x() {
-	PS3Game().postRead();
-}
-
-
+static assert(DD2PS3._characters.offsetof == 0x5A0);
+static assert(DD2PS3._items.offsetof == 0xDD518);
+static assert(DD2PS3.charCount.offsetof == 0x1507EC);
 
 unittest {
 	import disgaeareporter.dispatcher : getRawData, loadData, Platforms;

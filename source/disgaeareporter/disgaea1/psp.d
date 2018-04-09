@@ -8,7 +8,7 @@ import disgaeareporter.disgaea1.pc : Item;
 
 import disgaeareporter.common;
 
-struct PSPGame {
+struct D1PSP {
 	enum charOffset = 0xBB8;
 	enum charSize = 0x6A8;
 	ubyte[0xBB8] unknown;

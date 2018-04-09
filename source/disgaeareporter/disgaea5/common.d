@@ -1,0 +1,1 @@
+module disgaeareporter.disgaea5.common;

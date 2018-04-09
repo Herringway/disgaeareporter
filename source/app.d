@@ -2,6 +2,9 @@ module disgaeareporter.app;
 
 import disgaeareporter.disgaea1;
 import disgaeareporter.disgaea2;
+import disgaeareporter.disgaea3;
+import disgaeareporter.disgaea4;
+import disgaeareporter.disgaea5;
 import disgaeareporter.disgaead2;
 
 import disgaeareporter.dispatcher;
@@ -134,27 +137,66 @@ auto handleFile(string path, string outPath, bool yaml, bool json) {
 			case Games.disgaea1:
 				switch (detected.platform) {
 					case Platforms.ps2:
-						dumpData(loadData!(disgaeareporter.disgaea1.PS2Game)(detected.rawData), outFile, yaml, json);
+						dumpData(loadData!(disgaeareporter.disgaea1.D1PS2)(detected.rawData), outFile, yaml, json);
 						break;
 					case Platforms.pc:
-						dumpData(loadData!(disgaeareporter.disgaea1.PCGame)(detected.rawData), outFile, yaml, json);
+						dumpData(loadData!(disgaeareporter.disgaea1.D1PC)(detected.rawData), outFile, yaml, json);
 						break;
 					case Platforms.psp:
-						dumpData(loadData!(disgaeareporter.disgaea1.PSPGame)(detected.rawData), outFile, yaml, json);
+						dumpData(loadData!(disgaeareporter.disgaea1.D1PSP)(detected.rawData), outFile, yaml, json);
 						break;
+					//case Platforms.ds:
+					//	dumpData(loadData!(disgaeareporter.disgaea1.D1DS)(detected.rawData), outFile, yaml, json);
+					//	break;
 					default: writeln("Unsupported"); return;
 				}
 				break;
 			case Games.disgaea2:
 				switch (detected.platform) {
 					case Platforms.ps2:
-						dumpData(loadData!(disgaeareporter.disgaea2.PS2Game)(detected.rawData), outFile, yaml, json);
+						dumpData(loadData!(disgaeareporter.disgaea2.D2PS2)(detected.rawData), outFile, yaml, json);
 						break;
 					case Platforms.pc:
-						dumpData(loadData!(disgaeareporter.disgaea2.PCGame)(detected.rawData), outFile, yaml, json);
+						dumpData(loadData!(disgaeareporter.disgaea2.D2PC)(detected.rawData), outFile, yaml, json);
 						break;
 					case Platforms.psp:
-						dumpData(loadData!(disgaeareporter.disgaea2.PSPGame)(detected.rawData), outFile, yaml, json);
+						dumpData(loadData!(disgaeareporter.disgaea2.D2PSP)(detected.rawData), outFile, yaml, json);
+						break;
+					default: writeln("Unsupported"); return;
+				}
+				break;
+			case Games.disgaea3:
+				switch (detected.platform) {
+					case Platforms.ps3:
+						dumpData(loadData!(disgaeareporter.disgaea3.D3PS3)(detected.rawData), outFile, yaml, json);
+						break;
+					case Platforms.psVita:
+						dumpData(loadData!(disgaeareporter.disgaea3.D3Vita)(detected.rawData), outFile, yaml, json);
+						break;
+					default: writeln("Unsupported"); return;
+				}
+				break;
+			case Games.disgaea4:
+				switch (detected.platform) {
+					case Platforms.ps3:
+						dumpData(loadData!(disgaeareporter.disgaea4.D4PS3)(detected.rawData), outFile, yaml, json);
+						break;
+					case Platforms.psVita:
+						dumpData(loadData!(disgaeareporter.disgaea4.D4Vita)(detected.rawData), outFile, yaml, json);
+						break;
+					default: writeln("Unsupported"); return;
+				}
+				break;
+			case Games.disgaea5:
+				switch (detected.platform) {
+					case Platforms.ps4:
+						dumpData(loadData!(disgaeareporter.disgaea5.D5PS4)(detected.rawData), outFile, yaml, json);
+						break;
+					case Platforms.switch_:
+						dumpData(loadData!(disgaeareporter.disgaea5.D5Switch)(detected.rawData), outFile, yaml, json);
+						break;
+					case Platforms.pc:
+						dumpData(loadData!(disgaeareporter.disgaea5.D5PC)(detected.rawData), outFile, yaml, json);
 						break;
 					default: writeln("Unsupported"); return;
 				}
@@ -162,7 +204,7 @@ auto handleFile(string path, string outPath, bool yaml, bool json) {
 			case Games.disgaead2:
 				switch(detected.platform) {
 					case Platforms.ps3:
-						dumpData(loadData!(disgaeareporter.disgaead2.PS3Game)(detected.rawData), outFile, yaml, json);
+						dumpData(loadData!(disgaeareporter.disgaead2.DD2PS3)(detected.rawData), outFile, yaml, json);
 						break;
 					default: writeln("Unsupported"); return;
 				}

@@ -9,7 +9,7 @@ import std.range : isOutputRange;
 PS2Character[] ps2Chars;
 
 align(1)
-struct PS2Game {
+struct D1PS2 {
 	align(1):
 	ubyte[640] unknown;
 	ulong totalHL;
@@ -41,12 +41,12 @@ struct PS2Game {
 	}
 	void postRead() {}
 }
-static assert(PS2Game.totalHL.offsetof == 0x280);
-static assert(PS2Game._characters.offsetof == 0xBA8);
-static assert(PS2Game.senators.offsetof == 0x3EFA8);
-static assert(PS2Game.mapClears.offsetof == 0x42FAC);
-static assert(PS2Game._bagItems.offsetof == 0x472C8);
-static assert(PS2Game.sizeof == 0x54840);
+static assert(D1PS2.totalHL.offsetof == 0x280);
+static assert(D1PS2._characters.offsetof == 0xBA8);
+static assert(D1PS2.senators.offsetof == 0x3EFA8);
+static assert(D1PS2.mapClears.offsetof == 0x42FAC);
+static assert(D1PS2._bagItems.offsetof == 0x472C8);
+static assert(D1PS2.sizeof == 0x54840);
 
 align(1)
 struct PS2Item {

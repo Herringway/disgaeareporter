@@ -16,6 +16,7 @@ enum Games {
 enum Platforms {
 	ps2,
 	ps3,
+	ps4,
 	ds,
 	psp,
 	psVita,
@@ -100,6 +101,7 @@ ubyte[] getRawData(const ubyte[] input, Platforms platform) {
 	final switch (platform) {
 		case Platforms.ps2: break;
 		case Platforms.ps3: break;
+		case Platforms.ps4: break;
 		case Platforms.ds:
 			return input.dup;
 		case Platforms.psp: break;
@@ -182,9 +184,12 @@ unittest {
 }
 
 auto loadData(Game)(const ubyte[] data) {
+	import std.traits : hasMember;
 	Game* game = new Game;
 	data.readStruct!Game(game);
-	game.postRead();
+	static if (hasMember!(Game, "postRead")) {
+		game.postRead();
+	}
 	debug(dumpraw) {
 		import std.file : mkdirRecurse, write;
 		import std.traits : moduleName;

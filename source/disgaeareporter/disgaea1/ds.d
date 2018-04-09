@@ -1,7 +1,7 @@
 module disgaeareporter.disgaea1.ds;
 
 align(1)
-struct DSGame {
+struct D1DS {
 	align(1):
 	ubyte[1952] unknown;
 	Character[128] _characters;
@@ -12,7 +12,7 @@ struct DSGame {
 	void postRead() {}
 }
 
-static assert(DSGame._characters.offsetof == 0x7A0);
+static assert(D1DS._characters.offsetof == 0x7A0);
 
 align(1)
 struct Character {

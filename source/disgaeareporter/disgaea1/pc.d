@@ -8,7 +8,7 @@ import std.range : isOutputRange;
 import std.typecons : BitFlags;
 
 align(1)
-struct PCGame {
+struct D1PC {
 	align(1):
 	@Unknown ubyte[8] unknown1;
 	Playtime playtime;
@@ -84,16 +84,16 @@ struct PCGame {
 	}
 	void postRead() {}
 }
-static assert(PCGame.totalHL.offsetof == 0x290);
-static assert(PCGame.mapClears.offsetof == 0x3A7B8);
-static assert(PCGame._warehouseItems.offsetof == 0x3B800);
-static assert(PCGame.allyKillCount.offsetof == 0x4481C);
-static assert(PCGame.revived.offsetof == 0x44820);
-static assert(PCGame.charCount.offsetof == 0x44830);
-static assert(PCGame.itemRecords.offsetof == 0x448B0);
-static assert(PCGame.maxDamage.offsetof == 0x44E00);
-static assert(PCGame.extraNPCs.offsetof == 0x45188);
-static assert(PCGame.sizeof == 0x48877);
+static assert(D1PC.totalHL.offsetof == 0x290);
+static assert(D1PC.mapClears.offsetof == 0x3A7B8);
+static assert(D1PC._warehouseItems.offsetof == 0x3B800);
+static assert(D1PC.allyKillCount.offsetof == 0x4481C);
+static assert(D1PC.revived.offsetof == 0x44820);
+static assert(D1PC.charCount.offsetof == 0x44830);
+static assert(D1PC.itemRecords.offsetof == 0x448B0);
+static assert(D1PC.maxDamage.offsetof == 0x44E00);
+static assert(D1PC.extraNPCs.offsetof == 0x45188);
+static assert(D1PC.sizeof == 0x48877);
 
 align(1)
 struct Item {
