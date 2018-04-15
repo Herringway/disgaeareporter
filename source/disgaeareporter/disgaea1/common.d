@@ -16,48 +16,6 @@ import std.typecons;
 
 static immutable d1SteamID = "405900";
 
-//enum SharkPortSaveType {
-//	standard
-//}
-//import std.datetime;
-//struct SharkPortSaveDir {
-//	ushort entryLength;
-//	string name;
-//	uint numEntries;
-//	ubyte[8] unknown;
-//	ushort mode;
-//	ushort unknown2;
-//	DateTime created;
-//	DateTime modified;
-//	ubyte[] unknown3;
-//}
-//struct SharkPortSaveFile {
-//	ushort entryLength;
-//	string name;
-//	uint length;
-//	ubyte[8] unknown;
-//	ushort mode;
-//	ushort unknown2;
-//	DateTime created;
-//	DateTime modified;
-//	ubyte[] unknown3;
-//	ubyte[] data;
-//}
-//struct SharkPortSave {
-//	SharkPortSaveType type;
-//	string dirName;
-//	string comment;
-//	string date;
-//	uint fileLength;
-//	SharkPortSaveDir dir;
-//	SharkPortSaveFile[] files;
-//	uint checksum;
-//}
-//auto readSharkPortSave(const ubyte[] data) {
-
-//}
-
-
 align(1)
 struct StatusResistance {
 	align(1):
