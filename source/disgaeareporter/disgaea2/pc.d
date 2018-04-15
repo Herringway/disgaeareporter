@@ -242,7 +242,7 @@ static assert(D2PC.charCount.offsetof == 0xADF34);
 //PC
 unittest {
 	import disgaeareporter.dispatcher : getRawData, loadData, Platforms;
-	auto data = loadData!PCGame(getRawData(cast(immutable(ubyte)[])import("d2pc-SAVE000.DAT"), Platforms.pc));
+	auto data = loadData!D2PC(getRawData(cast(immutable(ubyte)[])import("d2pc-SAVE000.DAT"), Platforms.pc));
 	assert(data.characters.length == 5);
 
 	with(data.characters[0]) {

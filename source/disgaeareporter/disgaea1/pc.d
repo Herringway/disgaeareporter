@@ -277,7 +277,7 @@ ubyte[] decompress(const ubyte[] input, uint expected) pure @safe {
 //PC
 unittest {
 	import disgaeareporter.dispatcher : getRawData, loadData, Platforms;
-	auto data = loadData!PCGame(getRawData(cast(immutable(ubyte)[])import("d1pc-SAVE000.DAT"), Platforms.pc));
+	auto data = loadData!D1PC(getRawData(cast(immutable(ubyte)[])import("d1pc-SAVE000.DAT"), Platforms.pc));
 	assert(data.characters.length == 6);
 
 	with(data.characters[0]) {

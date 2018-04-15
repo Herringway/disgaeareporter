@@ -193,7 +193,7 @@ private void func() {
 unittest {
 	import disgaeareporter.common : printData;
 	import disgaeareporter.dispatcher : loadData;
-	auto data = loadData!PS2Game(cast(immutable(ubyte)[])import("d1ps2-raw.dat"));
+	auto data = loadData!D1PS2(cast(immutable(ubyte)[])import("d1ps2-raw.dat"));
 
 	assert(data.totalHL == 4172);
 	assert(data.allyKillCount == 3);

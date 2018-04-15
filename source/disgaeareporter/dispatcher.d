@@ -237,7 +237,7 @@ unittest {
 		assert(detected.platform == Platforms.ds);
 	}
 	{
-		auto detected = detectGame(cast(ubyte[])import("dd2ps3-raw.dat"));
+		auto detected = detectGame(cast(ubyte[])import("dd2ps3-raw.DAT"));
 		assert(detected.game == Games.disgaead2);
 		assert(detected.platform == Platforms.ps3);
 	}
