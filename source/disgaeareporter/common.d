@@ -390,3 +390,41 @@ unittest {
 	auto str = hexString!"41 64 65 6C 6C 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00";
 	assert(str.fromStringz == "Adell");
 }
+
+
+
+string sjisDec(const ubyte[] data) {
+	import sjisish : toUTF;
+	import std.algorithm : countUntil;
+	import std.string : representation;
+	auto str = toUTF(data);
+	string output;
+	foreach(dchar chr; str) {
+		if (chr >= '！' && (chr <= '～')) {
+			output ~= chr - 0xFEE0;
+		} else if (chr == '　') {
+			output ~= ' ';
+		} else if (chr == '〜') {
+			output ~= '~';
+		} else {
+			output ~= chr;
+		}
+	}
+	auto endIndex = output.representation.countUntil('\0');
+	return output[0..endIndex == -1 ? output.length : endIndex];
+}
+
+unittest {
+	auto data = cast(ubyte[])[0x82, 0x6B, 0x82, 0x81, 0x82, 0x88, 0x82, 0x81, 0x82, 0x92, 0x82, 0x8C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00];
+	assert(sjisDec(data) == "Laharl");
+}
+
+struct SJISString(size_t length) {
+	import siryul : SerializationMethod;
+	ubyte[length] raw;
+	alias toString this;
+	@SerializationMethod
+	auto toString() const {
+		return sjisDec(raw[]);
+	}
+}

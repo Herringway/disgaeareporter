@@ -2,7 +2,7 @@ module disgaeareporter.disgaea1.common;
 
 import d1data;
 import disgaeareporter.disgaea1;
-import disgaeareporter.common : favourString, Unknown;
+import disgaeareporter.common : favourString, SJISString, Unknown;
 
 import memmux : readStruct = read;
 
@@ -194,42 +194,6 @@ string innocentName(const ushort id) {
 		return d1innocents[id];
 	}
 	return "Unknown specialist "~id.to!string(16);
-}
-
-string sjisDec(const ubyte[] data) {
-	import sjisish : toUTF;
-	import std.algorithm : countUntil;
-	import std.string : representation;
-	auto str = toUTF(data);
-	string output;
-	foreach(dchar chr; str) {
-		if (chr >= '！' && (chr <= '～')) {
-			output ~= chr - 0xFEE0;
-		} else if (chr == '　') {
-			output ~= ' ';
-		} else if (chr == '〜') {
-			output ~= '~';
-		} else {
-			output ~= chr;
-		}
-	}
-	auto endIndex = output.representation.countUntil('\0');
-	return output[0..endIndex == -1 ? output.length : endIndex];
-}
-
-unittest {
-	auto data = cast(ubyte[])[0x82, 0x6B, 0x82, 0x81, 0x82, 0x88, 0x82, 0x81, 0x82, 0x92, 0x82, 0x8C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00];
-	assert(sjisDec(data) == "Laharl");
-}
-
-struct SJISString(size_t length) {
-	import siryul : SerializationMethod;
-	ubyte[length] raw;
-	alias toString this;
-	@SerializationMethod
-	auto toString() const {
-		return sjisDec(raw[]);
-	}
 }
 
 double itemStatsMultiplier(ulong level) {
