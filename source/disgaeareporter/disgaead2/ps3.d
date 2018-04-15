@@ -66,7 +66,6 @@ struct Item {
 			level = swapEndian(level);
 			nameID = swapEndian(nameID);
 		}
-		stats.postRead();
 		foreach (ref innocent; innocents) {
 			innocent.postRead();
 		}
@@ -100,7 +99,7 @@ struct Character {
 	ModernStats!true stats;
 	ModernStats!true realStats;
 	@Unknown ubyte[8] unknown3;
-	BaseCharacterStatsLater baseStats;
+	BaseCharacterStatsLater!true baseStats;
 	@Unknown ubyte[64] unknown4;
 	uint mana;
 	ushort level;
@@ -198,8 +197,6 @@ struct Character {
 				exp = swapEndian(exp);
 			}
 		}
-		stats.postRead();
-		realStats.postRead();
 		aptitudes.postRead();
 		foreach (ref item; equipment) {
 			item.postRead();

@@ -161,41 +161,11 @@ string favourString(const byte input) {
 	}
 }
 
-align(1)
-struct BaseCharacterStats {
-	align(1):
-	ubyte hp;
-	ubyte sp;
-	ubyte attack;
-	ubyte defense;
-	ubyte intelligence;
-	ubyte speed;
-	ubyte hit;
-	ubyte resistance;
-	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
-		import std.format;
-		sink.formattedWrite!"HP: %s, SP: %s, Attack: %s, Defense: %s, Intelligence: %s, Speed: %s, Hit: %s, Resistance: %s"(hp, sp, attack, defense, intelligence, speed, hit, resistance);
-	}
-}
+alias BaseCharacterStats = StatsImpl!(ubyte, false);
 static assert(BaseCharacterStats.sizeof == 8);
 
-align(1)
-struct BaseCharacterStatsLater {
-	align(1):
-	ubyte hp;
-	ubyte sp;
-	ubyte attack;
-	ubyte defense;
-	ubyte intelligence;
-	ubyte resistance;
-	ubyte hit;
-	ubyte speed;
-	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
-		import std.format;
-		sink.formattedWrite!"HP: %s, SP: %s, Attack: %s, Defense: %s, Intelligence: %s, Speed: %s, Hit: %s, Resistance: %s"(hp, sp, attack, defense, intelligence, speed, hit, resistance);
-	}
-}
-static assert(BaseCharacterStatsLater.sizeof == 8);
+alias BaseCharacterStatsLater(bool bigEndian) = ModernStatsImpl!(ubyte, bigEndian);
+static assert(BaseCharacterStatsLater!true.sizeof == 8);
 
 align(1)
 struct Resistance {
@@ -208,59 +178,58 @@ struct Resistance {
 		sink.formattedWrite!"Fire - %s%%, Wind - %s%%, Ice - %s%%"(fire, wind, ice);
 	}
 }
-align(1)
-struct Stats {
-	align(1):
-	int hp;
-	int sp;
-	int attack;
-	int defense;
-	int intelligence;
-	int speed;
-	int hit;
-	int resistance;
-	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
-		import std.format;
-		formattedWrite!"HP: %s, SP: %s, Attack: %s, Defense: %s, Intelligence: %s, Speed: %s, Hit: %s, Resistance: %s"(sink, hp, sp, attack, defense, intelligence, speed, hit, resistance);
-	}
-}
+
+alias Stats = StatsImpl!(int, false);
 static assert(Stats.sizeof == 32);
 
+alias LongStats(bool bigEndian) = StatsImpl!(long, bigEndian);
+
 align(1)
-struct ModernStats(bool isBigEndian) {
+struct StatsImpl(T, bool isBigEndian) {
+	static if (isBigEndian) {
+		alias Endian = BigEndian;
+	} else {
+		alias Endian = LittleEndian;
+	}
 	align(1):
-	long hp;
-	long sp;
-	long attack;
-	long defense;
-	long intelligence;
-	long resistance;
-	long hit;
-	long speed;
+	Endian!T hp;
+	Endian!T sp;
+	Endian!T attack;
+	Endian!T defense;
+	Endian!T intelligence;
+	Endian!T speed;
+	Endian!T hit;
+	Endian!T resistance;
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.format;
 		formattedWrite!"HP: %s, SP: %s, Attack: %s, Defense: %s, Intelligence: %s, Speed: %s, Hit: %s, Resistance: %s"(sink, hp, sp, attack, defense, intelligence, speed, hit, resistance);
 	}
-	void postRead() {
-		version(LittleEndian) {
-			enum flipBytes = isBigEndian;
-		} else {
-			enum flipBytes = !isBigEndian;
-		}
-		static if (flipBytes) {
-			import std.bitmanip : swapEndian;
-			hp = swapEndian(hp);
-			sp = swapEndian(sp);
-			attack = swapEndian(attack);
-			defense = swapEndian(defense);
-			intelligence = swapEndian(intelligence);
-			speed = swapEndian(speed);
-			hit = swapEndian(hit);
-			resistance = swapEndian(resistance);
-		}
+}
+
+alias ModernStats(bool bigEndian) = ModernStatsImpl!(long, bigEndian);
+static assert(ModernStats!true.sizeof == 64);
+
+align(1)
+struct ModernStatsImpl(Type, bool isBigEndian) {
+	static if (isBigEndian) {
+		alias Endian = BigEndian;
+	} else {
+		alias Endian = LittleEndian;
+	}
+	align(1):
+	Endian!Type hp;
+	Endian!Type sp;
+	Endian!Type attack;
+	Endian!Type defense;
+	Endian!Type intelligence;
+	Endian!Type resistance;
+	Endian!Type hit;
+	Endian!Type speed;
+	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
+		import std.format;
+		formattedWrite!"HP: %s, SP: %s, Attack: %s, Defense: %s, Intelligence: %s, Speed: %s, Hit: %s, Resistance: %s"(sink, hp, sp, attack, defense, intelligence, speed, hit, resistance);
 	}
 }
-static assert(ModernStats!true.sizeof == 64);
 
 align(1)
 struct Aptitudes(bool isBigEndian) {
@@ -427,4 +396,45 @@ struct SJISString(size_t length) {
 	auto toString() const {
 		return sjisDec(raw[]);
 	}
+}
+
+struct LittleEndian(T) {
+	import siryul : SerializationMethod;
+	ubyte[T.sizeof] raw;
+	alias toInt this;
+	@SerializationMethod
+	auto toInt() const {
+		import std.bitmanip : littleEndianToNative;
+		if (__ctfe) {
+			return 0;
+		}
+		return littleEndianToNative!T(raw);
+	}
+	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
+		import std.format : formattedWrite;
+		sink.formattedWrite!"%s"(this.toInt());
+	}
+}
+struct BigEndian(T) {
+	import siryul : SerializationMethod;
+	ubyte[T.sizeof] raw;
+	alias toInt this;
+	@SerializationMethod
+	T toInt() const {
+		import std.bitmanip : bigEndianToNative;
+		if (__ctfe) {
+			return 0;
+		}
+		return bigEndianToNative!T(raw);
+	}
+	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
+		import std.format : formattedWrite;
+		sink.formattedWrite!"%s"(this.toInt());
+	}
+}
+
+unittest {
+	import std.outbuffer;
+	auto buf = new OutBuffer;
+	BigEndian!ushort().toString(buf);
 }

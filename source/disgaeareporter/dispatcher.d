@@ -112,7 +112,8 @@ auto detectGame(ubyte[] input) {
 ubyte[] getRawData(const ubyte[] input, Platforms platform) {
 	final switch (platform) {
 		case Platforms.ps2: break;
-		case Platforms.ps3: break;
+		case Platforms.ps3:
+			return input.dup;
 		case Platforms.ps4: break;
 		case Platforms.ds:
 			return input.dup;

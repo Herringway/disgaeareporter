@@ -2,7 +2,7 @@ module disgaeareporter.disgaea1.common;
 
 import d1data;
 import disgaeareporter.disgaea1;
-import disgaeareporter.common : favourString, SJISString, Unknown;
+import disgaeareporter.common;
 
 import memmux : readStruct = read;
 
@@ -44,22 +44,7 @@ void fooi() {
 	Innocent().toString(buf);
 }
 
-align(1)
-struct BaseItemStats {
-	align(1):
-	short hp;
-	short sp;
-	short attack;
-	short defense;
-	short intelligence;
-	short speed;
-	short hit;
-	short resistance;
-	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
-		import std.format;
-		sink.formattedWrite!"HP: %s, SP: %s, Attack: %s, Defense: %s, Intelligence: %s, Speed: %s, Hit: %s, Resistance: %s"(hp, sp, attack, defense, intelligence, speed, hit, resistance);
-	}
-}
+alias BaseItemStats = StatsImpl!(short, false);
 static assert(BaseItemStats.sizeof == 16);
 
 enum Defeated {

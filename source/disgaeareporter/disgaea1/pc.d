@@ -279,6 +279,7 @@ unittest {
 	import disgaeareporter.dispatcher : getRawData, loadData, Platforms;
 	auto data = loadData!D1PC(getRawData(cast(immutable(ubyte)[])import("d1pc-SAVE000.DAT"), Platforms.pc));
 	assert(data.characters.length == 6);
+	assert(data.fileName == "Laharl");
 
 	with(data.characters[0]) {
 		assert(name == "Laharl");
