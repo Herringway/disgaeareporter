@@ -229,7 +229,6 @@ struct D2PC {
 		import d2data : d2itemRecords;
 		return d2itemRecords[record];
 	}
-	void postRead() {}
 	enum itemRecordAlignment = 80;
 }
 static assert(D2PC.totalHL.offsetof == 0x3D0);

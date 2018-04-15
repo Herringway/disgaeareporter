@@ -9,7 +9,6 @@ struct D1DS {
 	Character[] characters() {
 		return _characters[];
 	}
-	void postRead() {}
 }
 
 static assert(D1DS._characters.offsetof == 0x7A0);

@@ -39,7 +39,6 @@ struct D1PS2 {
 		import std.algorithm : filter;
 		return _warehouseItems[].filter!(x => x.isValid);
 	}
-	void postRead() {}
 }
 static assert(D1PS2.totalHL.offsetof == 0x280);
 static assert(D1PS2._characters.offsetof == 0xBA8);

@@ -8,19 +8,12 @@ import std.range : isOutputRange;
 align(1)
 struct Innocent {
 	align(1):
-	uint level;
-	ushort type;
+	BigEndian!uint level;
+	BigEndian!ushort type;
 	@Unknown ubyte[2] unknown;
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.format;
 		sink.formattedWrite!"Lv%s%s %s"(level, /+level > 10000 ? "+" : ""+/ "", type.innocentName);
-	}
-	void postRead() {
-		version(LittleEndian) {
-			import std.bitmanip : swapEndian;
-			level = swapEndian(level);
-			type = swapEndian(type);
-		}
 	}
 	bool isValid() const {
 		return type != 0;
@@ -30,13 +23,13 @@ struct Innocent {
 align(1)
 struct Item {
 	align(1):
-	uint unknown1;
+	BigEndian!uint unknown1;
 	Innocent[6] innocents;
 	@Unknown ubyte[4] unknown2;
 	ModernStats!true stats;
 	ModernStats!true baseStats;
-	ushort nameID;
-	ushort level;
+	BigEndian!ushort nameID;
+	BigEndian!ushort level;
 	@Unknown ubyte[53] unknown3;
 	char[64] _name;
 	@Unknown ubyte[95] unknown4;
@@ -59,17 +52,6 @@ struct Item {
 	auto name() const {
 		return _name.fromStringz;
 	}
-	void postRead() {
-		version(LittleEndian) {
-			import std.bitmanip : swapEndian;
-			unknown1 = swapEndian(unknown1);
-			level = swapEndian(level);
-			nameID = swapEndian(nameID);
-		}
-		foreach (ref innocent; innocents) {
-			innocent.postRead();
-		}
-	}
 }
 
 static assert(Item.sizeof == 0x190);
@@ -84,25 +66,25 @@ private void funci() {
 align(1)
 struct Character {
 	align(1):
-	ulong exp;
+	BigEndian!ulong exp;
 
 	Item[4] equipment;
 	char[52] _name;
 	char[52] _className;
 	@Unknown ubyte[180] unknown;
-	uint[256] skillEXP;
-	ushort[256] skills;
+	BigEndian!uint[256] skillEXP;
+	BigEndian!ushort[256] skills;
 	ubyte[256] skillLevels;
 	@Unknown ubyte[516] unknown2;
-	ulong currentHP;
-	ulong currentSP;
+	BigEndian!ulong currentHP;
+	BigEndian!ulong currentSP;
 	ModernStats!true stats;
 	ModernStats!true realStats;
 	@Unknown ubyte[8] unknown3;
 	BaseCharacterStatsLater!true baseStats;
 	@Unknown ubyte[64] unknown4;
-	uint mana;
-	ushort level;
+	BigEndian!uint mana;
+	BigEndian!ushort level;
 	@Unknown ubyte[18] unknown5;
 	Resistance baseResist;
 	Resistance resist;
@@ -119,10 +101,10 @@ struct Character {
 	@Unknown ubyte[8] unknown6;
 	ubyte range;
 	@Unknown ubyte[23] unknown7;
-	ulong numKills;
-	ulong numDeaths;
-	ulong maxDamage;
-	ulong totalDamage;
+	BigEndian!ulong numKills;
+	BigEndian!ulong numDeaths;
+	BigEndian!ulong maxDamage;
+	BigEndian!ulong totalDamage;
 	@Unknown ubyte[844] unknown8;
 	Aptitudes!true aptitudes;
 	Aptitudes!true aptitudes2;
@@ -180,28 +162,6 @@ struct Character {
 	auto className() const {
 		return _className.fromStringz;
 	}
-	void postRead() {
-		version(LittleEndian) {
-			import std.bitmanip : swapEndian;
-			exp = swapEndian(exp);
-			level = swapEndian(level);
-			mana = swapEndian(mana);
-			maxDamage = swapEndian(maxDamage);
-			totalDamage = swapEndian(totalDamage);
-			numKills = swapEndian(numKills);
-			numDeaths = swapEndian(numDeaths);
-			foreach (ref skill; skills) {
-				skill = swapEndian(skill);
-			}
-			foreach (ref exp; skillEXP) {
-				exp = swapEndian(exp);
-			}
-		}
-		aptitudes.postRead();
-		foreach (ref item; equipment) {
-			item.postRead();
-		}
-	}
 }
 static assert(Character.sizeof == 0x1A60);
 static assert(Character._name.offsetof == 0x648);
@@ -228,7 +188,7 @@ struct DD2PS3 {
 	@Unknown ubyte[40824] unknown2;
 	Item[999] _items;
 	@Unknown ubyte[72164] unknown3;
-	ushort charCount;
+	BigEndian!ushort charCount;
 
 
 	auto characters() const {
@@ -237,18 +197,6 @@ struct DD2PS3 {
 	auto bagItems() const {
 		import std.algorithm : filter;
 		return _items[].filter!(x => x.isValid);
-	}
-	void postRead() {
-		version(LittleEndian) {
-			import std.bitmanip : swapEndian;
-			charCount = swapEndian(charCount);
-		}
-		foreach (ref character; _characters) {
-			character.postRead();
-		}
-		foreach (ref item; _items) {
-			item.postRead();
-		}
 	}
 }
 
@@ -265,6 +213,22 @@ unittest {
 		assert(name == "Laharl");
 		assert(level == 27);
 		assert(skills[0] == 0x00C9);
+		assert(exp == 58793);
+		assert(mana == 416);
+		assert(skillEXP[0] == 94);
+		assert(totalDamage == 43038);
+		assert(maxDamage == 1203);
+		assert(numDeaths == 4);
+		assert(numKills == 120);
+		assert(aptitudes.hp == 120);
+		with(equipment[0]) {
+			assert(level == 0);
+			assert(nameID == 209);
+			with(innocents[0]) {
+				assert(level == 5);
+				assert(type == 4);
+			}
+		}
 	}
 
 	with(data._items[0]) {

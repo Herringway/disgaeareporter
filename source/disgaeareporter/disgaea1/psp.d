@@ -13,7 +13,6 @@ struct D1PSP {
 	enum charSize = 0x6A8;
 	ubyte[0xBB8] unknown;
 	PSPCharacter[128] _characters;
-	void postRead() {}
 }
 
 

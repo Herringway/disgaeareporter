@@ -82,7 +82,6 @@ struct D1PC {
 		import std.algorithm : filter;
 		return _warehouseItems[].filter!(x => x.isValid);
 	}
-	void postRead() {}
 }
 static assert(D1PC.totalHL.offsetof == 0x290);
 static assert(D1PC.mapClears.offsetof == 0x3A7B8);

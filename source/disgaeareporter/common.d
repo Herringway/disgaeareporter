@@ -233,36 +233,23 @@ struct ModernStatsImpl(Type, bool isBigEndian) {
 
 align(1)
 struct Aptitudes(bool isBigEndian) {
+	static if (isBigEndian) {
+		alias Endian = BigEndian;
+	} else {
+		alias Endian = LittleEndian;
+	}
 	align(1):
-	ushort hp;
-	ushort sp;
-	ushort attack;
-	ushort defense;
-	ushort intelligence;
-	ushort resistance;
-	ushort hit;
-	ushort speed;
+	Endian!ushort hp;
+	Endian!ushort sp;
+	Endian!ushort attack;
+	Endian!ushort defense;
+	Endian!ushort intelligence;
+	Endian!ushort resistance;
+	Endian!ushort hit;
+	Endian!ushort speed;
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.format;
 		formattedWrite!"HP: %s%%, SP: %s%%, Attack: %s%%, Defense: %s%%, Intelligence: %s%%, Speed: %s%%, Hit: %s%%, Resistance: %s%%"(sink, hp, sp, attack, defense, intelligence, speed, hit, resistance);
-	}
-	void postRead() {
-		version(LittleEndian) {
-			enum flipBytes = isBigEndian;
-		} else {
-			enum flipBytes = !isBigEndian;
-		}
-		static if (flipBytes) {
-			import std.bitmanip : swapEndian;
-			hp = swapEndian(hp);
-			sp = swapEndian(sp);
-			attack = swapEndian(attack);
-			defense = swapEndian(defense);
-			intelligence = swapEndian(intelligence);
-			speed = swapEndian(speed);
-			hit = swapEndian(hit);
-			resistance = swapEndian(resistance);
-		}
 	}
 }
 

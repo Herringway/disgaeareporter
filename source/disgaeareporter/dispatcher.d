@@ -200,9 +200,6 @@ auto loadData(Game)(const ubyte[] data) {
 	import std.traits : hasMember;
 	Game* game = new Game;
 	data.readStruct!Game(game);
-	static if (hasMember!(Game, "postRead")) {
-		game.postRead();
-	}
 	debug(dumpraw) {
 		import std.file : mkdirRecurse, write;
 		import std.traits : moduleName;
