@@ -92,13 +92,13 @@ struct Senator {
 	ushort rarityPreference;
 	SJISString!16 name;
 	@Unknown ubyte unknown2;
-	byte favour;
+	Favour favour;
 	@Unknown ubyte unknown3;
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.algorithm : filter;
 		import std.format;
 		sink.formattedWrite!"%s (Level %s %s)\n\t"(name, level, classID.className);
-		sink.formattedWrite!"%s (%s)\n"(favour.favourString, favour);
+		sink.formattedWrite!"Favour: %s\n"(favour);
 		if (timesKilled > 0) {
 			sink.formattedWrite!"\tKilled %s time%s\n"(timesKilled, timesKilled > 1 ? "s" : "");
 		}

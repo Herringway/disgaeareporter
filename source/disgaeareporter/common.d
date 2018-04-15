@@ -115,7 +115,7 @@ void printData(Game)(File output, Game* game) {
 		}
 		output.writefln("-Senators-\n\n%(%s\n%)", game.senators[].indexed(index).filter!(x => x.attendance > 0));
 		auto average = (cast(double)game.senators[].filter!(x => x.attendance > 0).map!(x => x.favour).sum) / (cast(double)game.senators.length);
-		output.writefln!"Average favour: %s (%s)\n"((cast(byte)average).favourString, average);
+		output.writefln!"Average favour: %s\n"(Favour(cast(byte)average));
 	}
 	static if (hasMember!(Game, "bagItems")) {
 		output.writefln("-Items-\n\nBag:\n%(\t%s\n%)", game.bagItems);
@@ -144,20 +144,28 @@ void printData(Game)(File output, Game* game) {
 	}
 }
 
-string favourString(const byte input) {
-	switch (input) {
-		case -128: .. case -41: return "Loathe";
-		case -40: .. case -27: return "Total opposition";
-		case -26: .. case -17: return "Strongly against";
-		case -16: .. case -12: return "Against";
-		case -11: .. case -6: return "Leaning no";
-		case -5: .. case 3: return "Either way";
-		case 4: .. case 10: return "Leaning yes";
-		case 11: .. case 15: return "In favor of";
-		case 16: .. case 24: return "Strongly for";
-		case 25: .. case 38: return "Total support";
-		case 39: .. case 127: return "Love";
-		default: return "Unknown";
+align(1)
+struct Favour {
+	align(1):
+	byte raw;
+	alias raw this;
+	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
+		import std.format : formattedWrite;
+		switch (raw) {
+			case -128: .. case -41: sink.put("Loathe"); break;
+			case -40: .. case -27: sink.put("Total opposition"); break;
+			case -26: .. case -17: sink.put("Strongly against"); break;
+			case -16: .. case -12: sink.put("Against"); break;
+			case -11: .. case -6: sink.put("Leaning no"); break;
+			case -5: .. case 3: sink.put("Either way"); break;
+			case 4: .. case 10: sink.put("Leaning yes"); break;
+			case 11: .. case 15: sink.put("In favor of"); break;
+			case 16: .. case 24: sink.put("Strongly for"); break;
+			case 25: .. case 38: sink.put("Total support"); break;
+			case 39: .. case 127: sink.put("Love"); break;
+			default: sink.put("Unknown"); break;
+		}
+		sink.formattedWrite!" (%s)"(raw);
 	}
 }
 
