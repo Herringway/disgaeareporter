@@ -265,8 +265,10 @@ unittest {
 }
 
 struct SJISString(size_t length) {
+	import siryul : SerializationMethod;
 	ubyte[length] raw;
 	alias toString this;
+	@SerializationMethod
 	auto toString() const {
 		return sjisDec(raw[]);
 	}

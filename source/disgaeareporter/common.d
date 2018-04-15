@@ -355,8 +355,10 @@ enum WeaponTypes {
 }
 
 struct ZeroString(size_t length) {
+	import siryul : SerializationMethod;
 	char[length] raw = 0;
 	alias toString this;
+	@SerializationMethod
 	auto toString() const {
 		return raw[].fromStringz;
 	}
