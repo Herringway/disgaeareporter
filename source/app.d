@@ -20,6 +20,7 @@ import std.stdio;
 void main(string[] args) {
 	bool steamDisgaea1;
 	bool steamDisgaea2;
+	bool steamDisgaea5;
 	bool json;
 	bool yaml;
 	bool genReports;
@@ -28,7 +29,8 @@ void main(string[] args) {
 		"dumpyaml|y", "Dumps data as YAML", &yaml,
 		"reports|r", "Automatically generates reports as defined in settings", &genReports,
 		"steamdisgaea1", "Automatically find steam save for Disgaea 1", &steamDisgaea1,
-		"steamdisgaea2", "Automatically find steam save for Disgaea 2", &steamDisgaea2);
+		"steamdisgaea2", "Automatically find steam save for Disgaea 2", &steamDisgaea2,
+		"steamdisgaea5", "Automatically find steam save for Disgaea 5", &steamDisgaea5);
 
 	if (args.length < 2 && !steamDisgaea1 && !steamDisgaea2 && !genReports) {
 		helpInformation.helpWanted = true;
@@ -56,6 +58,8 @@ void main(string[] args) {
 				file.savePath = getD1SteamPath();
 			} else if (file.steamDisgaea2) {
 				file.savePath = getD2SteamPath();
+			} else if (file.steamDisgaea5) {
+				file.savePath = getD5SteamPath();
 			}
 			if (file.savePath.exists) {
 				handleFile(file.savePath, file.reportPath, false, false);
@@ -64,6 +68,8 @@ void main(string[] args) {
 					writeln("Warning: Steam save for disgaea 1 not found");
 				} else if (file.steamDisgaea2) {
 					writeln("Warning: Steam save for disgaea 2 not found");
+				} else if (file.steamDisgaea5) {
+					writeln("Warning: Steam save for disgaea 5 not found");
 				} else {
 					if (file.savePath == "") {
 						writeln("Warning: No save specified");
@@ -80,6 +86,7 @@ struct DisgaeaReporterFile {
 	import siryul : Optional;
 	@Optional bool steamDisgaea1 = false;
 	@Optional bool steamDisgaea2 = false;
+	@Optional bool steamDisgaea5 = false;
 	@Optional string savePath;
 	string reportPath;
 }
@@ -88,36 +95,23 @@ struct DisgaeaReporterFiles {
 	DisgaeaReporterFile[] files;
 }
 
-auto getD1SteamPath() nothrow {
-	import std.path : buildPath;
-	import std.exception : assumeWontThrow;
-	try {
-		debug(steam) {
-			writeln("steam dir: ", getSteamDirectory());
-			writeln("steam d1 id: ", d1SteamID);
-			writeln("full path: ", buildPath(getSteamDirectory(), d1SteamID, "remote"));
-			writeln("found save: ", getLatestSaveFile(buildPath(getSteamDirectory(), d1SteamID, "remote")));
-		}
-		return getLatestSaveFile(buildPath(getSteamDirectory(), d1SteamID, "remote"));
-	} catch (Exception e) {
-		assumeWontThrow(writeln(e.msg));
-		return "";
-	}
-}
+alias getD1SteamPath = getSteamPath!d1SteamID;
+alias getD2SteamPath = getSteamPath!d2SteamID;
+alias getD5SteamPath = getSteamPath!d5SteamID;
 
-auto getD2SteamPath() nothrow {
+auto getSteamPath(string id)() nothrow {
 	import std.path : buildPath;
 	import std.exception : assumeWontThrow;
 	try {
 		debug(steam) {
 			writeln("steam dir: ", getSteamDirectory());
-			writeln("steam d2 id: ", d2SteamID);
-			writeln("full path: ", buildPath(getSteamDirectory(), d2SteamID, "remote"));
-			writeln("found save: ", getLatestSaveFile(buildPath(getSteamDirectory(), d2SteamID, "remote")));
+			writeln("steam id: ", id);
+			writeln("full path: ", buildPath(getSteamDirectory(), id, "remote"));
+			writeln("found save: ", getLatestSaveFile(buildPath(getSteamDirectory(), id, "remote")));
 		}
-		return getLatestSaveFile(buildPath(getSteamDirectory(), d2SteamID, "remote"));
+		return getLatestSaveFile(buildPath(getSteamDirectory(), id, "remote"));
 	} catch (Exception e) {
-		assumeWontThrow(writeln(e.msg));
+		debug assumeWontThrow(writeln("Error finding latest steam save: ", e.msg));
 		return "";
 	}
 }
