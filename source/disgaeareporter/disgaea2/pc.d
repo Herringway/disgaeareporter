@@ -88,9 +88,7 @@ struct Character {
 	ZeroString!64 name;
 	ZeroString!64 className;
 	@Unknown ubyte[260] unknown1;
-	uint[96] skillEXP;
-	ushort[96] skills;
-	ubyte[96] skillLevels;
+	Skills!(96, "disgaea2", false) skills;
 	@Unknown ubyte[508] unknown2;
 	Stats stats;
 	@Unknown ubyte[64] unknown3;
@@ -132,14 +130,10 @@ struct Character {
 			sink.formattedWrite!"\tEquipment:\n"();
 			sink.formattedWrite!"%(\t\t%s\n%)\n"(equips);
 		}
-		if (skills[0] != 0) {
+		if (!skills.range.empty) {
 			sink.formattedWrite!"\tAbilities:\n"();
-			foreach (i, skill, skillLevel, skillEXP; lockstep(skills[], skillLevels[], skillEXP[])) {
-				if ((skill > 0) && (skillLevel != 255)) {
-					sink.formattedWrite!"\t\tLv%s %s (%s EXP)\n"(skillLevel, skill.skillName, skillEXP);
-				} else if (skillLevel == 255) {
-					sink.formattedWrite!"\t\tLearning %s (%s EXP)\n"(skill.skillName, skillEXP);
-				}
+			foreach (skill; skills.range) {
+				sink.formattedWrite!"\t\t%s\n"(skill);
 			}
 		}
 
@@ -153,7 +147,7 @@ struct Character {
 	}
 }
 static assert(Character.sizeof == 0xF00);
-static assert(Character.skills.offsetof == 0x90C);
+static assert(Character.skills.offsetof == 0x78C);
 static assert(Character.stats.offsetof == 0xC28);
 static assert(Character.baseStats.offsetof == 0xCBC);
 static assert(Character.baseResist.offsetof == 0xCDE);

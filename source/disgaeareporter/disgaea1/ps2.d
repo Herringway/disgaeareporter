@@ -99,9 +99,7 @@ struct PS2Character {
 	ubyte[34] unknown3;
 	StatusResistance[5] statusResistances;
 	ubyte[112] unknown4;
-	uint[96] skillEXP;
-	ushort[96] skills;
-	ubyte[96] skillLevels;
+	Skills!(96, "disgaea1", false) skills;
 	uint currentHP;
 	uint currentSP;
 	Stats stats;
@@ -152,14 +150,10 @@ struct PS2Character {
 			formattedWrite!"\tEquipment:\n"(sink);
 			formattedWrite!"%(\t\t%s\n%)\n"(sink, equipment[].filter!(x => x.nameID != 0));
 		}
-		if (skills[0] != 0) {
-			formattedWrite!"\tAbilities:\n"(sink);
-			foreach (i, skill, skillLevel, skillEXP; lockstep(skills[], skillLevels[], skillEXP[])) {
-				if ((skill > 0) && (skillLevel != 255)) {
-					formattedWrite!"\t\tLv%s %s (%s EXP)\n"(sink, skillLevel, skill.skillName, skillEXP);
-				} else if (skillLevel == 255) {
-					formattedWrite!"\t\tLearning %s (%s EXP)\n"(sink, skill.skillName, skillEXP);
-				}
+		if (!skills.range.empty) {
+			sink.formattedWrite!"\tAbilities:\n"();
+			foreach (skill; skills.range) {
+				sink.formattedWrite!"\t\t%s\n"(skill);
 			}
 		}
 		debug(unknowns) formattedWrite!"%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n"(sink, unknown1, unknown2, unknown3, unknown4, unknown5, unknown6, unknown7, unknown8, unknown9, unknown10);

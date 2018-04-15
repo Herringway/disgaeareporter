@@ -301,6 +301,53 @@ struct MiscStats {
 	}
 }
 
+align(1)
+struct Skills(size_t count, string game, bool isBigEndian) {
+	static if (isBigEndian) {
+		alias Endian = BigEndian;
+	} else {
+		alias Endian = LittleEndian;
+	}
+	align(1):
+	Endian!uint[count] skillEXP;
+	Endian!ushort[count] skills;
+	ubyte[count] skillLevels;
+
+	auto range() const {
+		static struct SkillRange {
+			Endian!uint[count] skillEXP;
+			Endian!ushort[count] skills;
+			ubyte[count] skillLevels;
+			size_t index;
+			auto front() const {
+				assert(index < count);
+				static struct Result {
+					uint exp;
+					ushort id;
+					ubyte level;
+					void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
+						mixin("static import disgaeareporter."~game~".common;");
+						import std.format : formattedWrite;
+						if (level != 255) {
+							sink.formattedWrite!"Lv%s %s (%s EXP)"(level, __ctfe ? "" : mixin("disgaeareporter."~game~".common.skillName(id)"), exp);
+						} else {
+							sink.formattedWrite!"Learning %s (%s EXP)"(__ctfe ? "" : mixin("disgaeareporter."~game~".common.skillName(id)"), exp);
+						}
+					}
+				}
+				return Result(skillEXP[index], skills[index], skillLevels[index]);
+			}
+			void popFront() {
+				index++;
+			}
+			bool empty() {
+				return (skills[index] == 0) || (index >= count);
+			}
+		}
+		return SkillRange(skillEXP, skills, skillLevels);
+	}
+}
+
 enum Rarity : ubyte {
 	common = 1,
 	rare = 2,
@@ -398,7 +445,7 @@ struct LittleEndian(T) {
 	ubyte[T.sizeof] raw;
 	alias toInt this;
 	@SerializationMethod
-	auto toInt() const {
+	T toInt() const {
 		import std.bitmanip : littleEndianToNative;
 		if (__ctfe) {
 			return 0;
@@ -410,6 +457,7 @@ struct LittleEndian(T) {
 		sink.formattedWrite!"%s"(this.toInt());
 	}
 }
+
 struct BigEndian(T) {
 	import siryul : SerializationMethod;
 	ubyte[T.sizeof] raw;

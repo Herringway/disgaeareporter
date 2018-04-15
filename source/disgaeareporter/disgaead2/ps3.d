@@ -72,9 +72,7 @@ struct Character {
 	char[52] _name;
 	char[52] _className;
 	@Unknown ubyte[180] unknown;
-	BigEndian!uint[256] skillEXP;
-	BigEndian!ushort[256] skills;
-	ubyte[256] skillLevels;
+	Skills!(256, "disgaead2", true) skills;
 	@Unknown ubyte[516] unknown2;
 	BigEndian!ulong currentHP;
 	BigEndian!ulong currentSP;
@@ -137,14 +135,10 @@ struct Character {
 			sink.formattedWrite!"\tEquipment:\n"();
 			sink.formattedWrite!"%(\t\t%s\n%)\n"(equips);
 		}
-		if (skills[0] != 0) {
+		if (!skills.range.empty) {
 			sink.formattedWrite!"\tAbilities:\n"();
-			foreach (i, skill, skillLevel, skillEXP; lockstep(skills[], skillLevels[], skillEXP[])) {
-				if ((skill > 0) && (skillLevel != 255)) {
-					sink.formattedWrite!"\t\tLv%s %s (%s EXP)\n"(skillLevel, skill.skillName, skillEXP);
-				} else if (skillLevel == 255) {
-					sink.formattedWrite!"\t\tLearning %s (%s EXP)\n"(skill.skillName, skillEXP);
-				}
+			foreach (skill; skills.range) {
+				sink.formattedWrite!"\t\t%s\n"(skill);
 			}
 		}
 
@@ -165,8 +159,7 @@ struct Character {
 }
 static assert(Character.sizeof == 0x1A60);
 static assert(Character._name.offsetof == 0x648);
-static assert(Character.skillEXP.offsetof == 0x764);
-static assert(Character.skills.offsetof == 0xB64);
+static assert(Character.skills.offsetof == 0x764);
 static assert(Character.stats.offsetof == 0x1078);
 static assert(Character.baseStats.offsetof == 0x1100);
 static assert(Character.level.offsetof == 0x114C);
@@ -212,10 +205,12 @@ unittest {
 	with(data.characters[0]) {
 		assert(name == "Laharl");
 		assert(level == 27);
-		assert(skills[0] == 0x00C9);
+		with(skills.range.front) {
+			assert(id == 0x00C9);
+			assert(exp == 94);
+		}
 		assert(exp == 58793);
 		assert(mana == 416);
-		assert(skillEXP[0] == 94);
 		assert(totalDamage == 43038);
 		assert(maxDamage == 1203);
 		assert(numDeaths == 4);

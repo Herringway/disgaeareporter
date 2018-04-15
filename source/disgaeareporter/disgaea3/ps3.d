@@ -65,7 +65,7 @@ struct Character {
 		import std.format;
 		import std.range : lockstep;
 		sink.formattedWrite!"%s (Lv%s %s)\n"(name, level, className);
-		//sink.formattedWrite!"\tRank: %s, Mana: %s\n"(senateRank, mana);
+		//sink.formattedWrite!"\tMana: %s\n"(senateRank, mana);
 		//sink.formattedWrite!"\tTransmigrations: %s, Transmigrated Levels: %s\n"(numTransmigrations, transmigratedLevels);
 		//sink.formattedWrite!"\t%s\n"(miscStats);
 		sink.formattedWrite!"\tElemental Affinity: %s\n"(resist);
@@ -84,16 +84,6 @@ struct Character {
 			sink.formattedWrite!"\tEquipment:\n"();
 			sink.formattedWrite!"%(\t\t%s\n%)\n"(equipment[].filter!(x => x.isValid));
 		}
-		//if (skills[0] != 0) {
-		//	sink.formattedWrite!"\tAbilities:\n"();
-		//	foreach (i, skill, skillLevel, skillEXP; lockstep(skills[], skillLevels[], skillEXP[])) {
-		//		if ((skill > 0) && (skillLevel != 255)) {
-		//			sink.formattedWrite!"\t\tLv%s %s (%s EXP)\n"(skillLevel, skill.skillName, skillEXP);
-		//		} else if (skillLevel == 255) {
-		//			sink.formattedWrite!"\t\tLearning %s (%s EXP)\n"(skill.skillName, skillEXP);
-		//		}
-		//	}
-		//}
 		debug (unknowns) {
 			sink.formattedWrite!"\tUnknown data:\n"();
 			import std.traits : getSymbolsByUDA;
