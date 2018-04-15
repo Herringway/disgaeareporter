@@ -39,6 +39,18 @@ auto detectGame(ubyte[] input) {
 		output.rawData = input;
 		return output;
 	}
+	if (input.length == 0x165890) {
+		output.platform = Platforms.ps3;
+		output.game = Games.disgaea3;
+		output.rawData = input;
+		return output;
+	}
+	if (input.length == 0x56F750) {
+		output.platform = Platforms.ps3;
+		output.game = Games.disgaea4;
+		output.rawData = input;
+		return output;
+	}
 	if (input.length >= 0x38) {
 		auto key = input[0x20..0x24];
 
@@ -239,6 +251,16 @@ unittest {
 	{
 		auto detected = detectGame(cast(ubyte[])import("dd2ps3-raw.DAT"));
 		assert(detected.game == Games.disgaead2);
+		assert(detected.platform == Platforms.ps3);
+	}
+	{
+		auto detected = detectGame(cast(ubyte[])import("d4ps3-raw.DAT"));
+		assert(detected.game == Games.disgaea4);
+		assert(detected.platform == Platforms.ps3);
+	}
+	{
+		auto detected = detectGame(cast(ubyte[])import("d3ps3-raw.DAT"));
+		assert(detected.game == Games.disgaea3);
 		assert(detected.platform == Platforms.ps3);
 	}
 }
