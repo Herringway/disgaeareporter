@@ -55,6 +55,12 @@ void printData(Game)(File output, Game* game) {
 	static if (hasMember!(Game, "itemWorldVisits")) {
 		output.writefln!"Item World Visits: %s"(game.itemWorldVisits);
 	}
+	static if (hasMember!(Game, "itemWorldLevels")) {
+		output.writefln!"Max Item World Level Cleared: %s"(game.itemWorldLevels);
+	}
+	static if (hasMember!(Game, "totalItemWorldLevels")) {
+		output.writefln!"Total Item World Levels Cleared: %s"(game.totalItemWorldLevels);
+	}
 	static if (hasMember!(Game, "itemRate")) {
 		output.writefln!"Item Rate: %s%%"(game.itemRate);
 	}
