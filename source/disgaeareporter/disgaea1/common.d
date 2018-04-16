@@ -181,6 +181,30 @@ string innocentName(const ushort id) {
 	return "Unknown specialist "~id.to!string(16);
 }
 
+static immutable defeatedStrings = [
+	"Item General",
+	"Item King",
+	"Item God",
+	"Item God 2",
+	"Astro Carter",
+	"Prinny God",
+	"Priere",
+	"Marjoly",
+	"Baal",
+	"Uber Prinny Baal",
+	"Zetta",
+	"Unknown 10",
+	"Adell & Rozalin",
+	"All extra bosses?",
+];
+string defeatedString(const ubyte id) {
+	import std.conv : text;
+	if (id >= defeatedStrings.length) {
+		return "Unknown "~id.text;
+	}
+	return defeatedStrings[id];
+}
+
 double itemStatsMultiplier(ulong level) {
 	if (level <= 100) {
 		return 1.0;

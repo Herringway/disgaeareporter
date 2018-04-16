@@ -65,44 +65,10 @@ void printData(Game)(File output, Game* game) {
 		output.writefln!"Item Rate: %s%%"(game.itemRate);
 	}
 	static if (hasMember!(Game, "defeated")) {
-		if (game.defeated & Defeated.itemGeneral) {
-			output.writeln("Defeated Item General");
-		}
-		if (game.defeated & Defeated.itemKing) {
-			output.writeln("Defeated Item King");
-		}
-		if (game.defeated & Defeated.itemGod) {
-			output.writeln("Defeated Item God");
-		}
-		if (game.defeated & Defeated.itemGod2) {
-			output.writeln("Defeated Item God 2");
-		}
-		if (game.defeated & Defeated.astroCarter) {
-			output.writeln("Defeated Astro Carter");
-		}
-		if (game.defeated & Defeated.prinnyGod) {
-			output.writeln("Defeated Prinny God");
-		}
-		if (game.defeated & Defeated.priere) {
-			output.writeln("Defeated Priere");
-		}
-		if (game.defeated & Defeated.marjoly) {
-			output.writeln("Defeated Marjoly");
-		}
-		if (game.defeated & Defeated.baal) {
-			output.writeln("Defeated Baal");
-		}
-		if (game.defeated & Defeated.uberPrinnyBaal) {
-			output.writeln("Defeated Uber Prinny Baal");
-		}
-		if (game.defeated & Defeated.zetta) {
-			output.writeln("Defeated Zetta");
-		}
-		if (game.defeated & Defeated.unknown10) {
-			output.writeln("Defeated Unknown 10");
-		}
-		if (game.defeated & Defeated.adellRozalin) {
-			output.writeln("Defeated Adell & Rozalin");
+		foreach (ubyte bit; 0..Game.defeated.sizeof*8) {
+			if ((cast(ulong)game.defeated) & (1<<bit)) {
+				output.writefln!"Defeated %s"(Game.defeatedStr(bit));
+			}
 		}
 	}
 	output.writeln();
