@@ -11,7 +11,7 @@ align(1)
 struct D1PC {
 	align(1):
 	@Unknown ubyte[8] unknown1;
-	Playtime playtime;
+	Playtime!false playtime;
 	SJISString!34 fileName;
 	ushort level;
 	ushort unknown2;

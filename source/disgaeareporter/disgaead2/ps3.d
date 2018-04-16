@@ -80,39 +80,36 @@ struct Character {
 	ModernStats!true realStats;
 	@Unknown ubyte[8] unknown3;
 	BaseCharacterStatsLater!true baseStats;
-	@Unknown ubyte[64] unknown4;
+	@Unknown ubyte[36] unknown4;
+	ubyte[9] weaponMasteryLevel;
+	ubyte[9] weaponMasteryRate;
+	@Unknown ubyte[10] unknown5;
 	BigEndian!uint mana;
 	BigEndian!ushort level;
-	@Unknown ubyte[18] unknown5;
+	@Unknown ubyte[18] unknown6;
 	Resistance baseResist;
 	Resistance resist;
-	ubyte baseJM;
-	ubyte jm;
-	ubyte baseMV;
-	ubyte mv;
-	ubyte baseCounter;
-	ubyte counter;
-	ubyte baseThrow;
-	ubyte throw_;
-	ubyte baseCrit;
-	ubyte crit;
-	@Unknown ubyte[8] unknown6;
-	ubyte range;
+	MiscStatsExpanded miscStats;
 	@Unknown ubyte[23] unknown7;
 	BigEndian!ulong numKills;
 	BigEndian!ulong numDeaths;
 	BigEndian!ulong maxDamage;
 	BigEndian!ulong totalDamage;
-	@Unknown ubyte[844] unknown8;
+	@Unknown ubyte[30] unknown8;
+	ubyte _training;
+	@Unknown ubyte[813] unknown9;
 	Aptitudes!true aptitudes;
 	Aptitudes!true aptitudes2;
-	@Unknown ubyte[1348] unknown9;
+	@Unknown ubyte[1348] unknown10;
 
 	auto name() const {
 		return _name.fromStringz;
 	}
 	auto className() const {
 		return _className.fromStringz;
+	}
+	auto training() const {
+		return _training.trainingName;
 	}
 }
 static assert(Character.sizeof == 0x1A60);
@@ -123,19 +120,39 @@ static assert(Character.baseStats.offsetof == 0x1100);
 static assert(Character.level.offsetof == 0x114C);
 static assert(Character.baseResist.offsetof == 0x1160);
 static assert(Character.maxDamage.offsetof == 0x11A0);
+static assert(Character._training.offsetof == 0x11CE);
 static assert(Character.aptitudes.offsetof == 0x14FC);
 
 align(1)
 struct DD2PS3 {
 	align(1):
-	@Unknown ubyte[1440] unknown1;
+	@Unknown ubyte[8] unknown1;
+	Playtime!true playtime;
+	ZeroString!34 fileName;
+	@Unknown ubyte[1337] unknown2;
+	BigEndian!ulong totalHL;
+	@Unknown ubyte[16] unknown3;
+	BigEndian!ulong hpRecovered;
+	BigEndian!ulong spRecovered;
+	@Unknown ubyte[16] unknown4;
 	Character[128] _characters;
-	@Unknown ubyte[40824] unknown2;
+	@Unknown ubyte[40824] unknown5;
 	Item[999] _items;
-	@Unknown ubyte[72164] unknown3;
+	@Unknown ubyte[72164] unknown6;
 	BigEndian!ushort charCount;
-
-
+	@Unknown ubyte[6770] unknown7;
+	BigEndian!ulong maxDamage;
+	BigEndian!ulong totalDamage;
+	BigEndian!ushort geoCombo;
+	@Unknown ubyte[6] unknown8;
+	BigEndian!uint enemiesKilled;
+	BigEndian!uint enemiesKilledCopy;
+	BigEndian!ushort maxLevel;
+	BigEndian!uint reincarnation;
+	BigEndian!ushort itemWorldVisits;
+	BigEndian!ushort itemWorldLevels;
+	@Unknown BigEndian!ushort unknown9;
+	BigEndian!uint totalItemWorldLevels;
 	auto characters() const {
 		return _characters[0..charCount];
 	}
@@ -145,9 +162,11 @@ struct DD2PS3 {
 	}
 }
 
+static assert(DD2PS3.hpRecovered.offsetof == 0x580);
 static assert(DD2PS3._characters.offsetof == 0x5A0);
 static assert(DD2PS3._items.offsetof == 0xDD518);
 static assert(DD2PS3.charCount.offsetof == 0x1507EC);
+static assert(DD2PS3.geoCombo.offsetof == 0x152270);
 
 unittest {
 	import disgaeareporter.dispatcher : getRawData, loadData, Platforms;

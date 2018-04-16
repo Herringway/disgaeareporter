@@ -91,7 +91,7 @@ align(1)
 struct D3PS3 {
 	align(1):
 	@Unknown ubyte[8] unknown1;
-	Playtime playtime;
+	Playtime!true playtime;
 	SJISString!34 fileName;
 	@Unknown ubyte[3225] unknown2;
 	Character[64] _characters;

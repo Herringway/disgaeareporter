@@ -41,3 +41,31 @@ string innocentName(const ushort id) {
 	}
 	return "Unknown innocent "~id.to!string(16);
 }
+
+static immutable trainingTypes = [
+	"Tough Guy Training",
+	"Demon Psychology",
+	"Kata Practice",
+	"Puncture Training",
+	"Cram Session",
+	"Sealing Circles",
+	"Target Practice",
+	"Super Treadmill",
+	"Weapon Maintenance",
+	"Punching Bags",
+	"Book Stacks",
+	"Love Potion Practice",
+	"Weapon Assembly",
+	"Waterfall Training",
+	"Battle Royale",
+];
+string trainingName(const ubyte id) {
+	import std.conv : text;
+	if (id == 0xFF) {
+		return "None";
+	} else if (id < trainingTypes.length) {
+		return trainingTypes[id];
+	} else {
+		return "Unknown training type "~id.text;
+	}
+}

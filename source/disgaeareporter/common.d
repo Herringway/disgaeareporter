@@ -367,9 +367,14 @@ struct Aptitudes(bool isBigEndian) {
 }
 
 align(1)
-struct Playtime {
+struct Playtime(bool isBigEndian) {
+	static if (isBigEndian) {
+		alias Endian = BigEndian;
+	} else {
+		alias Endian = LittleEndian;
+	}
 	align(1):
-	ushort hours_;
+	Endian!ushort hours_;
 	ubyte minutes_;
 	ubyte seconds_;
 	ubyte milliseconds_;
@@ -387,7 +392,7 @@ struct Playtime {
 private void playtimeTest() {
 	import std.outbuffer;
 	auto buf = new OutBuffer;
-	Playtime().toString(buf);
+	Playtime!true().toString(buf);
 }
 
 align(1)
@@ -403,6 +408,31 @@ struct MiscStats {
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.format : formattedWrite;
 		sink.formattedWrite!"Counter: %s, MV: %s, JM: %s"(counter, mv, jm);
+	}
+}
+
+align(1)
+struct MiscStatsExpanded {
+	align(1):
+	ubyte baseJM;
+	ubyte jm;
+	ubyte baseMV;
+	ubyte mv;
+	ubyte baseCounter;
+	ubyte counter;
+	ubyte baseThrow;
+	ubyte throw_;
+	ubyte baseCrit;
+	ubyte crit;
+	ubyte[8] unknown;
+	ubyte range;
+
+	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
+		import std.format : formattedWrite;
+		sink.formattedWrite!"Counter: %s, MV: %s, JM: %s, Throw: %s, Crit: %s, Range: %s"(counter, mv, jm, throw_, crit, range);
+		debug(unknowns) {
+			sink.formattedWrite!", Unknown: %s"(unknown);
+		}
 	}
 }
 
@@ -467,6 +497,18 @@ enum WeaponTypes {
 	Gun,
 	Axe,
 	Rod,
+	Monster
+}
+
+enum WeaponTypesD2 {
+	Fist,
+	Sword,
+	Spear,
+	Bow,
+	Gun,
+	Axe,
+	Rod,
+	Book,
 	Monster
 }
 

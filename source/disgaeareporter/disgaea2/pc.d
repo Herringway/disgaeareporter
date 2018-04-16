@@ -146,7 +146,7 @@ align(1)
 struct D2PC {
 	align(1):
 	@Unknown ubyte[8] unknown;
-	Playtime playtime;
+	Playtime!false playtime;
 	@Unknown ubyte[963] unknown2;
 	ulong totalHL;
 	@Unknown ubyte[2336] unknown3;
