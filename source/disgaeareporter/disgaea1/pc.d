@@ -184,12 +184,6 @@ struct Character {
 
 static assert(Character.sizeof == 0x6B8);
 
-private void func() {
-	import std.outbuffer;
-	auto buf = new OutBuffer;
-	Character().toString(buf);
-}
-
 
 ubyte[] decompress(const ubyte[] input, uint expected) pure @safe {
 	ubyte[] output;
