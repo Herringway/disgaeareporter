@@ -48,8 +48,16 @@ void main(string[] args) {
 		} else {
 			filePath = args[1];
 		}
+		ReportFormat format;
+		if (yaml) {
+			format = ReportFormat.yaml;
+		} else if (json) {
+			format = ReportFormat.json;
+		} else {
+			format = ReportFormat.text;
+		}
 		if (filePath.exists) {
-			handleFile(filePath, "", yaml, json);
+			handleFile(filePath, "", format);
 		}
 	} else {
 		auto settings = loadSettings!DisgaeaReporterFiles("Herringway/disgaeareporter");
@@ -62,7 +70,7 @@ void main(string[] args) {
 				file.savePath = getD5SteamPath();
 			}
 			if (file.savePath.exists) {
-				handleFile(file.savePath, file.reportPath, false, false);
+				handleFile(file.savePath, file.reportPath, file.format);
 			} else {
 				if (file.steamDisgaea1) {
 					writeln("Warning: Steam save for disgaea 1 not found");
@@ -88,6 +96,7 @@ struct DisgaeaReporterFile {
 	@Optional bool steamDisgaea2 = false;
 	@Optional bool steamDisgaea5 = false;
 	@Optional string savePath;
+	@Optional ReportFormat format;
 	string reportPath;
 }
 
@@ -116,7 +125,7 @@ auto getSteamPath(string id)() nothrow {
 	}
 }
 
-auto handleFile(string path, string outPath, bool yaml, bool json) {
+auto handleFile(string path, string outPath, const ReportFormat format) {
 	auto data = cast(ubyte[])read(path);
 	File outFile;
 	if (outPath == "") {
@@ -131,16 +140,16 @@ auto handleFile(string path, string outPath, bool yaml, bool json) {
 			case Games.disgaea1:
 				switch (detected.platform) {
 					case Platforms.ps2:
-						dumpData(loadData!(disgaeareporter.disgaea1.D1PS2)(detected.rawData), outFile, yaml, json);
+						dumpData(loadData!(disgaeareporter.disgaea1.D1PS2)(detected.rawData), outFile, format);
 						break;
 					case Platforms.pc:
-						dumpData(loadData!(disgaeareporter.disgaea1.D1PC)(detected.rawData), outFile, yaml, json);
+						dumpData(loadData!(disgaeareporter.disgaea1.D1PC)(detected.rawData), outFile, format);
 						break;
 					case Platforms.psp:
-						dumpData(loadData!(disgaeareporter.disgaea1.D1PSP)(detected.rawData), outFile, yaml, json);
+						dumpData(loadData!(disgaeareporter.disgaea1.D1PSP)(detected.rawData), outFile, format);
 						break;
 					//case Platforms.ds:
-					//	dumpData(loadData!(disgaeareporter.disgaea1.D1DS)(detected.rawData), outFile, yaml, json);
+					//	dumpData(loadData!(disgaeareporter.disgaea1.D1DS)(detected.rawData), outFile, format);
 					//	break;
 					default: writeln("Unsupported"); return;
 				}
@@ -148,13 +157,13 @@ auto handleFile(string path, string outPath, bool yaml, bool json) {
 			case Games.disgaea2:
 				switch (detected.platform) {
 					case Platforms.ps2:
-						dumpData(loadData!(disgaeareporter.disgaea2.D2PS2)(detected.rawData), outFile, yaml, json);
+						dumpData(loadData!(disgaeareporter.disgaea2.D2PS2)(detected.rawData), outFile, format);
 						break;
 					case Platforms.pc:
-						dumpData(loadData!(disgaeareporter.disgaea2.D2PC)(detected.rawData), outFile, yaml, json);
+						dumpData(loadData!(disgaeareporter.disgaea2.D2PC)(detected.rawData), outFile, format);
 						break;
 					case Platforms.psp:
-						dumpData(loadData!(disgaeareporter.disgaea2.D2PSP)(detected.rawData), outFile, yaml, json);
+						dumpData(loadData!(disgaeareporter.disgaea2.D2PSP)(detected.rawData), outFile, format);
 						break;
 					default: writeln("Unsupported"); return;
 				}
@@ -162,10 +171,10 @@ auto handleFile(string path, string outPath, bool yaml, bool json) {
 			case Games.disgaea3:
 				switch (detected.platform) {
 					case Platforms.ps3:
-						dumpData(loadData!(disgaeareporter.disgaea3.D3PS3)(detected.rawData), outFile, yaml, json);
+						dumpData(loadData!(disgaeareporter.disgaea3.D3PS3)(detected.rawData), outFile, format);
 						break;
 					case Platforms.psVita:
-						dumpData(loadData!(disgaeareporter.disgaea3.D3Vita)(detected.rawData), outFile, yaml, json);
+						dumpData(loadData!(disgaeareporter.disgaea3.D3Vita)(detected.rawData), outFile, format);
 						break;
 					default: writeln("Unsupported"); return;
 				}
@@ -173,10 +182,10 @@ auto handleFile(string path, string outPath, bool yaml, bool json) {
 			case Games.disgaea4:
 				switch (detected.platform) {
 					case Platforms.ps3:
-						dumpData(loadData!(disgaeareporter.disgaea4.D4PS3)(detected.rawData), outFile, yaml, json);
+						dumpData(loadData!(disgaeareporter.disgaea4.D4PS3)(detected.rawData), outFile, format);
 						break;
 					case Platforms.psVita:
-						dumpData(loadData!(disgaeareporter.disgaea4.D4Vita)(detected.rawData), outFile, yaml, json);
+						dumpData(loadData!(disgaeareporter.disgaea4.D4Vita)(detected.rawData), outFile, format);
 						break;
 					default: writeln("Unsupported"); return;
 				}
@@ -184,13 +193,13 @@ auto handleFile(string path, string outPath, bool yaml, bool json) {
 			case Games.disgaea5:
 				switch (detected.platform) {
 					case Platforms.ps4:
-						dumpData(loadData!(disgaeareporter.disgaea5.D5PS4)(detected.rawData), outFile, yaml, json);
+						dumpData(loadData!(disgaeareporter.disgaea5.D5PS4)(detected.rawData), outFile, format);
 						break;
 					case Platforms.switch_:
-						dumpData(loadData!(disgaeareporter.disgaea5.D5Switch)(detected.rawData), outFile, yaml, json);
+						dumpData(loadData!(disgaeareporter.disgaea5.D5Switch)(detected.rawData), outFile, format);
 						break;
 					case Platforms.pc:
-						dumpData(loadData!(disgaeareporter.disgaea5.D5PC)(detected.rawData), outFile, yaml, json);
+						dumpData(loadData!(disgaeareporter.disgaea5.D5PC)(detected.rawData), outFile, format);
 						break;
 					default: writeln("Unsupported"); return;
 				}
@@ -198,7 +207,7 @@ auto handleFile(string path, string outPath, bool yaml, bool json) {
 			case Games.disgaead2:
 				switch(detected.platform) {
 					case Platforms.ps3:
-						dumpData(loadData!(disgaeareporter.disgaead2.DD2PS3)(detected.rawData), outFile, yaml, json);
+						dumpData(loadData!(disgaeareporter.disgaead2.DD2PS3)(detected.rawData), outFile, format);
 						break;
 					default: writeln("Unsupported"); return;
 				}
@@ -210,13 +219,19 @@ auto handleFile(string path, string outPath, bool yaml, bool json) {
 	}
 }
 
-void dumpData(T)(const T* data, File output, const bool yaml, const bool json) {
-	if (yaml) {
-		output.writeln(data.toString!YAML);
-	} else if (json) {
-		output.writeln(data.toString!JSON);
-	} else {
-		output.printData(data);
+void dumpData(T)(const T* data, File output, const ReportFormat format) {
+	final switch (format) {
+		case ReportFormat.yaml:
+			output.writeln(data.toString!(YAML, Siryulize.omitNulls & Siryulize.omitInits));
+			break;
+		case ReportFormat.json:
+			output.writeln(data.toString!(JSON, Siryulize.omitNulls & Siryulize.omitInits));
+			break;
+		case ReportFormat.text:
+			output.printData(data);
+			break;
+		case ReportFormat.html:
+			break;
 	}
 }
 

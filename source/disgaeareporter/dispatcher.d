@@ -24,6 +24,13 @@ enum Platforms {
 	switch_
 }
 
+enum ReportFormat {
+	text,
+	html,
+	json,
+	yaml
+}
+
 struct DisgaeaGame {
 	Games game;
 	Platforms platform;
