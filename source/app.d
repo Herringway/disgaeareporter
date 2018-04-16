@@ -215,7 +215,7 @@ auto handleFile(string path, string outPath, const ReportFormat format) {
 			default: writeln("Unsupported"); return;
 		}
 	} catch (Exception e) {
-		writefln!"Invalid save file: %s"(e.msg);
+		writefln!"Invalid save file %s: %s"(path, e.msg);
 	}
 }
 
