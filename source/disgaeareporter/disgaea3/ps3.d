@@ -23,7 +23,6 @@ struct Item {
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.algorithm : filter;
 		import std.format;
-		//sink.formattedWrite!"Lv.? %s"(name);
 		sink.formattedWrite!"Lv%s %s (Rarity: %s) - %(%s, %)"("?"/+level+/, name, rarity, innocents[].filter!(x => x.isValid));
 		debug (unknowns) {
 			sink.formattedWrite!" - Unknown data:"();
@@ -59,39 +58,6 @@ struct Character {
 	Resistance baseResist;
 	Resistance resist;
 	@Unknown ubyte[6676] unknown4;
-
-	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
-		import std.algorithm : filter;
-		import std.format;
-		import std.range : lockstep;
-		sink.formattedWrite!"%s (Lv%s %s)\n"(name, level, className);
-		//sink.formattedWrite!"\tMana: %s\n"(senateRank, mana);
-		//sink.formattedWrite!"\tTransmigrations: %s, Transmigrated Levels: %s\n"(numTransmigrations, transmigratedLevels);
-		//sink.formattedWrite!"\t%s\n"(miscStats);
-		sink.formattedWrite!"\tElemental Affinity: %s\n"(resist);
-		//sink.formattedWrite!"\tBase Stats: %s\n"(baseStats);
-		sink.formattedWrite!"\tStats: %s\n"(stats);
-		//sink.formattedWrite!"\tItem Stat Multiplier: %s\n"(level.itemStatsMultiplier);
-		//if (weaponMasteryLevel != weaponMasteryLevel.init) {
-		//	sink.formattedWrite!"\tWeapon mastery:\n"();
-		//	foreach (i, masteryRate, masteryLevel; lockstep(weaponMasteryRate[], weaponMasteryLevel[])) {
-		//		if (masteryLevel > 0) {
-		//			sink.formattedWrite!"\t\tLv%s %s\n"(masteryLevel, cast(WeaponTypes)i);
-		//		}
-		//	}
-		//}
-		if (equipment != equipment.init) {
-			sink.formattedWrite!"\tEquipment:\n"();
-			sink.formattedWrite!"%(\t\t%s\n%)\n"(equipment[].filter!(x => x.isValid));
-		}
-		debug (unknowns) {
-			sink.formattedWrite!"\tUnknown data:\n"();
-			import std.traits : getSymbolsByUDA;
-			static foreach (i; 0..getSymbolsByUDA!(typeof(this), Unknown).length) {
-				sink.formattedWrite!"(%s)"(getSymbolsByUDA!(typeof(this), Unknown)[i]);
-			}
-		}
-	}
 }
 
 static assert(Character.sizeof == 9432);

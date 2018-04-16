@@ -108,48 +108,6 @@ struct Character {
 	Aptitudes!true aptitudes2;
 	@Unknown ubyte[1348] unknown9;
 
-	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
-		import std.algorithm : filter;
-		import std.format;
-		import std.range : lockstep;
-		sink.formattedWrite!"%s (Lv%s %s)\n"(name, level, className);
-		sink.formattedWrite!"\tMana: %s\n"(mana);
-		//sink.formattedWrite!"\tTransmigrations: %s, Transmigrated Levels: %s\n"(numTransmigrations, transmigratedLevels);
-		sink.formattedWrite!"\tCounter: %s, move: %s, jump: %s, throw: %s, range: %s, crit: %s%%\n"(counter, mv, jm, throw_, range, crit);
-		sink.formattedWrite!"\tElemental Affinity: %s\n"(resist);
-		sink.formattedWrite!"\t%s\n"(stats);
-		sink.formattedWrite!"\tAptitudes: %s\n"(aptitudes);
-		sink.formattedWrite!"\tBase Stats: %s\n"(baseStats);
-		sink.formattedWrite!"\tMax Damage: %s, Total Damage: %s\n"(maxDamage, totalDamage);
-		sink.formattedWrite!"\tEnemy Kill Count: %s, Death Count: %s\n"(numKills, numDeaths);
-		//if (weaponMasteryLevel != weaponMasteryLevel.init) {
-		//	sink.formattedWrite!"\tWeapon mastery:\n"();
-		//	foreach (i, masteryRate, masteryLevel; lockstep(weaponMasteryRate[], weaponMasteryLevel[])) {
-		//		if (masteryLevel > 0) {
-		//			sink.formattedWrite!"\t\tLv%s %s\n"(masteryLevel, cast(WeaponTypes)i);
-		//		}
-		//	}
-		//}
-		auto equips = equipment[].filter!(x => x.isValid);
-		if (!equips.empty) {
-			sink.formattedWrite!"\tEquipment:\n"();
-			sink.formattedWrite!"%(\t\t%s\n%)\n"(equips);
-		}
-		if (!skills.range.empty) {
-			sink.formattedWrite!"\tAbilities:\n"();
-			foreach (skill; skills.range) {
-				sink.formattedWrite!"\t\t%s\n"(skill);
-			}
-		}
-
-		debug (unknowns) {
-			sink.formattedWrite!" - Unknown data:"();
-			import std.traits : getSymbolsByUDA;
-			static foreach (i; 0..getSymbolsByUDA!(typeof(this), Unknown).length) {
-				sink.formattedWrite!"(%s)"(getSymbolsByUDA!(typeof(this), Unknown)[i]);
-			}
-		}
-	}
 	auto name() const {
 		return _name.fromStringz;
 	}
@@ -166,12 +124,6 @@ static assert(Character.level.offsetof == 0x114C);
 static assert(Character.baseResist.offsetof == 0x1160);
 static assert(Character.maxDamage.offsetof == 0x11A0);
 static assert(Character.aptitudes.offsetof == 0x14FC);
-
-private void func() {
-	import std.outbuffer;
-	auto buf = new OutBuffer;
-	Character().toString(buf);
-}
 
 align(1)
 struct DD2PS3 {

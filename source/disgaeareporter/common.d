@@ -100,11 +100,14 @@ void printData(Game)(File output, Game* game) {
 		}
 	}
 	output.writeln();
+	static if (hasMember!(Game, "characters")) {
+		output.writeln("-Characters-");
+		foreach (character; game.characters) {
+			output.printCharacter(character);
+		}
+	}
 	static if (hasMember!(Game, "mapClears")) {
 		output.writefln("-Map Clears-\n\n%(%s\n%)", game.mapClears[].filter!(x => x.clears > 0));
-	}
-	static if (hasMember!(Game, "characters")) {
-		output.writefln("-Characters-\n\n%(%s\n%)", game.characters);
 	}
 	static if (hasMember!(Game, "senators")) {
 		auto index = new size_t[](game.senators.length);
@@ -142,6 +145,102 @@ void printData(Game)(File output, Game* game) {
 			output.writeln(mixin("game."~unknown.stringof));
 		}
 	}
+}
+
+void printCharacter(T)(File output, T character) {
+		import std.algorithm : filter;
+		import std.range : lockstep;
+		import std.traits : hasMember;
+		static if (hasMember!(T, "className")) {
+			auto className = character.className;
+		} else {
+			auto className = "Unknown";
+		}
+
+		static if (hasMember!(T, "name")) {
+			auto charName = character.name;
+		} else {
+			auto charName = "Unknown";
+		}
+
+		static if (hasMember!(T, "level")) {
+			auto level = character.level;
+		} else {
+			auto level = "???";
+		}
+		output.writefln!"%s (Lv%s %s)"(charName, level, className);
+
+		static if (hasMember!(T, "mana")) {
+			static if (hasMember!(T, "rank")) {
+				output.writefln!"\tRank: %s, Mana: %s"(character.rank, character.mana);
+			} else {
+				output.writefln!"\tMana: %s"(character.mana);
+			}
+		}
+		static if (hasMember!(T, "numTransmigrations") && hasMember!(T, "transmigratedLevels")) {
+			output.writefln!"\tTransmigrations: %s, Transmigrated Levels: %s"(character.numTransmigrations, character.transmigratedLevels);
+		}
+		static if (hasMember!(T, "resist")) {
+			output.writefln!"\tElemental Affinity: %s"(character.resist);
+		}
+		static if (hasMember!(T, "baseStats")) {
+			output.writefln!"\tBase Stats: %s"(character.baseStats);
+		}
+		static if (hasMember!(T, "stats")) {
+			output.writefln!"\t%s"(character.stats);
+		}
+		static if (hasMember!(T, "miscStats")) {
+			output.writefln!"\t%s"(character.miscStats);
+		}
+		static if (hasMember!(T, "aptitudes")) {
+			output.writefln!"\tAptitudes: %s"(character.aptitudes);
+		}
+		static if (hasMember!(T, "maxDamage") && hasMember!(T, "totalDamage")) {
+			output.writefln!"\tMax Damage: %s, Total Damage: %s"(character.maxDamage, character.totalDamage);
+		}
+		static if (hasMember!(T, "numKills") && hasMember!(T, "numDeaths")) {
+			output.writefln!"\tEnemy Kill Count: %s, Death Count: %s"(character.numKills, character.numDeaths);
+		}
+		static if (hasMember!(T, "training")) {
+			output.writefln!"\tTraining: %s"(character.training);
+		}
+		static if (hasMember!(T, "weaponMasteryRate") && hasMember!(T, "weaponMasteryLevel")) {
+			if (character.weaponMasteryLevel != character.weaponMasteryLevel.init) {
+				output.writeln("\tWeapon mastery:");
+				foreach (i, masteryRate, masteryLevel; lockstep(character.weaponMasteryRate[], character.weaponMasteryLevel[])) {
+					if (masteryLevel > 0) {
+						static if (T.weaponMasteryRate.length == 8) {
+							output.writefln!"\t\tLv%s %s"(masteryLevel, cast(WeaponTypes)i);
+						} else {
+							output.writefln!"\t\tLv%s %s"(masteryLevel, cast(WeaponTypesD2)i);
+						}
+					}
+				}
+			}
+		}
+		static if (hasMember!(T, "equipment")) {
+			auto equips = character.equipment[].filter!(x => x.isValid);
+			if (!equips.empty) {
+				output.writefln!"\tEquipment:"();
+				output.writefln!"%(\t\t%s\n%)"(equips);
+			}
+		}
+		static if (hasMember!(T, "skills")) {
+			if (!character.skills.range.empty) {
+				output.writeln("\tAbilities:");
+				foreach (skill; character.skills.range) {
+					output.writefln!"\t\t%s"(skill);
+				}
+			}
+		}
+
+		debug (unknowns) {
+			output.writeln("\tUnknown data:");
+			import std.traits : getSymbolsByUDA;
+			static foreach (i; 0..getSymbolsByUDA!(T, Unknown).length) {
+				output.writefln!"\t\t%s: (%s)"(__traits(identifier, getSymbolsByUDA!(T, Unknown)[i]).stringof, mixin("character."~__traits(identifier, getSymbolsByUDA!(T, Unknown)[i])));
+			}
+		}
 }
 
 align(1)

@@ -105,58 +105,12 @@ struct Character {
 	Resistance resist;
 	MiscStats miscStats;
 	@Unknown ubyte[534] unknown8;
-
-	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
-		import std.algorithm : filter;
-		import std.format;
-		import std.range : lockstep;
-		sink.formattedWrite!"%s (Lv%s %s)\n"(name, level, className);
-		sink.formattedWrite!"\tMana: %s\n"(mana);
-		//sink.formattedWrite!"\tTransmigrations: %s, Transmigrated Levels: %s\n"(numTransmigrations, transmigratedLevels);
-		sink.formattedWrite!"\t%s\n"(miscStats);
-		sink.formattedWrite!"\tElemental Affinity: %s\n"(resist);
-		sink.formattedWrite!"\t%s\n"(stats);
-		sink.formattedWrite!"\tBase Stats: %s\n"(baseStats);
-		if (weaponMasteryLevel != weaponMasteryLevel.init) {
-			sink.formattedWrite!"\tWeapon mastery:\n"();
-			foreach (i, masteryRate, masteryLevel; lockstep(weaponMasteryRate[], weaponMasteryLevel[])) {
-				if (masteryLevel > 0) {
-					sink.formattedWrite!"\t\tLv%s %s\n"(masteryLevel, cast(WeaponTypes)i);
-				}
-			}
-		}
-		auto equips = equipment[].filter!(x => x.isValid);
-		if (!equips.empty) {
-			sink.formattedWrite!"\tEquipment:\n"();
-			sink.formattedWrite!"%(\t\t%s\n%)\n"(equips);
-		}
-		if (!skills.range.empty) {
-			sink.formattedWrite!"\tAbilities:\n"();
-			foreach (skill; skills.range) {
-				sink.formattedWrite!"\t\t%s\n"(skill);
-			}
-		}
-
-		debug (unknowns) {
-			sink.formattedWrite!" - Unknown data:"();
-			import std.traits : getSymbolsByUDA;
-			static foreach (i; 0..getSymbolsByUDA!(typeof(this), Unknown).length) {
-				sink.formattedWrite!"(%s)"(getSymbolsByUDA!(typeof(this), Unknown)[i]);
-			}
-		}
-	}
 }
 static assert(Character.sizeof == 0xF00);
 static assert(Character.skills.offsetof == 0x78C);
 static assert(Character.stats.offsetof == 0xC28);
 static assert(Character.baseStats.offsetof == 0xCBC);
 static assert(Character.baseResist.offsetof == 0xCDE);
-
-private void func() {
-	import std.outbuffer;
-	auto buf = new OutBuffer;
-	Character().toString(buf);
-}
 
 align(1)
 struct Senator {

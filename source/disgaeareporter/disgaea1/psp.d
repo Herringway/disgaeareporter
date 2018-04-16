@@ -58,38 +58,5 @@ struct PSPCharacter {
 	ubyte[2] unknown10;
 	byte mentor;
 	ubyte[23] unknown11;
-
-	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
-		import std.algorithm : filter;
-		import std.format;
-		import std.range : lockstep;
-		sink.formattedWrite!"%s (Lv%s %s)\n"(name, level, className);
-		sink.formattedWrite!"\tRank: %s, Mana: %s\n"(senateRank, mana);
-		sink.formattedWrite!"\tCounter: %s, MV: %s, JM: %s\n"(counter, mv, jm);
-		sink.formattedWrite!"\tElemental Affinity: %s\n"(resist);
-		if (mentor >= 0) {
-			sink.formattedWrite("\tMentor: %s\n", chars[cast(size_t)mentor].name);
-		}
-		sink.formattedWrite!"\t%s\n"(stats);
-		if (weaponMasteryLevel != weaponMasteryLevel.init) {
-			sink.formattedWrite!"\tWeapon mastery:\n"();
-			foreach (i, masteryRate, masteryLevel; lockstep(weaponMasteryRate[], weaponMasteryLevel[])) {
-				if (masteryLevel > 0) {
-					sink.formattedWrite!"\t\tLv%s %s\n"(masteryLevel, cast(WeaponTypes)i);
-				}
-			}
-		}
-		if (equipment != equipment.init) {
-			sink.formattedWrite!"\tEquipment:\n"();
-			sink.formattedWrite!"%(\t\t%s\n%)\n"(equipment[].filter!(x => x.nameID != 0));
-		}
-		if (!skills.range.empty) {
-			sink.formattedWrite!"\tAbilities:\n"();
-			foreach (skill; skills.range) {
-				sink.formattedWrite!"\t\t%s\n"(skill);
-			}
-		}
-		debug(unknowns) formattedWrite!"%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n"(sink, unknown1, unknown2, unknown3, unknown4, unknown5, unknown6, unknown7, unknown8, unknown9, unknown10, unknown11);
-	}
 }
 static assert(PSPCharacter.sizeof == 0x6A8);

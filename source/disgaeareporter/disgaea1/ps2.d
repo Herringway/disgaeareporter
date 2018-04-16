@@ -128,36 +128,6 @@ struct PS2Character {
 	ubyte[14] unknown9;
 	ubyte senateRank;
 	ubyte[78] unknown10;
-
-	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
-		import std.algorithm : filter;
-		import std.format;
-		import std.range : lockstep;
-		formattedWrite!"%s (Lv%s %s)\n"(sink, name, level, className);
-		formattedWrite!"\tRank: %s, Mana: %s\n"(sink, senateRank, mana);
-		sink.formattedWrite!"\tCounter: %s, MV: %s, JM: %s\n"(counter, mv, jm);
-		sink.formattedWrite!"\tElemental Affinity: %s\n"(resist);
-		formattedWrite!"\t%s\n"(sink, stats);
-		if (weaponMasteryLevel != weaponMasteryLevel.init) {
-			formattedWrite!"\tWeapon mastery:\n"(sink);
-			foreach (i, masteryRate, masteryLevel; lockstep(weaponMasteryRate[], weaponMasteryLevel[])) {
-				if (masteryLevel > 0) {
-					formattedWrite!"\t\tLv%s %s\n"(sink, masteryLevel, cast(WeaponTypes)i);
-				}
-			}
-		}
-		if (equipment != equipment.init) {
-			formattedWrite!"\tEquipment:\n"(sink);
-			formattedWrite!"%(\t\t%s\n%)\n"(sink, equipment[].filter!(x => x.nameID != 0));
-		}
-		if (!skills.range.empty) {
-			sink.formattedWrite!"\tAbilities:\n"();
-			foreach (skill; skills.range) {
-				sink.formattedWrite!"\t\t%s\n"(skill);
-			}
-		}
-		debug(unknowns) formattedWrite!"%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n"(sink, unknown1, unknown2, unknown3, unknown4, unknown5, unknown6, unknown7, unknown8, unknown9, unknown10);
-	}
 }
 static assert(PS2Character.sizeof == 0x7C8);
 
@@ -174,12 +144,6 @@ struct PS2MapClearData {
 			sink.formattedWrite!", Unknown: %s"(unknown);
 		}
 	}
-}
-
-private void func() {
-	import std.outbuffer;
-	auto buf = new OutBuffer;
-	PS2Character().toString(buf);
 }
 
 //PS2

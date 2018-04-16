@@ -180,45 +180,6 @@ struct Character {
 	@Unknown ubyte[5] unknown12;
 	uint transmigratedLevels;
 	@Unknown ubyte[20] unknown13;
-
-	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
-		import std.algorithm : filter;
-		import std.format;
-		import std.range : lockstep;
-		sink.formattedWrite!"%s (Lv%s %s)\n"(name, level, className);
-		sink.formattedWrite!"\tRank: %s, Mana: %s\n"(senateRank, mana);
-		sink.formattedWrite!"\tTransmigrations: %s, Transmigrated Levels: %s\n"(numTransmigrations, transmigratedLevels);
-		sink.formattedWrite!"\t%s\n"(miscStats);
-		sink.formattedWrite!"\tElemental Affinity: %s\n"(resist);
-		sink.formattedWrite!"\tBase Stats: %s\n"(baseStats);
-		sink.formattedWrite!"\tStats: %s\n"(stats);
-		sink.formattedWrite!"\tItem Stat Multiplier: %s\n"(level.itemStatsMultiplier);
-		if (weaponMasteryLevel != weaponMasteryLevel.init) {
-			sink.formattedWrite!"\tWeapon mastery:\n"();
-			foreach (i, masteryRate, masteryLevel; lockstep(weaponMasteryRate[], weaponMasteryLevel[])) {
-				if (masteryLevel > 0) {
-					sink.formattedWrite!"\t\tLv%s %s\n"(masteryLevel, cast(WeaponTypes)i);
-				}
-			}
-		}
-		if (equipment != equipment.init) {
-			sink.formattedWrite!"\tEquipment:\n"();
-			sink.formattedWrite!"%(\t\t%s\n%)\n"(equipment[].filter!(x => x.isValid));
-		}
-		if (!skills.range.empty) {
-			sink.formattedWrite!"\tAbilities:\n"();
-			foreach (skill; skills.range) {
-				sink.formattedWrite!"\t\t%s\n"(skill);
-			}
-		}
-		debug (unknowns) {
-			sink.formattedWrite!"\tUnknown data:\n"();
-			import std.traits : getSymbolsByUDA;
-			static foreach (i; 0..getSymbolsByUDA!(typeof(this), Unknown).length) {
-				sink.formattedWrite!"(%s)"(getSymbolsByUDA!(typeof(this), Unknown)[i]);
-			}
-		}
-	}
 }
 
 static assert(Character.sizeof == 0x6B8);
