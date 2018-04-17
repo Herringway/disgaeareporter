@@ -26,15 +26,21 @@ static assert(StatusResistance.sizeof == 2);
 align(1)
 struct Innocent {
 	align(1):
-	ushort level;
+	ushort _level;
 	ubyte type;
 	ubyte uniquer;
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.format;
-		formattedWrite!"Lv%s%s %s"(sink, level > 10000 ? level-10000 : level, level > 10000 ? "+" : "", type.innocentName);
+		formattedWrite!"Lv%s%s %s"(sink, level, isSubdued ? "+" : "", type.innocentName);
 	}
 	bool isValid() const {
 		return type != 0;
+	}
+	ushort level() const {
+		return _level > 10000 ? cast(ushort)(_level - 10000) : _level;
+	}
+	bool isSubdued() const {
+		return _level > 10000;
 	}
 }
 static assert(Innocent.sizeof == 4);

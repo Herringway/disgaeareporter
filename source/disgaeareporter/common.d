@@ -93,10 +93,13 @@ void printData(Game)(File output, Game* game) {
 		output.writefln!"Average favour: %s\n"(Favour(cast(byte)average));
 	}
 	static if (hasMember!(Game, "bagItems")) {
-		output.writefln("-Items-\n\nBag:\n%(\t%s\n%)", game.bagItems);
+		output.writefln("-Items-\n\nBag:\n%(\t%s\n%)\n", game.bagItems);
 	}
 	static if (hasMember!(Game, "warehouseItems")) {
-		output.writefln("Warehouse:\n%(\t%s\n%)", game.warehouseItems);
+		output.writefln("Warehouse:\n%(\t%s\n%)\n", game.warehouseItems);
+	}
+	static if (hasMember!(Game, "innocentWarehouse")) {
+		output.writefln("-Innocent Warehouse-\n\n%(\t%s\n%)", game.innocentWarehouse);
 	}
 	static if (hasMember!(Game, "itemRecords")) {
 		output.writeln("\n-Item Records-\n");

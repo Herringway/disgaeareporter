@@ -13,10 +13,13 @@ struct Innocent {
 	@Unknown ubyte[2] unknown;
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.format;
-		sink.formattedWrite!"Lv%s%s %s"(level, /+level > 10000 ? "+" : ""+/ "", type.innocentName);
+		sink.formattedWrite!"Lv%s%s %s"(level, isSubdued ? "+" : "", type.innocentName);
 	}
 	bool isValid() const {
 		return type != 0;
+	}
+	bool isSubdued() const {
+		return (unknown[1]&1) == 1;
 	}
 }
 
@@ -153,12 +156,18 @@ struct DD2PS3 {
 	BigEndian!ushort itemWorldLevels;
 	@Unknown BigEndian!ushort unknown9;
 	BigEndian!uint totalItemWorldLevels;
+	@Unknown ubyte[1832] unknown10;
+	Innocent[256] _innocentWarehouse;
 	auto characters() const {
 		return _characters[0..charCount];
 	}
 	auto bagItems() const {
 		import std.algorithm : filter;
 		return _items[].filter!(x => x.isValid);
+	}
+	auto innocentWarehouse() const {
+		import std.algorithm : filter;
+		return _innocentWarehouse[].filter!(x => x.isValid);
 	}
 }
 
@@ -167,6 +176,7 @@ static assert(DD2PS3._characters.offsetof == 0x5A0);
 static assert(DD2PS3._items.offsetof == 0xDD518);
 static assert(DD2PS3.charCount.offsetof == 0x1507EC);
 static assert(DD2PS3.geoCombo.offsetof == 0x152270);
+static assert(DD2PS3._innocentWarehouse.offsetof == 0x1529B8);
 
 unittest {
 	import disgaeareporter.dispatcher : getRawData, loadData, Platforms;
