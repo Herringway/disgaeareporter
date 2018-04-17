@@ -69,23 +69,12 @@ struct PS2Item {
 	ubyte[12] unknown2;
 	SJISString!32 name;
 	ubyte[14] unknown3;
-	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
-		import std.algorithm : filter;
-		import std.format;
-		sink.formattedWrite!"Lv%s %s (Rarity: %s) - %(%s, %)"(level, nameID.itemName, rarity, innocents[].filter!(x => x.isValid));
-	}
 	bool isValid() const {
 		return nameID != 0;
 	}
 }
 static assert(PS2Item.name.offsetof == 0x9A);
 static assert(PS2Item.sizeof == 0xC8);
-
-private void func2() {
-	import std.outbuffer;
-	auto buf = new OutBuffer;
-	PS2Item().toString(buf);
-}
 
 align(1)
 struct PS2Character {

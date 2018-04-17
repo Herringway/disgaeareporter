@@ -36,19 +36,6 @@ struct Item {
 	@Unknown ubyte[53] unknown3;
 	char[64] _name;
 	@Unknown ubyte[95] unknown4;
-	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
-		import std.algorithm : filter;
-		import std.format;
-		auto validInnocents = innocents[].filter!(x => x.isValid);
-		sink.formattedWrite!"Lv%s %s%s%(%s, %)"(level, name, validInnocents.empty ? "" : " - ", validInnocents);
-		debug (unknowns) {
-			sink.formattedWrite!" - Unknown data:"();
-			import std.traits : getSymbolsByUDA;
-			static foreach (i; 0..getSymbolsByUDA!(typeof(this), Unknown).length) {
-				sink.formattedWrite!"(%s)"(getSymbolsByUDA!(typeof(this), Unknown)[i]);
-			}
-		}
-	}
 	bool isValid() const {
 		return nameID != 0;
 	}
@@ -61,11 +48,6 @@ static assert(Item.sizeof == 0x190);
 static assert(Item.nameID.offsetof == 0xB8);
 static assert(Item._name.offsetof == 0xF1);
 
-private void funci() {
-	import std.outbuffer;
-	auto buf = new OutBuffer;
-	Item().toString(buf);
-}
 align(1)
 struct Character {
 	align(1):

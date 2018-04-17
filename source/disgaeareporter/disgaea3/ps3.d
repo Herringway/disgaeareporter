@@ -20,18 +20,6 @@ struct Item {
 	SJISString!80 name;
 	@Unknown ubyte[1] unknown4;
 
-	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
-		import std.algorithm : filter;
-		import std.format;
-		sink.formattedWrite!"Lv%s %s (Rarity: %s) - %(%s, %)"("?"/+level+/, name, rarity, innocents[].filter!(x => x.isValid));
-		debug (unknowns) {
-			sink.formattedWrite!" - Unknown data:"();
-			import std.traits : getSymbolsByUDA;
-			static foreach (i; 0..getSymbolsByUDA!(typeof(this), Unknown).length) {
-				sink.formattedWrite!"(%s)"(getSymbolsByUDA!(typeof(this), Unknown)[i]);
-			}
-		}
-	}
 	bool isValid() const {
 		return nameID != 0;
 	}

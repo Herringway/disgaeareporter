@@ -116,30 +116,14 @@ struct Item {
 	ubyte rank;
 	ubyte range;
 	@Unknown ubyte[10] unknown;
-	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
-		import std.algorithm : filter;
-		import std.format;
-		sink.formattedWrite!"Lv%s %s (Rarity: %s) - %(%s, %)"(level, nameID.itemName, rarity, innocents[].filter!(x => x.isValid));
-		debug (unknowns) {
-			sink.formattedWrite!" - Unknown data:"();
-			import std.traits : getSymbolsByUDA;
-			static foreach (i; 0..getSymbolsByUDA!(typeof(this), Unknown).length) {
-				sink.formattedWrite!"(%s)"(getSymbolsByUDA!(typeof(this), Unknown)[i]);
-			}
-		}
+	string name() const {
+		return nameID.itemName;
 	}
 	bool isValid() const {
 		return nameID != 0;
 	}
 }
 static assert(Item.sizeof == 0x90);
-
-
-private void funco() {
-	import std.outbuffer;
-	auto buf = new OutBuffer;
-	Item().toString(buf);
-}
 
 align(1)
 struct Character {

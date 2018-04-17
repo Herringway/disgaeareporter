@@ -75,7 +75,7 @@ void printData(Game)(File output, Game* game) {
 	static if (hasMember!(Game, "characters")) {
 		output.writeln("-Characters-");
 		foreach (character; game.characters) {
-			output.printCharacter(character);
+			output.printCharacter(1, character);
 		}
 	}
 	static if (hasMember!(Game, "mapClears")) {
@@ -93,10 +93,18 @@ void printData(Game)(File output, Game* game) {
 		output.writefln!"Average favour: %s\n"(Favour(cast(byte)average));
 	}
 	static if (hasMember!(Game, "bagItems")) {
-		output.writefln("-Items-\n\nBag:\n%(\t%s\n%)\n", game.bagItems);
+		output.writeln("-Items-");
+		output.writeln();
+		output.writeln("Bag:");
+		foreach (item; game.bagItems) {
+			output.printItem(1, item);
+		}
 	}
 	static if (hasMember!(Game, "warehouseItems")) {
-		output.writefln("Warehouse:\n%(\t%s\n%)\n", game.warehouseItems);
+		output.writeln("Warehouse:");
+		foreach (item; game.warehouseItems) {
+			output.printItem(1, item);
+		}
 	}
 	static if (hasMember!(Game, "innocentWarehouse")) {
 		output.writefln("-Innocent Warehouse-\n\n%(\t%s\n%)", game.innocentWarehouse);
@@ -122,10 +130,15 @@ void printData(Game)(File output, Game* game) {
 	}
 }
 
-void printCharacter(T)(File output, T character) {
+void printCharacter(T)(File output, int indentCount, T character) {
 		import std.algorithm : filter;
 		import std.range : lockstep;
 		import std.traits : hasMember;
+
+		void indentedPrint(string fmt = "%s", T...)(int offset, T args) {
+			output.writef!"%-(%s%)"("\t".repeat(indentCount+offset));
+			output.writefln!fmt(args);
+		}
 		static if (hasMember!(T, "className")) {
 			auto className = character.className;
 		} else {
@@ -143,51 +156,51 @@ void printCharacter(T)(File output, T character) {
 		} else {
 			auto level = "???";
 		}
-		output.writefln!"%s (Lv%s %s)"(charName, level, className);
+		indentedPrint!"%s (Lv%s %s)"(-1, charName, level, className);
 
 		static if (hasMember!(T, "mana")) {
 			static if (hasMember!(T, "rank")) {
-				output.writefln!"\tRank: %s, Mana: %s"(character.rank, character.mana);
+				indentedPrint!"Rank: %s, Mana: %s"(0, character.rank, character.mana);
 			} else {
-				output.writefln!"\tMana: %s"(character.mana);
+				indentedPrint!"Mana: %s"(0, character.mana);
 			}
 		}
 		static if (hasMember!(T, "numTransmigrations") && hasMember!(T, "transmigratedLevels")) {
-			output.writefln!"\tTransmigrations: %s, Transmigrated Levels: %s"(character.numTransmigrations, character.transmigratedLevels);
+			indentedPrint!"Transmigrations: %s, Transmigrated Levels: %s"(0, character.numTransmigrations, character.transmigratedLevels);
 		}
 		static if (hasMember!(T, "resist")) {
-			output.writefln!"\tElemental Affinity: %s"(character.resist);
+			indentedPrint!"Elemental Affinity: %s"(0, character.resist);
 		}
 		static if (hasMember!(T, "baseStats")) {
-			output.writefln!"\tBase Stats: %s"(character.baseStats);
+			indentedPrint!"Base Stats: %s"(0, character.baseStats);
 		}
 		static if (hasMember!(T, "stats")) {
-			output.writefln!"\t%s"(character.stats);
+			indentedPrint(0, character.stats);
 		}
 		static if (hasMember!(T, "miscStats")) {
-			output.writefln!"\t%s"(character.miscStats);
+			indentedPrint(0, character.miscStats);
 		}
 		static if (hasMember!(T, "aptitudes")) {
-			output.writefln!"\tAptitudes: %s"(character.aptitudes);
+			indentedPrint!"Aptitudes: %s"(0, character.aptitudes);
 		}
 		static if (hasMember!(T, "maxDamage") && hasMember!(T, "totalDamage")) {
-			output.writefln!"\tMax Damage: %s, Total Damage: %s"(character.maxDamage, character.totalDamage);
+			indentedPrint!"Max Damage: %s, Total Damage: %s"(0, character.maxDamage, character.totalDamage);
 		}
 		static if (hasMember!(T, "numKills") && hasMember!(T, "numDeaths")) {
-			output.writefln!"\tEnemy Kill Count: %s, Death Count: %s"(character.numKills, character.numDeaths);
+			indentedPrint!"Enemy Kill Count: %s, Death Count: %s"(0, character.numKills, character.numDeaths);
 		}
 		static if (hasMember!(T, "training")) {
-			output.writefln!"\tTraining: %s"(character.training);
+			indentedPrint!"Training: %s"(0, character.training);
 		}
 		static if (hasMember!(T, "weaponMasteryRate") && hasMember!(T, "weaponMasteryLevel")) {
 			if (character.weaponMasteryLevel != character.weaponMasteryLevel.init) {
-				output.writeln("\tWeapon mastery:");
+				indentedPrint(0, "Weapon mastery:");
 				foreach (i, masteryRate, masteryLevel; lockstep(character.weaponMasteryRate[], character.weaponMasteryLevel[])) {
 					if (masteryLevel > 0) {
 						static if (T.weaponMasteryRate.length == 8) {
-							output.writefln!"\t\tLv%s %s"(masteryLevel, cast(WeaponTypes)i);
+							indentedPrint!"Lv%s %s"(1, masteryLevel, cast(WeaponTypes)i);
 						} else {
-							output.writefln!"\t\tLv%s %s"(masteryLevel, cast(WeaponTypesD2)i);
+							indentedPrint!"Lv%s %s"(1, masteryLevel, cast(WeaponTypesD2)i);
 						}
 					}
 				}
@@ -196,26 +209,58 @@ void printCharacter(T)(File output, T character) {
 		static if (hasMember!(T, "equipment")) {
 			auto equips = character.equipment[].filter!(x => x.isValid);
 			if (!equips.empty) {
-				output.writefln!"\tEquipment:"();
-				output.writefln!"%(\t\t%s\n%)"(equips);
+				indentedPrint(0, "Equipment:");
+				foreach (item; equips) {
+					output.printItem(indentCount+1, item);
+				}
 			}
 		}
 		static if (hasMember!(T, "skills")) {
 			if (!character.skills.range.empty) {
-				output.writeln("\tAbilities:");
+				indentedPrint(0, "Abilities:");
 				foreach (skill; character.skills.range) {
-					output.writefln!"\t\t%s"(skill);
+					indentedPrint(1, skill);
 				}
 			}
 		}
 
-		debug (unknowns) {
-			output.writeln("\tUnknown data:");
-			import std.traits : getSymbolsByUDA;
-			static foreach (i; 0..getSymbolsByUDA!(T, Unknown).length) {
-				output.writefln!"\t\t%s: (%s)"(__traits(identifier, getSymbolsByUDA!(T, Unknown)[i]).stringof, mixin("character."~__traits(identifier, getSymbolsByUDA!(T, Unknown)[i])));
-			}
+		output.printUnknowns(indentCount+1, character);
+}
+
+void printItem(ItemType)(File output, uint indentCount, const ItemType item) {
+	import std.algorithm : filter;
+	import std.traits : hasMember;
+
+	void indentedPrint(string fmt = "%s", T...)(int offset, T args) {
+		output.writef!"%-(%s%)"("\t".repeat(indentCount+offset));
+		output.writefln!fmt(args);
+	}
+
+	static if (hasMember!(ItemType, "level")) {
+		auto level = item.level;
+	} else {
+		auto level = "?";
+	}
+	static if (hasMember!(ItemType, "rarity")) {
+		indentedPrint!"Lv%s %s (Rarity: %s) - %(%s, %)"(0, level, item.name, item.rarity, item.innocents[].filter!(x => x.isValid));
+	} else {
+		indentedPrint!"Lv%s %s - %(%s, %)"(0, level, item.name, item.innocents[].filter!(x => x.isValid));
+	}
+	output.printUnknowns(indentCount+1, item);
+}
+
+void printUnknowns(T)(File output, uint indentCount, T data) {
+	debug (unknowns) {
+		void indentedPrint(string fmt = "%s", T...)(int offset, T args) {
+			output.writef!"%-(%s%)"("\t".repeat(indentCount+offset));
+			output.writefln!fmt(args);
 		}
+		output.writeln("\tUnknown data:");
+		import std.traits : getSymbolsByUDA;
+		static foreach (i; 0..getSymbolsByUDA!(T, Unknown).length) {
+			indentedPrint!"%s: (%s)"(1, __traits(identifier, getSymbolsByUDA!(T, Unknown)[i]).stringof, mixin("data."~__traits(identifier, getSymbolsByUDA!(T, Unknown)[i])));
+		}
+	}
 }
 
 align(1)

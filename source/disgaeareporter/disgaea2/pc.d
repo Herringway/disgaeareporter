@@ -51,34 +51,12 @@ struct Item {
 	@Unknown ubyte[29] unknown3;
 	ZeroString!32 name;
 	@Unknown ubyte[168] unknown4;
-	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
-		import std.algorithm : filter;
-		import std.format;
-		sink.formattedWrite!"Lv%s %s (Rarity: %s) - %(%s, %)"(level, name, rarity, innocents[].filter!(x => x.isValid));
-		debug(itemstats) {
-			sink.formattedWrite!"\n\t\t%s"(stats);
-		}
-		debug (unknowns) {
-			sink.formattedWrite!" - Unknown data:"();
-			import std.traits : getSymbolsByUDA;
-			static foreach (i; 0..getSymbolsByUDA!(typeof(this), Unknown).length) {
-				sink.formattedWrite!"(%s)"(getSymbolsByUDA!(typeof(this), Unknown)[i]);
-			}
-		}
-	}
 	bool isValid() const {
 		return (unknown2 != unknown2.init);
 	}
 }
 
 static assert(Item.sizeof == 0x180);
-
-
-private void funci() {
-	import std.outbuffer;
-	auto buf = new OutBuffer;
-	Item().toString(buf);
-}
 
 align(1)
 struct Character {
