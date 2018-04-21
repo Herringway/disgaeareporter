@@ -7,12 +7,14 @@ immutable string[ushort] dd2innocents;
 immutable string[ushort] dd2items;
 immutable string[ushort] dd2skillNames;
 immutable string[ushort] dd2mapNames;
+immutable string[ushort] dd2evilityNames;
 
 static immutable parsedClasses = parseData(import("dd2classes.txt"));
 static immutable parsedInnocents = parseData(import("dd2innocents.txt"));
 static immutable parsedItems = parseData(import("dd2items.txt"));
 static immutable parsedSkills = parseData(import("dd2skills.txt"));
 static immutable parsedMaps = parseData(import("dd2maps.txt"));
+static immutable parsedEvilities = parseData(import("dd2evilities.txt"));
 immutable string[] dd2itemRecords = import("dd2itemrecords.txt").split("\n");
 shared static this() {
 	foreach (tuple; parsedClasses) {
@@ -29,6 +31,9 @@ shared static this() {
 	}
 	foreach (tuple; parsedMaps) {
 		dd2mapNames[tuple.key] = tuple.value;
+	}
+	foreach (tuple; parsedEvilities) {
+		dd2evilityNames[tuple.key] = tuple.value;
 	}
 }
 auto parseData(string data) @safe pure {

@@ -82,10 +82,12 @@ struct Character {
 	BigEndian!ulong totalDamage;
 	@Unknown ubyte[30] unknown8;
 	ubyte _training;
-	@Unknown ubyte[813] unknown9;
+	@Unknown ubyte unknown9;
+	Evility[2] _evilities;
+	@Unknown ubyte[808] unknown10;
 	Aptitudes!true aptitudes;
 	Aptitudes!true aptitudes2;
-	@Unknown ubyte[1348] unknown10;
+	@Unknown ubyte[1348] unknown11;
 
 	auto name() const {
 		return _name.fromStringz;
@@ -95,6 +97,10 @@ struct Character {
 	}
 	auto training() const {
 		return _training.trainingName;
+	}
+	auto evilities() const {
+		import std.algorithm : filter;
+		return _evilities[].filter!(x => x.isValid);
 	}
 }
 static assert(Character.sizeof == 0x1A60);
@@ -106,6 +112,7 @@ static assert(Character.level.offsetof == 0x114C);
 static assert(Character.baseResist.offsetof == 0x1160);
 static assert(Character.maxDamage.offsetof == 0x11A0);
 static assert(Character._training.offsetof == 0x11CE);
+static assert(Character._evilities.offsetof == 0x11D0);
 static assert(Character.aptitudes.offsetof == 0x14FC);
 
 align(1)
@@ -162,6 +169,7 @@ static assert(DD2PS3._innocentWarehouse.offsetof == 0x1529B8);
 
 unittest {
 	import disgaeareporter.dispatcher : getRawData, loadData, Platforms;
+	import std.array : array;
 	auto data = loadData!DD2PS3(cast(immutable(ubyte)[])import("dd2ps3-raw.DAT"));
 	assert(data.characters.length == 20);
 
@@ -187,6 +195,8 @@ unittest {
 				assert(type == 4);
 			}
 		}
+		assert(evilities.array.length == 1);
+		assert(evilities.array[0] == 10);
 	}
 
 	with(data._items[0]) {

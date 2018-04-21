@@ -158,6 +158,10 @@ void printCharacter(T)(File output, int indentCount, T character) {
 		}
 		indentedPrint!"%s (Lv%s %s)"(-1, charName, level, className);
 
+		static if (hasMember!(T, "evilities")) {
+			indentedPrint!"Evilities: %(%s, %)"(0, character.evilities);
+		}
+
 		static if (hasMember!(T, "mana")) {
 			static if (hasMember!(T, "rank")) {
 				indentedPrint!"Rank: %s, Mana: %s"(0, character.rank, character.mana);

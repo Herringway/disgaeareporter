@@ -1,0 +1,192 @@
+000A	Overlord's Dignity
+0014	Overlord's Pride
+001E	Sadistic
+001F	The Lone Majin
+0032	Heart of Affection
+003C	Dangerous Revival
+0046	Li'l Sis Aura
+0047	????
+0050	The Artifact
+0051	????
+005A	Artifact Gone Wild
+0064	Passiveness
+006E	Shut-in Officer
+0078	Artifact Collector
+0082	Fabricated Setting
+008C	Limitless Love
+0096	Vocal Mind Control
+00C8	Loyalty
+00D2	Never Give Up
+00DC	Obvious Tendency
+00E6	Absorption
+00F0	Tyrant's Slave
+00FA	Angel Glitter
+0104	Concentration
+010E	All Range +
+0118	Final Boss Barrier
+0122	Pringer Protection
+012C	Heavy Stance
+0140	Acceleration Mascot
+014A	Greed
+0154	Dream Girl
+015E	Final Boss Setting
+0190	Burning Spirit
+019A	Princess Gleam
+01A4	Healing Barrier
+01AE	Demon Experiments
+01B8	Love Thy Heart
+01C2	R Command
+01C3	Command A
+01C4	Command G
+01C5	Command J
+01C6	Command M
+01C7	Command S
+01CC	Most Badass Overlord
+01D6	Prophecy
+01D7	Prophecy of Judgment
+01D8	Prophecy of Godly Wind
+01D9	Prophecy of Poison
+01DA	Prophecy of Wisdom
+01DB	Prophecy of Anger
+01E0	God of Destruction
+01EA	Water God's Ability
+01F4	Miracle Ability
+01FE	Witch Power
+0208	Converge Attack
+0209	Mass Blaster
+0212	Purify Power
+021C	Defensive Formation
+0226	Flat Alliance
+0230	Gig Power Injection
+023A	Brave Battle Princess
+0244	Analyze
+0245	T.O. Force
+024E	T.O. Pandemic
+0258	T.O. Illusion
+0262	T.O. Legion
+026C	T.O. Disaster
+0276	T.O. Despair
+0280	Basic Principles
+03F2	Wild Cry
+03F3	Shaking Excitement
+03F4	Fortitude
+03FC	Assault Attack
+03FD	Cooperativeness
+03FE	Extra Move
+0406	Magic Bundle
+0407	Over Limit
+0408	Sorcery Depletion
+0410	Magic Moderation
+0411	Magic Creation
+0412	Lights of Life
+041A	Light Salvation
+041B	Light Protection
+041C	Book of Magic
+0424	Corpse Heal
+0425	Advanced Healing
+0426	Book of Medicine
+042E	Fury
+042F	Forced Counter
+0430	No-miss Counter
+0438	Double Counter
+0439	Combo Attack
+043A	Counter Dodge
+0442	Finger of Luck
+0443	Gold Finger
+0444	Treasure Sensor
+044C	Geo Resist
+044D	Geo Protect
+044E	Geo Damage
+0456	Acceleration Shot
+0457	Sniping
+0458	Fly Swatter
+0460	Assist
+0461	Marking
+0462	Second Attack
+046A	Bushido
+046B	Calm Waters
+046C	Duelist
+0474	Defender
+0475	Defensive Stance
+0476	Advance Guard
+047E	Misty Haze
+047F	Flame Haze
+0480	Mirage
+0488	Element Force
+0489	Attack Weakness
+048A	Spirit Protection
+0492	Angel Song
+0493	Angel Majesty
+0494	Angel Leadership
+049C	Angel Protection
+049D	Angel Love
+049E	Angel Group
+04A6	Dark Tamer
+04A7	Dark Breeder
+04A8	Dark Blood
+04B0	Cursed Dance
+04B1	Gloomy Dance
+04B2	Ominous Dance
+04BA	Rapid Movement
+04BB	Blazing Start
+04BC	Heart of a Flea
+07DA	Gel Body
+07DB	Poisonous Body
+07DC	Corrupting Body
+07E4	Bad Trip
+07E5	Registry Reverse
+07E6	Reverse Ailments
+07EE	Poison Accelerator
+07EF	Full of Miasma
+07F0	Lengthen Ailment
+07F8	Reversal Power
+07F9	Tense Crisis
+07FA	Crisis Energy
+0802	Mind Break
+0803	Generate Pain
+0804	Astral Body
+080C	Weakening Aura
+080D	Softening Aura
+080E	Cute Aura
+0816	Explosive Body
+0817	Bomb Conversion
+0818	Cross Bomber
+0820	Predation
+0821	Soul Eater
+0822	Corpse Cannibal
+082A	Stone Statue
+082B	Turbo Boost
+082C	Home Security
+0834	Sweet Aroma
+0835	Detox Aroma
+0836	Shielding Aroma
+083E	Boar Charge
+083F	Great Wall
+0840	Dead or Alive
+0848	Soul Reaper
+0849	Mind Reaper
+084A	Near Death Reaper
+0852	Patience
+0853	Combat High
+0854	Flames of Revenge
+085C	Sexy Aura
+085D	Punishment
+085E	Shame
+0866	Lovely Song
+0867	Happy Song
+0868	Fortune Song
+0870	Enemy on the Brink
+0871	Fighting Spirit
+0872	Cat on the Brink
+087A	Power Shot
+087B	Piercing Shot
+087C	Scatter Shot
+0884	Water Dominance
+0885	Cold Charge
+0886	Aqua Depression
+088E	Fire Dominance
+088F	Flame Charge
+0890	Heat Depression
+0898	Wind Dominance
+0899	Air Charge
+089A	Wind Depression

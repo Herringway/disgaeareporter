@@ -1,6 +1,6 @@
 module disgaeareporter.disgaead2.common;
 
-
+import disgaeareporter.common;
 import dd2data;
 
 
@@ -40,6 +40,29 @@ string innocentName(const ushort id) {
 		return dd2innocents[id];
 	}
 	return "Unknown innocent "~id.to!string(16);
+}
+string evilityName(const ushort id) {
+	import std.conv : to;
+	if (id in dd2evilityNames) {
+		return dd2evilityNames[id];
+	}
+	return "Unknown evility "~id.to!string(16);
+}
+
+align(1)
+struct Evility {
+	align(1):
+	BigEndian!ushort id;
+
+	alias id this;
+
+	string toString() const {
+		return evilityName(id);
+	}
+
+	bool isValid() const {
+		return id != 0;
+	}
 }
 
 static immutable trainingTypes = [
