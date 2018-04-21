@@ -17,7 +17,7 @@ struct D1PS2 {
 	PS2Character[128] _characters;
 	Senator[512] senators;
 	ubyte[4] unknown3;
-	PS2MapClearData[144] mapClears;
+	PS2MapClearData[144] areas;
 	ubyte[7964] unknown4;
 	PS2Item[16] _bagItems;
 	PS2Item[256] _warehouseItems;
@@ -43,7 +43,7 @@ struct D1PS2 {
 static assert(D1PS2.totalHL.offsetof == 0x280);
 static assert(D1PS2._characters.offsetof == 0xBA8);
 static assert(D1PS2.senators.offsetof == 0x3EFA8);
-static assert(D1PS2.mapClears.offsetof == 0x42FAC);
+static assert(D1PS2.areas.offsetof == 0x42FAC);
 static assert(D1PS2._bagItems.offsetof == 0x472C8);
 static assert(D1PS2.sizeof == 0x54840);
 

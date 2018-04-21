@@ -116,6 +116,23 @@ static assert(Character._evilities.offsetof == 0x11D0);
 static assert(Character.aptitudes.offsetof == 0x14FC);
 
 align(1)
+struct Area {
+	align(1):
+	@Unknown ubyte[0x1A] unknown1;
+	BigEndian!uint clears;
+	BigEndian!ushort kills;
+	@Unknown BigEndian!ushort unknown2;
+	BigEndian!ushort bonusRank;
+	@Unknown ubyte[2] unknown3;
+	ZeroString!0x38 name;
+	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
+		import std.format;
+		sink.formattedWrite!"%s - Clears: %s, Kills: %s"(name, clears, kills);
+	}
+}
+static assert(Area.sizeof == 0x5E);
+
+align(1)
 struct DD2PS3 {
 	align(1):
 	@Unknown ubyte[8] unknown1;
@@ -128,24 +145,26 @@ struct DD2PS3 {
 	BigEndian!ulong spRecovered;
 	@Unknown ubyte[16] unknown4;
 	Character[128] _characters;
-	@Unknown ubyte[40824] unknown5;
+	@Unknown ubyte[1530] unknown5;
+	Area[199] areas;
+	@Unknown ubyte[20588] unknown6;
 	Item[999] _items;
-	@Unknown ubyte[72164] unknown6;
+	@Unknown ubyte[72164] unknown7;
 	BigEndian!ushort charCount;
-	@Unknown ubyte[6770] unknown7;
+	@Unknown ubyte[6770] unknown8;
 	BigEndian!ulong maxDamage;
 	BigEndian!ulong totalDamage;
 	BigEndian!ushort geoCombo;
-	@Unknown ubyte[6] unknown8;
+	@Unknown ubyte[6] unknown9;
 	BigEndian!uint enemiesKilled;
 	BigEndian!uint enemiesKilledCopy;
 	BigEndian!ushort maxLevel;
 	BigEndian!uint reincarnation;
 	BigEndian!ushort itemWorldVisits;
 	BigEndian!ushort itemWorldLevels;
-	@Unknown BigEndian!ushort unknown9;
+	@Unknown BigEndian!ushort unknown10;
 	BigEndian!uint totalItemWorldLevels;
-	@Unknown ubyte[1832] unknown10;
+	@Unknown ubyte[1832] unknown11;
 	Innocent[256] _innocentWarehouse;
 	auto characters() const {
 		return _characters[0..charCount];
@@ -162,6 +181,7 @@ struct DD2PS3 {
 
 static assert(DD2PS3.hpRecovered.offsetof == 0x580);
 static assert(DD2PS3._characters.offsetof == 0x5A0);
+static assert(DD2PS3.areas.offsetof == 0xD3B9A);
 static assert(DD2PS3._items.offsetof == 0xDD518);
 static assert(DD2PS3.charCount.offsetof == 0x1507EC);
 static assert(DD2PS3.geoCombo.offsetof == 0x152270);
@@ -197,6 +217,12 @@ unittest {
 		}
 		assert(evilities.array.length == 1);
 		assert(evilities.array[0] == 10);
+	}
+	with (data.areas[97]) {
+		assert(name == "Silver Witch");
+		assert(kills == 45);
+		assert(clears == 11);
+		assert(bonusRank == 6);
 	}
 
 	with(data._items[0]) {

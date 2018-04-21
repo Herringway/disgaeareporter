@@ -78,8 +78,8 @@ void printData(Game)(File output, Game* game) {
 			output.printCharacter(1, character);
 		}
 	}
-	static if (hasMember!(Game, "mapClears")) {
-		output.writefln("-Map Clears-\n\n%(%s\n%)", game.mapClears[].filter!(x => x.clears > 0));
+	static if (hasMember!(Game, "areas")) {
+		output.writefln("-Map Clears-\n\n%(%s\n%)", game.areas[].filter!(x => x.clears > 0));
 	}
 	static if (hasMember!(Game, "senators")) {
 		auto index = new size_t[](game.senators.length);

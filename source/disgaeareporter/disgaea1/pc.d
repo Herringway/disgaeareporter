@@ -26,7 +26,7 @@ struct D1PC {
 	//0x1EC - Shoe Inventory?
 	Character[128] _characters;
 	Senator[512] senators;
-	MapClearData[153] mapClears;
+	MapClearData[153] areas;
 	@Unknown ubyte[640] unknown7;
 	Item[16] _bagItems;
 	Item[256] _warehouseItems;
@@ -87,7 +87,7 @@ struct D1PC {
 	}
 }
 static assert(D1PC.totalHL.offsetof == 0x290);
-static assert(D1PC.mapClears.offsetof == 0x3A7B8);
+static assert(D1PC.areas.offsetof == 0x3A7B8);
 static assert(D1PC._warehouseItems.offsetof == 0x3B800);
 static assert(D1PC.allyKillCount.offsetof == 0x4481C);
 static assert(D1PC.revived.offsetof == 0x44820);
