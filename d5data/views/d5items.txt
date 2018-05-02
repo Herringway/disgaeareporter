@@ -1,0 +1,11 @@
+0065	Thimble
+0191	Driftwood Bow
+01F5	Water Pistol
+0385	Paw Gloves
+04B1	Wrinkly Clothes
+07D2	Mint Gum
+07DC	Unopened Soda
+07EF	Sardine
+0803	Fairy Dust
+0871	Throwing Knife
+151E	Scent of Niblhenne
