@@ -183,6 +183,7 @@ struct DD2PS3 {
 		import std.algorithm : filter;
 		return _innocentWarehouse[].filter!(x => x.isValid);
 	}
+	enum gameTitle = "Disgaea D2 (PS3)";
 }
 
 static assert(DD2PS3.hpRecovered.offsetof == 0x580);
