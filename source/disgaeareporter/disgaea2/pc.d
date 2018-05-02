@@ -11,13 +11,13 @@ import std.typecons : BitFlags;
 align(1)
 struct Innocent {
 	align(1):
-	uint level;
+	uint _level;
 	ubyte type;
 	ubyte uniquer;
 	@Unknown ubyte[2] unknown;
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.format;
-		sink.formattedWrite!"Lv%s%s %s"(level > 10000 ? level-10000 : level, level > 10000 ? "+" : "", type.innocentName);
+		sink.formattedWrite!"Lv%s%s %s"(level, isSubdued ? "+" : "", name);
 		debug (unknowns) {
 			sink.formattedWrite!" - Unknown data:"();
 			import std.traits : getSymbolsByUDA;
@@ -28,6 +28,15 @@ struct Innocent {
 	}
 	bool isValid() const {
 		return type != 0;
+	}
+	uint level() const {
+		return _level > 10000 ? cast(ushort)(_level - 10000) : _level;
+	}
+	bool isSubdued() const {
+		return _level > 10000;
+	}
+	string name() const {
+		return type.innocentName;
 	}
 }
 static assert(Innocent.sizeof == 8);

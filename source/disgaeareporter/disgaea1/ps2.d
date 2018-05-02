@@ -128,10 +128,13 @@ struct PS2MapClearData {
 	ubyte[57] unknown;
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.format;
-		sink.formattedWrite!"%s - Clears: %s, Kills: %s"(mapID.mapName, clears, kills);
+		sink.formattedWrite!"%s - Clears: %s, Kills: %s"(name, clears, kills);
 		debug(unknowns) {
 			sink.formattedWrite!", Unknown: %s"(unknown);
 		}
+	}
+	string name() const {
+		return mapID.mapName;
 	}
 }
 

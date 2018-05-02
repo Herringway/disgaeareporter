@@ -23,6 +23,9 @@ struct Item {
 	bool isValid() const {
 		return nameID != 0;
 	}
+	string level() const {
+		return "?";
+	}
 }
 static assert(Item.sizeof == 344);
 static assert(Item.stats.offsetof == 0x48);
@@ -63,10 +66,16 @@ struct Innocent {
 	@Unknown ubyte[2] unknown;
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.format : formattedWrite;
-		sink.formattedWrite!"Lv%s%s %s"(level, /+level > 10000 ? "+" : ""+/ "", type.toInt.innocentName);
+		sink.formattedWrite!"Lv%s%s %s"(level, isSubdued ? "+" : "", name);
 	}
 	bool isValid() const {
 		return type != 0;
+	}
+	bool isSubdued() const {
+		return false;
+	}
+	string name() const {
+		return type.innocentName;
 	}
 }
 

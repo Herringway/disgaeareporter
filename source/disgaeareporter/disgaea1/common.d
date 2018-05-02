@@ -31,7 +31,7 @@ struct Innocent {
 	ubyte uniquer;
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.format;
-		formattedWrite!"Lv%s%s %s"(sink, level, isSubdued ? "+" : "", type.innocentName);
+		formattedWrite!"Lv%s%s %s"(sink, level, isSubdued ? "+" : "", name);
 	}
 	bool isValid() const {
 		return type != 0;
@@ -41,6 +41,9 @@ struct Innocent {
 	}
 	bool isSubdued() const {
 		return _level > 10000;
+	}
+	string name() const {
+		return type.innocentName;
 	}
 }
 static assert(Innocent.sizeof == 4);
@@ -78,10 +81,13 @@ struct MapClearData {
 	@Unknown ubyte unknown;
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.format;
-		sink.formattedWrite!"%s - Clears: %s, Kills: %s"(mapID.mapName, clears, kills);
+		sink.formattedWrite!"%s - Clears: %s, Kills: %s"(name, clears, kills);
 		debug(unknowns) {
 			sink.formattedWrite!", Unknown: %s"(unknown);
 		}
+	}
+	string name() const {
+		return mapID.mapName;
 	}
 }
 

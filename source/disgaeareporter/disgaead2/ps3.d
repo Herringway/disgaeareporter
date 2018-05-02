@@ -13,13 +13,16 @@ struct Innocent {
 	@Unknown ubyte[2] unknown;
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.format;
-		sink.formattedWrite!"Lv%s%s %s"(level, isSubdued ? "+" : "", type.innocentName);
+		sink.formattedWrite!"Lv%s%s %s"(level, isSubdued ? "+" : "", name);
 	}
 	bool isValid() const {
 		return type != 0;
 	}
 	bool isSubdued() const {
 		return (unknown[1]&1) == 1;
+	}
+	string name() const {
+		return type.innocentName;
 	}
 }
 
@@ -41,6 +44,9 @@ struct Item {
 	}
 	auto name() const {
 		return _name.fromStringz;
+	}
+	string rarity() const {
+		return "?";
 	}
 }
 
