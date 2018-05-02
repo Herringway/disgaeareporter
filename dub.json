@@ -10,7 +10,8 @@
 		":d5data": "*",
 		":dd2data": "*",
 		"siryul": "~>0.4.1",
-		"easysettings": "*"
+		"easysettings": "*",
+		"diet-ng": "~>1.4.5"
 	},
 	"targetType": "executable",
 	"subPackages": [

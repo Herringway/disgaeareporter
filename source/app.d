@@ -231,6 +231,7 @@ void dumpData(T)(const T* data, File output, const ReportFormat format) {
 			output.printData(data);
 			break;
 		case ReportFormat.html:
+			output.printHTML(data);
 			break;
 	}
 }

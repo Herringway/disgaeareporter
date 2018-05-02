@@ -267,6 +267,14 @@ void printUnknowns(T)(File output, uint indentCount, T data) {
 	}
 }
 
+void printHTML(T)(File output, T data) {
+	version(html) {
+		import diet.html;
+		auto range = output.lockingTextWriter;
+		range.compileHTMLDietFile!("report.dt", data)();
+	}
+}
+
 align(1)
 struct Favour {
 	align(1):
