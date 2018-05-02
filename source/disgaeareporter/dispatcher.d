@@ -38,6 +38,17 @@ struct DisgaeaGame {
 }
 
 
+immutable ubyte[256] d5PCTable = genTable();
+
+ubyte[256] genTable() {
+	ubyte[256] output;
+	foreach (ubyte i; 0..256) {
+		ubyte b = cast(ubyte)(((i&0xF0)>>4) | ((0xF - (i&0xF))<<4));
+		output[b] = i;
+	}
+	return output;
+}
+
 auto detectGame(ubyte[] input) {
 	auto output = DisgaeaGame();
 	if (input.length == 0x16DC28) {
@@ -56,6 +67,12 @@ auto detectGame(ubyte[] input) {
 		output.platform = Platforms.ps3;
 		output.game = Games.disgaea4;
 		output.rawData = input;
+		return output;
+	}
+	if (input.length == 9026184) {
+		output.platform = Platforms.pc;
+		output.game = Games.disgaea5;
+		output.rawData = decrypt5(input);
 		return output;
 	}
 	if (input.length >= 0x38) {
@@ -126,24 +143,45 @@ ubyte[] getRawData(const ubyte[] input, Platforms platform) {
 			return input.dup;
 		case Platforms.psp: break;
 		case Platforms.pc:
-			auto key = input[0x20..0x24];
-			ubyte[] decrypted = new ubyte[](input.length);
+			bool oldStyle = true;
+			if (oldStyle) {
+				ubyte[4] key = input[0x20..0x24];
+				auto decrypted = input[0..0x30]~decrypt(input[0x30..$], key);
+				auto sizeBuffer = decrypted[0x3C..0x40];
+				const size = sizeBuffer.bitmanipRead!(uint, Endian.littleEndian);
+				auto expectedBuffer = decrypted[0x40..0x44];
+				const expected = expectedBuffer.bitmanipRead!(uint, Endian.littleEndian);
 
-			decrypted[0..0x30] = input[0..0x30];
-
-			foreach (index, dataByte; input[0x30..$]) {
-				decrypted[index+0x30] = dataByte^key[index%4];
+				return decompress(decrypted[0x44..$], expected);
+			} else {
+				return [];
 			}
-			auto sizeBuffer = decrypted[0x3C..0x40];
-			const size = sizeBuffer.bitmanipRead!(uint, Endian.littleEndian);
-			auto expectedBuffer = decrypted[0x40..0x44];
-			const expected = expectedBuffer.bitmanipRead!(uint, Endian.littleEndian);
-
-			return decompress(decrypted[0x44..$], expected);
 		case Platforms.psVita: break;
 		case Platforms.switch_: break;
 	}
 	assert(0);
+}
+
+ubyte[] decrypt(const ubyte[] input, ubyte[4] key) {
+	ubyte[] decrypted;
+	decrypted.reserve(input.length);
+	foreach (index, dataByte; input) {
+		decrypted ~= dataByte^key[index%4];
+	}
+	return decrypted;
+}
+ubyte[] decrypt5(const ubyte[] input) {
+	ubyte[] decrypted;
+	decrypted.reserve(input.length);
+	foreach (dataByte; input) {
+		decrypted ~= d5PCTable[dataByte];
+	}
+	return decrypted;
+}
+
+unittest {
+	import std.string : representation;
+	assert(decrypt5([0x85, 0x06, 0x36, 0x96, 0x86, 0xE6, 0x16, 0x86]) == "Wolfgang".representation);
 }
 
 ubyte[] decompress(const ubyte[] input, size_t expected) pure @safe {
@@ -267,5 +305,13 @@ unittest {
 		auto detected = detectGame(cast(ubyte[])import("d3ps3-raw.DAT"));
 		assert(detected.game == Games.disgaea3);
 		assert(detected.platform == Platforms.ps3);
+	}
+	{
+		auto detected = detectGame(cast(ubyte[])import("d5pc-Save_001.sav"));
+		import std.file : mkdirRecurse, write;
+		mkdirRecurse("dumps");
+		write("dumps/raw-d5.dat", detected.rawData);
+		assert(detected.game == Games.disgaea5);
+		assert(detected.platform == Platforms.pc);
 	}
 }
