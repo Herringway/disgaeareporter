@@ -169,8 +169,8 @@ void printCharacter(T)(File output, int indentCount, T character) {
 				indentedPrint!"Mana: %s"(0, character.mana);
 			}
 		}
-		static if (hasMember!(T, "numTransmigrations") && hasMember!(T, "transmigratedLevels")) {
-			indentedPrint!"Transmigrations: %s, Transmigrated Levels: %s"(0, character.numTransmigrations, character.transmigratedLevels);
+		static if (hasMember!(T, "numReincarnations") && hasMember!(T, "storedLevels")) {
+			indentedPrint!"Reincarnations: %s, Stored Levels: %s"(0, character.numReincarnations, character.storedLevels);
 		}
 		static if (hasMember!(T, "resist")) {
 			indentedPrint!"Elemental Affinity: %s"(0, character.resist);

@@ -165,8 +165,10 @@ struct Character {
 	@Unknown ubyte[9] unknown11;
 	ubyte numTransmigrations;
 	@Unknown ubyte[5] unknown12;
-	uint transmigratedLevels;
+	uint storedLevels;
 	@Unknown ubyte[20] unknown13;
+
+	alias numReincarnations = numTransmigrations;
 }
 
 static assert(Character.sizeof == 0x6B8);
