@@ -237,7 +237,7 @@ void printItem(ItemType)(File output, uint indentCount, const ItemType item) {
 
 	void indentedPrint(string fmt = "%s", T...)(int offset, T args) {
 		output.writef!"%-(%s%)"("\t".repeat(indentCount+offset));
-		output.writefln!fmt(args);
+		output.writef!fmt(args);
 	}
 
 	static if (hasMember!(ItemType, "level")) {
@@ -246,10 +246,18 @@ void printItem(ItemType)(File output, uint indentCount, const ItemType item) {
 		auto level = "?";
 	}
 	static if (hasMember!(ItemType, "rarity")) {
-		indentedPrint!"Lv%s %s (Rarity: %s) - %(%s, %)"(0, level, item.name, item.rarity, item.innocents[].filter!(x => x.isValid));
+		indentedPrint!"Lv%s %s (Rarity: %s)"(0, level, item.name, item.rarity);
 	} else {
-		indentedPrint!"Lv%s %s - %(%s, %)"(0, level, item.name, item.innocents[].filter!(x => x.isValid));
+		indentedPrint!"Lv%s %s"(0, level, item.name);
 	}
+	static if (hasMember!(ItemType, "innocents")) {
+		auto innocents = item.innocents[].filter!(x => x.isValid);
+		if (!innocents.empty) {
+			output.writef!" - %(%s, %)"(innocents);
+		}
+	}
+	output.write("\n");
+
 	output.printUnknowns(indentCount+1, item);
 }
 
