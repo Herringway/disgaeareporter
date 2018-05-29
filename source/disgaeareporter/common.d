@@ -325,6 +325,18 @@ struct Resistance {
 		sink.formattedWrite!"Fire - %s%%, Wind - %s%%, Ice - %s%%"(fire, wind, ice);
 	}
 }
+align(1)
+struct ModernResistance {
+	align(1):
+	byte fire;
+	byte wind;
+	byte ice;
+	byte star;
+	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
+		import std.format : formattedWrite;
+		sink.formattedWrite!"Fire - %s%%, Wind - %s%%, Ice - %s%%, Star - %s%%"(fire, wind, ice, star);
+	}
+}
 
 alias Stats = StatsImpl!(int, false);
 static assert(Stats.sizeof == 32);
