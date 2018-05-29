@@ -1,0 +1,14 @@
+01	Dietician
+02	Master
+03	Gladiator
+04	Sentry
+05	Tutor
+06	Coach
+07	Marksman
+08	Physician
+16	Hypnotist
+1A	Professional
+2B	Medicine Man
+2D	Social Worker
+3D	Broker
+F9	Freezer
