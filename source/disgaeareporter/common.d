@@ -3,6 +3,8 @@ module disgaeareporter.common;
 import disgaeareporter.disgaea1;
 import disgaeareporter.disgaea2;
 
+public import memmux : BigEndian, LittleEndian;
+
 import std.stdio : File;
 import std.range;
 import std.traits : isSomeChar;
@@ -631,46 +633,4 @@ struct SJISString(size_t length) {
 	auto toString() const {
 		return sjisDec(raw[]);
 	}
-}
-
-struct LittleEndian(T) {
-	import siryul : SerializationMethod;
-	ubyte[T.sizeof] raw;
-	alias toInt this;
-	@SerializationMethod
-	T toInt() const {
-		import std.bitmanip : littleEndianToNative;
-		if (__ctfe) {
-			return 0;
-		}
-		return littleEndianToNative!T(raw);
-	}
-	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
-		import std.format : formattedWrite;
-		sink.formattedWrite!"%s"(this.toInt());
-	}
-}
-
-struct BigEndian(T) {
-	import siryul : SerializationMethod;
-	ubyte[T.sizeof] raw;
-	alias toInt this;
-	@SerializationMethod
-	T toInt() const {
-		import std.bitmanip : bigEndianToNative;
-		if (__ctfe) {
-			return 0;
-		}
-		return bigEndianToNative!T(raw);
-	}
-	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
-		import std.format : formattedWrite;
-		sink.formattedWrite!"%s"(this.toInt());
-	}
-}
-
-unittest {
-	import std.outbuffer;
-	auto buf = new OutBuffer;
-	BigEndian!ushort().toString(buf);
 }
