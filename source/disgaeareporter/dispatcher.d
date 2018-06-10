@@ -308,9 +308,6 @@ unittest {
 	}
 	{
 		auto detected = detectGame(cast(ubyte[])import("d5pc-Save_001.sav"));
-		import std.file : mkdirRecurse, write;
-		mkdirRecurse("dumps");
-		write("dumps/raw-d5.dat", detected.rawData);
 		assert(detected.game == Games.disgaea5);
 		assert(detected.platform == Platforms.pc);
 	}
