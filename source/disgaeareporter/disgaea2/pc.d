@@ -36,7 +36,7 @@ struct Innocent {
 		return _level > 10000;
 	}
 	string name() const {
-		return type.innocentName;
+		return d2innocents(type);
 	}
 }
 static assert(Innocent.sizeof == 8);
@@ -161,7 +161,6 @@ struct D2PC {
 		return _senators[];
 	}
 	static string itemRecordName(size_t record) {
-		import d2data : d2itemRecords;
 		return d2itemRecords[record];
 	}
 	enum itemRecordAlignment = 80;

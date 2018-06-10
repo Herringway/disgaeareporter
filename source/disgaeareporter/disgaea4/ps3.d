@@ -19,7 +19,7 @@ struct Innocent {
 		return type != 0;
 	}
 	string name() const {
-		return type.innocentName;
+		return d4innocents(type);
 	}
 	bool isSubdued() const {
 		return false;

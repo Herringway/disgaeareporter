@@ -22,7 +22,7 @@ struct Innocent {
 		return (unknown[1]&1) == 1;
 	}
 	string name() const {
-		return type.innocentName;
+		return dd2innocents(type);
 	}
 }
 

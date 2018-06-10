@@ -24,7 +24,7 @@ struct Innocent {
 		return false;
 	}
 	string name() const {
-		return type.innocentName;
+		return d5innocents(type);
 	}
 }
 
@@ -42,7 +42,7 @@ struct Item {
 		return itemID != 0;
 	}
 	string name() const {
-		return itemID.itemName;
+		return d5items(itemID);
 	}
 }
 

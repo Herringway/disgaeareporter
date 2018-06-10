@@ -75,7 +75,7 @@ struct Innocent {
 		return false;
 	}
 	string name() const {
-		return type.innocentName;
+		return d3innocents(type);
 	}
 }
 

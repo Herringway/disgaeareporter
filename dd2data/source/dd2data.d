@@ -1,56 +1,14 @@
 module dd2data;
 
+import gamebits.staticdata;
+
 import std.string : split;
 
-immutable string[ushort] dd2classes;
-immutable string[ushort] dd2innocents;
-immutable string[ushort] dd2items;
-immutable string[ushort] dd2skillNames;
-immutable string[ushort] dd2mapNames;
-immutable string[ushort] dd2evilityNames;
+mixin StaticData!(ushort, string, "dd2classes.txt", "dd2classes", "Unknown class %04X");
+mixin StaticData!(ushort, string, "dd2innocents.txt", "dd2innocents", "Unknown innocent %04X");
+mixin StaticData!(ushort, string, "dd2items.txt", "dd2items", "Unknown item %04X");
+mixin StaticData!(ushort, string, "dd2skills.txt", "dd2skillNames", "Unknown skill %04X");
+mixin StaticData!(ushort, string, "dd2maps.txt", "dd2mapNames", "Unknown map %04X");
+mixin StaticData!(ushort, string, "dd2evilities.txt", "dd2evilities", "Unknown evility %04X");
 
-static immutable parsedClasses = parseData(import("dd2classes.txt"));
-static immutable parsedInnocents = parseData(import("dd2innocents.txt"));
-static immutable parsedItems = parseData(import("dd2items.txt"));
-static immutable parsedSkills = parseData(import("dd2skills.txt"));
-static immutable parsedMaps = parseData(import("dd2maps.txt"));
-static immutable parsedEvilities = parseData(import("dd2evilities.txt"));
 immutable string[] dd2itemRecords = import("dd2itemrecords.txt").split("\n");
-shared static this() {
-	foreach (tuple; parsedClasses) {
-		dd2classes[tuple.key] = tuple.value;
-	}
-	foreach (tuple; parsedInnocents) {
-		dd2innocents[tuple.key] = tuple.value;
-	}
-	foreach (tuple; parsedItems) {
-		dd2items[tuple.key] = tuple.value;
-	}
-	foreach (tuple; parsedSkills) {
-		dd2skillNames[tuple.key] = tuple.value;
-	}
-	foreach (tuple; parsedMaps) {
-		dd2mapNames[tuple.key] = tuple.value;
-	}
-	foreach (tuple; parsedEvilities) {
-		dd2evilityNames[tuple.key] = tuple.value;
-	}
-}
-auto parseData(string data) @safe pure {
-	import std.typecons : tuple, Tuple;
-	import std.conv : to;
-	import std.algorithm.iteration : splitter;
-	import std.algorithm.searching : startsWith;
-	import std.string : lineSplitter;
-	Tuple!(ushort, "key", string, "value")[] output;
-	foreach (line; data.lineSplitter) {
-		if (line.startsWith("#")) {
-			continue;
-		}
-		auto split = line.splitter("\t");
-		auto bytesequence = split.front.to!ushort(16);
-		split.popFront();
-		output ~= tuple!("key","value")(bytesequence, split.front);
-	}
-	return output;
-}
