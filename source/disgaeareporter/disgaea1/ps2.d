@@ -97,8 +97,7 @@ struct PS2Character {
 	ubyte[32] unknown5;
 	uint mana;
 	ubyte[24] unknown6;
-	ubyte[8] weaponMasteryLevel;
-	ubyte[8] weaponMasteryRate;
+	EquipmentMastery equipmentMastery;
 	ubyte[4] unknown6_;
 	BaseCharacterStats baseStats;
 	ubyte[4] unknown6__;

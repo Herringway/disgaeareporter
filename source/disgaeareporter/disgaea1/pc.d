@@ -147,8 +147,7 @@ struct Character {
 	@Unknown ubyte[32] unknown5;
 	uint mana;
 	@Unknown ubyte[24] unknown6;
-	ubyte[8] weaponMasteryLevel;
-	ubyte[8] weaponMasteryRate;
+	EquipmentMastery equipmentMastery;
 	BaseCharacterStats baseStats;
 	ushort level;
 	@Unknown ushort unknown7;

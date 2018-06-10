@@ -198,17 +198,12 @@ void printCharacter(T)(File output, int indentCount, T character) {
 		static if (hasMember!(T, "training")) {
 			indentedPrint!"Training: %s"(0, character.training);
 		}
-		static if (hasMember!(T, "weaponMasteryRate") && hasMember!(T, "weaponMasteryLevel")) {
-			if (character.weaponMasteryLevel != character.weaponMasteryLevel.init) {
-				indentedPrint(0, "Weapon mastery:");
-				foreach (i, masteryRate, masteryLevel; lockstep(character.weaponMasteryRate[], character.weaponMasteryLevel[])) {
-					if (masteryLevel > 0) {
-						static if (T.weaponMasteryRate.length == 8) {
-							indentedPrint!"Lv%s %s"(1, masteryLevel, cast(WeaponTypes)i);
-						} else {
-							indentedPrint!"Lv%s %s"(1, masteryLevel, cast(WeaponTypesD2)i);
-						}
-					}
+		static if (hasMember!(T, "equipmentMastery")) {
+			auto masteries = character.equipmentMastery.range.filter!(x => x.level > 0);
+			if (!masteries.empty) {
+				indentedPrint(0, "Equipment mastery:");
+				foreach (mastery; masteries) {
+					indentedPrint!"Lv%s %s"(1, mastery.level, mastery.type);
 				}
 			}
 		}
@@ -337,6 +332,88 @@ struct ModernResistance {
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.format : formattedWrite;
 		sink.formattedWrite!"Fire - %s%%, Wind - %s%%, Ice - %s%%, Star - %s%%"(fire, wind, ice, star);
+	}
+}
+
+align(1)
+struct EquipmentMastery {
+	align(1):
+	ubyte[8] masteryLevels;
+	ubyte[8] masteryRates;
+
+	auto range() const {
+		static struct Result {
+			ubyte[8] masteryLevels;
+			ubyte[8] masteryRates;
+			size_t i;
+			auto front() const {
+				import std.typecons : tuple;
+				return tuple!("level", "rate", "type")(masteryLevels[i], masteryRates[i], cast(WeaponTypes)i);
+			}
+			bool empty() const {
+				return i >= 8;
+			}
+			void popFront() {
+				i++;
+			}
+		}
+		return Result(masteryLevels, masteryRates);
+	}
+}
+align(1)
+struct EquipmentMasteryD2 {
+	align(1):
+	ubyte[9] masteryLevels;
+	ubyte[9] masteryRates;
+
+	auto range() const {
+		static struct Result {
+			ubyte[9] masteryLevels;
+			ubyte[9] masteryRates;
+			size_t i;
+			auto front() const {
+				import std.typecons : tuple;
+				return tuple!("level", "rate", "type")(masteryLevels[i], masteryRates[i], cast(WeaponTypesD2)i);
+			}
+			bool empty() const {
+				return i >= 9;
+			}
+			void popFront() {
+				i++;
+			}
+		}
+		return Result(masteryLevels, masteryRates);
+	}
+}
+
+align(1)
+struct EquipmentMastery5 {
+	align(1):
+	struct Mastery {
+		ushort exp;
+		ushort unknown;
+		ubyte level;
+		ubyte rate;
+		ubyte rate2;
+		ubyte unknown2;
+	}
+	Mastery[10] masteries;
+	auto range() const {
+		static struct Result {
+			Mastery[10] masteries;
+			size_t i;
+			auto front() const {
+				import std.typecons : tuple;
+				return tuple!("level", "rate", "type")(masteries[i].level, masteries[i].rate, equipmentTypes5[i]);
+			}
+			bool empty() const {
+				return i >= 10;
+			}
+			void popFront() {
+				i++;
+			}
+		}
+		return Result(masteries);
 	}
 }
 
@@ -559,6 +636,18 @@ enum WeaponTypesD2 {
 	Book,
 	Monster
 }
+static immutable string[] equipmentTypes5 = [
+	"Fist",
+	"Sword",
+	"Spear",
+	"Bow",
+	"Gun",
+	"Axe",
+	"Staff",
+	"Monster (Phys)",
+	"Monster (Mag)",
+	"Armour"
+];
 
 struct ZeroString(size_t length) {
 	import siryul : SerializationMethod;

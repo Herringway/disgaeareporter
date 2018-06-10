@@ -72,8 +72,7 @@ struct Character {
 	@Unknown ubyte[8] unknown3;
 	BaseCharacterStatsLater!true baseStats;
 	@Unknown ubyte[36] unknown4;
-	ubyte[9] weaponMasteryLevel;
-	ubyte[9] weaponMasteryRate;
+	EquipmentMasteryD2 equipmentMastery;
 	@Unknown ubyte[10] unknown5;
 	BigEndian!uint mana;
 	BigEndian!ushort level;

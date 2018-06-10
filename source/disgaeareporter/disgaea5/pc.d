@@ -60,7 +60,8 @@ struct Character {
 	ulong currentHP;
 	ulong currentSP;
 	ModernStats!false stats;
-	@Unknown ubyte[0xE0] unknown2;
+	@Unknown ubyte[0x90] unknown2;
+	EquipmentMastery5 equipmentMastery;
 	uint mana;
 	@Unknown ubyte[0x16] unknown3;
 	ModernResistance baseResist;
