@@ -43,7 +43,7 @@ struct Innocent {
 		return _level > 10000;
 	}
 	string name() const {
-		return type.innocentName;
+		return d1innocents(type);
 	}
 }
 static assert(Innocent.sizeof == 4);
@@ -87,7 +87,7 @@ struct MapClearData {
 		}
 	}
 	string name() const {
-		return mapID.mapName;
+		return d1mapNames(mapID);
 	}
 }
 
@@ -109,7 +109,7 @@ struct Senator {
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.algorithm : filter;
 		import std.format;
-		sink.formattedWrite!"%s (Level %s %s)\n\t"(name, level, classID.className);
+		sink.formattedWrite!"%s (Level %s %s)\n\t"(name, level, d1classes(classID));
 		sink.formattedWrite!"Favour: %s\n"(favour);
 		if (timesKilled > 0) {
 			sink.formattedWrite!"\tKilled %s time%s\n"(timesKilled, timesKilled > 1 ? "s" : "");
@@ -159,39 +159,11 @@ bool shouldPrint(T)(T data) {
 	}
 }
 
-string skillName(ushort id) {
-	if (id in d1skillNames) {
-		return d1skillNames[id];
-	}
-	return "Unknown skill "~id.to!string(16);
-}
-
-string className(ushort id) {
-	if (id in d1classes) {
-		return d1classes[id];
-	}
-	return "Unknown class "~id.to!string(16);
-}
-
-string itemName(ushort id) {
-	if (id in d1items) {
-		return d1items[id];
-	}
-	return "Unknown item "~id.to!string(16);
-}
-string mapName(ushort id) {
-	if (id in d1mapNames) {
-		return d1mapNames[id];
-	}
-	return "Unknown map "~id.to!string(16);
-}
-string innocentName(const ushort id) {
-	import std.conv : to;
-	if (id in d1innocents) {
-		return d1innocents[id];
-	}
-	return "Unknown specialist "~id.to!string(16);
-}
+deprecated alias skillName = d1skillNames;
+deprecated alias className = d1classes;
+deprecated alias itemName = d1items;
+deprecated alias mapName = d1mapNames;
+deprecated alias innocentName = d1innocents;
 
 static immutable defeatedStrings = [
 	"Item General",

@@ -1,4 +1,7 @@
 {
 	"name": "d1data",
-	"targetType": "library"
+	"targetType": "library",
+	"dependencies": {
+		"gamebits:staticdata": "*"
+	}
 }

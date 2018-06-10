@@ -1,5 +1,6 @@
 module disgaeareporter.disgaea1.ps2;
 
+import d1data;
 import disgaeareporter.disgaea1.common;
 
 import disgaeareporter.common;
@@ -134,7 +135,7 @@ struct PS2MapClearData {
 		}
 	}
 	string name() const {
-		return mapID.mapName;
+		return d1mapNames(mapID);
 	}
 }
 

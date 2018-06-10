@@ -1,5 +1,6 @@
 module disgaeareporter.disgaea1.pc;
 
+import d1data;
 import disgaeareporter.disgaea1.common;
 
 import disgaeareporter.common;
@@ -117,7 +118,7 @@ struct Item {
 	ubyte range;
 	@Unknown ubyte[10] unknown;
 	string name() const {
-		return nameID.itemName;
+		return d1items(nameID);
 	}
 	bool isValid() const {
 		return nameID != 0;
