@@ -7,7 +7,7 @@ public import reversineer : BigEndian, LittleEndian;
 
 import std.stdio : File;
 import std.range;
-import std.traits : isSomeChar;
+import std.traits : isSomeChar, Select;
 
 enum Unknown;
 
@@ -424,11 +424,7 @@ alias LongStats(bool bigEndian) = StatsImpl!(long, bigEndian);
 
 align(1)
 struct StatsImpl(T, bool isBigEndian) {
-	static if (isBigEndian) {
-		alias Endian = BigEndian;
-	} else {
-		alias Endian = LittleEndian;
-	}
+	alias Endian = Select!(isBigEndian, BigEndian, LittleEndian);
 	align(1):
 	Endian!T hp;
 	Endian!T sp;
@@ -449,11 +445,7 @@ static assert(ModernStats!true.sizeof == 64);
 
 align(1)
 struct ModernStatsImpl(Type, bool isBigEndian) {
-	static if (isBigEndian) {
-		alias Endian = BigEndian;
-	} else {
-		alias Endian = LittleEndian;
-	}
+	alias Endian = Select!(isBigEndian, BigEndian, LittleEndian);
 	align(1):
 	Endian!Type hp;
 	Endian!Type sp;
@@ -471,11 +463,7 @@ struct ModernStatsImpl(Type, bool isBigEndian) {
 
 align(1)
 struct Aptitudes(bool isBigEndian) {
-	static if (isBigEndian) {
-		alias Endian = BigEndian;
-	} else {
-		alias Endian = LittleEndian;
-	}
+	alias Endian = Select!(isBigEndian, BigEndian, LittleEndian);
 	align(1):
 	Endian!ushort hp;
 	Endian!ushort sp;
@@ -493,11 +481,7 @@ struct Aptitudes(bool isBigEndian) {
 
 align(1)
 struct Playtime(bool isBigEndian) {
-	static if (isBigEndian) {
-		alias Endian = BigEndian;
-	} else {
-		alias Endian = LittleEndian;
-	}
+	alias Endian = Select!(isBigEndian, BigEndian, LittleEndian);
 	align(1):
 	Endian!ushort hours_;
 	ubyte minutes_;
@@ -563,11 +547,7 @@ struct MiscStatsExpanded {
 
 align(1)
 struct Skills(size_t count, alias Names, bool isBigEndian) {
-	static if (isBigEndian) {
-		alias Endian = BigEndian;
-	} else {
-		alias Endian = LittleEndian;
-	}
+	alias Endian = Select!(isBigEndian, BigEndian, LittleEndian);
 	align(1):
 	Endian!uint[count] skillEXP;
 	Endian!ushort[count] skills;
