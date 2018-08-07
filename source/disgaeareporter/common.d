@@ -567,11 +567,12 @@ struct Skills(size_t count, alias Names, bool isBigEndian) {
 					ubyte level;
 					void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 						import std.format : formattedWrite;
-						if (level != 255) {
-							sink.formattedWrite!"Lv%s %s (%s EXP)"(level, __ctfe ? "" : Names(id), exp);
+						if (level == 255) {
+							sink.put("Learning");
 						} else {
-							sink.formattedWrite!"Learning %s (%s EXP)"(__ctfe ? "" : Names(id), exp);
+							sink.formattedWrite!"Lv%s"(level);
 						}
+						sink.formattedWrite!" %s (%s EXP)"(__ctfe ? "" : Names(id), exp);
 					}
 				}
 				return Result(skillEXP[index], skills[index], skillLevels[index]);
