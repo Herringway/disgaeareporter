@@ -68,13 +68,16 @@ struct PS2Item {
 	ubyte rank;
 	ubyte range;
 	ubyte[12] unknown2;
-	SJISString!32 name;
+	SJISString!32 _name; //Unused
 	ubyte[14] unknown3;
 	bool isValid() const {
 		return nameID != 0;
 	}
+	string name() const {
+		return d1items(nameID);
+	}
 }
-static assert(PS2Item.name.offsetof == 0x9A);
+static assert(PS2Item._name.offsetof == 0x9A);
 static assert(PS2Item.sizeof == 0xC8);
 
 align(1)
@@ -157,9 +160,9 @@ unittest {
 		assert(resist.wind == 50);
 	}
 	with(data._bagItems[0]) {
-		assert(nameID.itemName == "Flan");
+		assert(name == "Flan");
 	}
 	with(data._warehouseItems[0]) {
-		assert(nameID.itemName == "Slippers");
+		assert(name == "Slippers");
 	}
 }

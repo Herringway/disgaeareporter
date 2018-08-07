@@ -221,7 +221,7 @@ unittest {
 	}
 
 	with(data._bagItems[0]) {
-		assert(nameID.itemName == "Common Sword");
+		assert(name == "Common Sword");
 		assert(rarity == 32);
 	}
 }
