@@ -139,7 +139,7 @@ struct Character {
 	@Unknown ubyte[32] unknown3;
 	StatusResistance[5] statusResistances;
 	@Unknown ubyte[110] unknown4;
-	Skills!(96, "disgaea1", false) skills;
+	Skills!(96, d1skillNames, false) skills;
 	uint currentHP;
 	uint currentSP;
 	Stats stats;

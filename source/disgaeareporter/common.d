@@ -3,7 +3,7 @@ module disgaeareporter.common;
 import disgaeareporter.disgaea1;
 import disgaeareporter.disgaea2;
 
-public import memmux : BigEndian, LittleEndian;
+public import reversineer : BigEndian, LittleEndian;
 
 import std.stdio : File;
 import std.range;
@@ -562,7 +562,7 @@ struct MiscStatsExpanded {
 }
 
 align(1)
-struct Skills(size_t count, string game, bool isBigEndian) {
+struct Skills(size_t count, alias Names, bool isBigEndian) {
 	static if (isBigEndian) {
 		alias Endian = BigEndian;
 	} else {
@@ -586,12 +586,11 @@ struct Skills(size_t count, string game, bool isBigEndian) {
 					ushort id;
 					ubyte level;
 					void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
-						mixin("static import disgaeareporter."~game~".common;");
 						import std.format : formattedWrite;
 						if (level != 255) {
-							sink.formattedWrite!"Lv%s %s (%s EXP)"(level, __ctfe ? "" : mixin("disgaeareporter."~game~".common.skillName(id)"), exp);
+							sink.formattedWrite!"Lv%s %s (%s EXP)"(level, __ctfe ? "" : Names(id), exp);
 						} else {
-							sink.formattedWrite!"Learning %s (%s EXP)"(__ctfe ? "" : mixin("disgaeareporter."~game~".common.skillName(id)"), exp);
+							sink.formattedWrite!"Learning %s (%s EXP)"(__ctfe ? "" : Names(id), exp);
 						}
 					}
 				}

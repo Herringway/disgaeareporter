@@ -1,7 +1,8 @@
 {
 	"name": "disgaeareporter",
 	"dependencies": {
-		"gamebits:memmux": "*",
+		"reversineer": "*",
+		"gamebits:staticdata": "*",
 		"sjisish": "~>0.0",
 		":d1data": "*",
 		":d2data": "*",

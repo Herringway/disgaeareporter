@@ -75,7 +75,7 @@ struct Character {
 	ZeroString!64 name;
 	ZeroString!64 className;
 	@Unknown ubyte[260] unknown1;
-	Skills!(96, "disgaea2", false) skills;
+	Skills!(96, d2skillNames, false) skills;
 	@Unknown ubyte[508] unknown2;
 	Stats stats;
 	@Unknown ubyte[64] unknown3;
@@ -106,13 +106,13 @@ struct Senator {
 	uint attendance;
 	@Unknown ubyte[6] unknown;
 	ZeroString!64 name;
-	byte favour;
+	Favour favour;
 	@Unknown ubyte[17] unknown2;
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.algorithm : filter;
 		import std.format;
-		sink.formattedWrite!"%s (Level %s %s)\n\t"(name, level, classID.className);
-		sink.formattedWrite!"%s (%s)\n"(favour.favourString, favour);
+		sink.formattedWrite!"%s (Level %s %s)\n\t"(name, level, d2classes(classID));
+		sink.formattedWrite!"%s\n"(favour);
 		//if (timesKilled > 0) {
 		//	sink.formattedWrite!"\tKilled %s time%s\n"(timesKilled, timesKilled > 1 ? "s" : "");
 		//}

@@ -2,9 +2,6 @@ module disgaeareporter.disgaea2.common;
 
 import disgaeareporter.disgaea2;
 
-import std.file;
-import std.range : isOutputRange;
-
 public import d2data;
 
 static immutable d2SteamID = "495280";

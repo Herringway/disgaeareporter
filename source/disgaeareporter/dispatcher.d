@@ -1,6 +1,6 @@
 module disgaeareporter.dispatcher;
 
-import memmux : readStruct = read;
+import reversineer : readStruct = read;
 
 import std.bitmanip : bitmanipRead = read, Endian;
 

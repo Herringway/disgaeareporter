@@ -3,6 +3,8 @@ module disgaeareporter.disgaea1.psp;
 
 enum d1key = "DISGAEA120060523";
 
+import d1data;
+
 import disgaeareporter.disgaea1.common;
 import disgaeareporter.disgaea1.pc : Item;
 
@@ -28,7 +30,7 @@ struct PSPCharacter {
 	ubyte[32] unknown3;
 	StatusResistance[5] statusResistances;
 	ubyte[110] unknown4;
-	Skills!(96, "disgaea1", false) skills;
+	Skills!(96, d1skillNames, false) skills;
 	uint currentHP;
 	uint currentSP;
 	Stats stats;

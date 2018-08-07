@@ -63,7 +63,7 @@ struct Character {
 	char[52] _name;
 	char[52] _className;
 	@Unknown ubyte[180] unknown;
-	Skills!(256, "disgaead2", true) skills;
+	Skills!(256, dd2skillNames, true) skills;
 	@Unknown ubyte[516] unknown2;
 	BigEndian!ulong currentHP;
 	BigEndian!ulong currentSP;

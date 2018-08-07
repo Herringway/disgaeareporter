@@ -1,18 +1,10 @@
 module disgaeareporter.disgaea1.common;
 
 import d1data;
-import disgaeareporter.disgaea1;
 import disgaeareporter.common;
+import disgaeareporter.disgaea1;
 
-import memmux : readStruct = read;
-
-import std.bitmanip : bitmanipRead = read, Endian;
-import std.conv;
-import std.file;
 import std.range;
-import std.stdio : writefln, writeln;
-import std.traits;
-import std.typecons;
 
 static immutable d1SteamID = "405900";
 
@@ -117,53 +109,6 @@ struct Senator {
 		debug(unknowns) sink.formattedWrite!"%s"([unknown, unknown2, unknown3]);
 	}
 }
-
-private void func2() {
-	import std.outbuffer;
-	auto buf = new OutBuffer;
-	Senator().toString(buf);
-}
-
-void printCharacterData(alias Game)(const ubyte[] data) {
-	import std.algorithm : until;
-	static if (is(Game == PS2Game)) {
-		ps2Chars = data[Game.charOffset..(Game.charOffset + Game.numChars * Game.charSize)].readStruct!(Game.CharactersType).characters[];
-	} else {
-		chars = data[Game.charOffset..(Game.charOffset + Game.numChars * Game.charSize)].readStruct!(Game.CharactersType).characters[];
-	}
-	foreach (chara; chars.until!(x => !shouldPrint(x))) {
-		writeln(chara);
-	}
-}
-
-void printSenators(alias Game)(const ubyte[] data) {
-	static if (is(Game == PCGame)) {
-		foreach (senator; data[Game.senatorOffset..(Game.senatorOffset + Game.numSenators * Game.senatorSize)].readStruct!(Game.SenatorsType).senators[]) {
-			if (senator.classID == 0) {
-				break;
-			}
-			if (senator.attendance == 0) {
-				continue;
-			}
-			writeln(senator);
-		}
-	}
-}
-
-bool shouldPrint(T)(T data) {
-	import std.algorithm : among;
-	debug(printall) {
-		return true;
-	} else {
-		return data.class_.among(0, 2906, 2918) == 0;
-	}
-}
-
-deprecated alias skillName = d1skillNames;
-deprecated alias className = d1classes;
-deprecated alias itemName = d1items;
-deprecated alias mapName = d1mapNames;
-deprecated alias innocentName = d1innocents;
 
 static immutable defeatedStrings = [
 	"Item General",
