@@ -49,8 +49,12 @@ CD	Nightsever
 32D	Magic Boost
 32E	Magic Wall
 331	Enfeeble
+332	Armor Break
 385	Geo Change
 386	Dark Cannon
 3A3	Health
 3F3	Crimson Flame
 3FD	Rose Thorns
+407	Shocking Soul
+8AD	Deathscorn
+8B1	Death Stomp
