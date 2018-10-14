@@ -1,6 +1,6 @@
 module d2data;
 
-import gamebits.staticdata;
+import simap;
 
 import std.string : split;
 

@@ -1,6 +1,6 @@
 module d4data;
 
-import gamebits.staticdata;
+import simap;
 
 import std.string : split;
 

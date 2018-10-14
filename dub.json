@@ -2,7 +2,7 @@
 	"name": "disgaeareporter",
 	"dependencies": {
 		"reversineer": "*",
-		"gamebits:staticdata": "*",
+		"simap": "*",
 		"sjisish": "~>0.0",
 		":d1data": "*",
 		":d2data": "*",

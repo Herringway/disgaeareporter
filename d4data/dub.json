@@ -2,6 +2,6 @@
 	"name": "d4data",
 	"targetType": "library",
 	"dependencies": {
-		"gamebits:staticdata": "*"
+		"simap": "*"
 	}
 }
