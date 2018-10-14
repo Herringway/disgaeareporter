@@ -1,1 +1,7 @@
 7DA	Ghost
+82A	Petite Orc
+848	Mothman
+87A	White Dragon
+87B	Dragon King
+884	Wood Giant
+88E	Baciel

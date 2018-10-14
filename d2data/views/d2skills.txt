@@ -50,11 +50,93 @@ CD	Nightsever
 32E	Magic Wall
 331	Enfeeble
 332	Armor Break
+334	Resist Break
+335	Slow
 385	Geo Change
 386	Dark Cannon
 3A3	Health
+3A4	Consciousness
+3B7	Magichange
 3F3	Crimson Flame
 3FD	Rose Thorns
 407	Shocking Soul
+547	See Ya!
+548	Look At My Power
+549	Just Do It!
+54B	Heavenly Hammer
+54C	Demon Blast
+551	Infinite Slice
+552	Water Dragon
+553	Rising Dragon
+565	Charge!
+566	Enormous Pudding
+567	Lovely Skies
+56F	Jump Rope
+570	Vacuum Vase
+571	Sexy Beam
+583	Confine
+584	Miracle Time
+585	Chartreuse
+58D	Zetta Beam
+58E	Zetta Beeeam
+58F	Badass Overdrive
+731	Cameo Star
+732	Magic Shot
+7DB	Tie Down
+7DC	Ignition
+7DD	Ghost Assist
+7DE	Polter Geist
+7DF	Ball Cast
+7E0	Pressure Bomb
+803	Cat Strike
+804	Cat Blast
+805	Cat Kick
+806	Cat Fight
+807	Cat Scratch
+808	Catpaw
+87B	Holy Impact
+87C	Dragon Cure
+87D	Holy Flare
+87E	Nirvana
+87F	Sacred Shoot
+885	Land Break
+886	Angry Tree
+887	Rush Hour
+888	Nature's Wrath
+889	Morphing Blow
+88A	Summon Giant
+88F	Death Blast
+890	Extinction Beam
+891	Deep Impact
+892	Armageddon
+893	Launcher Punch
+894	Manual Barrel
+899	Curse Breath
+89A	Hatred Bite
+89B	Darkness Breath
+89C	Homing Curse
+89D	Crusher Bones
+89E	Grudge Basher
+8A3	Stone Breath
+8A4	Sandstorm
+8A5	Cyclone Breath
+8A6	Super Egg
+8A7	Egg Crack
+8A8	Deadly Season
 8AD	Deathscorn
+8AE	Death Swing
+8AF	Death Package
+8B0	Death Wing
 8B1	Death Stomp
+8B2	Ball Retriever
+8B7	Kienzan
+8B8	Fire Fountain
+8B9	Spiral Blaze
+8BA	Shine Taker
+8BB	Triple Fire Jump
+8BC	Spiral Explosion
+FA1	Dark Bomb
+FA2	Happy Bomb
+FA3	Unlucky Bomb
+FA4	Change Bomb
+FA5	Present Bomb
