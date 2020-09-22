@@ -1,7 +1,7 @@
 {
 	"name": "disgaeareporter",
 	"dependencies": {
-		"reversineer": "*",
+		"reversineer": "~>0.0",
 		"simap": "*",
 		"sjisish": "~>0.0",
 		":d1data": "*",
@@ -10,9 +10,9 @@
 		":d4data": "*",
 		":d5data": "*",
 		":dd2data": "*",
-		"siryul": "~>0.4.1",
+		"siryul": "~>0.5",
 		"easysettings": "*",
-		"diet-ng": "~>1.4.5"
+		"diet-ng": "~>1.7.2"
 	},
 	"targetType": "executable",
 	"subPackages": [
