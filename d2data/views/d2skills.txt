@@ -48,6 +48,7 @@ CD	Nightsever
 32C	Shield
 32D	Magic Boost
 32E	Magic Wall
+330	Target Lock
 331	Enfeeble
 332	Armor Break
 334	Resist Break
@@ -56,8 +57,11 @@ CD	Nightsever
 386	Dark Cannon
 3A3	Health
 3A4	Consciousness
+3A5	Freedom
+3A6	Memory
 3B7	Magichange
 3F3	Crimson Flame
+3F4	Soaring Fire
 3FD	Rose Thorns
 407	Shocking Soul
 547	See Ya!

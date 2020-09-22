@@ -38,7 +38,7 @@ Golden Fist
 Star Shatter
 God's Hand
 Ultimus
-
+Kitty Punch
 
 
 
@@ -79,48 +79,48 @@ Ultimus
 
 
 Lazy Sword
-
+Broadsword
 Rapier
+Dragon Blade
+Shamshir
+Knight Sword
+Spatha
+Katana
+Bastard Sword
+Heavy Sword
+Kunoichi Blade
+Ninja Blade
+Bekatwa
+Katzbalger
+Berserker
+Evil Buster
+Krishmald
+Falchion
+Bloodlust
+Nightmare
+Warlord Blade
+Damascus
+Rune Sabre
+Executioner
+Crystal Sword
+Rasetsu
+Sesshoumaru
+Kagero
+Laser Blade
+Nine Blades
+Dragon Buster
+Durandal
+Balmung
+Tilfang
+Bushin Blade
+Muramasa
+Sunrise Sword
+Infernal Sword
+Excalibur
+Yoshitsuna
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Felynn Sword
 
 
 
@@ -201,7 +201,7 @@ Drill Emperor
 
 
 
-
+Tink Spear
 
 
 
@@ -240,47 +240,47 @@ Drill Emperor
 
 Toy Bow
 Wooden Bow
+Long Bow
+Silver Bow
+Elven Bow
+Assassin Bow
+Yggdrasil Bow
+Jewelled Bow
+Composite Bow
+Exorcist Bow
+Golden Bow
+Skeleton Bow
+Crystal Bow
+Demon Bow
+Angel Bow
+Temptation
+Forest Bow
+Hunter Bow
+Moonlight Bow
+Sylphid
+Dark Bow
+Heavenly Bow
+Beast Killer
+Master Bow
+Deadly Bow
+Platinum Bow
+Soul Eater
+Salamander
+Illusion Bow
+Evil Hunter
+Raijin Bow
+Glutton Bow
+Luminous Bow
+Red Moon Bow
+Drake Hunter
+Ragnarok
+Diabolic Bow
+Seraphic Bow
+Artemis
+Lovely Cupid
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Holy Dragon Bow
 
 
 
@@ -319,16 +319,23 @@ Wooden Bow
 
 
 BB Gun
-
+Handgun
 Trumpet
+Steam Gun
+.44 Magnum
+Pulse Gun
+Antique Gun
 
+Mk.II
 
 
 
 
+Godfather
 
 
 
+Paralyzer
 
 
 
@@ -392,12 +399,20 @@ Trumpet
 
 
 
+Iron Axe
+Gang Axe
+Primitive Axe
 
 
 
+Guillotine
 
 
+Tomahawk
 
+Heavy Axe
+Giant Axe
+Savage Axe
 
 
 
@@ -425,26 +440,11 @@ Trumpet
 
 
 
+Roc Axe
+Zom Dragon Axe
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Entei Axe
 
 
 
@@ -479,6 +479,31 @@ Trumpet
 
 
 Training Staff
+Wooden Staff
+Bone Staff
+
+Pixie Wand
+Cardinal Staff
+Witch's Wand
+Crystal Rod
+
+Prinny Staff
+
+Druid Staff
+
+Ancient Staff
+
+
+
+
+Moonlight Staff
+Fairy Staff
+
+
+Chief's Staff
+
+
+Holy Staff
 
 
 
@@ -493,32 +518,7 @@ Training Staff
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Spirit Wand
 
 
 
@@ -559,6 +559,23 @@ Training Staff
 
 
 Paw Glove
+Pointy Bone
+Goblin Claw
+Wolf's Fang
+
+
+Scorpion Tail
+Odd Mandible
+
+
+
+Spikey Shell
+Tentacle
+
+
+Mystic Horn
+
+Lionheart
 
 
 
@@ -581,34 +598,17 @@ Paw Glove
 
 
 
+The Weak
+The Rotten
+The Dead
+The Sacrifice
+
+The Slave
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+The Evil Eye
+The Nightmare
 
 
 
@@ -719,6 +719,45 @@ Paw Glove
 
 
 Old Cloth
+Tunic
+Buckler
+Leather Jacket
+Light Armor
+Jijo Outfit
+Traveler Mantle
+Round Shield
+China Dress
+Protector
+Black Outfit
+Magical Vest
+Fur Jacket
+Chain Mail
+Wizard Robe
+Battle Vest
+Scale Mail
+Bushido Suit
+Breastplate
+Large Shield
+Brigandine
+Halfplate
+Holy Dress
+Knight Shield
+Dandy Gown
+Fullplate
+Iron Dress
+Battle Armor
+Tower Shield
+Spirit Mantle
+Dragon Mail
+Kamikaze Suit
+Reflex
+Hero Mantle
+Metal Suit
+Shield of Aegis
+Goddess Dress
+Majin Armor
+Infernal Armor
+Super Robo Suit
 
 
 
@@ -759,6 +798,16 @@ Old Cloth
 
 
 
+Power Belt
+Exertion Belt
+Energy Belt
+Beastly Belt
+Aura Belt
+Spirit Belt
+Bravery Belt
+Black Belt
+Ubermensch
+Orion's Belt
 
 
 
@@ -829,61 +878,12 @@ Old Cloth
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Slippers
+Cross-Trainers
+Ninja Tabi
+Falcon Shoes
+Angel's Sandals
+Accelerator
 
 
 
@@ -959,6 +959,15 @@ Old Cloth
 
 
 Common Orb
+Psycho Orb
+Dark Orb
+Bloody Orb
+Astral Orb
+Lunar Orb
+Royal Orb
+Holy Orb
+Chaos Orb
+Universal Orb
 
 
 
@@ -1029,25 +1038,16 @@ Common Orb
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Glasses
+Binoculars
+Nerd Glasses
+Plastic Nose
+Opera Glasses
+Nightvision
+Crosshair
+Foresight
+Destiny Lens
+Providence
 
 
 
@@ -1119,24 +1119,24 @@ Common Orb
 
 
 Brawny Muscle
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Kung-Fu Muscle
+Spirit Muscle
+Fight Muscle
+Ace Muscle
+Victory Muscle
+Dream Muscle
+World Muscle
+Star Muscle
+Cosmos Muscle
+Power Weight
+Speed Weight
+Hit Weight
+Power Weight 2
+Speed Weight 2
+Hit Weight 2
+Power Weight Z
+Speed Weight Z
+Hit Weight Z
 
 
 
