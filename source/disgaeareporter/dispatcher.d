@@ -37,18 +37,6 @@ struct DisgaeaGame {
 	ubyte[] rawData;
 }
 
-
-immutable ubyte[256] d5PCTable = genTable();
-
-ubyte[256] genTable() {
-	ubyte[256] output;
-	foreach (ubyte i; 0..256) {
-		ubyte b = cast(ubyte)(((i&0xF0)>>4) | ((0xF - (i&0xF))<<4));
-		output[b] = i;
-	}
-	return output;
-}
-
 auto detectGame(ubyte[] input) {
 	auto output = DisgaeaGame();
 	if (input.length == 0x16DC28) {
@@ -171,6 +159,7 @@ ubyte[] decrypt(const ubyte[] input, ubyte[4] key) {
 	return decrypted;
 }
 ubyte[] decrypt5(const ubyte[] input) {
+	import d5data : d5PCTable;
 	ubyte[] decrypted;
 	decrypted.reserve(input.length);
 	foreach (dataByte; input) {
