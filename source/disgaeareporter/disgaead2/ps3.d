@@ -196,7 +196,7 @@ static assert(DD2PS3._innocentWarehouse.offsetof == 0x1529B8);
 unittest {
 	import disgaeareporter.dispatcher : getRawData, loadData, Platforms;
 	import std.array : array;
-	auto data = loadData!DD2PS3(cast(immutable(ubyte)[])import("dd2ps3-raw.DAT"));
+	auto data = loadData!(DD2PS3, true)(cast(immutable(ubyte)[])import("dd2ps3-raw.DAT"));
 	assert(data.characters.length == 20);
 
 	with(data.characters[0]) {

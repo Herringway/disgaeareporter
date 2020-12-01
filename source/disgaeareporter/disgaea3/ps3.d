@@ -117,7 +117,7 @@ static assert(D3PS3.charCount.offsetof == 0xD67D4);
 
 unittest {
 	import disgaeareporter.dispatcher : getRawData, loadData, Platforms;
-	auto data = loadData!D3PS3(getRawData(cast(immutable(ubyte)[])import("d3ps3-raw.DAT"), Platforms.ps3));
+	auto data = loadData!(D3PS3, true)(getRawData(cast(immutable(ubyte)[])import("d3ps3-raw.DAT"), Platforms.ps3));
 	assert(data.fileName == "Mao");
 
 	with(data._characters[0]) {
