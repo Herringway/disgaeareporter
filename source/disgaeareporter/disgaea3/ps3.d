@@ -11,9 +11,9 @@ struct Item {
 	align(1):
 	Innocent[8] innocents;
 	@Unknown ubyte[8] unknown1;
-	LongStats!true stats;
-	LongStats!true realStats;
-	BigEndian!ushort nameID;
+	LongStats stats;
+	LongStats realStats;
+	ushort nameID;
 	@Unknown ubyte[30] unknown2;
 	ubyte rarity;
 	@Unknown ubyte[30] unknown3;
@@ -34,17 +34,17 @@ static assert(Item.rarity.offsetof == 0xE8);
 align(1)
 struct Character {
 	align(1):
-	BigEndian!ulong exp;
+	ulong exp;
 	Item[4] equipment;
 	SJISString!40 name;
 	SJISString!40 className;
 	@Unknown ubyte[1032] unknown1;
-	BigEndian!ulong currentHP;
-	BigEndian!ulong currentSP;
-	LongStats!true stats;
-	LongStats!true realStats;
+	ulong currentHP;
+	ulong currentSP;
+	LongStats stats;
+	LongStats realStats;
 	@Unknown ubyte[92] unknown2;
-	BigEndian!ushort level;
+	ushort level;
 	@Unknown ubyte[16] unknown3;
 	Resistance baseResist;
 	Resistance resist;
@@ -61,8 +61,8 @@ static assert(Character.baseResist.offsetof == 0xABE);
 align(1)
 struct Innocent {
 	align(1):
-	BigEndian!uint level;
-	BigEndian!ushort type;
+	uint level;
+	ushort type;
 	@Unknown ubyte[2] unknown;
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.format : formattedWrite;
@@ -88,7 +88,7 @@ align(1)
 struct D3PS3 {
 	align(1):
 	@Unknown ubyte[8] unknown1;
-	Playtime!true playtime;
+	Playtime playtime;
 	SJISString!34 fileName;
 	@Unknown ubyte[3225] unknown2;
 	Character[64] _characters;
@@ -96,7 +96,7 @@ struct D3PS3 {
 	Item[32] _bagItems;
 	Item[512] _warehouseItems;
 	@Unknown ubyte[36780] unknown4;
-	BigEndian!ushort charCount;
+	ushort charCount;
 
 	auto bagItems() const {
 		import std.algorithm : filter;

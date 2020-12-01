@@ -35,6 +35,9 @@ struct DisgaeaGame {
 	Games game;
 	Platforms platform;
 	ubyte[] rawData;
+	bool isBigEndian() const @safe {
+		return platform == Platforms.ps3;
+	}
 }
 
 auto detectGame(ubyte[] input) {
@@ -230,17 +233,25 @@ unittest {
 	assert(identity((cast(ubyte)0xFF).repeat(128).array));
 }
 
-auto loadData(Game)(const ubyte[] data) {
+Game* loadData(Game, bool bigEndian = false)(const ubyte[] data) {
 	import std.traits : hasMember;
-	Game* game = new Game;
-	data.readStruct!Game(game);
+	import reversineer : BigEndian, LittleEndian;
+	static if (bigEndian) {
+		alias FG = BigEndian!Game;
+	} else {
+		alias FG = LittleEndian!Game;
+	}
+	FG* game = new FG;
+	data.readStruct(game);
 	debug(dumpraw) {
 		import std.file : mkdirRecurse, write;
 		import std.traits : moduleName;
 		mkdirRecurse("dumps");
 		write("dumps/raw-"~moduleName!Game~".dat", data);
 	}
-	return game;
+	Game* result = new Game;
+	game.native(*result);
+	return result;
 }
 
 

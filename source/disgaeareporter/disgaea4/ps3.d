@@ -8,8 +8,8 @@ import std.range : isOutputRange;
 align(1)
 struct Innocent {
 	align(1):
-	BigEndian!uint level;
-	BigEndian!ushort type;
+	uint level;
+	ushort type;
 	@Unknown ubyte[2] unknown;
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.format;
@@ -32,7 +32,7 @@ struct Item {
 	@Unknown ubyte[4] unknown1;
 	Innocent[8] innocents;
 	@Unknown ubyte[140] unknown2;
-	BigEndian!ushort id;
+	ushort id;
 	@Unknown ubyte[30] unknown3;
 	ubyte rarity;
 	@Unknown ubyte[30] unknown4;
@@ -51,17 +51,17 @@ static assert(Item.rarity.offsetof == 0xF0);
 align(1)
 struct Character {
 	align(1):
-	BigEndian!ulong exp;
+	ulong exp;
 	Item[4] equipment;
 	ZeroString!48 name;
 	ZeroString!48 className;
 	@Unknown ubyte[1128] unknown1;
-	BigEndian!ulong currentHP;
-	BigEndian!ulong currentSP;
-	LongStats!true stats;
-	LongStats!true realStats;
+	ulong currentHP;
+	ulong currentSP;
+	LongStats stats;
+	LongStats realStats;
 	@Unknown ubyte[912] unknown2;
-	BigEndian!ushort level;
+	ushort level;
 	@Unknown ubyte[12854] unknown3;
 }
 
@@ -73,7 +73,7 @@ align(1)
 struct D4PS3 {
 	align(1):
 	@Unknown ubyte[8] unknown1;
-	Playtime!true playtime;
+	Playtime playtime;
 	ZeroString!34 fileName;
 	@Unknown ubyte[5041] unknown2;
 	Character[64] _characters;
@@ -81,7 +81,7 @@ struct D4PS3 {
 	Item[32] _bagItems;
 	Item[512] _warehouseItems;
 	@Unknown ubyte[34828] unknown4;
-	BigEndian!ushort charCount;
+	ushort charCount;
 
 	auto characters() const {
 		return _characters[0..charCount];

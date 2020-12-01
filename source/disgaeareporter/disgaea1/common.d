@@ -45,7 +45,7 @@ void fooi() {
 	Innocent().toString(buf);
 }
 
-alias BaseItemStats = StatsImpl!(short, false);
+alias BaseItemStats = StatsImpl!short;
 static assert(BaseItemStats.sizeof == 16);
 
 enum Defeated {

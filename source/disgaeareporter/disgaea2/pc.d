@@ -75,7 +75,7 @@ struct Character {
 	ZeroString!64 name;
 	ZeroString!64 className;
 	@Unknown ubyte[260] unknown1;
-	Skills!(96, d2skillNames, false) skills;
+	Skills!(96, d2skillNames) skills;
 	@Unknown ubyte[508] unknown2;
 	Stats stats;
 	@Unknown ubyte[64] unknown3;
@@ -132,7 +132,7 @@ align(1)
 struct D2PC {
 	align(1):
 	@Unknown ubyte[8] unknown;
-	Playtime!false playtime;
+	Playtime playtime;
 	@Unknown ubyte[963] unknown2;
 	ulong totalHL;
 	@Unknown ubyte[2336] unknown3;

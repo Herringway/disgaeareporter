@@ -3,8 +3,6 @@ module disgaeareporter.common;
 import disgaeareporter.disgaea1;
 import disgaeareporter.disgaea2;
 
-public import reversineer : BigEndian, LittleEndian;
-
 import std.stdio : File;
 import std.range;
 import std.traits : isSomeChar, Select;
@@ -305,11 +303,11 @@ struct Favour {
 	}
 }
 
-alias BaseCharacterStats = StatsImpl!(ubyte, false);
+alias BaseCharacterStats = StatsImpl!ubyte;
 static assert(BaseCharacterStats.sizeof == 8);
 
-alias BaseCharacterStatsLater(bool bigEndian) = ModernStatsImpl!(ubyte, bigEndian);
-static assert(BaseCharacterStatsLater!true.sizeof == 8);
+alias BaseCharacterStatsLater = ModernStatsImpl!ubyte;
+static assert(BaseCharacterStatsLater.sizeof == 8);
 
 align(1)
 struct Resistance {
@@ -417,44 +415,42 @@ struct EquipmentMastery5 {
 	}
 }
 
-alias Stats = StatsImpl!(int, false);
+alias Stats = StatsImpl!int;
 static assert(Stats.sizeof == 32);
 
-alias LongStats(bool bigEndian) = StatsImpl!(long, bigEndian);
+alias LongStats = StatsImpl!long;
 
 align(1)
-struct StatsImpl(T, bool isBigEndian) {
-	alias Endian = Select!(isBigEndian, BigEndian, LittleEndian);
+struct StatsImpl(T) {
 	align(1):
-	Endian!T hp;
-	Endian!T sp;
-	Endian!T attack;
-	Endian!T defense;
-	Endian!T intelligence;
-	Endian!T speed;
-	Endian!T hit;
-	Endian!T resistance;
+	T hp;
+	T sp;
+	T attack;
+	T defense;
+	T intelligence;
+	T speed;
+	T hit;
+	T resistance;
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.format;
 		formattedWrite!"HP: %s, SP: %s, Attack: %s, Defense: %s, Intelligence: %s, Speed: %s, Hit: %s, Resistance: %s"(sink, hp, sp, attack, defense, intelligence, speed, hit, resistance);
 	}
 }
 
-alias ModernStats(bool bigEndian) = ModernStatsImpl!(long, bigEndian);
-static assert(ModernStats!true.sizeof == 64);
+alias ModernStats = ModernStatsImpl!long;
+static assert(ModernStats.sizeof == 64);
 
 align(1)
-struct ModernStatsImpl(Type, bool isBigEndian) {
-	alias Endian = Select!(isBigEndian, BigEndian, LittleEndian);
+struct ModernStatsImpl(Type) {
 	align(1):
-	Endian!Type hp;
-	Endian!Type sp;
-	Endian!Type attack;
-	Endian!Type defense;
-	Endian!Type intelligence;
-	Endian!Type resistance;
-	Endian!Type hit;
-	Endian!Type speed;
+	Type hp;
+	Type sp;
+	Type attack;
+	Type defense;
+	Type intelligence;
+	Type resistance;
+	Type hit;
+	Type speed;
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.format;
 		formattedWrite!"HP: %s, SP: %s, Attack: %s, Defense: %s, Intelligence: %s, Speed: %s, Hit: %s, Resistance: %s"(sink, hp, sp, attack, defense, intelligence, speed, hit, resistance);
@@ -462,17 +458,16 @@ struct ModernStatsImpl(Type, bool isBigEndian) {
 }
 
 align(1)
-struct Aptitudes(bool isBigEndian) {
-	alias Endian = Select!(isBigEndian, BigEndian, LittleEndian);
+struct Aptitudes {
 	align(1):
-	Endian!ushort hp;
-	Endian!ushort sp;
-	Endian!ushort attack;
-	Endian!ushort defense;
-	Endian!ushort intelligence;
-	Endian!ushort resistance;
-	Endian!ushort hit;
-	Endian!ushort speed;
+	ushort hp;
+	ushort sp;
+	ushort attack;
+	ushort defense;
+	ushort intelligence;
+	ushort resistance;
+	ushort hit;
+	ushort speed;
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.format;
 		formattedWrite!"HP: %s%%, SP: %s%%, Attack: %s%%, Defense: %s%%, Intelligence: %s%%, Speed: %s%%, Hit: %s%%, Resistance: %s%%"(sink, hp, sp, attack, defense, intelligence, speed, hit, resistance);
@@ -480,10 +475,9 @@ struct Aptitudes(bool isBigEndian) {
 }
 
 align(1)
-struct Playtime(bool isBigEndian) {
-	alias Endian = Select!(isBigEndian, BigEndian, LittleEndian);
+struct Playtime {
 	align(1):
-	Endian!ushort hours_;
+	ushort hours_;
 	ubyte minutes_;
 	ubyte seconds_;
 	ubyte milliseconds_;
@@ -501,7 +495,7 @@ struct Playtime(bool isBigEndian) {
 private void playtimeTest() {
 	import std.outbuffer;
 	auto buf = new OutBuffer;
-	Playtime!true().toString(buf);
+	Playtime().toString(buf);
 }
 
 align(1)
@@ -546,17 +540,16 @@ struct MiscStatsExpanded {
 }
 
 align(1)
-struct Skills(size_t count, alias Names, bool isBigEndian) {
-	alias Endian = Select!(isBigEndian, BigEndian, LittleEndian);
+struct Skills(size_t count, alias Names) {
 	align(1):
-	Endian!uint[count] skillEXP;
-	Endian!ushort[count] skills;
+	uint[count] skillEXP;
+	ushort[count] skills;
 	ubyte[count] skillLevels;
 
 	auto range() const {
 		static struct SkillRange {
-			Endian!uint[count] skillEXP;
-			Endian!ushort[count] skills;
+			uint[count] skillEXP;
+			ushort[count] skills;
 			ubyte[count] skillLevels;
 			size_t index;
 			auto front() const {

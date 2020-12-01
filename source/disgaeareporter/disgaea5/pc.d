@@ -59,7 +59,7 @@ struct Character {
 	@Unknown ubyte[0x2098] unknown1;
 	ulong currentHP;
 	ulong currentSP;
-	ModernStats!false stats;
+	ModernStats stats;
 	@Unknown ubyte[0x90] unknown2;
 	EquipmentMastery5 equipmentMastery;
 	uint mana;
@@ -78,7 +78,7 @@ struct Character {
 	@Unknown ubyte[0x1F4] unknown7;
 	ushort level;
 	@Unknown ubyte[34] unknown8;
-	ModernStatsImpl!(short, false) baseStats;
+	ModernStatsImpl!short baseStats;
 	@Unknown ubyte[0x16D0] unknown9	;
 }
 static assert(Character.sizeof == 0x4750);

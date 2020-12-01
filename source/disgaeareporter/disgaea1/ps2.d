@@ -92,7 +92,7 @@ struct PS2Character {
 	ubyte[34] unknown3;
 	StatusResistance[5] statusResistances;
 	ubyte[112] unknown4;
-	Skills!(96, d1skillNames, false) skills;
+	Skills!(96, d1skillNames) skills;
 	uint currentHP;
 	uint currentSP;
 	Stats stats;

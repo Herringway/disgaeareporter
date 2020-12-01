@@ -8,8 +8,8 @@ import std.range : isOutputRange;
 align(1)
 struct Innocent {
 	align(1):
-	BigEndian!uint level;
-	BigEndian!ushort type;
+	uint level;
+	ushort type;
 	@Unknown ubyte[2] unknown;
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.format;
@@ -29,13 +29,13 @@ struct Innocent {
 align(1)
 struct Item {
 	align(1):
-	BigEndian!uint unknown1;
+	uint unknown1;
 	Innocent[6] innocents;
 	@Unknown ubyte[4] unknown2;
-	ModernStats!true stats;
-	ModernStats!true baseStats;
-	BigEndian!ushort nameID;
-	BigEndian!ushort level;
+	ModernStats stats;
+	ModernStats baseStats;
+	ushort nameID;
+	ushort level;
 	@Unknown ubyte[53] unknown3;
 	char[64] _name;
 	@Unknown ubyte[95] unknown4;
@@ -57,41 +57,41 @@ static assert(Item._name.offsetof == 0xF1);
 align(1)
 struct Character {
 	align(1):
-	BigEndian!ulong exp;
+	ulong exp;
 
 	Item[4] equipment;
 	char[52] _name;
 	char[52] _className;
 	@Unknown ubyte[180] unknown;
-	Skills!(256, dd2skillNames, true) skills;
+	Skills!(256, dd2skillNames) skills;
 	@Unknown ubyte[516] unknown2;
-	BigEndian!ulong currentHP;
-	BigEndian!ulong currentSP;
-	ModernStats!true stats;
-	ModernStats!true realStats;
+	ulong currentHP;
+	ulong currentSP;
+	ModernStats stats;
+	ModernStats realStats;
 	@Unknown ubyte[8] unknown3;
-	BaseCharacterStatsLater!true baseStats;
+	BaseCharacterStatsLater baseStats;
 	@Unknown ubyte[36] unknown4;
 	EquipmentMasteryD2 equipmentMastery;
 	@Unknown ubyte[10] unknown5;
-	BigEndian!uint mana;
-	BigEndian!ushort level;
+	uint mana;
+	ushort level;
 	@Unknown ubyte[18] unknown6;
 	Resistance baseResist;
 	Resistance resist;
 	MiscStatsExpanded miscStats;
 	@Unknown ubyte[23] unknown7;
-	BigEndian!ulong numKills;
-	BigEndian!ulong numDeaths;
-	BigEndian!ulong maxDamage;
-	BigEndian!ulong totalDamage;
+	ulong numKills;
+	ulong numDeaths;
+	ulong maxDamage;
+	ulong totalDamage;
 	@Unknown ubyte[30] unknown8;
 	ubyte _training;
 	@Unknown ubyte unknown9;
 	Evility[2] _evilities;
 	@Unknown ubyte[808] unknown10;
-	Aptitudes!true aptitudes;
-	Aptitudes!true aptitudes2;
+	Aptitudes aptitudes;
+	Aptitudes aptitudes2;
 	@Unknown ubyte[1348] unknown11;
 
 	auto name() const {
@@ -124,10 +124,10 @@ align(1)
 struct Area {
 	align(1):
 	@Unknown ubyte[0x1A] unknown1;
-	BigEndian!uint clears;
-	BigEndian!ushort kills;
-	@Unknown BigEndian!ushort unknown2;
-	BigEndian!ushort bonusRank;
+	uint clears;
+	ushort kills;
+	@Unknown ushort unknown2;
+	ushort bonusRank;
 	@Unknown ubyte[2] unknown3;
 	ZeroString!0x38 name;
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
@@ -141,13 +141,13 @@ align(1)
 struct DD2PS3 {
 	align(1):
 	@Unknown ubyte[8] unknown1;
-	Playtime!true playtime;
+	Playtime playtime;
 	ZeroString!34 fileName;
 	@Unknown ubyte[1337] unknown2;
-	BigEndian!ulong totalHL;
+	ulong totalHL;
 	@Unknown ubyte[16] unknown3;
-	BigEndian!ulong hpRecovered;
-	BigEndian!ulong spRecovered;
+	ulong hpRecovered;
+	ulong spRecovered;
 	@Unknown ubyte[16] unknown4;
 	Character[128] _characters;
 	@Unknown ubyte[1530] unknown5;
@@ -155,20 +155,20 @@ struct DD2PS3 {
 	@Unknown ubyte[20588] unknown6;
 	Item[999] _items;
 	@Unknown ubyte[72164] unknown7;
-	BigEndian!ushort charCount;
+	ushort charCount;
 	@Unknown ubyte[6770] unknown8;
-	BigEndian!ulong maxDamage;
-	BigEndian!ulong totalDamage;
-	BigEndian!ushort geoCombo;
+	ulong maxDamage;
+	ulong totalDamage;
+	ushort geoCombo;
 	@Unknown ubyte[6] unknown9;
-	BigEndian!uint enemiesKilled;
-	BigEndian!uint enemiesKilledCopy;
-	BigEndian!ushort maxLevel;
-	BigEndian!uint reincarnation;
-	BigEndian!ushort itemWorldVisits;
-	BigEndian!ushort itemWorldLevels;
-	@Unknown BigEndian!ushort unknown10;
-	BigEndian!uint totalItemWorldLevels;
+	uint enemiesKilled;
+	uint enemiesKilledCopy;
+	ushort maxLevel;
+	uint reincarnation;
+	ushort itemWorldVisits;
+	ushort itemWorldLevels;
+	@Unknown ushort unknown10;
+	uint totalItemWorldLevels;
 	@Unknown ubyte[1832] unknown11;
 	Innocent[256] _innocentWarehouse;
 	auto characters() const {

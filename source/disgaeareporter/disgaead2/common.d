@@ -6,7 +6,7 @@ public import dd2data;
 align(1)
 struct Evility {
 	align(1):
-	BigEndian!ushort id;
+	ushort id;
 
 	alias id this;
 

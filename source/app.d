@@ -171,7 +171,7 @@ auto handleFile(string path, string outPath, const ReportFormat format) {
 			case Games.disgaea3:
 				switch (detected.platform) {
 					case Platforms.ps3:
-						dumpData(loadData!(disgaeareporter.disgaea3.D3PS3)(detected.rawData), outFile, format);
+						dumpData(loadData!(disgaeareporter.disgaea3.D3PS3, true)(detected.rawData), outFile, format);
 						break;
 					case Platforms.psVita:
 						dumpData(loadData!(disgaeareporter.disgaea3.D3Vita)(detected.rawData), outFile, format);
@@ -182,7 +182,7 @@ auto handleFile(string path, string outPath, const ReportFormat format) {
 			case Games.disgaea4:
 				switch (detected.platform) {
 					case Platforms.ps3:
-						dumpData(loadData!(disgaeareporter.disgaea4.D4PS3)(detected.rawData), outFile, format);
+						dumpData(loadData!(disgaeareporter.disgaea4.D4PS3, true)(detected.rawData), outFile, format);
 						break;
 					case Platforms.psVita:
 						dumpData(loadData!(disgaeareporter.disgaea4.D4Vita)(detected.rawData), outFile, format);
@@ -207,7 +207,7 @@ auto handleFile(string path, string outPath, const ReportFormat format) {
 			case Games.disgaead2:
 				switch(detected.platform) {
 					case Platforms.ps3:
-						dumpData(loadData!(disgaeareporter.disgaead2.DD2PS3)(detected.rawData), outFile, format);
+						dumpData(loadData!(disgaeareporter.disgaead2.DD2PS3, true)(detected.rawData), outFile, format);
 						break;
 					default: writeln("Unsupported"); return;
 				}

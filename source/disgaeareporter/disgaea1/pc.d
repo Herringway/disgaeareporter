@@ -12,7 +12,7 @@ align(1)
 struct D1PC {
 	align(1):
 	@Unknown ubyte[8] unknown1;
-	Playtime!false playtime;
+	Playtime playtime;
 	SJISString!34 fileName;
 	ushort level;
 	ushort unknown2;
@@ -139,7 +139,7 @@ struct Character {
 	@Unknown ubyte[32] unknown3;
 	StatusResistance[5] statusResistances;
 	@Unknown ubyte[110] unknown4;
-	Skills!(96, d1skillNames, false) skills;
+	Skills!(96, d1skillNames) skills;
 	uint currentHP;
 	uint currentSP;
 	Stats stats;
