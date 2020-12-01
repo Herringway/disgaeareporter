@@ -6,7 +6,7 @@ struct D1DS {
 	ubyte[1952] unknown;
 	Character[128] _characters;
 
-	Character[] characters() return {
+	auto characters() const return {
 		return _characters[];
 	}
 }

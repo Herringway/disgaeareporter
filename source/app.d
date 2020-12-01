@@ -148,9 +148,9 @@ auto handleFile(string path, string outPath, const ReportFormat format) {
 					case Platforms.psp:
 						dumpData(loadData!(disgaeareporter.disgaea1.D1PSP)(detected.rawData), outFile, format);
 						break;
-					//case Platforms.ds:
-					//	dumpData(loadData!(disgaeareporter.disgaea1.D1DS)(detected.rawData), outFile, format);
-					//	break;
+					case Platforms.ds:
+						dumpData(loadData!(disgaeareporter.disgaea1.D1DS)(detected.rawData), outFile, format);
+						break;
 					default: writeln("Unsupported"); return;
 				}
 				break;
