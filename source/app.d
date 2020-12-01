@@ -222,10 +222,10 @@ auto handleFile(string path, string outPath, const ReportFormat format) {
 void dumpData(T)(const T* data, File output, const ReportFormat format) {
 	final switch (format) {
 		case ReportFormat.yaml:
-			output.writeln(data.toString!(YAML, Siryulize.omitNulls & Siryulize.omitInits));
+			output.writeln(toString!(YAML, Siryulize.omitNulls & Siryulize.omitInits)(data));
 			break;
 		case ReportFormat.json:
-			output.writeln(data.toString!(JSON, Siryulize.omitNulls & Siryulize.omitInits));
+			output.writeln(toString!(JSON, Siryulize.omitNulls & Siryulize.omitInits)(data));
 			break;
 		case ReportFormat.text:
 			output.printData(data);
