@@ -219,26 +219,33 @@ ubyte[] decompress(const ubyte[] input, size_t expected) pure @safe {
 	output.reserve(expected);
 
 	void copyBack(uint length, uint position) {
-		output ~= output[$-position..$-position+length];
+		output ~= output[$ - position .. $ - position + length];
 	}
 
 	for (uint i = 0; i < input.length; i++) {
 		if (input[i] == 0) {
 			continue;
 		} else if (input[i] < 0x80) {
-			output ~= input[i+1..i+1+input[i]];
+			output ~= input[i + 1 .. i + 1 + input[i]];
 			i += input[i];
-		} else if (input[i] < 0xC0) {
-			auto compensated = input[i] - 0x80;
-			copyBack(((compensated&0xF0)>>4) + 1, (compensated&0xF)+1);
-		} else if (input[i] < 0xE0) {
-			auto compensated = input[i] - 0xC0;
-			copyBack(compensated+2, input[i+1] + 1);
-			i++;
-		} else if (input[i] <= 0xFF) {
-			auto compensated = input[i] - 0xE0;
-			copyBack((compensated<<4) + ((input[i+1]&0xF0)>>4) + 3, ((input[i+1]&0xF)<<8) + input[i+2] + 1);
-			i += 2;
+		} else {
+			uint length, position;
+			if (input[i] < 0xC0) {
+				auto compensated = input[i] - 0x80;
+				length = (compensated >> 4) + 1;
+				position = (compensated & 0xF) + 1;
+			} else if (input[i] < 0xE0) {
+				auto compensated = input[i] - 0xC0;
+				length = compensated + 2;
+				position = input[i + 1] + 1;
+				i++;
+			} else if (input[i] <= 0xFF) {
+				auto compensated = input[i] - 0xE0;
+				length = (compensated << 4) + (input[i + 1] >> 4) + 3;
+				position = ((input[i + 1] & 0xF) << 8) + input[i + 2] + 1;
+				i += 2;
+			}
+			copyBack(length, position);
 		}
 	}
 	return output;
