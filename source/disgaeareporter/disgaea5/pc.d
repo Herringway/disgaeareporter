@@ -9,8 +9,8 @@ align(1)
 struct Innocent {
 	align(1):
 	@Unknown ubyte[4] unknown1;
-	ubyte type;
-	@Unknown ubyte[3] unknown2;
+	ushort type;
+	@Unknown ubyte[2] unknown2;
 	uint level;
 	@Unknown ubyte[8] unknown3;
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
