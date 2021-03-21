@@ -50,13 +50,43 @@ static assert(Item.sizeof == 0x258);
 static assert(Item.itemID.offsetof == 0x128);
 
 align(1)
+struct Skill5 {
+	align(1):
+	uint unknown;
+	uint id;
+	ubyte[1] unknown2;
+	ubyte level;
+	ubyte boosts;
+	ubyte[5] unknown3;
+	bool isValid() const {
+		return id != 0;
+	}
+	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
+		import std.format : formattedWrite;
+		if (level == 255) {
+			sink.put("Learning");
+		} else {
+			sink.formattedWrite!"Lv%s + %s"(level, boosts);
+		}
+		sink.formattedWrite!" %s (%s EXP)"(__ctfe ? "" : d5skillNames(cast(ushort)id), 0);
+	}
+	void __toString() {
+		import std.array : appender;
+		auto a = appender!(char[]);
+		toString(a);
+	}
+}
+
+align(1)
 struct Character {
 	align(1):
 	ulong exp;
 	Item[5] equipment;
 	ZeroString!0x34 name;
 	ZeroString!0x34 className;
-	@Unknown ubyte[0x2098] unknown1;
+	@Unknown ubyte[144] unknown_;
+	Skill5[26] skills;
+	@Unknown ubyte[0x1E68] unknown1;
 	ulong currentHP;
 	ulong currentSP;
 	ModernStats stats;
@@ -83,6 +113,7 @@ struct Character {
 }
 static assert(Character.sizeof == 0x4750);
 static assert(Character.name.offsetof == 0xBC0);
+static assert(Character.skills.offsetof == 0xCB8);
 static assert(Character.stats.offsetof == 0x2CD0);
 static assert(Character.baseResist.offsetof == 0x2E0A);
 static assert(Character.level.offsetof == 0x304C);

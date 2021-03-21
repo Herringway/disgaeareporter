@@ -5,7 +5,7 @@ import disgaeareporter.disgaea2;
 
 import std.stdio : File;
 import std.range;
-import std.traits : isSomeChar, Select;
+import std.traits : isArray, isSomeChar, Select;
 
 enum Unknown;
 
@@ -215,10 +215,20 @@ void printCharacter(T)(File output, int indentCount, T character) {
 			}
 		}
 		static if (hasMember!(T, "skills")) {
-			if (!character.skills.range.empty) {
-				indentedPrint(0, "Abilities:");
-				foreach (skill; character.skills.range) {
-					indentedPrint(1, skill);
+			static if (isArray!(typeof(T.skills))) {
+				auto skills = character.skills[].filter!(x => x.isValid);
+				if (!skills.empty) {
+					indentedPrint(0, "Abilities:");
+					foreach (skill; skills) {
+						indentedPrint(1, skill);
+					}
+				}
+			} else {
+				if (!character.skills.range.empty) {
+					indentedPrint(0, "Abilities:");
+					foreach (skill; character.skills.range) {
+						indentedPrint(1, skill);
+					}
 				}
 			}
 		}
