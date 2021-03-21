@@ -34,7 +34,9 @@ struct Item {
 	Innocent[8] innocents;
 	@Unknown ubyte[0x88] unknown1;
 	ushort itemID;
-	@Unknown ubyte[0x1B] unknown2;
+	ushort unknown;
+	ushort level;
+	@Unknown ubyte[0x17] unknown2;
 	ubyte rarity;
 	@Unknown ubyte[0x112] unknown3;
 
