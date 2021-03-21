@@ -1,0 +1,458 @@
+0065	Triple Strike
+0066	Phantom Blow
+0067	Hurricane Blow
+0068	Purgatory Palm
+0069	Rising Domination
+006A	Big Bang
+006B	No Way Out
+00C9	Blade Rush
+00CA	Killer Spin
+00CB	Excavation
+00CC	Vacuum Slice X
+00CD	Rising Heavens
+00CE	Neodimension Slash
+00CF	Super Crosslord
+012D	Impaler Drop
+012E	Thousand Piercings
+012F	Spear Gate
+0130	Phoenix Valor
+0131	Tornado Spark
+0132	Divine Trident
+0133	Meteor Sky Spear
+0191	Rapid Arrow
+0192	Doppelganger
+0193	Zielregen
+0194	Chaotic X Circle
+0195	Sword Inferno
+0196	Galaxy Comet
+0197	Fire Dragon Gods
+01F5	Tri-Burst
+01F6	Victory Bullet
+01F7	Shotgun Craft
+01F8	Homing Eraser
+01F9	Top Shot
+01FA	Toten Kreuz
+01FB	Cocytus
+0259	Boulder Crush
+025A	Yo-Yo Trick
+025B	Wild Crescent
+025C	Silver Slugger
+025D	Gravity Hammer
+025E	Dynamic Moon
+025F	El Diablo
+0390	Capture Skill 1
+0394	Squad Attack
+03B7	Tower Whip
+03B8	Tower Fishing
+03B9	Tower Laser
+03BB	Tower Move
+03BC	Tower Lift
+03BD	Tower Throw
+03BF	Tower Release
+03E9	Fire
+03EA	Mega Fire
+03EB	Giga Fire
+03EC	Omega Fire
+03ED	Tera Fire
+044D	Wind
+044E	Mega Wind
+044F	Giga Wind
+0450	Omega Wind
+0451	Tera Wind
+04B1	Ice
+04B2	Mega Ice
+04B3	Giga Ice
+04B4	Omega Ice
+04B5	Tera Ice
+0515	Star
+0516	Mega Star
+0517	Giga Star
+0518	Omega Star
+0519	Tera Star
+0579	Heal
+057A	Mega Heal
+057B	Giga Heal
+057C	Omega Heal
+057D	Tera Heal
+05DB	Espoir
+05DD	Braveheart
+05DE	Shield
+05DF	Magic Boost
+05E0	Magic Wall
+05E1	Target Lock
+05E2	Speed Boost
+0641	Enfeeble
+0642	Armor Break
+0643	Mind Break
+0644	Resist Break
+0645	Blind
+0646	Slow
+06A5	Poison
+06A6	Slumber
+06A7	Stun
+06A8	Blank Out
+06A9	Charm
+076D	Geo Change
+076F	Bonus Change
+0770	Bonus Blast
+0771	Geo Blast
+0772	Geo Warp
+271B	Exploding Tiger
+271C	Hellfire Shot
+271D	Avidya Holy Water
+271E	Macrocosm
+2739	Dazzling Eyes
+273A	Two-Handed Draw
+273B	Battle Orchestra
+2743	Steel Arm Lariat
+2744	Giant Body Slam
+2745	Super Damage Lord
+274D	Demon’s Solace
+274E	Piercing Light
+274F	Gospel of Power
+2757	Flatty Dance
+2758	Assault Circus
+2759	Prinnical Meteor
+2761	Berserk Stream
+2775	Exploding Tiger (Zeroken)
+2776	Hellfire Shot (Zeroken)
+2777	Rising Gale Kick
+277F	Dark Rosario
+2780	Destruction Shot
+2781	Golden Battle Coat
+2793	Mephistopheles
+2794	Necro Wave
+2795	Draugr King
+27A7	Energy Break
+27A8	Ruin Burst
+27A9	Azathoth
+2801	Magic Bazooka
+2802	Stratus Drive
+2803	Mighty Commando
+290F	Blazing Knuckle
+2910	Overlord’s Wrath
+2911	Meteor Impact
+2912	Overlord Dimension
+2919	Prinny Raid
+291A	Sexy Beam
+291B	Chaos Impact
+291C	Dead End Chaos
+2923	Love Knuckle
+2924	Holy Arrows
+2925	Flonnezilla
+2926	Love Extreme
+292D	Angelic Knuckle
+292E	Prinny Parade
+292F	Sicily Delivery
+2937	Blazing Knuckle (Girl Laharl)
+2938	Overlord’s Wrath (Girl Laharl)
+2939	Meteor Impact (Girl Laharl)
+293A	Overlord Dimension (Girl Laharl)
+2941	Deicide Shooter
+2942	Usagi of the Dead
+2943	Usagi Slash
+294B	Impaler Prince
+294C	Bloody Hole
+294D	Tyrant Flughude
+2955	Swift Power Shot
+2956	Dual Canine Attack
+2957	Vanargandr
+295F	Mandatory Repo
+2960	Angelic Whip
+2961	Goddess Artemis
+2969	Bomb-Bat-Stic
+296A	Glorious Hitter
+296B	Prinny Kaiser XX
+2973	Final Boss Arises
+2974	True Godly Weapon
+2975	Yog Sothoth
+297D	Soul Reaper
+297E	Grim Specter
+297F	Delta of Death
+2987	Justice Knife
+2988	V Extreme
+2989	N I S A
+2991	Blast Finger
+2992	Shine Beam
+2993	Vasa Aergun
+299B	D-Rule Recycle
+299C	D-Rule Volunteer
+299D	D-Rule EcoFriend
+29A5	Short Recoil
+29A6	The Great Gun King
+29A7	Magnificent World
+29AF	Spinning Swordance
+29B0	Running Crosses
+29B1	Summon Swordance
+29B9	Virgin Innocence
+29BA	Shunpu Moondance
+29BB	Legend White
+29C3	Metal Justice
+29C4	Twilight Elemental
+29C5	World is Metallia’s
+29CD	Crimson Flame
+29CE	Soaring Fire
+29CF	Vulcan Blaze
+29D7	Rose Thorns
+29D8	Crest Roses
+29D9	Rose Liberation
+29E1	Have an Autograph!
+29E2	Aching Heart
+29E3	Love Dynamite T
+29EB	Neo Zetta Beam
+29EC	Badass Overdrive
+29F5	Freezing Prophecy
+29F6	Ice Mirror
+29F7	Frost Dragon
+29FF	Azure Prison
+2A00	Petta Beam
+2A01	Time Drive
+2A09	Atomic Super Blast
+2A0A	Holy Breaker
+2A0B	Requiem Aeternam
+2A27	Tyrant Sweep
+2A28	Blood Sting
+2A29	Demon Emperor
+2A31	Holy Barrier
+2A32	Self-Defense
+2A33	Nun Punishment
+2A3B	Dark Liberation
+2B03	Bulk Up
+2B04	Muscle Charge
+2B0D	Sonic Smash
+2B0E	Accel Charge
+2B17	Astral Wave
+2B18	Magic Siphon
+2B21	Astral Impact
+2B22	Energy Potion
+2B2B	Karmic Punishment
+2B2C	Vigor Death Strike
+2B35	Active Despair
+2B36	Anaconda Impact
+2B3F	Ailment Barrier
+2B40	Physical Gain
+2B49	Stat Barrier
+2B4A	Spiritual Gain
+2B53	Create Box
+2B54	Create Barrel
+2B55	Thief’s Key
+2B56	Snag Item
+2B57	Snag Heart
+2B5D	Trick Light
+2B5E	Afternoon Tea
+2B67	Hit Force
+2B68	Strange Shot
+2B71	Critical Force
+2B72	Silent Sniper
+2B7B	Ninja Art Switch
+2B7C	Ninja Art Darkness
+2B85	Comedy to the Shin
+2B86	Summer Rain Slash
+2B8F	Noblesse Oblige
+2B90	Galahad’s Shield
+2B99	Flame Slash
+2B9A	Killer Storm
+2B9B	Demon Ice Fang
+2B9C	Biting Ice Blade X
+2B9D	Heavenly Red Slice
+2B9E	Dimension Slash M
+2BA3	Holy Saber
+2BA4	Miracle of Love
+2BAD	Clinical Trial
+2BAE	Element Device
+2BAF	Medical Care
+2BB7	Heroic Backbreaker
+2BB8	Super Piledriver
+2BC1	Pirate Shell
+2BC2	Nether Buccaneer
+2BCB	Multi-Attacker
+2BCC	Land Decimator
+2BD5	Vital Steal
+2BD6	Lightning Sword
+2BDF	Cameo Storm
+2BE0	Dead Hurdles
+2BE9	Echoing Hymn
+2BEA	Penalty of Death
+2BF3	Ninja Art Wind Wrap
+2BF4	3 Year Crush Kill
+2BFC	Curse Storm
+2BFD	Aptitude Down
+2D5E	Afternoon Tea
+2EEB	Prinny Barrage
+2EEC	Prinny Bomb
+2EED	Pringer Beam
+2EEE	Prinny Fusillade
+2EF5	Stone
+2EF6	Diving Booty Bump
+2EF7	Dark Fist Volley
+2EF8	Dark Illuminati
+2EFF	Petite Slicer
+2F00	Land Crusher
+2F01	Orc Juggler
+2F02	Goddess of Orc
+2F09	Double Usa Swipe
+2F0A	Moon Shine Slash
+2F0B	Carrot Funnel
+2F0C	Gold Moon Judgment
+2F13	Will-o’-the-Wisp
+2F14	Lantern Section
+2F15	Flame Demon’s Fist
+2F16	Judgment Ray
+2F1D	Gel Gel Laser
+2F1E	Rock-Paper-Sticky
+2F1F	Slime Cheer
+2F20	Cell Division
+2F27	Feigned Innocence
+2F28	Rolling Hairball
+2F29	Cat Meteor Fist
+2F2A	Slumber Acrobatics
+2F31	Lepidoptera
+2F32	Sonic Wave
+2F33	Tailspin Dive
+2F34	Simurgh
+2F3B	Rotten Headbutt
+2F3C	Zombie Tornado
+2F3D	Ultra Zombeam
+2F3E	Resident Undead
+2F45	Eryngi Dance
+2F46	Erynger Punch
+2F47	Mushroom Spin
+2F48	Hyphae Infinity
+2F4F	Spiral Needle
+2F50	Flower Dance
+2F51	Non-Stick Thorn
+2F52	Petal Concerto
+2F56	13 Knights
+2F59	Kitty Rampage
+2F5A	Kitty Brain Blast
+2F5B	Cat Strike
+2F5C	Rolling Cat Rush
+2F63	Bubble Cutter
+2F64	Water Guillotine
+2F65	Buccal Cones
+2F66	Niflheim
+2F6D	Hip Attack
+2F6E	Evil Healing
+2F6F	Thunderbolt
+2F70	Dazzling Stage
+2F77	Third Eye
+2F78	Gloomy Tears
+2F79	Soul Bind
+2F7A	Immortal Sanctuary
+2F81	Stolen Slice
+2F82	Darkness Slash
+2F83	Boulder Shot
+2F84	Sand Wyrm Impact
+2F8B	Cyclone Claw
+2F8C	Come Come Bear
+2F8D	Darkness Release
+2F8E	Hyper Suction
+2F95	Burning Clap
+2F96	Blazing Breath
+2F97	Spiral Flame
+2F98	Flame God’s Dawn
+2F9F	Smoking Haze
+2FA0	Murder Stone Story
+2FA1	Fiery Pillar
+2FA2	Power Unleashed
+2FA9	Double Flame
+2FAA	Frosty Breeze
+2FAB	Icy Flame Shot
+2FAC	Rebellion Breath
+2FB3	Blossoming Spear
+2FB4	Painful Breath
+2FB5	Reckless Charge
+4E67	Double Usa Bomber
+4E68	Coney Pound
+5083	Evil Sword Balmung
+5084	Martial Transformer
+50AB	Imperial Cross
+50AC	Delinquent Extreme
+50D3	Pillar Break
+50D4	Witch Domination
+5119	Priere Change!
+511A	Overlord’s Hell
+55FB	Trans Prin Barrage
+55FC	Prinny Volcano
+5605	Demon Bullet
+5606	Imp Pyramid
+560F	Flying V-Strike
+5610	GoldAxe SilverAxe
+5619	Rabbit Slicer
+561A	Moon Child
+5623	Flying Flame Shot
+5624	Fairy King’s Rage
+562D	Sticky Skull Punch
+562E	Slime Hand
+5637	Giant Meow Swing
+5638	Booming Meow Kick
+5641	Poison Jet Mist
+5642	Moth Tornado
+564B	Zombie Critical
+564C	Comedy Impact
+5655	Shroom Shot
+5656	Shroom Skyscraper
+565F	Death Sprout
+5660	Electric Garden
+5669	Meow Meow Beating
+566A	Lovely Paw Fist
+5673	Cold Rain
+5674	Ice Dancer
+567D	Heart Breaker
+567E	Twin Attribute
+5687	Darkness Gaze
+5688	Shadow Phantom
+5691	Beastly Howl
+5692	Unmasking Death
+569B	Roaring Demon
+569C	Sanzu River Falls
+56A5	Fire Ring Toss
+56A6	Marduk
+56AF	Fox Spirit Dance
+56B0	Imperial Fox Witch
+56B9	Dragon Scissors
+56BA	Twin Cross Slash
+56C3	Spark Plug
+56C4	Cradius
+753B	Cryo Heartbreaker
+753C	Flaming Spin Kick
+753D	Supreme Curry
+7559	Heart Ensemble
+755A	Malicious Eye
+755B	Explosive Elegance
+7563	Monkey Cannon
+7564	Cross Flame Gale
+756D	Freezing Light
+756E	Curry Break
+7577	Demon Star Breaker
+7578	Extreme Kick
+7595	Avidya Holy Waters
+7596	Shadow Smash
+75A9	Secret Fist Improv
+75AA	Grand Macro Palm
+75BD	Great Beast War
+75D1	Twin Macro Palm
+75D2	Shadow Light Fist
+7621	Freikugel
+772F	Conflagration Fury
+7739	Blazing Impact
+7743	Double Holy Arrows
+774D	Sis-Lord Sky Fist
+776B	Bloody Storm
+7775	Execution Chain
+777F	Moonlight Ensemble
+7789	Tri-Angels
+7793	Full Desco Burst
+779D	Delta Calamity
+77B1	Ultimate Bookmark
+77BB	T-Rule Moxibustion
+77C5	Hero Style Orders
+77CF	Hero Team-Up
+77D9	Captured Princess
+77ED	Rising Ice Phoenix
+77F7	Love Revelation
+7801	Burning Soul Bros
+780B	Rising Magna Star
+7815	Glass Illusion
+781F	X Beam
+7829	Light and Darkness

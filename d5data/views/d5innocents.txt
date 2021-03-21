@@ -1,14 +1,96 @@
-01	Dietician
-02	Master
-03	Gladiator
-04	Sentry
-05	Tutor
-06	Coach
-07	Marksman
-08	Physician
-16	Hypnotist
-1A	Professional
-2B	Medicine Man
-2D	Social Worker
-3D	Broker
-F9	Freezer
+0001	Dietician
+0002	Master
+0003	Gladiator
+0004	Sentry
+0005	Tutor
+0006	Physician
+0007	Marksman
+0008	Coach
+000B	Muscleman
+000C	Sprinter
+000D	Nerd
+000E	Hard Worker
+000F	Patient
+0010	Pugilist
+0011	Sniper
+0015	Alchemist
+0016	Hypnotist
+0017	Witch Doctor
+0018	Amnesiac
+0019	Drainer
+001A	Shrinker
+001B	Charmer
+001C	Professional
+0029	Pharmacist
+002A	Coffee Maker
+002B	Medicine Man
+002C	Psychologist
+002D	Toxicologist
+002E	Expander
+002F	Pastor
+0033	Firefighter
+0034	Aeronaut
+0035	Cryophile
+003D	Boxing Coach
+003E	Fencing Coach
+003F	Spear Teacher
+0040	Archery Coach
+0041	Marksman Coach
+0042	Lumberjack Coach
+0043	Staff Twirler
+0044	Monster Trainer
+0047	Broker
+0048	Statistician
+0049	Manager
+004A	Instructor
+004B	Mentor
+00C9	45 Degree Angler
+00CA	Watermelon Smasher
+00CB	Ambusher
+00CC	Town Crier
+00CD	Sun Bather
+00CE	Joke Slapper
+00CF	Caregiver
+00D0	Personal Trainer
+00D1	Secret Trainer
+00D2	Combo Maker
+00D3	Utiliarian
+00D4	Habitual Licker
+00D5	Lover Therapist
+00D6	All Digger
+00D7	Rubber
+00D8	Howler
+00D9	Mana Robber
+00DA	Wuss
+00DB	Blood Pumper
+00DC	Spear Fisherman
+00DD	Sand Thrower
+00DE	Gourmet Chef
+00DF	Kinder Gardener
+00E0	Berry Picker
+00E1	Balanced Dieter
+00E3	Rainbow Warrior
+00E4	Mogul
+00E5	Hostage Negotiator
+00E6	Watersport Athlete
+00E7	Secret Spice Chef
+00E8	Tag Champion
+00E9	Incubator
+00EA	Slide Tackler
+00EB	Punisher
+00EC	Sweet Tempter
+00ED	Cat Burglar
+00EE	Chalkboard Scraper
+00EF	Sumo Wrestler
+00F0	No. 1 Man
+00F1	Bug King
+00F2	Juicer
+00F3	Homeopathic Healer
+00F4	Flyer
+00F5	Boomerang Hunter
+00F6	Pacifier
+00F7	Burner
+00F8	Blower
+00F9	Freezer
+00FA	Revenge Booster
+0134	Overclocker

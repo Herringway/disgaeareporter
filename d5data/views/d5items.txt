@@ -1,11 +1,1040 @@
 0065	Thimble
+0066	Rubber Gloves
+0067	Dress Gloves
+0068	Magic Hand
+0069	Forehead Flicker
+006A	Catcher’s Mitt
+006B	Grip Dynamometer
+006C	Handmade Bracers
+006D	Brass Knuckles
+006E	Brawler’s Cestuses
+006F	Massager
+0070	Power Knuckles
+0071	Fisticuffs Deluxe
+0072	Jugular Thrust
+0073	Singauta
+0074	Cross Counter
+0075	Hand Power
+0076	Kung Fu Fist
+0077	Thorny Mittens
+0078	Bagh Nakh
+0079	Robot Arms
+007A	Ninja Claws
+007B	Jamadhar
+007C	Venom Hands
+007D	Vice Indicator
+007E	Burning Karate
+007F	Silver Gauntlet
+0080	Dragon Buster
+0081	Kingly Himantes
+0082	Hero Punch
+0083	Southern Cross
+0084	Death’s Grip
+0085	Dark Fist
+0086	Three-Year Killer
+0087	Zodiac
+0088	Golden Right
+0089	God Hand
+008A	Cosmo Breaker
+008B	Ultimus
+008C	Hrimthurse
+008D	Thiassi
+008E	Muspell
+044D	TV
+044E	Watermelon
+044F	Pie
+1456	Overlord Fist
+14BA	Wolf Fang
+157D	Burning Blow
+157F	Dark Hero Soul
+00C9	Replica Sword
+00CA	Rusted Sword
+00CB	Survival Knife
+00CC	Kitchen Knife
+00CD	Versatile Billhook
+00CE	Vine Blade
+00CF	Mail Breaker
+00D0	Jewel Blossom
+00D1	Assassin Dagger
+00D2	Machete
+00D3	Knight’s Sabre
+00D4	Civilian’s Jitte
+00D5	Parazonium
+00D6	Gladiator
+00D7	Justice Blade
+00D8	Aqua Sword
+00D9	Duskbane
+00DA	Mighty Shotel
+00DB	Mysterious Blade
+00DC	Weaponized Hagoita
+00DD	Ridill
+00DE	Demon’s Knife
+00DF	Overlord’s Sword
+00E0	Blutgang
+00E1	Laser Blade
+00E2	Evil Edge
+00E3	Swordsman’s Legend
+00E4	Hauteclaire
+00E5	Bloody Blade
+00E6	Durandal
+00E7	Lion King’s Edge
+00E8	Samosek Sword
+00E9	Dragon Warrior
+00EA	Satan’s Sword
+00EB	Aroundight
+00EC	Genie’s Blade
+00ED	Nodens
+00EE	Claiomh Solais
+00EF	Yoshitsuna
+00F0	Baal Sword
+00F1	Glimmerblade
+00F2	Catastophe
+00F3	Fire Runeblade
+00F4	Wind Runeblade
+00F5	Ice Runeblade
+0450	Tennis Racket
+0451	Sunflower
+0452	Paper Fan
+0453	Umbrella
+0454	Fresh Sardine
+0455	Raised Flag
+0456	Leek
+0457	Tri-Colored Mochi
+0458	Flute
+0459	Bouquet
+045A	Glow Plate
+1454	Overlord Sword
+14B5	Death Sickle
+14B9	Evil Edge
+1519	Super Hero Sword
+151C	Genie’s Blade
+15E1	Zetta Sword
+012D	Old Bamboo Spear
+012E	Training Spear
+012F	Wave Spear
+0130	Ruyi Bang
+0131	Bardiche
+0132	Halberd
+0133	Iron Spear Fork
+0134	Spuntone
+0135	Cross Spear
+0136	Floral Spear
+0137	La Chauve-Souris
+0138	Large Naginata
+0139	Light Partisan
+013A	Sky Piercer
+013B	Moonshadow Spear
+013C	Sunset Lance
+013D	Obsidian Spear
+013E	Hornet Pike
+013F	Devil Fork
+0140	Spirit Pike
+0141	Orcish Glaive
+0142	Shaman Lance
+0143	Elder Spear
+0144	Snake Spear
+0145	Valkyrie Spear
+0146	Oracle Spear
+0147	Chitragupta
+0148	Fallen Angel Spear
+0149	Dynastic Guandao
+014A	Trident
+014B	Grasida
+014C	Kagutsuchi Pike
+014D	Trishula
+014E	Romulus’ Spear
+014F	Grand Tepes
+0150	Worm Spear
+0151	Nailgun Spear
+0152	Laevataeinn
+0153	Drill Emperor
+0154	Pillar of Dialgo
+0155	Saturn’s Edge
+0156	Fire Runeblade
+0157	Wind Runeblade
+0158	Ice Runeblade
+045A	Shovel
+045B	Push Broom
+045C	Mic
+045D	Paintbrush
+045E	Sign
+045F	Necktie
+0460	Harpoon
+0461	Peace Sign
+0462	Spork
+1455	Elder Spear
 0191	Driftwood Bow
+0192	Toy Bow
+0193	Wooden Bow
+0194	Thorny Bow
+0195	Longbow
+0196	Bow of Scales
+0197	Bone Hunter
+0198	Fairy Arch
+0199	Unicorn Bow
+019A	Nethershroud Bow
+019B	Sky Hunter
+019C	Shadow Howler
+019D	Venom Fang Bow
+019E	Earthen Bow
+019F	Metal Hunter
+01A0	Snuff Bow
+01A1	Bow of Miracles
+01A2	Shell Sparrow
+01A3	Godspeed Bow
+01A4	Blooming Flower
+01A5	Skogsra
+01A6	Golden Bow
+01A7	Undine Bow
+01A8	Sylphid
+01A9	Bow of Spirits
+01AA	Bow of Leraje
+01AB	Dragon’s Jaw
+01AC	Harpuia
+01AD	Stymphalia
+01AE	Crossy Bow
+01AF	Failnaught
+01B0	Goddess’ Starbow
+01B1	Drake Hunter
+01B2	Erythron
+01B3	Gustav’s Bow
+01B4	Lovely Cupid
+01B5	Infernal Raven
+01B6	Shekinah’s Bow
+01B7	Majin Greatbow
+01B8	Devine
+01B9	Sleipnir
+01BA	Artemis
+0463	Tambourine
+0464	Flower Wreath
+0465	Balance Toy
+0466	Hanger
+0467	Rainbow
+0468	Folding Fan
+14BB	Lovely Cupid
 01F5	Water Pistol
+01F6	Worn Bowgun
+01F7	Junk Shooter
+01F8	Customized Replica
+01F9	Hand Blaster
+01FA	Assault Magnum
+01FB	Shock Gun
+01FC	Thunder Jet
+01FD	Night Revolver
+01FE	Silent Army
+01FF	Netherworld Musket
+0200	Shooter’s Edge
+0201	Twin Danger
+0202	Dirty Boy
+0203	Bugle M13
+0204	Drill Blaster
+0205	Vapor Cannon
+0206	Welrod MK II
+0207	Black Ball
+0208	Hell Commando
+0209	Round Chaser
+020A	Energy Cannon
+020B	Flame Thrower
+020C	Electric Pulse
+020D	Gjallarhorn
+020E	Technical Shooter
+020F	Raiden’s Gun
+0210	Shinatsuhiko’s Gun
+0211	Panzer Blaster
+0212	Hanarr’s Hammer
+0213	Titania
+0214	Crusade
+0215	Crimson Launcher
+0216	Cosmo Gun
+0217	Hand of Glory
+0218	Hades Ruination
+0219	Demiurge
+021A	Absolution
+021B	Wave Particle Shot
+021C	Akerte
+021D	Amalgam Flame
+021E	Invincible
+021F	MB9AS
+0220	Brunhilde
+0469	Megaphone
+046A	Squirt Gun
+046B	Curry
+046C	Chopstick Gun
+046D	Chicken
+046E	Banana
+14B6	Prinnical Shooter
+151A	Golden Gun
+157E	Noble Rose
+0259	Pebble Axe
+025A	Nail Bat
+025B	Wood Cutter’s Axe
+025C	Battle Gavel
+025D	Guillotine Axe
+025E	Labrys
+025F	War Hammer
+0260	Silver Axe
+0261	Viking Axe
+0262	Windblade War Axe
+0263	Butcher’s Cleaver
+0264	Crescent Axe
+0265	Bewitched Axe
+0266	Attaxe on Titan
+0267	Metal Slasher
+0268	Guilty Axe
+0269	Deadly Anchor
+026A	Golden Hatchet
+026B	Flame Club
+026C	Demon’s Club
+026D	Gemstone Hammer
+026E	Sledgehammer
+026F	Ogre Axe
+0270	Dinosaur Greataxe
+0271	Mad Cleaver
+0272	Angel’s Axe
+0273	Spiked Ball Hammer
+0274	Lovely Axe
+0275	Crystal Axe
+0276	Axe of Despair
+0277	Skeggiold
+0278	Liquid Edge
+0279	Chronos Crucible
+027A	Holy Axe Clover
+027B	Beam Axe
+027C	God’s Wing Axe
+027D	Sonic Spinning Saw
+027E	Mjolnir
+027F	Tezcatlipoca
+0280	Zillion Buster
+0281	Gaia Impact
+0282	Ragnarok
+046F	Toy Hammer
+0470	Lollipop
+0471	Kitty Paw Stick
+0472	Guitar
+0473	Referee Fan
+0474	Trophy
+0475	Beetle
+0476	Meat Shank
+14B7	Enhanced Axe
+151D	Lovely Axe
+02BD	Just a Stick
+02BE	Cute Wand
+02BF	Wooden Cane
+02C0	Magician’s Stick
+02C1	Simple Mace
+02C2	Territory Cane
+02C3	Jewel Wand
+02C4	Shell Staff
+02C5	Bat Staff
+02C6	White Feather Fan
+02C7	Orb Scepter
+02C8	Pixie Staff
+02C9	Red Beast
+02CA	Hammer Rod
+02CB	Joker Staff
+02CC	Silver Rod
+02CD	Sorcerer Wand
+02CE	Staff of Logic
+02CF	Cross Impact
+02D0	Prinny Staff
+02D1	Rose Regalia
+02D2	Emerald Staff
+02D3	Mermaid Cane
+02D4	Stardust Rod
+02D5	Sunshine Rod
+02D6	Alice’s Magic Wand
+02D7	Souther Staff
+02D8	Golden Scepter
+02D9	Requiem
+02DA	Emperor’s Scepter
+02DB	Aphrodite
+02DC	Holy Heaven Cane
+02DD	Skadi’s Ice Staff
+02DE	Eclipse Wand
+02DF	Apollo’s Staff
+02E0	Circe’s Wand
+02E1	Fortuna
+02E2	Almighty Staff
+02E3	Solomon’s Staff
+02E4	Genesis Wand
+02E5	Trisenses
+02E6	Yggdrasil
+0477	Plushie Stick
+0478	Balloon
+0479	Coil Stick
+047A	Fried Shrimp
+1451	Pure Stick
+1452	Prinny Book
+1453	Usagi Picture Book
+15E2	Sacred Tome
+15E3	Replica Book Zetta
 0385	Paw Gloves
-04B1	Wrinkly Clothes
-07D2	Mint Gum
-07DC	Unopened Soda
-07EF	Sardine
-0803	Fairy Dust
-0871	Throwing Knife
+0386	Sharp Bone
+0387	Hooked Claw
+0388	Crab Pincer
+0389	Spider Thread
+038A	Jellyfish Stinger
+038B	Porcupine
+038C	Cobra Twist
+038D	Bull’s Horn
+038E	Strange Feelers
+038F	Spikey Shell
+0390	Wolf Fang
+0391	Bear Claw
+0392	Hammer Head
+0393	Thorn Whip
+0394	Lionheart
+0395	Death’s Embrace
+0396	Tsuchinoko
+0397	Jack O’ Lantern
+0398	Amanojaku Horn
+0399	Gremlin Effect
+039A	Chimera DNA
+039B	Leafy Fan
+039C	Salamander Breath
+039D	Thunder Bird
+039E	Pegasus Hoof
+039F	Dark Aura
+03A0	Cockatrice Beak
+03A1	Raiju’s Howl
+03A2	Lamia’s Coil
+03A3	Titan’s Fist
+03A4	Death’s Scythe
+03A5	Garuda’s Wing
+03A6	Fenrir’s Fang
+03A7	Dragon Force
+03A8	Insanity Eye
+03A9	Devil Matrix
+03AA	Yama’s Wrath
+03AB	Uroborus Ring
+03AC	Baal Body
+03AD	Lucifer Dyne
+03AE	Makai Wars
+14BC	Cosmic Horrors
+15E4	Pandemonium
+03E9	Medal of Unworth
+03EA	Unfortunate Medal
+03EB	Medal of the Weak
+03EC	Distasteful Medal
+03ED	Underling’s Medal
+03EE	Medal of Sloth
+03EF	Crude Medal
+03F0	Puppet’s Medal
+03F1	Eerie Medal
+03F2	Medal of Evil
+03F3	Revealing Medal
+03F4	Counterfeit Medal
+03F5	Medal of Oblivion
+03F6	Delinquency Medal
+03F7	Medal of Greed
+03F8	Haughty Medal
+03F9	Dangerous Medal
+03FA	Sinister Medal
+03FB	Strange Medal
+03FC	Medal of Darkness
+03FD	Medal of Surprise
+03FE	Cursed Medal
+03FF	Medal of Misery
+0400	Nightmare Medal
+0401	Enthusiastic Medal
+0402	Medal of Happiness
+0403	Medal of Purity
+0404	Medal of Tenacity
+0405	Warrior’s Medal
+0406	Medal of Hell
+0407	Phantasmal Medal
+0408	Iron Man Medal
+0409	Elegant Medal
+040A	Angel’s Medal
+040B	Audacious Medal
+040C	Twinkling Medal
+040D	Emperor’s Medal
+040E	Majin’s Medal
+040F	Medal of Awakening
+0410	Dark Galaxy Medal
+0411	Legendary Medal
+0412	Heartless Medal
+151B	E. Academy Diploma
 151E	Scent of Niblhenne
+04B1	Wrinkly Clothes
+04B2	Pot Lid
+04B3	Thin Cape
+04B4	Cotton Bandana
+04B5	Festival Clothes
+04B6	Light Shield
+04B7	Maiden’s Chihaya
+04B8	Life Jacket
+04B9	Top Hat
+04BA	Camo-Clothes
+04BB	Magical Vest
+04BC	Round Shield
+04BD	Mascot Costume
+04BE	Bikini Armor
+04BF	Iron Mask
+04C0	Chain Mail
+04C1	Power Suit
+04C2	Shell Shield
+04C3	Ninja Clothes
+04C4	Dress Armor
+04C5	Witch’s Hat
+04C6	Dandy Gown
+04C7	Scale Mail
+04C8	Duralumin Shield
+04C9	Brigandine
+04CA	Revenge Cloth
+04CB	Imperial Crown
+04CC	Passion Vest
+04CD	Samurai Armor
+04CE	Spartan Shield
+04CF	Hero Suit
+04D0	Valkyrie Dress
+04D1	Hildegrim
+04D2	Hachiryu Armor
+04D3	Orichalcum Shield
+04D4	Overlord Armor
+04D5	Alloy Robosuit
+04D6	Hades Helm
+04D7	Aegis Shield
+04D8	Hercules’ Armor
+0515	Power Belt
+0516	Exertion Belt
+0517	Energy Belt
+0518	Beastly Belt
+0519	Aura Belt
+051A	Spirit Belt
+051B	Bravery Belt
+051C	Black Belt
+051D	Ubermensch
+051E	Orion’s Belt
+0579	Slippers
+057A	Cross-Trainers
+057B	Ninja Tabi
+057C	Falcon Shoes
+057D	Aero Sneakers
+057E	Winged Boots
+057F	Angel’s Shoes
+0580	Accelerator
+0581	Vernier Thruster
+0582	Barefoot X
+1645	Axel Gear
+05DD	Common Orb
+05DE	Psycho Orb
+05DF	Dark Orb
+05E0	Bloody Orb
+05E1	Astral Orb
+05E2	Lunar Orb
+05E3	Royal Orb
+05E4	Holy Orb
+05E5	Chaos Orb
+05E6	Universal Orb
+0641	Glasses
+0642	Binoculars
+0643	Nerd Glasses
+0644	Plastic Nose
+0645	Opera Glasses
+0646	Nightvision
+0647	Crosshair
+0648	Foresight
+0649	Destiny Lens
+064A	Providence
+06A5	Brawny Muscle
+06A6	Kung-Fu Muscle
+06A7	Spirit Muscle
+06A8	Fight Muscle
+06A9	Ace Muscle
+06AA	Victory Muscle
+06AB	Dream Muscle
+06AC	World Muscle
+06AD	Star Muscle
+06AE	Cosmo Muscle
+0709	Imperial Seal
+070A	Dark Rosary
+070B	Devil Ring
+070C	Feather Token
+070D	Sophia’s Mirror
+070E	Pravda Pendant
+070F	Royal Ring
+0710	Testament
+0711	Exodus
+0712	Arcadia
+0713	Trapezohedron
+073B	Gate Key
+07D1	ABC Gum
+07D2	Mint Gum
+07D3	Hard Candy
+07D4	Cotton Candy
+07D5	Taiyaki
+07D6	Chocolate
+07D7	Flan
+07D8	Eclair
+07D9	Shortcake
+07DA	Sundae
+07DB	Opened Soda
+07DC	Unopened Soda
+07DD	Cafe au Lait
+07DE	Yam Starch
+07DF	BBQ Sauce
+07E0	Egg Yolk
+07E1	Protein Shake
+07E2	Bloody Mary
+07E3	Sake
+07E4	Mushroom Soup
+07EF	Sardine
+07F0	Caterpillar Egg
+07F1	Charred Newt
+07F2	Chicken Blood
+07F3	Snake Kidney
+07F4	Yummy Kimchee
+07F5	Frog Sweat
+07F6	Immortal Pill
+07F7	Soma
+07F8	Elixir
+07F9	Organic Sardine
+0803	Fairy Dust
+08FC	Hamburger
+08FD	Ramen
+08FE	Sukiyaki
+08FF	Sushi
+0900	Eel and Rice
+0906	Miso Soup
+0907	Cream of Corn Soup
+0908	Chicken Soup
+0909	Bouillabaisse
+090A	Mom’s Special Stew
+0910	Wannabe Curry
+0911	Average Curry
+0912	Princely Curry
+0913	Rabbit Curry
+0914	Chicken Curry
+0915	Veggie Curry
+0916	Pork Curry
+0917	Green Curry
+0918	Seafood Curry
+0919	Curry Soup
+091A	Beef Curry
+091B	Spicy Curry
+091C	Bear Curry
+091D	Delightful Curry
+091E	Special Curry
+082B	Mana Potion I
+082C	Mana Potion II
+082D	Mana Potion III
+082E	Mana Potion IV
+082F	Mana Potion V
+083F	EXP Potion I
+0840	EXP Potion II
+0841	EXP Potion III
+0842	EXP Potion IV
+0843	EXP Potion V
+0849	Stamina Shard
+084A	Spirit Shard
+084B	Strength Shard
+084C	Endurance Shard
+084D	Mind Shard
+084E	Resistance Shard
+084F	Finesse Shard
+0850	Agility Shard
+0866	Magic Extract
+0835	Stealing Hand
+0836	Plunder Hand
+0837	Cha-Ching Hand
+0838	Bandit’s Hand
+0839	Awesome Hand
+0870	Rotten Garbage
+0871	Throwing Knife
+0872	Healing Shot
+0873	Medal
+0874	Demon’s Bullet
+0875	Shuriken
+0876	Javelin
+0877	Fire Scroll
+0878	Ice Scroll
+0879	Lightning Scroll
+087A	Handaxe
+087B	Toy Prinny
+087C	Dart
+087D	Pocket Shrine
+087E	A Single Rose
+087F	Iron Ball
+0880	Claymore Lance
+0881	Blazing Ruby
+0882	Glacier Fragment
+0883	Raijin’s Fist
+0884	Holy Water
+0885	Judgement Cross
+0886	Rocket Punch
+0887	Satellite Laser
+0817	Angel Cake
+0818	Gold Bar
+081A	Treasure Box
+0821	Bomb
+0822	Medicine
+0823	Hard Liquor
+0824	Chloroform
+0825	Speakers
+0899	Mr. Gency Exit
+089A	Diver-5
+089B	Diver-10
+089C	Diver-20
+08A2	Filler 0.5
+08A3	Filler Up
+08A4	Filler G
+08A5	Filler EX
+0960	Forward by One
+0961	Forward by Two
+0962	Forward by Three
+0963	Forward by Four
+0964	Forward by Five
+0965	Forward by Six
+0966	Forward by Lots
+0967	Forward by Tons
+0968	Taxi Ticket
+0969	Limo Ticket
+096A	Bumper Soul
+0974	Rift Generator
+0975	Switcher Ring
+097E	Action Booster
+0988	Grid Paper
+0989	12-Sided Die
+098A	Quick Draw
+098B	Victor’s Ego
+098C	Devil’s Spirit
+098D	4D Printer
+098E	Evil God’s Voice
+098F	Dodging Advice
+0990	Strategy Textbook
+0991	Future Calculator
+0992	Cracked Hourglass
+0993	Grandpa’s Clock
+0994	Mature Hourglass
+0995	Chronos Hourglass
+0996	Kairos Clock
+099C	Construction Order
+09A6	Ghost Cat’s Bell
+09B0	Dowsing Rod
+0BB9	Secret Scroll
+0BB8	Fist
+0BEA	TV
+0BEB	Watermelon
+0BEC	Pie
+0C1D	Replica Sword
+0C1E	Rusted Sword
+0C1F	Survival Knife
+0C20	Kitchen Knife
+0C21	Versatile Billhook
+0C22	Vine Blade
+0C23	Mail Breaker
+0C24	Jewel Blossom
+0C25	Assassin Dagger
+0C26	Machete
+0C27	Knight’s Sabre
+0C28	Civilian’s Jitte
+0C29	Parazonium
+0C2A	Gladiator
+0C2B	Justice Blade
+0C2C	Aqua Sword
+0C2D	Duskbane
+0C2E	Mighty Shotel
+0C2F	Mysterious Blade
+0C30	Weaponized Hagoita
+0C31	Ridill
+0C32	Demon’s Knife
+0C33	Overlord’s Sword
+0C34	Blutgang
+0C35	Laser Blade
+0C36	Evil Edge
+0C37	Swordsman’s Legend
+0C38	Hauteclaire
+0C39	Bloody Blade
+0C3A	Durandal
+0C3B	Lion King’s Edge
+0C3C	Samosek Sword
+0C3D	Dragon Warrior
+0C3E	Satan’s Sword
+0C3F	Aroundight
+0C40	Genie’s Blade
+0C41	Nodens
+0C42	Claiomh Solais
+0C43	Yoshitsuna
+0C44	Baal Sword
+0C45	Glimmerblade
+0C46	Catastophe
+0C47	Fire Runeblade
+0C48	Wind Runeblade
+0C49	Ice Runeblade
+0C4E	Tennis Racket
+0C4F	Sunflower
+0C50	Paper Fan
+0C51	Umbrella
+0C52	Fresh Sardine
+0C53	Raised Flag
+0C54	Leek
+0C55	Tri-Colored Mochi
+0C56	Flute
+0C57	Bouquet
+0C58	Glow Plate
+0C6C	Overlord Sword
+0C69	Death Sickle
+0C36	Evil Edge
+0C6A	Super Hero Sword
+0C40	Genie’s Blade
+0C6B	Zetta Sword
+0C81	Old Bamboo Spear
+0C82	Training Spear
+0C83	Wave Spear
+0C84	Ruyi Bang
+0C85	Bardiche
+0C86	Halberd
+0C87	Iron Spear Fork
+0C88	Spuntone
+0C89	Cross Spear
+0C8A	Floral Spear
+0C8B	La Chauve-Souris
+0C8C	Large Naginata
+0C8D	Light Partisan
+0C8E	Sky Piercer
+0C8F	Moonshadow Spear
+0C90	Sunset Lance
+0C91	Obsidian Spear
+0C92	Hornet Pike
+0C93	Devil Fork
+0C94	Spirit Pike
+0C95	Orcish Glaive
+0C96	Shaman Lance
+0C97	Elder Spear
+0C98	Snake Spear
+0C99	Valkyrie Spear
+0C9A	Oracle Spear
+0C9B	Chitragupta
+0C9C	Fallen Angel Spear
+0C9D	Dynastic Guandao
+0C9E	Trident
+0C9F	Grasida
+0CA0	Kagutsuchi Pike
+0CA1	Trishula
+0CA2	Romulus’ Spear
+0CA3	Grand Tepes
+0CA4	Worm Spear
+0CA5	Nailgun Spear
+0CA6	Laevataeinn
+0CA7	Drill Emperor
+0CA8	Pillar of Dialgo
+0CA9	Saturn’s Edge
+0CAA	Fire Runeblade
+0CAB	Wind Runeblade
+0CAC	Ice Runeblade
+0CB2	Shovel
+0CB3	Push Broom
+0CB4	Mic
+0CB5	Paintbrush
+0CB6	Sign
+0CB7	Necktie
+0CB8	Harpoon
+0CB9	Peace Sign
+0CBA	Spork
+0C97	Elder Spear
+0CE5	Driftwood Bow
+0CE6	Toy Bow
+0CE7	Wooden Bow
+0CE8	Thorny Bow
+0CE9	Longbow
+0CEA	Bow of Scales
+0CEB	Bone Hunter
+0CEC	Fairy Arch
+0CED	Unicorn Bow
+0CEE	Nethershroud Bow
+0CEF	Sky Hunter
+0CF0	Shadow Howler
+0CF1	Venom Fang Bow
+0CF2	Earthen Bow
+0CF3	Metal Hunter
+0CF4	Snuff Bow
+0CF5	Bow of Miracles
+0CF6	Shell Sparrow
+0CF7	Godspeed Bow
+0CF8	Blooming Flower
+0CF9	Skogsra
+0CFA	Golden Bow
+0CFB	Undine Bow
+0CFC	Sylphid
+0CFD	Bow of Spirits
+0CFE	Bow of Leraje
+0CFF	Dragon’s Jaw
+0D00	Harpuia
+0D01	Stymphalia
+0D02	Crossy Bow
+0D03	Failnaught
+0D04	Goddess’ Starbow
+0D05	Drake Hunter
+0D06	Erythron
+0D07	Gustav’s Bow
+0D08	Lovely Cupid
+0D09	Infernal Raven
+0D0A	Shekinah’s Bow
+0D0B	Majin Greatbow
+0D0C	Devine
+0D0D	Sleipnir
+0D0E	Artemis
+0D16	Tambourine
+0D17	Flower Wreath
+0D18	Balance Toy
+0D19	Hanger
+0D1A	Rainbow
+0D1B	Folding Fan
+0D08	Lovely Cupid
+0D49	Water Pistol
+0D4A	Worn Bowgun
+0D4B	Junk Shooter
+0D4C	Customized Replica
+0D4D	Hand Blaster
+0D4E	Assault Magnum
+0D4F	Shock Gun
+0D50	Thunder Jet
+0D51	Night Revolver
+0D52	Silent Army
+0D53	Netherworld Musket
+0D54	Shooter’s Edge
+0D55	Twin Danger
+0D56	Dirty Boy
+0D57	Bugle M13
+0D58	Drill Blaster
+0D59	Vapor Cannon
+0D5A	Welrod MK II
+0D5B	Black Ball
+0D5C	Hell Commando
+0D5D	Round Chaser
+0D5E	Energy Cannon
+0D5F	Flame Thrower
+0D60	Electric Pulse
+0D61	Gjallarhorn
+0D62	Technical Shooter
+0D63	Raiden’s Gun
+0D64	Shinatsuhiko’s Gun
+0D65	Panzer Blaster
+0D66	Hanarr’s Hammer
+0D67	Titania
+0D68	Crusade
+0D69	Crimson Launcher
+0D6A	Cosmo Gun
+0D6B	Hand of Glory
+0D6C	Hades Ruination
+0D6D	Demiurge
+0D6E	Absolution
+0D6F	Wave Particle Shot
+0D70	Akerte
+0D71	Amalgam Flame
+0D72	Invincible
+0D73	MB9AS
+0D74	Brunhilde
+0D7A	Megaphone
+0D7B	Squirt Gun
+0D7C	Curry
+0D7D	Chopstick Gun
+0D7E	Chicken
+0D7F	Banana
+0D91	Prinnical Shooter
+0D92	Golden Gun
+0D93	Noble Rose
+0DAD	Pebble Axe
+0DAE	Nail Bat
+0DAF	Wood Cutter’s Axe
+0DB0	Battle Gavel
+0DB1	Guillotine Axe
+0DB2	Labrys
+0DB3	War Hammer
+0DB4	Silver Axe
+0DB5	Viking Axe
+0DB6	Windblade War Axe
+0DB7	Butcher’s Cleaver
+0DB8	Crescent Axe
+0DB9	Bewitched Axe
+0DBA	Attaxe on Titan
+0DBB	Metal Slasher
+0DBC	Guilty Axe
+0DBD	Deadly Anchor
+0DBE	Golden Hatchet
+0DBF	Flame Club
+0DC0	Demon’s Club
+0DC1	Gemstone Hammer
+0DC2	Sledgehammer
+0DC3	Ogre Axe
+0DC4	Dinosaur Greataxe
+0DC5	Mad Cleaver
+0DC6	Angel’s Axe
+0DC7	Spiked Ball Hammer
+0DC8	Lovely Axe
+0DC9	Crystal Axe
+0DCA	Axe of Despair
+0DCB	Skeggiold
+0DCC	Liquid Edge
+0DCD	Chronos Crucible
+0DCE	Holy Axe Clover
+0DCF	Beam Axe
+0DD0	God’s Wing Axe
+0DD1	Sonic Spinning Saw
+0DD2	Mjolnir
+0DD3	Tezcatlipoca
+0DD4	Zillion Buster
+0DD5	Gaia Impact
+0DD6	Ragnarok
+0DDE	Toy Hammer
+0DDF	Lollipop
+0DE0	Kitty Paw Stick
+0DE1	Guitar
+0DE2	Referee Fan
+0DE3	Trophy
+0DE4	Beetle
+0DE5	Meat Shank
+0DF7	Enhanced Axe
+0DC8	Lovely Axe
+0E11	Just a Stick
+0E12	Cute Wand
+0E13	Wooden Cane
+0E14	Magician’s Stick
+0E15	Simple Mace
+0E16	Territory Cane
+0E17	Jewel Wand
+0E18	Shell Staff
+0E19	Bat Staff
+0E1A	White Feather Fan
+0E1B	Orb Scepter
+0E1C	Pixie Staff
+0E1D	Red Beast
+0E1E	Hammer Rod
+0E1F	Joker Staff
+0E20	Silver Rod
+0E21	Sorcerer Wand
+0E22	Staff of Logic
+0E23	Cross Impact
+0E24	Prinny Staff
+0E25	Rose Regalia
+0E26	Emerald Staff
+0E27	Mermaid Cane
+0E28	Stardust Rod
+0E29	Sunshine Rod
+0E2A	Alice’s Magic Wand
+0E2B	Souther Staff
+0E2C	Golden Scepter
+0E2D	Requiem
+0E2E	Emperor’s Scepter
+0E2F	Aphrodite
+0E30	Holy Heaven Cane
+0E31	Skadi’s Ice Staff
+0E32	Eclipse Wand
+0E33	Apollo’s Staff
+0E34	Circe’s Wand
+0E35	Fortuna
+0E36	Almighty Staff
+0E37	Solomon’s Staff
+0E38	Genesis Wand
+0E39	Trisenses
+0E3A	Yggdrasil
+0E42	Plushie Stick
+0E43	Balloon
+0E44	Coil Stick
+0E45	Fried Shrimp
+0E5C	Pure Stick
+0E5D	Prinny Book
+0E5E	Usagi Picture Book
+0E5F	Sacred Tome
+0E60	Replica Book Zetta
