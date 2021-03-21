@@ -125,9 +125,9 @@ struct D5PC {
 	align(1):
 	@Unknown ubyte[0x23B480] unknown1;
 	Character[128] _characters;
-	@Unknown ubyte[55152] unknown2;
-	Item[999] _items;
-	@Unknown ubyte[600068] unknown3;
+	@Unknown ubyte[54552] unknown2;
+	Item[2000] _items;
+	@Unknown ubyte[68] unknown3;
 	ushort charCount;
 	auto characters() const {
 		return _characters[0..charCount];
@@ -139,5 +139,5 @@ struct D5PC {
 }
 
 static assert(D5PC._characters.offsetof == 0x23B480);
-static assert(D5PC._items.offsetof == 0x4833F0);
+static assert(D5PC._items.offsetof == 0x483198);
 static assert(D5PC.charCount.offsetof == 0x5A815C);
