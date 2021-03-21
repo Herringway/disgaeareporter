@@ -60,11 +60,21 @@ auto detectGame(ubyte[] input) {
 		output.rawData = input;
 		return output;
 	}
-	if (input.length == 9026184) {
-		output.platform = Platforms.pc;
-		output.game = Games.disgaea5;
-		output.rawData = decrypt5(input);
-		return output;
+	if (input.length > 0x1C0) {
+		auto decryptedHeader = decrypt5Trial(input[0 .. 0x1C0]);
+		if (decryptedHeader[0 .. 0x1C] == "NIS_DISGAEA5_TRIAL_SAVEDATA_") {
+			output.platform = Platforms.pc;
+			output.game = Games.disgaea5;
+			output.rawData = decrypt5Trial(input);
+			return output;
+		} else if (decryptedHeader[0 .. 0x1F] == "NIS_DISGAEA5_COMPLETE_SAVEDATA_") {
+			output.platform = Platforms.pc;
+			output.game = Games.disgaea5;
+			auto decrypted = decrypt5(input);
+			uint decompedSize = (cast(uint[])(decrypted[0x1D4 .. 0x1D8]))[0];
+			output.rawData = decrypted[0 .. 0x1C0] ~ ykcmpDecomp(decrypted[0x1C8 .. $]);
+			return output;
+		}
 	}
 	if (input.length >= 0x38) {
 		auto key = input[0x20..0x24];
@@ -138,12 +148,7 @@ ubyte[] getRawData(const ubyte[] input, Platforms platform) {
 			if (oldStyle) {
 				ubyte[4] key = input[0x20..0x24];
 				auto decrypted = input[0..0x30]~decrypt(input[0x30..$], key);
-				auto sizeBuffer = decrypted[0x3C..0x40];
-				const size = sizeBuffer.bitmanipRead!(uint, Endian.littleEndian);
-				auto expectedBuffer = decrypted[0x40..0x44];
-				const expected = expectedBuffer.bitmanipRead!(uint, Endian.littleEndian);
-
-				return decompress(decrypted[0x44..$], expected);
+				return ykcmpDecomp(decrypted[0x30 .. $]);
 			} else {
 				return [];
 			}
@@ -151,6 +156,19 @@ ubyte[] getRawData(const ubyte[] input, Platforms platform) {
 		case Platforms.switch_: break;
 	}
 	assert(0);
+}
+
+auto ykcmpDecomp(const ubyte[] data) {
+	struct YKComp {
+		char[8] signature;
+		uint unknown;
+		uint sizeBuffer;
+		uint expectedData;
+		ubyte[0] data;
+	}
+	auto header = (cast(YKComp[])(data[0 .. YKComp.sizeof]))[0];
+	assert(header.signature == "YKCMP_V1");
+	return decompress(data[header.data.offsetof .. $], header.expectedData);
 }
 
 ubyte[] decrypt(const ubyte[] input, ubyte[4] key) {
@@ -161,19 +179,39 @@ ubyte[] decrypt(const ubyte[] input, ubyte[4] key) {
 	}
 	return decrypted;
 }
+ubyte[] decrypt5Trial(const ubyte[] input) {
+	import d5data : d5PCTable;
+	ubyte[] decrypted;
+	decrypted.reserve(input.length);
+	decrypted ~= input;
+	decrypt5InPlaceType1(decrypted);
+	return decrypted;
+}
 ubyte[] decrypt5(const ubyte[] input) {
 	import d5data : d5PCTable;
 	ubyte[] decrypted;
 	decrypted.reserve(input.length);
-	foreach (dataByte; input) {
-		decrypted ~= d5PCTable[dataByte];
-	}
+	decrypted ~= input;
+	decrypt5InPlaceType1(decrypted[0 .. 0x1C0]);
+	decrypt5InPlaceType2(decrypted[0x1C0 .. $]);
 	return decrypted;
+}
+
+void decrypt5InPlaceType1(ubyte[] input) {
+	import d5data : d5PCTable;
+	foreach (ref dataByte; input) {
+		dataByte = d5PCTable[dataByte];
+	}
+}
+void decrypt5InPlaceType2(ubyte[] input) {
+	foreach (ref dataChunk; cast(ulong[])(input[0 .. (input.length / ulong.sizeof) * ulong.sizeof])) {
+		dataChunk ^= 0xE76FCBE3F6D46A37;
+	}
 }
 
 unittest {
 	import std.string : representation;
-	assert(decrypt5([0x85, 0x06, 0x36, 0x96, 0x86, 0xE6, 0x16, 0x86]) == "Wolfgang".representation);
+	assert(decrypt5Trial([0x85, 0x06, 0x36, 0x96, 0x86, 0xE6, 0x16, 0x86]) == "Wolfgang".representation);
 }
 
 ubyte[] decompress(const ubyte[] input, size_t expected) pure @safe {
