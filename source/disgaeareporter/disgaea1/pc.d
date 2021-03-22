@@ -5,6 +5,8 @@ import disgaeareporter.disgaea1.common;
 
 import disgaeareporter.common;
 
+import reversineer : Offset, VerifyOffsets;
+
 import std.range : isOutputRange;
 import std.typecons : BitFlags;
 
@@ -18,7 +20,7 @@ struct D1PC {
 	ushort unknown2;
 	ushort chapter;
 	@Unknown ubyte[603] unknown3;
-	ulong totalHL;
+	@Offset(0x290) ulong totalHL;
 	@Unknown ulong unknown4;
 	@Unknown ubyte[8] unknown5;
 	ulong hpRecovered;
@@ -27,27 +29,27 @@ struct D1PC {
 	//0x1EC - Shoe Inventory?
 	Character[128] _characters;
 	Senator[512] senators;
-	MapClearData[153] areas;
+	@Offset(0x3A7B8) MapClearData[153] areas;
 	@Unknown ubyte[640] unknown7;
 	Item[16] _bagItems;
-	Item[256] _warehouseItems;
+	@Offset(0x3B800) Item[256] _warehouseItems;
 	@Unknown ubyte[28] unknown8;
-	ushort allyKillCount;
+	@Offset(0x4481C) ushort allyKillCount;
 	@Unknown ubyte[2] unknown9;
-	ulong revived;
+	@Offset(0x44820) ulong revived;
 	@Unknown ubyte[8] unknown10;
-	ushort charCount;
+	@Offset(0x44830) ushort charCount;
 	@Unknown ubyte[70] unknown11;
 	ubyte bgmVolume;
 	ubyte voiceVolume;
 	ubyte sfxVolume;
 	@Unknown ubyte[53] unknown12;
-	BitFlags!Rarity[1008] itemRecords;
+	@Offset(0x448B0) BitFlags!Rarity[1008] itemRecords;
 	bool friendlyEffectDisabled;
 	bool enemyEffectDisabled;
 	bool japaneseVoices;
 	@Unknown ubyte[349] unknown13;
-	uint maxDamage;
+	@Offset(0x44E00) uint maxDamage;
 	uint totalDamage;
 	uint geoCombo;
 	@Unknown uint unknown14;
@@ -64,7 +66,7 @@ struct D1PC {
 	@Unknown uint unknown16;
 	BitFlags!Defeated defeated;
 	@Unknown ubyte[848] unknown17;
-	Character[3] extraNPCs;
+	@Offset(0x45188) Character[3] extraNPCs;
 	@Unknown ubyte[8903] unknown18;
 
 	auto characters() const {
@@ -87,16 +89,8 @@ struct D1PC {
 		return defeatedString(id);
 	}
 }
-static assert(D1PC.totalHL.offsetof == 0x290);
-static assert(D1PC.areas.offsetof == 0x3A7B8);
-static assert(D1PC._warehouseItems.offsetof == 0x3B800);
-static assert(D1PC.allyKillCount.offsetof == 0x4481C);
-static assert(D1PC.revived.offsetof == 0x44820);
-static assert(D1PC.charCount.offsetof == 0x44830);
-static assert(D1PC.itemRecords.offsetof == 0x448B0);
-static assert(D1PC.maxDamage.offsetof == 0x44E00);
-static assert(D1PC.extraNPCs.offsetof == 0x45188);
-static assert(D1PC.sizeof == 0x48877);
+
+mixin VerifyOffsets!(D1PC, 0x48877);
 
 align(1)
 struct Item {
@@ -124,7 +118,7 @@ struct Item {
 		return nameID != 0;
 	}
 }
-static assert(Item.sizeof == 0x90);
+mixin VerifyOffsets!(Item, 0x90);
 
 align(1)
 struct Character {
@@ -171,7 +165,7 @@ struct Character {
 	alias numReincarnations = numTransmigrations;
 }
 
-static assert(Character.sizeof == 0x6B8);
+mixin VerifyOffsets!(Character, 0x6B8);
 
 
 ubyte[] decompress(const ubyte[] input, uint expected) pure @safe {

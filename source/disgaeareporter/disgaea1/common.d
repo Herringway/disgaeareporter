@@ -4,6 +4,7 @@ import d1data;
 import disgaeareporter.common;
 import disgaeareporter.disgaea1;
 
+import reversineer : Offset, VerifyOffsets;
 import std.range;
 
 static immutable d1SteamID = "405900";
@@ -13,7 +14,7 @@ struct StatusResistance {
 	align(1):
 	ushort strength;
 }
-static assert(StatusResistance.sizeof == 2);
+mixin VerifyOffsets!(StatusResistance, 2);
 
 align(1)
 struct Innocent {
@@ -38,7 +39,8 @@ struct Innocent {
 		return d1innocents(type);
 	}
 }
-static assert(Innocent.sizeof == 4);
+mixin VerifyOffsets!(Innocent, 4);
+
 void fooi() {
 	import std.outbuffer;
 	auto buf = new OutBuffer;

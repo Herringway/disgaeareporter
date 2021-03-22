@@ -5,6 +5,8 @@ import disgaeareporter.disgaea1.common;
 
 import disgaeareporter.common;
 
+import reversineer : Offset, VerifyOffsets;
+
 import std.range : isOutputRange;
 
 PS2Character[] ps2Chars;
@@ -13,14 +15,14 @@ align(1)
 struct D1PS2 {
 	align(1):
 	ubyte[640] unknown;
-	ulong totalHL;
+	@Offset(0x280) ulong totalHL;
 	ubyte[2336] unknown2;
-	PS2Character[128] _characters;
-	Senator[512] senators;
+	@Offset(0xBA8) PS2Character[128] _characters;
+	@Offset(0x3EFA8) Senator[512] senators;
 	ubyte[4] unknown3;
-	PS2MapClearData[144] areas;
+	@Offset(0x42FAC) PS2MapClearData[144] areas;
 	ubyte[7964] unknown4;
-	PS2Item[16] _bagItems;
+	@Offset(0x472C8) PS2Item[16] _bagItems;
 	PS2Item[256] _warehouseItems;
 	ubyte[28] unknown5;
 	ushort allyKillCount;
@@ -41,12 +43,8 @@ struct D1PS2 {
 		return _warehouseItems[].filter!(x => x.isValid);
 	}
 }
-static assert(D1PS2.totalHL.offsetof == 0x280);
-static assert(D1PS2._characters.offsetof == 0xBA8);
-static assert(D1PS2.senators.offsetof == 0x3EFA8);
-static assert(D1PS2.areas.offsetof == 0x42FAC);
-static assert(D1PS2._bagItems.offsetof == 0x472C8);
-static assert(D1PS2.sizeof == 0x54840);
+
+mixin VerifyOffsets!(D1PS2, 0x54840);
 
 align(1)
 struct PS2Item {
@@ -68,7 +66,7 @@ struct PS2Item {
 	ubyte rank;
 	ubyte range;
 	ubyte[12] unknown2;
-	SJISString!32 _name; //Unused
+	@Offset(0x9A) SJISString!32 _name; //Unused
 	ubyte[14] unknown3;
 	bool isValid() const {
 		return nameID != 0;
@@ -77,8 +75,7 @@ struct PS2Item {
 		return d1items(nameID);
 	}
 }
-static assert(PS2Item._name.offsetof == 0x9A);
-static assert(PS2Item.sizeof == 0xC8);
+mixin VerifyOffsets!(PS2Item, 0xC8);
 
 align(1)
 struct PS2Character {
@@ -121,7 +118,7 @@ struct PS2Character {
 	ubyte senateRank;
 	ubyte[78] unknown10;
 }
-static assert(PS2Character.sizeof == 0x7C8);
+mixin VerifyOffsets!(PS2Character, 0x7C8);
 
 struct PS2MapClearData {
 	ushort clears;

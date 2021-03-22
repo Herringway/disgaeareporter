@@ -1,17 +1,18 @@
 module disgaeareporter.disgaea1.ds;
 
+import reversineer : Offset, VerifyOffsets;
 align(1)
 struct D1DS {
 	align(1):
 	ubyte[1952] unknown;
-	Character[128] _characters;
+	@Offset(0x7A0) Character[128] _characters;
 
 	auto characters() const return {
 		return _characters[];
 	}
 }
 
-static assert(D1DS._characters.offsetof == 0x7A0);
+mixin VerifyOffsets!(D1DS, D1DS.sizeof); //figure out actual size later I guess
 
 align(1)
 struct Character {
@@ -27,7 +28,7 @@ struct Character {
 	}
 }
 
-static assert(Character.sizeof == 0x2B2);
+mixin VerifyOffsets!(Character, 0x2B2);
 
 version(none) unittest {
 	import disgaeareporter.common : printData;

@@ -5,6 +5,8 @@ import disgaeareporter.disgaead2.common;
 
 import std.range : isOutputRange;
 
+import reversineer : Offset, VerifyOffsets;
+
 align(1)
 struct Innocent {
 	align(1):
@@ -34,10 +36,10 @@ struct Item {
 	@Unknown ubyte[4] unknown2;
 	ModernStats stats;
 	ModernStats baseStats;
-	ushort nameID;
+	@Offset(0xB8) ushort nameID;
 	ushort level;
 	@Unknown ubyte[53] unknown3;
-	char[64] _name;
+	@Offset(0xF1) char[64] _name;
 	@Unknown ubyte[95] unknown4;
 	bool isValid() const {
 		return nameID != 0;
@@ -50,9 +52,7 @@ struct Item {
 	}
 }
 
-static assert(Item.sizeof == 0x190);
-static assert(Item.nameID.offsetof == 0xB8);
-static assert(Item._name.offsetof == 0xF1);
+mixin VerifyOffsets!(Item, 0x190);
 
 align(1)
 struct Character {
@@ -60,37 +60,37 @@ struct Character {
 	ulong exp;
 
 	Item[4] equipment;
-	char[52] _name;
+	@Offset(0x648) char[52] _name;
 	char[52] _className;
 	@Unknown ubyte[180] unknown;
-	Skills!(256, dd2skillNames) skills;
+	@Offset(0x764) Skills!(256, dd2skillNames) skills;
 	@Unknown ubyte[516] unknown2;
 	ulong currentHP;
 	ulong currentSP;
 	ModernStats stats;
 	ModernStats realStats;
 	@Unknown ubyte[8] unknown3;
-	BaseCharacterStatsLater baseStats;
+	@Offset(0x1100) BaseCharacterStatsLater baseStats;
 	@Unknown ubyte[36] unknown4;
 	EquipmentMasteryD2 equipmentMastery;
 	@Unknown ubyte[10] unknown5;
 	uint mana;
-	ushort level;
+	@Offset(0x114C) ushort level;
 	@Unknown ubyte[18] unknown6;
-	Resistance baseResist;
+	@Offset(0x1160) Resistance baseResist;
 	Resistance resist;
 	MiscStatsExpanded miscStats;
 	@Unknown ubyte[23] unknown7;
 	ulong numKills;
 	ulong numDeaths;
-	ulong maxDamage;
+	@Offset(0x11A0) ulong maxDamage;
 	ulong totalDamage;
 	@Unknown ubyte[30] unknown8;
-	ubyte _training;
+	@Offset(0x11CE) ubyte _training;
 	@Unknown ubyte unknown9;
-	Evility[2] _evilities;
+	@Offset(0x11D0) Evility[2] _evilities;
 	@Unknown ubyte[808] unknown10;
-	Aptitudes aptitudes;
+	@Offset(0x14FC) Aptitudes aptitudes;
 	Aptitudes aptitudes2;
 	@Unknown ubyte[1348] unknown11;
 
@@ -108,17 +108,7 @@ struct Character {
 		return _evilities[].filter!(x => x.isValid);
 	}
 }
-static assert(Character.sizeof == 0x1A60);
-static assert(Character._name.offsetof == 0x648);
-static assert(Character.skills.offsetof == 0x764);
-static assert(Character.stats.offsetof == 0x1078);
-static assert(Character.baseStats.offsetof == 0x1100);
-static assert(Character.level.offsetof == 0x114C);
-static assert(Character.baseResist.offsetof == 0x1160);
-static assert(Character.maxDamage.offsetof == 0x11A0);
-static assert(Character._training.offsetof == 0x11CE);
-static assert(Character._evilities.offsetof == 0x11D0);
-static assert(Character.aptitudes.offsetof == 0x14FC);
+mixin VerifyOffsets!(Character, 0x1A60);
 
 align(1)
 struct Area {
@@ -135,7 +125,7 @@ struct Area {
 		sink.formattedWrite!"%s - Clears: %s, Kills: %s"(name, clears, kills);
 	}
 }
-static assert(Area.sizeof == 0x5E);
+mixin VerifyOffsets!(Area, 0x5E);
 
 align(1)
 struct DD2PS3 {
@@ -146,20 +136,20 @@ struct DD2PS3 {
 	@Unknown ubyte[1337] unknown2;
 	ulong totalHL;
 	@Unknown ubyte[16] unknown3;
-	ulong hpRecovered;
+	@Offset(0x580) ulong hpRecovered;
 	ulong spRecovered;
 	@Unknown ubyte[16] unknown4;
-	Character[128] _characters;
+	@Offset(0x5A0) Character[128] _characters;
 	@Unknown ubyte[1530] unknown5;
-	Area[199] areas;
+	@Offset(0xD3B9A) Area[199] areas;
 	@Unknown ubyte[20588] unknown6;
-	Item[999] _items;
+	@Offset(0xDD518) Item[999] _items;
 	@Unknown ubyte[72164] unknown7;
-	ushort charCount;
+	@Offset(0x1507EC) ushort charCount;
 	@Unknown ubyte[6770] unknown8;
 	ulong maxDamage;
 	ulong totalDamage;
-	ushort geoCombo;
+	@Offset(0x152270) ushort geoCombo;
 	@Unknown ubyte[6] unknown9;
 	uint enemiesKilled;
 	uint enemiesKilledCopy;
@@ -170,7 +160,9 @@ struct DD2PS3 {
 	@Unknown ushort unknown10;
 	uint totalItemWorldLevels;
 	@Unknown ubyte[1832] unknown11;
-	Innocent[256] _innocentWarehouse;
+	@Offset(0x1529B8) Innocent[256] _innocentWarehouse;
+	@Unknown ubyte[0x1AA70] unknown1531B8;
+
 	auto characters() const {
 		return _characters[0..charCount];
 	}
@@ -185,13 +177,7 @@ struct DD2PS3 {
 	enum gameTitle = "Disgaea D2 (PS3)";
 }
 
-static assert(DD2PS3.hpRecovered.offsetof == 0x580);
-static assert(DD2PS3._characters.offsetof == 0x5A0);
-static assert(DD2PS3.areas.offsetof == 0xD3B9A);
-static assert(DD2PS3._items.offsetof == 0xDD518);
-static assert(DD2PS3.charCount.offsetof == 0x1507EC);
-static assert(DD2PS3.geoCombo.offsetof == 0x152270);
-static assert(DD2PS3._innocentWarehouse.offsetof == 0x1529B8);
+mixin VerifyOffsets!(DD2PS3, 0x16DC28);
 
 unittest {
 	import disgaeareporter.dispatcher : getRawData, loadData, Platforms;

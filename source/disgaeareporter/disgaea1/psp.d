@@ -10,6 +10,8 @@ import disgaeareporter.disgaea1.pc : Item;
 
 import disgaeareporter.common;
 
+import reversineer : Offset, VerifyOffsets;
+
 struct D1PSP {
 	enum charOffset = 0xBB8;
 	enum charSize = 0x6A8;
@@ -60,4 +62,4 @@ struct PSPCharacter {
 	byte mentor;
 	ubyte[23] unknown11;
 }
-static assert(PSPCharacter.sizeof == 0x6A8);
+mixin VerifyOffsets!(PSPCharacter, 0x6A8);

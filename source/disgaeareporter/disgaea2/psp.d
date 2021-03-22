@@ -1,5 +1,6 @@
 module disgaeareporter.disgaea2.psp;
 
+import reversineer : Offset, VerifyOffsets;
 
 enum d2key = "DISGAEA120060528";
 

@@ -2,6 +2,8 @@ module disgaeareporter.disgaea2.common;
 
 import disgaeareporter.disgaea2;
 
+import reversineer : Offset, VerifyOffsets;
+
 public import d2data;
 
 static immutable d2SteamID = "495280";
@@ -18,4 +20,4 @@ struct BaseItemStats {
 	ushort hit;
 	ushort resistance;
 }
-static assert(BaseItemStats.sizeof == 16);
+mixin VerifyOffsets!(BaseItemStats, 16);

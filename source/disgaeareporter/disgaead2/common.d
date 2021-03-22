@@ -3,6 +3,8 @@ module disgaeareporter.disgaead2.common;
 import disgaeareporter.common;
 public import dd2data;
 
+import reversineer : Offset, VerifyOffsets;
+
 align(1)
 struct Evility {
 	align(1):

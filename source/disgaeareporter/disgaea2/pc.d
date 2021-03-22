@@ -4,6 +4,7 @@ import disgaeareporter.disgaea2.common;
 
 import disgaeareporter.common;
 
+import reversineer : Offset, VerifyOffsets;
 import std.range : isOutputRange;
 import std.traits : isSomeChar;
 import std.typecons : BitFlags;
@@ -39,7 +40,7 @@ struct Innocent {
 		return d2innocents(type);
 	}
 }
-static assert(Innocent.sizeof == 8);
+mixin VerifyOffsets!(Innocent, 8);
 private void funcii() {
 	import std.outbuffer;
 	auto buf = new OutBuffer;
@@ -65,7 +66,7 @@ struct Item {
 	}
 }
 
-static assert(Item.sizeof == 0x180);
+mixin VerifyOffsets!(Item, 0x180);
 
 align(1)
 struct Character {
@@ -75,28 +76,24 @@ struct Character {
 	ZeroString!64 name;
 	ZeroString!64 className;
 	@Unknown ubyte[260] unknown1;
-	Skills!(96, d2skillNames) skills;
+	@Offset(0x78C) Skills!(96, d2skillNames) skills;
 	@Unknown ubyte[508] unknown2;
-	Stats stats;
+	@Offset(0xC28) Stats stats;
 	@Unknown ubyte[64] unknown3;
 	uint mana;
 	@Unknown ubyte[24] unknown4;
 	EquipmentMastery equipmentMastery;
 	@Unknown ubyte[8] unknown5;
-	BaseCharacterStats baseStats;
+	@Offset(0xCBC) BaseCharacterStats baseStats;
 	@Unknown ubyte[8] unknown6;
 	ushort level;
 	@Unknown ubyte[16] unknown7;
-	Resistance baseResist;
+	@Offset(0xCDE) Resistance baseResist;
 	Resistance resist;
 	MiscStats miscStats;
 	@Unknown ubyte[534] unknown8;
 }
-static assert(Character.sizeof == 0xF00);
-static assert(Character.skills.offsetof == 0x78C);
-static assert(Character.stats.offsetof == 0xC28);
-static assert(Character.baseStats.offsetof == 0xCBC);
-static assert(Character.baseResist.offsetof == 0xCDE);
+mixin VerifyOffsets!(Character, 0xF00);
 
 align(1)
 struct Senator {
@@ -126,7 +123,7 @@ struct Senator {
 	}
 }
 
-static assert(Senator.sizeof == 0x60);
+mixin VerifyOffsets!(Senator, 0x60);
 
 align(1)
 struct D2PC {
@@ -134,17 +131,18 @@ struct D2PC {
 	@Unknown ubyte[8] unknown;
 	Playtime playtime;
 	@Unknown ubyte[963] unknown2;
-	ulong totalHL;
+	@Offset(0x3D0) ulong totalHL;
 	@Unknown ubyte[2336] unknown3;
-	Character[128] _characters;
-	Senator[64] _senators;
+	@Offset(0xCF8) Character[128] _characters;
+	@Offset(0x78CF8) Senator[64] _senators;
 	@Unknown ubyte[5632] unknown4;
-	Item[24] _bagItems;
+	@Offset(0x7BAF8) Item[24] _bagItems;
 	Item[512] _warehouseItems;
 	@Unknown ubyte[60] unknown5;
-	ushort charCount;
+	@Offset(0xADF34) ushort charCount;
 	@Unknown ubyte[526] unknown6;
 	BitFlags!Rarity[1680] itemRecords;
+	@Unknown ubyte[0xAFEB] unknown7;
 	auto characters() const {
 		return _characters[0..charCount];
 	}
@@ -164,11 +162,7 @@ struct D2PC {
 	}
 	enum itemRecordAlignment = 80;
 }
-static assert(D2PC.totalHL.offsetof == 0x3D0);
-static assert(D2PC._characters.offsetof == 0xCF8);
-static assert(D2PC._senators.offsetof == 0x78CF8);
-static assert(D2PC._bagItems.offsetof == 0x7BAF8);
-static assert(D2PC.charCount.offsetof == 0xADF34);
+mixin VerifyOffsets!(D2PC, 0xB97BF);
 
 
 //PC

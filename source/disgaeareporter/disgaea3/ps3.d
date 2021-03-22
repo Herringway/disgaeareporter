@@ -3,6 +3,7 @@ module disgaeareporter.disgaea3.ps3;
 import disgaeareporter.common;
 import disgaeareporter.disgaea3.common;
 
+import reversineer : Offset, VerifyOffsets;
 
 import std.range : isOutputRange;
 
@@ -11,11 +12,11 @@ struct Item {
 	align(1):
 	Innocent[8] innocents;
 	@Unknown ubyte[8] unknown1;
-	LongStats stats;
+	@Offset(0x48) LongStats stats;
 	LongStats realStats;
 	ushort nameID;
 	@Unknown ubyte[30] unknown2;
-	ubyte rarity;
+	@Offset(0xE8) ubyte rarity;
 	@Unknown ubyte[30] unknown3;
 	SJISString!80 name;
 	@Unknown ubyte[1] unknown4;
@@ -27,35 +28,29 @@ struct Item {
 		return "?";
 	}
 }
-static assert(Item.sizeof == 344);
-static assert(Item.stats.offsetof == 0x48);
-static assert(Item.rarity.offsetof == 0xE8);
+mixin VerifyOffsets!(Item, 344);
 
 align(1)
 struct Character {
 	align(1):
 	ulong exp;
 	Item[4] equipment;
-	SJISString!40 name;
+	@Offset(0x568) SJISString!40 name;
 	SJISString!40 className;
 	@Unknown ubyte[1032] unknown1;
 	ulong currentHP;
 	ulong currentSP;
-	LongStats stats;
+	@Offset(0x9D0) LongStats stats;
 	LongStats realStats;
 	@Unknown ubyte[92] unknown2;
-	ushort level;
+	@Offset(0xAAC) ushort level;
 	@Unknown ubyte[16] unknown3;
-	Resistance baseResist;
+	@Offset(0xABE) Resistance baseResist;
 	Resistance resist;
 	@Unknown ubyte[6676] unknown4;
 }
 
-static assert(Character.sizeof == 9432);
-static assert(Character.name.offsetof == 0x568);
-static assert(Character.stats.offsetof == 0x9D0);
-static assert(Character.level.offsetof == 0xAAC);
-static assert(Character.baseResist.offsetof == 0xABE);
+mixin VerifyOffsets!(Character, 9432);
 
 
 align(1)
@@ -91,13 +86,13 @@ struct D3PS3 {
 	Playtime playtime;
 	SJISString!34 fileName;
 	@Unknown ubyte[3225] unknown2;
-	Character[64] _characters;
+	@Offset(0xCC8) Character[64] _characters;
 	@Unknown ubyte[47712] unknown3;
-	Item[32] _bagItems;
+	@Offset(0x9FD28) Item[32] _bagItems;
 	Item[512] _warehouseItems;
 	@Unknown ubyte[36780] unknown4;
-	ushort charCount;
-
+	@Offset(0xD67D4) ushort charCount;
+	@Unknown ubyte[0x8F0BA] unknownD67D6;
 	auto bagItems() const {
 		import std.algorithm : filter;
 		return _bagItems[].filter!(x => x.isValid);
@@ -111,9 +106,7 @@ struct D3PS3 {
 	}
 }
 
-static assert(D3PS3._characters.offsetof == 0xCC8);
-static assert(D3PS3._bagItems.offsetof == 0x9FD28);
-static assert(D3PS3.charCount.offsetof == 0xD67D4);
+mixin VerifyOffsets!(D3PS3, 0x165890);
 
 unittest {
 	import disgaeareporter.dispatcher : getRawData, loadData, Platforms;
