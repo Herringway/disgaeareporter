@@ -9,6 +9,7 @@ mixin StaticData!(ushort, string, "d5innocents.txt", "d5innocents", "Unknown inn
 mixin StaticData!(ushort, string, "d5items.txt", "d5items", "Unknown item %04X");
 mixin StaticData!(ushort, string, "d5skills.txt", "d5skillNames", "Unknown skill %04X");
 mixin StaticData!(ushort, string, "d5maps.txt", "d5mapNames", "Unknown map %04X");
+mixin StaticData!(ushort, string, "d5evilities.txt", "d5evilities", "Unknown evility %04X");
 
 immutable string[] d5itemRecords = import("d5itemrecords.txt").split("\n");
 

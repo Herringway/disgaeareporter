@@ -107,11 +107,18 @@ struct Character {
 	@Unknown ubyte[10] unknown6;
 	ulong maxDamage;
 	ulong totalDamage;
-	@Unknown ubyte[0x1F4] unknown7;
+	@Unknown ubyte[0x8E] unknown2E56;
+	@Offset(0x2EE6) Evility[27] _evilities;
+	@Unknown ubyte[0x130] unknown2F1C;
 	@Offset(0x304C) ushort level;
 	@Unknown ubyte[34] unknown8;
 	ModernStatsImpl!short baseStats;
 	@Unknown ubyte[0x16D0] unknown9	;
+
+	auto evilities() const {
+		import std.algorithm : filter;
+		return _evilities[].filter!(x => x.isValid);
+	}
 }
 mixin VerifyOffsets!(Character, 0x4750);
 
