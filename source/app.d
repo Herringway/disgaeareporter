@@ -23,10 +23,12 @@ void main(string[] args) {
 	bool steamDisgaea5;
 	bool json;
 	bool yaml;
+	bool html;
 	bool genReports;
 	auto helpInformation = getopt(args,
 		"dumpjson|j", "Dumps data as JSON", &json,
 		"dumpyaml|y", "Dumps data as YAML", &yaml,
+		"dumphtml|h", "Dumps data as HTML", &html,
 		"reports|r", "Automatically generates reports as defined in settings", &genReports,
 		"steamdisgaea1", "Automatically find steam save for Disgaea 1", &steamDisgaea1,
 		"steamdisgaea2", "Automatically find steam save for Disgaea 2", &steamDisgaea2,
@@ -53,6 +55,8 @@ void main(string[] args) {
 			format = ReportFormat.yaml;
 		} else if (json) {
 			format = ReportFormat.json;
+		} else if (html) {
+			format = ReportFormat.html;
 		} else {
 			format = ReportFormat.text;
 		}
