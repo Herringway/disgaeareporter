@@ -104,7 +104,9 @@ struct Character {
 	ushort numReincarnations;
 	@Unknown ubyte[6] unknown5;
 	ushort numKills;
-	@Unknown ubyte[10] unknown6;
+	@Unknown ubyte[4] unknown6;
+	@Offset(0x2E42) uint numDeaths;
+	@Unknown ushort unknown2E46;
 	ulong maxDamage;
 	ulong totalDamage;
 	@Unknown ubyte[0x8E] unknown2E56;
