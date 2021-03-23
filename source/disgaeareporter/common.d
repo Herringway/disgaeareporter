@@ -9,7 +9,7 @@ import std.traits : isArray, isSomeChar, Select;
 
 enum Unknown;
 
-void printData(Game)(File output, Game* game) {
+void printData(Game)(File output, Game* game, bool showUnknown) {
 	import std.algorithm : filter, map, makeIndex, min, sort, sum;
 	import std.array : array;
 	import std.range : indexed, iota;
@@ -75,7 +75,7 @@ void printData(Game)(File output, Game* game) {
 	static if (hasMember!(Game, "characters")) {
 		output.writeln("-Characters-");
 		foreach (character; game.characters) {
-			output.printCharacter(1, character);
+			output.printCharacter(1, character, showUnknown);
 		}
 	}
 	static if (hasMember!(Game, "areas")) {
@@ -97,13 +97,13 @@ void printData(Game)(File output, Game* game) {
 		output.writeln();
 		output.writeln("Bag:");
 		foreach (item; game.bagItems) {
-			output.printItem(1, item);
+			output.printItem(1, item, showUnknown);
 		}
 	}
 	static if (hasMember!(Game, "warehouseItems")) {
 		output.writeln("Warehouse:");
 		foreach (item; game.warehouseItems) {
-			output.printItem(1, item);
+			output.printItem(1, item, showUnknown);
 		}
 	}
 	static if (hasMember!(Game, "innocentWarehouse")) {
@@ -121,16 +121,12 @@ void printData(Game)(File output, Game* game) {
 			}
 		}
 	}
-	debug (unknowns) {
-		output.writeln("\n-Unknown data-\n");
-		import std.traits : getSymbolsByUDA;
-		static foreach (unknown; getSymbolsByUDA!(Game, Unknown)) {
-			output.writeln(mixin("game."~unknown.stringof));
-		}
+	if (showUnknown) {
+		output.printUnknowns(1, *game);
 	}
 }
 
-void printCharacter(T)(File output, int indentCount, T character) {
+void printCharacter(T)(File output, int indentCount, T character, bool showUnknown) {
 		import std.algorithm : filter;
 		import std.range : lockstep;
 		import std.traits : hasMember;
@@ -210,7 +206,7 @@ void printCharacter(T)(File output, int indentCount, T character) {
 			if (!equips.empty) {
 				indentedPrint(0, "Equipment:");
 				foreach (item; equips) {
-					output.printItem(indentCount+1, item);
+					output.printItem(indentCount+1, item, showUnknown);
 				}
 			}
 		}
@@ -232,11 +228,12 @@ void printCharacter(T)(File output, int indentCount, T character) {
 				}
 			}
 		}
-
-		output.printUnknowns(indentCount+1, character);
+		if (showUnknown) {
+			output.printUnknowns(indentCount+1, character);
+		}
 }
 
-void printItem(ItemType)(File output, uint indentCount, const ItemType item) {
+void printItem(ItemType)(File output, uint indentCount, const ItemType item, bool showUnknown) {
 	import std.algorithm : filter;
 	import std.traits : hasMember;
 
@@ -263,20 +260,20 @@ void printItem(ItemType)(File output, uint indentCount, const ItemType item) {
 	}
 	output.write("\n");
 
-	output.printUnknowns(indentCount+1, item);
+	if (showUnknown) {
+		output.printUnknowns(indentCount+1, item);
+	}
 }
 
-void printUnknowns(T)(File output, uint indentCount, T data) {
-	debug (unknowns) {
-		void indentedPrint(string fmt = "%s", T...)(int offset, T args) {
-			output.writef!"%-(%s%)"("\t".repeat(indentCount+offset));
-			output.writefln!fmt(args);
-		}
-		output.writeln("\tUnknown data:");
-		import std.traits : getSymbolsByUDA;
-		static foreach (i; 0..getSymbolsByUDA!(T, Unknown).length) {
-			indentedPrint!"%s: (%s)"(1, __traits(identifier, getSymbolsByUDA!(T, Unknown)[i]).stringof, mixin("data."~__traits(identifier, getSymbolsByUDA!(T, Unknown)[i])));
-		}
+void printUnknowns(T)(File output, uint indentCount, ref T data) {
+	void indentedPrint(string fmt = "%s", T...)(int offset, T args) {
+		output.writef!"%-(%s%)"("\t".repeat(indentCount+offset));
+		output.writefln!fmt(args);
+	}
+	indentedPrint!"Unknown data:"(0);
+	import std.traits : getSymbolsByUDA;
+	static foreach (i; 0..getSymbolsByUDA!(T, Unknown).length) {
+		indentedPrint!"%s: (%s)"(1, __traits(identifier, getSymbolsByUDA!(T, Unknown)[i]).stringof, mixin("data."~__traits(identifier, getSymbolsByUDA!(T, Unknown)[i])));
 	}
 }
 
@@ -541,9 +538,7 @@ struct MiscStatsExpanded {
 	void toString(T)(T sink) const if (isOutputRange!(T, const(char))) {
 		import std.format : formattedWrite;
 		sink.formattedWrite!"Counter: %s, MV: %s, JM: %s, Throw: %s, Crit: %s, Range: %s"(counter, mv, jm, throw_, crit, range);
-		debug(unknowns) {
-			sink.formattedWrite!", Unknown: %s"(unknown);
-		}
+		//sink.formattedWrite!", Unknown: %s"(unknown);
 	}
 }
 
