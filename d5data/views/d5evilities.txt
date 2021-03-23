@@ -1,0 +1,795 @@
+000A	War Demon
+000B	Destructive Power
+000C	Close Combatant
+000D	Muscle Increase
+000E	Fatal Hit
+000F	Bolster Spirit
+0010	Reliable Ally
+0028	Queen's Temper
+0029	Unrequited Love
+002A	Search Coin
+002B	Dynamic Vision
+002C	Dream Invitation
+002D	Reverse Harem
+002E	Life and Death
+0032	Super Crush
+0033	Heart of a Leader
+0034	Muscle Power
+0035	Iron Body
+0036	Abandon Knowledge
+0037	One Hit Victory
+0038	Battle Mania
+003C	Tactician
+003D	Superlative Ally
+003E	Cool and Calm
+003F	Fountain of Facts
+0040	Eye For Discovery
+0041	Battle of Wits
+0042	Analyzer
+0046	Anti-Bully Aura
+0047	Precious People
+0048	I Love Curry
+0049	Mystic Protection
+004A	Status Guard
+004B	Death Resistance
+004C	Bunny Ear Radar
+0064	Flowing Water
+0065	Underdog Bravery
+0066	Retreat Technique
+0067	Reflexes
+0068	Ambition
+0069	Sonic Charge
+006A	Kamikaze
+0078	Fighting Aura
+0079	Mastered Fist
+007A	Breath of Life
+007B	Immovable Fist
+007C	Heavy Armor
+007D	Pressure
+008C	Queen of Coffins
+008D	Evil Spirit
+008E	Mental Discipline
+008F	Malicious Reflect
+0090	Curse Reversal
+0091	Lich Deimos
+0096	Endless Animosity
+00A0	Swift Strategy
+00A1	Magic Enhancement
+00A2	Violence
+00A3	Death Glare
+00A4	Loner Power
+00A5	Plunder Power
+00AA	Distorted Feelings
+00F0	Main Character R.
+00F1	Bullet Set
+00F2	Dual Wielding
+00F3	Close-Up Shot
+00F4	Sky High
+00F5	Never Give Up
+019A	Restricted Guard
+03F2	Wild Cry
+03F3	Muscle Mastery
+03F4	Power Axe
+03F5	Fighting Instinct
+03F6	Shaking Excitement
+03F7	Super Guts
+03FC	Assault Attack
+03FD	Defense Mastery
+03FE	Effort
+03FF	Pierce
+0400	Start Dash
+0401	Hit and Away
+0406	Magic Bundle
+0407	Casting Mastery
+0408	Magic Training
+0409	Enlarge
+040A	Lights of Life
+040B	Over Limit
+0410	Magic Moderation
+0411	Mind Mastery
+0412	Expand
+0413	Damage Convert
+0414	Magic Collection
+0415	Overflowing Magic
+041A	Fury
+041B	Grappler
+041C	Retribution
+041D	Blasting Fist
+041E	Counter Chance
+041F	Forced Counter
+0424	Rapid Movement
+0425	Chi Charging
+0426	Impromptu
+0427	No-miss Counter
+0428	Smash Hit
+0429	Counter Dodge
+042E	Medical Heal
+042F	Healing Hands
+0430	Staff Rebellion
+0431	Light Salvation
+0432	Staff of Healing
+0433	Light Protection
+0438	Expert Hands
+0439	Resist Mastery
+043A	Res Arrows
+043B	Heart of Affection
+043C	Vital Arrow
+043D	Advanced Healing
+0442	Thief Skills
+0443	Dodge Mastery
+0444	Bomb Trainer
+0445	Evade Danger
+0446	Lucky Finger
+0447	Treasure Hunt
+044C	Efficient Work
+044D	Know How to Use It
+044E	Cannon for an Arm
+044F	Relaxing Tea
+0450	Winning Lottery
+0451	Licensed Caregiver
+0456	Support Attack
+0457	Hit Mastery
+0458	Bow Range
+0459	Arrow in the Knee
+045A	Fly Swatter
+045B	Support Fire
+0460	Assist
+0461	Hawk Eye
+0462	Sniping
+0463	Second Attack
+0464	Flying Bullets
+0465	Marking
+046A	Mirage
+046B	Sharp Eye
+046C	Sasuke
+046D	Feint
+046E	Assassination
+046F	Secret Recon
+0474	Bushido
+0475	Mind's Eye
+0476	Head-to-Head
+0477	Euthanasia
+0478	Duelist
+0479	To the Death
+047E	Hero's Shield
+047F	Synch Guard
+0480	Advance Guard
+0481	Hold the Line
+0482	Swift Stance
+0483	Defensive Stance
+0488	Elemental Force
+0489	Elemental Rise
+048A	Mana Blade
+048B	Oracle Sword
+048C	Spirit Protection
+048D	Spirit Gun
+0492	Angel Song
+0493	Blessing of Love
+0494	Angel Majesty
+0495	Guardian Angel
+0496	All Range +
+0497	Angel Leadership
+049C	Medical Insertion
+049D	Research Desire
+049E	Chemical Reaction
+049F	Tension Booster
+04A0	Effective Delivery
+04A1	Demon Researcher
+04A6	Pro Tosser
+04A7	Attack Mastery
+04A8	Power Throw
+04A9	Vacuum Lift
+04AA	Standing Suplex
+04AB	Captain Tower
+04B0	Acceleration Shot
+04B1	Demonic Marksman
+04B2	Plunder
+04B3	Explorer
+04B4	Gun Fight
+04B5	Adventuring Spirit
+04BA	Mass Blaster
+04BB	Wisdom Incarnate
+04BC	Magic Conversion
+04BD	Star Break
+04BE	Anti-Demon Decoy
+04BF	Concentration
+04C4	Ripple Impact
+04C5	Veteran Hero
+04C6	Purgatory
+04C7	In the Fight
+04C8	Heavy Stance
+04C9	Fighting Spirit
+04CE	Unstable Settings
+04CF	Next Game's Main
+04D0	Mini
+04D1	Desperate
+04D2	Depression
+04D3	Idol
+04D4	Prinny
+04D5	Beetle Size
+04D6	Asagiri Power
+04D7	Nature Muscle
+04D8	8-Bit Giant
+04D9	Robot Doll Body
+04DA	Dark Song
+07DA	Explosive Body
+07DB	1 HL
+07DC	Cross Bomber
+07DD	Through Adversity
+07DE	Focused Bomb
+07DF	Recycle Spirit
+07E4	Bullying
+07E5	Poison Heal
+07E6	Binding Dash
+07E7	Elemental Reverse
+07E8	Weaken Life
+07E9	Isolation
+07EE	Group Strategy
+07EF	Amnesic Blast
+07F0	Axe Guard
+07F1	Toady
+07F2	Mass Psyche
+07F3	Boar Charge
+07F8	Benefits of Gaea
+07F9	Bunny Hop
+07FA	Bow Guard
+07FB	Hidden Valley
+07FC	Lightning Speed
+07FD	Fatal Slash
+0802	Magic Creation
+0803	Sleep Powder
+0804	Staff Guard
+0805	Generate Pain
+0806	Blessing Bell
+0807	Mind Break
+080C	Gel Body
+080D	Poisonous Matter
+080E	Knuckle Guard
+080F	Poison Gel
+0810	Weak Gel
+0811	Impact Charge
+0816	Weakening Aura
+0817	Sword Guard
+0818	Softening Aura
+0819	Asleep Attack
+081A	Cat Step
+081B	Kinship Awareness
+0820	Spreading Miasma
+0821	Paralysis Dust
+0822	Lance Guard
+0823	Poison Accelerator
+0824	Lengthen Ailment
+0825	Overdose
+082A	Predation
+082B	Rifle Guard
+082C	Poison Chance
+082D	Undead
+082E	Regeneration
+082F	Corpse Cannibal
+0834	Shroom Power
+0835	Listless Spores
+0836	Self-Sacrifice
+0837	Macho Splendor
+0838	Mushroom Doping
+0839	Eryngi Fluid
+083E	Sweet Aroma
+083F	Prevention
+0840	Herbal Therapy
+0841	Relaxation
+0842	Power Aroma
+0843	Leaf Shield
+0848	Final Blow
+0849	Exploding Punch
+084A	Team Formation
+084B	Desperation
+084C	Vendetta
+084D	Beyond the Future
+0852	Lovely Song
+0853	Happy Song
+0854	Fortune Song
+0855	Cute Song
+0856	Charmy Song
+0857	Lucky Song
+085C	Sexy Aura
+085D	Temptation
+085E	Punishing Punisher
+085F	Bones Out
+0860	Shame
+0861	Charm Pheromones
+0866	Evil Eye
+0867	Reduction Curse
+0868	Lock Eyes
+0869	Grief Shout
+086A	Day of Calamity
+086B	Calamity Shield
+0870	Greedy Disposition
+0871	Brain Crusher
+0872	Golden Finger
+0873	Great Debater
+0874	Money Heal
+0875	Money Is Power
+087A	Rage Charge
+087B	Best Condition
+087C	Wild Power
+087D	Survival Instincts
+087E	Hunting
+087F	Power of Adversity
+0884	Anti-Element
+0885	Crush
+0886	Ruling Penetration
+0887	Protection Break
+0888	Element Charge
+0889	Attack Weakness
+088E	Good Fortune
+088F	Punishment
+0890	Fluffy Barrier
+0891	Geo Damage
+0892	Starlight
+0893	Geo Protect
+0898	Twin Heads
+0899	Dragon Treasure
+089A	Imperial Wrath
+089B	Damage Cut
+089C	King's Dignity
+089D	Double Attack
+08A2	Immortal Body
+08A3	Death Fang
+08A4	Blood Insanity
+08A5	Turbo Boost
+08A6	Shield Dash
+08A7	Combat High
+0BB8	45 Degree Angler
+0BB9	Watermelon Smasher
+0BBA	Ambusher
+0BBB	Town Crier
+0BBC	Sun Bather
+0BBD	Joke Slapper
+0BBE	Caregiver
+0BBF	Fish Strong
+0BC0	Secret Trainer
+0BC1	Combo Maker
+0BC2	Utilitarian
+0BC3	Habitual Licker
+0BC4	Love Therapist
+0BC5	All Digger
+0BC6	Rubber
+0BC7	Howler
+0BC8	Mana Robber
+0BC9	Wuss
+0BCA	Blood Pumper
+0BCB	Spear Fisherman
+0BCC	Sand Thrower
+0BCD	Gourmet Chef
+0BCE	Kinder Gardener
+0BCF	Berry Picker
+0BD0	Balanced Dieter
+0BD1	Indoor Figher
+0BD2	Rainbow Warrior
+0BD3	Mogul
+0BD4	Hostage Negotiator
+0BD5	Watersport Athlete
+0BD6	Secret Spice Chef
+0BD7	Tag Champion
+0BD8	Incubator
+0BD9	Slide Tackler
+0BDA	Punisher
+0BDB	Sweet Tempter
+0BDC	Cat Burglar
+0BDD	Chalkboard Scraper
+0BDE	Sumo Wrestler
+0BDF	No.1 Man
+0BE0	Bug King
+0BE1	Juicer
+0BE2	Homeopathic Healer
+0BE3	Flyer
+0BE4	Boomerang Hunter
+0BE5	Pacifier
+0C80	Burner
+0C81	Blower
+0C82	Freezer
+0C83	Revenge Booster
+0CE4	INT Crammer
+0CE5	RES Crammer
+0CE6	ATK Crammer
+0CE7	DEF Crammer
+0CE8	Growth Spurter
+0CE9	Magic Lobber
+0CEA	Mana Climber
+0FA0	Poison Vaccine
+0FA1	Paralysis Vaccine
+0FA2	Sleep Vaccine
+0FA3	Weaken Vaccine
+0FA4	Forget Vaccine
+0FA5	Charm Vaccine
+0FA6	Shrink Vaccine
+0FA7	Vaccine
+0FA8	Fire Body
+0FA9	Windy Body
+0FAA	Cool Body
+0FAB	Kill With Fire
+0FAC	Kill With Wind
+0FAD	Kill With Water
+0FAE	Fire Management
+0FAF	Wind Management
+0FB0	Water Management
+0FB1	Fire Blessing
+0FB2	Flame Blessing
+0FB3	Lava Blessing
+0FB4	Scorching Blessing
+0FB5	Cold Blessing
+0FB6	Snow Blessing
+0FB7	Blizzard Blessing
+0FB8	Icic-Hell Blessing
+0FB9	Wind Blessing
+0FBA	Gale Blessing
+0FBB	Storm Blessing
+0FBC	Hurricane Blessing
+0FBD	Star Blessing
+0FBE	Meteor Blessing
+0FBF	Comet Blessing
+0FC0	Stellar Blessing
+0FD2	Power Shot
+0FD3	Piercing Shot
+0FD4	Mana Scarcity
+0FD5	Physical Boost
+0FD6	Magical Boost
+0FD7	Ambush
+0FD8	No Critical
+0FD9	Gambler
+0FDA	Bad Trip
+0FF0	Unstable Power
+0FF1	Convert Force
+0FF2	Power of Bowls
+0FF3	Boorish Counter
+0FF4	Red Power
+0FF5	Blue Power
+0FF6	Yellow Power
+0FF7	Green Power
+0FF9	Purple Power
+0FF9	Aqua Power
+0FFA	Taste of Victory
+0FFB	MC Mastery
+0FFC	Rabbit Lover
+0FFD	Insect Lover
+0FFE	Motor Gang
+0FFF	Magic Bias
+100E	Revitalizing Power
+100F	Improved Recovery
+1010	Medical Expertise
+1011	Treatment Testing
+1012	Anti-Flat Chest
+1013	Booster
+1014	Safety
+1015	Enemy Lure
+1016	Assassin's Soul
+1017	Handicap
+1018	Magical Mini Craft
+1019	Normal Soul
+101A	Geo Heal
+101B	Master's Gaze
+101C	Auto Recovery
+101D	Gourmet
+101E	Hidden Blessing
+101F	Treasure Hunter
+1020	Bonus Boost
+1021	Image Change
+1022	Seal of Betrayal
+1023	Counter Knowledge
+1036	Tough Guy
+1037	Extreme Tough Guy
+1038	Intense Tough Guy
+1039	Super Tough Guy
+103A	Ultimate Tough Guy
+103B	Hyper Guy
+103C	Extreme Hyper Guy
+103D	Intense Hyper Guy
+103E	Super Hyper Guy
+103F	Ultimate Hyper Guy
+1040	Mean Guy
+1041	Extreme Mean Guy
+1042	Intense Mean Guy
+1043	Super Mean Guy
+1044	Ultimate Mean Guy
+1045	Dense Guy
+1046	Extreme Dense Guy
+1047	Intense Dense Guy
+1048	Super Dense Guy
+1049	Ultimate Dense Guy
+104A	Smart Guy
+104B	Extreme Smart Guy
+104C	Intense Smart Guy
+104D	Super Smart Guy
+104E	Ultimate Smart Guy
+104F	Wise Guy
+1050	Extreme Wise Guy
+1051	Intense Wise Guy
+1052	Super Wise Guy
+1053	Ultimate Wise Guy
+1054	Agile Guy
+1055	Extreme Agile Guy
+1056	Intense Agile Guy
+1057	Super Agile Guy
+1058	Ultimate Agile Guy
+1059	Fast Guy
+105A	Extreme Fast Guy
+105B	Intense Fast Guy
+105C	Super Fast Guy
+105D	Ultimate Fast Guy
+1068	Study Lover
+1069	Hard Worker
+106A	Study Nerd
+106B	Study Maniac
+106C	Genius Studier
+106D	Overlord Training
+106E	Precocious Secret
+1072	Mana Lover
+1073	Mana Maniac
+1074	Mana Collector
+1075	Pro Mana Collector
+1076	Mana Master
+107C	Workshop Intern
+107D	Career Training
+107E	Job Changer
+107F	Pro Job Changer
+1080	Career Master
+1086	Gear Maintenance
+1087	Gear Repair
+1088	Gear Trainer
+1089	Gear Sales Rep
+108A	Gear Master
+1090	Fist Tutor
+1091	Fist Coach
+1092	Fist Master
+1093	Fist Guru
+1094	Sword Tutor
+1095	Sword Coach
+1096	Sword Master
+1097	Sword Guru
+1098	Spear Tutor
+1099	Spear Coach
+109A	Spear Master
+109B	Spear Guru
+109C	Bow Tutor
+109D	Bow Coach
+109E	Bow Master
+109F	Bow Guru
+10A0	Gun Tutor
+10A1	Gun Coach
+10A2	Gun Master
+10A3	Gun Guru
+10A4	Axe Tutor
+10A5	Axe Coach
+10A6	Axe Master
+10A7	Axe Guru
+10A8	Staff Tutor
+10A9	Staff Coach
+10AA	Staff Master
+10AB	Staff Guru
+10AC	Power Tutor
+10AD	Power Coach
+10AE	Power Master
+10AF	Power Guru
+10B0	Medal Tutor
+10B1	Medal Coach
+10B2	Medal Master
+10B3	Medal Guru
+10B4	Armor Tutor
+10B5	Armor Coach
+10B6	Armor Master
+10B7	Armor Guru
+10C2	Geologist
+10C3	Archeologist
+10C4	Invader
+10CC	Number Padding
+10CD	Gender Bender
+10CE	Braggart
+10CF	Invalid
+10D0	Super Jump
+10D1	Bounty Hunter
+10D2	Board Killer
+10D3	Bottle Breaker
+10D4	Board Freak
+10D5	Gum Eater
+10D6	Damage Reward
+10D7	Life Insurance
+10E0	Alter Sound System
+10E1	Mascot's Feelings
+10E2	Bottle's Feelings
+10E3	Fish's Feelings
+10E4	Bird's Feelings
+1194	Unity
+1195	Aggression
+1196	Magichange Reform
+1197	Double Bladed
+1198	Cross Formation
+1199	Bond of Souls
+119A	Fusing Souls
+119B	Weapon Fusion
+119C	Double Bladed Plus
+11F8	Double Chance
+11F9	Heart Guard
+11FA	High Risk
+11FB	Spirit of Inquiry
+1388	Can't Fool Me
+1389	Theft Prevention
+138A	Extremely Healthy
+138B	Like a Boss
+138C	Carnage Tyrant
+138D	Carnage Dignity
+138E	Carnage Lv 3
+138F	Carnage Lv 4
+1390	Carnage Lv 5
+1391	Carnage Lv 6
+1392	Carnage Lv 7
+1393	Carnage Lv 8
+1394	Carnage Lv 9
+1395	Carnage Lv 10
+1396	Carnage Lv 11
+1397	Carnage Lv 12
+1398	Carnage Lv 13
+1399	Carnage Lv 14
+139A	Carnage Lv 15
+139B	Carnage Lv 16
+139C	Carnage Lv 17
+139D	Carnage Lv 18
+139E	Carnage Lv 19
+139F	Carnage Lv 20
+13A0	Hypered
+13A1	Metal Barrier
+13A2	Tyrant Revelio
+1771	Overlord's Dignity
+1772	Strong Personality
+1773	Gaze of Supremacy
+1774	Legendary Strength
+1775	Sadistic
+1776	Lethal Throw
+1777	Busty Killer
+1778	Taunt
+1779	Love Field
+177A	Iron Love Fist
+177B	Love Protection
+177C	Have You Loved?
+177D	Li'l Sis Aura
+177E	We All Get Along
+177F	Prinny Lover
+1780	Sibling Love
+1781	Overlord's Dignity
+1782	Dead Sexy
+1783	Bodyguards
+1784	Hasty Rush
+1785	Idol Assist
+1786	Hungry Warrior
+1787	Hungry Spirit
+1788	Acceleration Mascot
+1789	Angel Protection
+178A	Angel Conciliation
+178B	Angel Blessing
+178C	Angel Immunity
+178D	Angel Cheering
+178E	Angel Flight
+178F	Demon Lord's Vassal
+1790	Absorption
+1790	Focused Grenade
+1791	Prinny Instructor
+1792	Sardine Supremacy
+1793	Tyrant
+1794	Tyrant's Slave
+1795	Moon Promise
+1796	Intimidating Gaze
+1797	Symbol of Loyalty
+1798	Angel Glitter
+1799	Unconditional Love
+179A	Phantom Angel
+179B	Last Rites
+179C	Dream Girl
+179D	Prinny Hat
+179E	Powered By Sweets
+179F	First Impression
+17A0	Final Boss Setting
+17A1	Final Boss Glare
+17A2	No Escape
+17A3	Super Sis Legend
+17A4	Death Spell
+17A5	Charismatic Novice
+17A6	Death March
+17A7	Astral Body
+17A8	Nippon Ichi
+17A9	Dangerous Revival
+17AA	Absolute Justice
+17AB	Belated Hero
+17AC	Flame Haze
+17AD	Nirrti
+17AE	Rebellious Blade
+17AF	Body Replacement
+17B0	Aggressive Spying
+17B1	Emergency Evasion
+17B2	Live Experiment
+17B3	Star Gazing
+17B4	Weak Searcher
+17B5	Improved Alchemy
+17B6	Hello Throw
+17B7	Trash Pickup
+17B8	Innocent Classes
+17B9	Recruitment Drive
+17BA	G Master
+17BB	T Interrogator
+17BC	N Researcher
+17BD	E Shield
+17BE	Hero's Proof
+17BF	Guard the Princess!
+17C0	I Won't Lose!
+17C1	Lucky!
+17C2	Robust
+17C3	Precise Healing
+17C4	Bring It On!
+17C5	Pulverizing Spirit
+17C6	Swamp Witch
+17C7	Mental Pain
+17C8	Absolute Ruler
+17C9	Mana Burner
+17CA	Cursed Dance
+17CB	Death Throes
+17CC	Contagious Curse
+17CD	Gloomy Dance
+17CE	Dullness Dance
+17CF	Sorrowful Moment
+17D0	Indomitable Fist
+17D1	Bend Than Break
+17D2	Hard Boiled Man
+17D3	Bonds of Love
+17D4	Queen Glitter
+17D5	Queen Orders
+17D6	Love
+17D7	Unbearable Power
+17D8	Obvious Tendency
+17D9	Withstand
+17DA	Electric Soul
+17DB	Explosive Skit
+17DC	Badass Overlord
+17DD	Badass Sound
+17DE	Strongest Body
+17DF	Ultimate Power
+17E0	Punishing Prophecy
+17E1	Hoarfrost Magic
+17E2	Calm Response
+17E3	Overconcentrate
+17E4	Badass Daughter
+17E5	Critical Point
+17E6	Volunteer Work
+17E7	Veteran Support
+17E8	Bundle Attack
+17E9	Critical Charge
+17EA	Terrific Counter
+17EB	Seeking Strength
+17ED	Adventure Shop
+17EE	Eclipse Power
+17EF	Ultimate Revenge
+17F0	Ultimate Force
+17F1	Flame Destroyer
+17F2	Water Destroyer
+17F3	Wind Destroyer
+17F4	Star Destroyer
+17F5	Flame Guardian
+17F6	Water Guardian
+17F7	Wind Guardian
+17F8	Star Guardian
+17F9	Ultimate Giant
+17FA	Ultimate Scream
+17FB	Summon Guardian
+17FC	Death Companion
+17FD	Nullify Counters
+17FE	Ultimate Tyrant
+17FF	Ultimate Dignity
+1800	Ultimate Bundle
+1801	Ultimate Hate
+1802	Ultimate Shield
+1803	Ultimate Wand
+1804	Ultimate Sword
+1805	Ultimate Field
+1838	Overclocker
+189C	Flex All Muscles
+189D	Defused
+189F	Late Bloomer
+18A0	Sensitive Evasion
+18A1	Tyrant Prinny
+18A2	Coffin Prinny
