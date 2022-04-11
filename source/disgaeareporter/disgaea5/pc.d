@@ -33,13 +33,15 @@ align(1)
 struct Item {
 	align(1):
 	Innocent[8] innocents;
-	@Unknown ubyte[0x88] unknown1;
+	@Unknown ubyte[0x88] unknownA0;
 	@Offset(0x128) ushort itemID;
 	ushort unknown;
 	ushort level;
-	@Unknown ubyte[0x17] unknown2;
+	@Unknown ubyte[0x4] unknown12C;
+	uint unknown130;
+	@Unknown ubyte[0xF] unknown134;
 	ubyte rarity;
-	@Unknown ubyte[0x112] unknown3;
+	@Unknown ubyte[0x112] unknown144;
 
 	bool isValid() const {
 		return itemID != 0;
@@ -95,7 +97,9 @@ struct Character {
 	@Unknown ubyte[0x90] unknown2;
 	EquipmentMastery5 equipmentMastery;
 	uint mana;
-	@Unknown ubyte[0x16] unknown3;
+	@Unknown ubyte[0x10] unknown2DF4;
+	int unknown2E04;
+	@Unknown ubyte[2] unknown2E08;
 	@Offset(0x2E0A) ModernResistance baseResist;
 	ModernResistance resist;
 	MiscStatsExpanded miscStats;
@@ -111,9 +115,13 @@ struct Character {
 	ulong totalDamage;
 	@Unknown ubyte[0x8E] unknown2E56;
 	@Offset(0x2EE6) Evility[27] _evilities;
-	@Unknown ubyte[0x130] unknown2F1C;
+	@Unknown ubyte[0x118] unknown2F1C;
+	int unknown3034;
+	@Unknown ubyte[0x14] unknown3038;
 	@Offset(0x304C) ushort level;
-	@Unknown ubyte[34] unknown8;
+	@Unknown ubyte[0x12] unknown304E;
+	long unknown3060;
+	@Unknown ubyte[0x8] unknown3068;
 	ModernStatsImpl!short baseStats;
 	@Unknown ubyte[0x16D0] unknown9	;
 
