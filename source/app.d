@@ -49,6 +49,8 @@ void main(string[] args) {
 			filePath = getD1SteamPath();
 		} else if (steamDisgaea2) {
 			filePath = getD2SteamPath();
+		} else if (steamDisgaea5) {
+			filePath = getD5SteamPath();
 		} else {
 			filePath = args[1];
 		}
