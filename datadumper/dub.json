@@ -1,0 +1,8 @@
+{
+	"name": "datadumper",
+	"dependencies": {
+		"libgamefs": "*",
+		"siryul": "*",
+		"sjisish": "~>0.0"
+	}
+}
