@@ -37,7 +37,7 @@ struct Innocent {
 		return _level > 10000;
 	}
 	string name() const {
-		return d2innocents(type);
+		return d2innocents.get(type, format!"Unknown innocent %04X"(type));
 	}
 }
 mixin VerifyOffsets!(Innocent, 8);

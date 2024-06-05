@@ -24,7 +24,7 @@ struct Innocent {
 		return (unknown[1]&1) == 1;
 	}
 	string name() const {
-		return dd2innocents(type);
+		return dd2innocents.get(type, format!"Unknown innocent %04X"(type));
 	}
 }
 

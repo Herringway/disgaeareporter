@@ -70,7 +70,7 @@ struct Innocent {
 		return false;
 	}
 	string name() const {
-		return d3innocents(type);
+		return d3innocents.get(type, format!"Unknown innocent %04X"(type));
 	}
 }
 

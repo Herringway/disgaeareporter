@@ -3,6 +3,8 @@ module disgaeareporter.disgaead2.common;
 import disgaeareporter.common;
 public import dd2data;
 
+import std.format;
+
 import reversineer : Offset, VerifyOffsets;
 
 align(1)
@@ -13,7 +15,7 @@ struct Evility {
 	alias id this;
 
 	string toString() const {
-		return dd2evilities(id);
+		return dd2evilities.get(id, format!"Unknown evility %04X"(id));
 	}
 
 	bool isValid() const {

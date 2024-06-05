@@ -2,6 +2,5 @@
 	"name": "d5data",
 	"targetType": "library",
 	"dependencies": {
-		"simap": "*"
 	}
 }

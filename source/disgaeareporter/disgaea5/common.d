@@ -3,6 +3,7 @@ module disgaeareporter.disgaea5.common;
 static immutable d5SteamID = "803600";
 
 public import d5data;
+import std.format;
 
 import reversineer : Offset, VerifyOffsets;
 
@@ -14,7 +15,7 @@ struct Evility {
 	alias id this;
 
 	string toString() const {
-		return d5evilities(id);
+		return d5evilities.get(id, format!"Unknown evility %04X"(id));
 	}
 
 	bool isValid() const {

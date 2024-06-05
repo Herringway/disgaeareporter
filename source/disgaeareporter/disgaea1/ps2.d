@@ -72,7 +72,7 @@ struct PS2Item {
 		return nameID != 0;
 	}
 	string name() const {
-		return d1items(nameID);
+		return d1items.get(nameID, format!"Unknown Item %04X"(nameID));
 	}
 }
 mixin VerifyOffsets!(PS2Item, 0xC8);
@@ -134,7 +134,7 @@ struct PS2MapClearData {
 		}
 	}
 	string name() const {
-		return d1mapNames(mapID);
+		return d1mapNames.get(mapID, format!"Unknown map %04X"(mapID));
 	}
 }
 

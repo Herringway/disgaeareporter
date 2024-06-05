@@ -2,6 +2,5 @@
 	"name": "dd2data",
 	"targetType": "library",
 	"dependencies": {
-		"simap": "*"
 	}
 }

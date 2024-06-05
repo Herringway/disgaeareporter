@@ -20,7 +20,7 @@ struct Innocent {
 		return type != 0;
 	}
 	string name() const {
-		return d4innocents(type);
+		return d4innocents.get(type, format!"Unknown innocent %04X"(type));
 	}
 	bool isSubdued() const {
 		return false;

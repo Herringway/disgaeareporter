@@ -1,15 +1,33 @@
 module d5data;
 
-import simap;
-
 import std.string : split;
 
-mixin StaticData!(ushort, string, "d5classes.txt", "d5classes", "Unknown class %04X");
-mixin StaticData!(ushort, string, "d5innocents.txt", "d5innocents", "Unknown innocent %04X");
-mixin StaticData!(ushort, string, "d5items.txt", "d5items", "Unknown item %04X");
-mixin StaticData!(ushort, string, "d5skills.txt", "d5skillNames", "Unknown skill %04X");
-mixin StaticData!(ushort, string, "d5maps.txt", "d5mapNames", "Unknown map %04X");
-mixin StaticData!(ushort, string, "d5evilities.txt", "d5evilities", "Unknown evility %04X");
+immutable string[ushort] d5classes = parseData!(string[ushort])(import("d5classes.txt"));
+immutable string[ushort] d5innocents = parseData!(string[ushort])(import("d5innocents.txt"));
+immutable string[ushort] d5items = parseData!(string[ushort])(import("d5items.txt"));
+immutable string[ushort] d5skillNames = parseData!(string[ushort])(import("d5skills.txt"));
+immutable string[ushort] d5mapNames = parseData!(string[ushort])(import("d5maps.txt"));
+immutable string[ushort] d5evilities = parseData!(string[ushort])(import("d5evilities.txt"));
+
+auto parseData(T)(string data) @safe pure {
+	import std.algorithm.iteration : splitter;
+	import std.algorithm.searching : startsWith;
+	import std.array : empty;
+	import std.conv : to;
+	import std.string : lineSplitter, strip;
+	import std.typecons : tuple, Tuple;
+	T output;
+	foreach (line; data.lineSplitter) {
+		if (line.startsWith("#") || line.strip().empty) {
+			continue;
+		}
+		auto split = line.splitter("\t");
+		auto bytesequence = split.front.to!(typeof(output.keys[0]))(16);
+		split.popFront();
+		output[bytesequence] = split.front;
+	}
+	return output;
+}
 
 immutable string[] d5itemRecords = import("d5itemrecords.txt").split("\n");
 

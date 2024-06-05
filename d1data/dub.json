@@ -2,6 +2,5 @@
 	"name": "d1data",
 	"targetType": "library",
 	"dependencies": {
-		"simap": "*"
 	}
 }

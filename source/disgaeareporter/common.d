@@ -7,7 +7,8 @@ import std.stdio : File;
 import std.range;
 import std.traits : isArray, isSomeChar, Select;
 
-enum Unknown;
+struct Unknown_ {}
+enum Unknown = Unknown_.init;
 
 void printData(Game)(File output, Game* game, bool showUnknown) {
 	import std.algorithm : filter, map, makeIndex, min, sort, sum;
@@ -626,11 +627,8 @@ static immutable string[] equipmentTypes5 = [
 ];
 
 struct ZeroString(size_t length) {
-	import siryul : SerializationMethod;
 	char[length] raw = 0;
-	alias toString this;
-	@SerializationMethod
-	auto toString() const {
+	string toSiryulType()() const {
 		return raw[].fromStringz;
 	}
 }
@@ -664,7 +662,7 @@ unittest {
 
 
 
-string sjisDec(const ubyte[] data) {
+string sjisDec(const ubyte[] data) @safe pure {
 	import sjisish : toUTF;
 	import std.algorithm : countUntil;
 	import std.string : representation;
@@ -691,11 +689,8 @@ unittest {
 }
 
 struct SJISString(size_t length) {
-	import siryul : SerializationMethod;
 	ubyte[length] raw;
-	alias toString this;
-	@SerializationMethod
-	auto toString() const {
+	string toSiryulType()() const {
 		return sjisDec(raw[]);
 	}
 }

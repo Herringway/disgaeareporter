@@ -36,7 +36,7 @@ struct Innocent {
 		return _level > 10000;
 	}
 	string name() const {
-		return d1innocents(type);
+		return d1innocents.get(type, format!"Unknown innocent %02X"(type));
 	}
 }
 mixin VerifyOffsets!(Innocent, 4);
@@ -81,7 +81,7 @@ struct MapClearData {
 		}
 	}
 	string name() const {
-		return d1mapNames(mapID);
+		return d1mapNames.get(mapID, format!"Unknown map %04X"(mapID));
 	}
 }
 

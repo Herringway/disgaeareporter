@@ -112,7 +112,7 @@ struct Item {
 	ubyte range;
 	@Unknown ubyte[10] unknown;
 	string name() const {
-		return d1items(nameID);
+		return d1items.get(nameID, format!"Unknown item %04X"(nameID));
 	}
 	bool isValid() const {
 		return nameID != 0;

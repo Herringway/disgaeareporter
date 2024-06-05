@@ -25,7 +25,7 @@ struct Innocent {
 		return false;
 	}
 	string name() const {
-		return d5innocents(type);
+		return d5innocents.get(type, format!"Unknown innocent %04X"(type));
 	}
 }
 
@@ -47,7 +47,7 @@ struct Item {
 		return itemID != 0;
 	}
 	string name() const {
-		return d5items(itemID);
+		return d5items.get(itemID, format!"Unknown item %04X"(itemID));
 	}
 }
 
@@ -72,7 +72,7 @@ struct Skill5 {
 		} else {
 			sink.formattedWrite!"Lv%s + %s"(level, boosts);
 		}
-		sink.formattedWrite!" %s (%s EXP)"(__ctfe ? "" : d5skillNames(cast(ushort)id), 0);
+		sink.formattedWrite!" %s (%s EXP)"(__ctfe ? "" : d5skillNames.get(cast(ushort)id, format!"Unknown skill %08X"(id)), 0);
 	}
 	void __toString() {
 		import std.array : appender;
